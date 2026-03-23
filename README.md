@@ -4,21 +4,21 @@ This repo is designed to work with AI tools whether you are in an online chat or
 
 **If you are using an online chatbox** (Claude.ai, ChatGPT, Gemini, Perplexity, etc.):
 
-Fetch the pre-built context bundle directly — no GitHub API calls, no rate limits:
-```xml
-https://raw.githubusercontent.com/jdeworks/get-me-started/dev/bundle.xml
+Copy and paste this prompt directly into your chat:
 ```
+Fetch this file and use it as the full context for the get-me-started project:
+https://raw.githubusercontent.com/jdeworks/get-me-started/dev/bundle.xml
 
-Paste that URL in your chat and say: *"Use this as the full context for get-me-started. I want to [your goal]."*
+I want to [describe your goal here].
+```
 
 **If you are using a local AI agent** (Claude Code, Cursor, Windsurf, Codex, etc.):
 
-Clone the repo so your agent has the full file structure to work with:
+Copy and paste this into your terminal to clone the repo, then point your agent at the folder:
 ```bash
 git clone -b dev https://github.com/jdeworks/get-me-started.git
+cd get-me-started
 ```
-
-Then point your agent at the cloned folder and work directly with the files.
 
 ---
 
@@ -37,12 +37,14 @@ You can build a real website using AI as your guide — even if you've never wri
 
 ## Get Started in 30 Seconds
 
-Copy this into ChatGPT, Claude, Gemini, or any AI assistant you use:
+Copy and paste this entire block into ChatGPT, Claude, Gemini, or any AI assistant you use:
 
 ```
 I want to build my own website but I've never coded before.
 Read this guide and walk me through everything step by step:
 https://raw.githubusercontent.com/jdeworks/get-me-started/dev/prompts/AI-GUIDE.md
+
+If you can't read that link, tell me and I'll paste the guide contents for you.
 ```
 
 That's it. The AI takes it from here.
