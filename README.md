@@ -1,3 +1,27 @@
+## 🤖 Using this repo with AI assistants
+
+This repo is designed to work with AI tools whether you are in an online chat or using a local agent.
+
+**If you are using an online chatbox** (Claude.ai, ChatGPT, Gemini, Perplexity, etc.):
+
+Fetch the pre-built context bundle directly — no GitHub API calls, no rate limits:
+```xml
+https://raw.githubusercontent.com/jdeworks/get-me-started/dev/bundle.xml
+```
+
+Paste that URL in your chat and say: *"Use this as the full context for get-me-started. I want to [your goal]."*
+
+**If you are using a local AI agent** (Claude Code, Cursor, Windsurf, Codex, etc.):
+
+Clone the repo so your agent has the full file structure to work with:
+```bash
+git clone -b dev https://github.com/jdeworks/get-me-started.git
+```
+
+Then point your agent at the cloned folder and work directly with the files.
+
+---
+
 <!--
 AI ROUTING INSTRUCTIONS (for any LLM reading this file):
 You are reading the README of the "get-me-started" repository.

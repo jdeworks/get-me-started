@@ -1,0 +1,2542 @@
+This file is a merged representation of a subset of the codebase, containing files not matching ignore patterns, combined into a single document by Repomix.
+The content has been processed where empty lines have been removed.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of a subset of the repository's contents that is considered the most important context.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching these patterns are excluded: .claude/, bundle.xml, repomix.config.json, .repomixignore
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Empty lines have been removed from all files
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+guides/
+  concepts/
+    reading-error-messages.md
+    what-are-file-paths.md
+    what-is-a-code-editor.md
+    what-is-a-package-manager.md
+    what-is-a-server.md
+    what-is-a-website.md
+    what-is-an-api.md
+    what-is-an-llm.md
+    what-is-code.md
+    what-is-hosting.md
+    what-is-open-source.md
+    what-is-version-control.md
+  install-docker.md
+  open-terminal.md
+  setup-direct.md
+  setup-hosted.md
+  setup-sandbox.md
+  what-is-github.md
+prompts/
+  AI-GUIDE.md
+LICENSE
+README.md
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="guides/concepts/reading-error-messages.md">
+# Reading Error Messages
+
+Error messages look scary. Red text, weird codes, walls of technical jargon. But they are not a sign that you broke something — they are your computer telling you what went wrong and where. Learning to read them is one of the most useful skills in programming.
+
+## The Most Important Thing
+
+**Errors are normal.** Professional developers see them dozens of times a day. An error message is not a failure — it's information. It's the computer saying "I tried to do what you asked, but I got stuck here. Here's why."
+
+## How to Read an Error Message
+
+Most error messages follow the same pattern:
+
+```
+Error: Cannot find module 'express'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:933:15)
+    at Module._load (node:internal/modules/cjs/loader:778:27)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:79:12)
+```
+
+**Step 1: Read the first line.** That's almost always the most important part. In this example: `Cannot find module 'express'` — it can't find a piece of software called "express."
+
+**Step 2: Ignore the middle.** The indented lines (the "stack trace") show the path the code took before it hit the error. You rarely need to read this. Your AI assistant can interpret it if needed.
+
+**Step 3: Look for a suggestion.** Some errors include a hint:
+
+```
+Error: EACCES: permission denied, access '/usr/local/lib/node_modules'
+npm ERR! Try running this command again as root/Administrator.
+```
+
+That last line tells you what to do: run the command with higher permissions.
+
+## Common Error Patterns (and What They Mean)
+
+| What you see | What it means | What to do |
+|-------------|--------------|-----------|
+| `command not found` / `not recognized` | The tool isn't installed, or the terminal can't find it | Install the tool, or close and reopen the terminal |
+| `permission denied` / `EACCES` | You don't have permission to do that | On Mac/Linux: add `sudo` before the command. On Windows: run terminal as Administrator |
+| `ENOENT: no such file or directory` | A file or folder it expected doesn't exist | Check the path — you might be in the wrong folder. Use `pwd` (Mac/Linux) or `cd` (Windows) to check |
+| `EADDRINUSE` / `port already in use` | Something else is already using that network port | Close the other program, or the tool will usually pick another port automatically |
+| `Cannot find module` | A required library is missing | Run `npm install` to install all dependencies |
+| `SyntaxError` | There's a typo or formatting mistake in the code | Tell your AI assistant — it can usually spot and fix these instantly |
+| `ETIMEDOUT` / `ECONNREFUSED` | Network connection failed | Check your internet connection. If it's fine, the service might be temporarily down |
+| `Docker daemon is not running` | Docker Desktop isn't open | Open the Docker Desktop app and wait for it to start |
+
+## Warnings vs. Errors
+
+Not everything in red or yellow is an error:
+
+- **Errors** stop the program. Something failed and you need to fix it.
+- **Warnings** are advice. The program still works, but something could be improved. You can usually ignore warnings, especially as a beginner.
+
+Example warning (safe to ignore):
+```
+npm warn deprecated inflight@1.0.6: This module is not supported
+```
+
+This means a library your project uses is old. It still works. Don't worry about it.
+
+## What to Do When You See an Error
+
+1. **Don't panic.** Read the first line.
+2. **Copy the full error message.** Select it all (even the scary parts).
+3. **Paste it to your AI assistant.** Say "I got this error" and paste it. The AI is excellent at diagnosing error messages — this is one of its strongest skills.
+4. **Follow the AI's suggestion.** It will usually tell you exactly what went wrong and give you a command to fix it.
+
+If the same error keeps coming back after the fix, tell the AI: "I tried that but I'm getting the same error." It will try a different approach.
+
+## The Golden Rule
+
+When in doubt, copy the error and ask for help. You are never expected to understand error messages by yourself. Even experienced developers Google error messages constantly. The skill isn't memorizing what every error means — it's knowing that the error contains the answer, and knowing who (or what) to ask for help interpreting it.
+</file>
+
+<file path="guides/concepts/what-are-file-paths.md">
+# What Are File Paths (and How to Navigate Folders)?
+
+When you use a terminal, you navigate your computer by typing folder names instead of clicking on them. A **file path** is the address of a file or folder on your computer — like a street address for your files.
+
+## The Basics
+
+### What a path looks like
+
+**Mac/Linux:**
+```
+/Users/sarah/Projects/my-website/index.html
+```
+
+**Windows:**
+```
+C:\Users\Sarah\Projects\my-website\index.html
+```
+
+Reading left to right:
+- Start at the root of the drive (`/` on Mac/Linux, `C:\` on Windows)
+- Go into `Users`, then `sarah` (or `Sarah`), then `Projects`, then `my-website`
+- The file is `index.html`
+
+The slashes (`/` or `\`) separate folder names. Mac/Linux use forward slashes. Windows uses backslashes.
+
+### Where you are right now
+
+The terminal is always "inside" a folder. To see which folder you're in:
+
+**Mac/Linux:**
+```
+pwd
+```
+
+**Windows (PowerShell):**
+```
+cd
+```
+
+This prints your **current directory** — the folder you're currently working in.
+
+## Moving Around
+
+### Go into a folder
+```
+cd Projects
+```
+This moves you into a folder called "Projects" that's inside your current folder.
+
+### Go up one folder
+```
+cd ..
+```
+The `..` means "the folder above this one." You can chain them: `cd ../..` goes up two levels.
+
+### Go to a specific path
+```
+cd /Users/sarah/Projects
+```
+or on Windows:
+```
+cd C:\Users\Sarah\Projects
+```
+
+### Go to your home folder
+
+**Mac/Linux:**
+```
+cd ~
+```
+or:
+```
+cd
+```
+
+The `~` symbol is a shorthand for your home folder (`/Users/yourname` on Mac, `/home/yourname` on Linux).
+
+**Windows (PowerShell):**
+```
+cd $HOME
+```
+or:
+```
+cd ~
+```
+
+Your home folder is `C:\Users\YourName`.
+
+## Listing What's Here
+
+**Mac/Linux:**
+```
+ls
+```
+
+**Windows (PowerShell):**
+```
+dir
+```
+
+This shows all files and folders in your current location. Use this when you're not sure what's in a folder.
+
+## Creating Folders
+
+```
+mkdir my-new-folder
+```
+
+This creates a new folder. On Mac/Linux, `mkdir -p path/to/nested/folder` creates all the folders in the path at once, even if the parent folders don't exist yet.
+
+## Common Confusion Points
+
+### "I'm in the wrong folder"
+
+If a command says "file not found" or "no such directory," you're probably in the wrong place. Use `pwd` (Mac/Linux) or `cd` (Windows) to check where you are, then navigate to the right folder.
+
+### Spaces in folder names
+
+If a folder name has a space (like `My Projects`), wrap it in quotes:
+```
+cd "My Projects"
+```
+
+Without quotes, the terminal thinks you're giving it two separate things.
+
+### The `~/Projects` pattern
+
+In this guide, you'll often see `~/Projects`. That means:
+- `~` = your home folder
+- `/Projects` = a folder called "Projects" inside your home folder
+
+On Windows, the equivalent is `C:\Users\YourName\Projects`.
+
+## You Don't Need to Memorize This
+
+Your AI assistant handles navigation for you. It gives you the exact `cd` command to run. But understanding the basics helps you:
+
+- Know where your files are
+- Recognize when you're in the wrong place
+- Feel less lost when the terminal shows a path
+</file>
+
+<file path="guides/concepts/what-is-a-code-editor.md">
+# What Is a Code Editor?
+
+## The Simple Version
+
+A code editor is a program for writing code. It's like a text editor (Notepad, TextEdit) but with superpowers designed for programming:
+
+- **Syntax highlighting** — colors different parts of your code so it's easier to read
+- **Auto-completion** — suggests what you might type next
+- **Error detection** — underlines mistakes before you even run the code
+- **File explorer** — shows all the files in your project in a sidebar
+- **Built-in terminal** — run commands without leaving the editor
+
+You *could* write code in Notepad. But a code editor makes it 10x more productive and less error-prone.
+
+## Common Code Editors
+
+| Editor | Cost | Notes |
+|--------|------|-------|
+| **VS Code** (Visual Studio Code) | Free | By Microsoft. The most popular code editor in the world. Huge extension library. |
+| **Cursor** | Free tier / Paid | Based on VS Code but with AI deeply integrated. Great for AI-assisted coding. |
+| **Sublime Text** | Free to try / $99 | Lightweight and fast. |
+| **Zed** | Free | New, fast, built for collaboration. |
+
+## How It Relates to Your Setup
+
+### If you're using the sandbox path
+
+The sandbox can include **VS Code Server** — a version of VS Code that runs in your web browser. No installation needed on your computer. You access it by opening a browser tab.
+
+### If you're using the direct install path
+
+Your AI coding assistant (OpenCode) runs in the terminal, not in a code editor. You don't *need* a separate editor — OpenCode creates and edits files for you. But if you want to browse and read your code, having VS Code installed is nice:
+
+1. Download from https://code.visualstudio.com
+2. Install it
+3. Open it, then **File > Open Folder** and select your project folder
+4. You can see all your files, read the code, and even use the built-in terminal (View > Terminal)
+
+## Code Editor vs. AI Coding Assistant
+
+These are different things that work well together:
+
+- A **code editor** is where you view and manually edit files
+- An **AI coding assistant** (OpenCode, Claude Code, etc.) writes and modifies code for you based on what you describe
+
+Some tools combine both — **Cursor** is a code editor with a built-in AI assistant. **GitHub Copilot** is an AI assistant that plugs into VS Code.
+
+## Do You Need a Code Editor to Get Started?
+
+**No.** Your AI coding assistant handles file creation and editing. But having a code editor open alongside it lets you:
+
+- See your project structure at a glance
+- Read the code the AI wrote
+- Make quick manual edits when it's faster than describing a change
+- Learn by browsing real code
+
+Most people start by letting the AI do everything, then gradually open a code editor to understand what's happening. There's no rush.
+</file>
+
+<file path="guides/concepts/what-is-a-package-manager.md">
+# What Is a Package Manager?
+
+## The Simple Version
+
+A package manager is a tool that installs, updates, and removes software **packages** (pre-built code libraries) with a single command.
+
+Instead of manually downloading files from websites and figuring out where to put them, you type:
+
+```
+npm install some-library
+```
+
+And the package manager handles everything.
+
+## Why It Exists
+
+Modern software is built on top of other software. Your website might use:
+
+- A styling library (like Tailwind CSS) so you don't write all CSS from scratch
+- A testing framework (like Vitest) to check that your code works
+- A build tool (like Vite) to bundle everything for production
+- Hundreds of small utilities that these tools depend on
+
+These are called **dependencies** — things your project depends on to work. A package manager tracks all of them, installs the right versions, and keeps them up to date.
+
+## npm — The Package Manager You'll Use
+
+**npm** (Node Package Manager) comes bundled with Node.js. When you install Node.js, you get npm automatically.
+
+Key commands:
+
+| Command | What it does |
+|---------|-------------|
+| `npm install` | Installs all dependencies listed in your project's `package.json` file |
+| `npm install some-library` | Adds a specific library to your project |
+| `npm run dev` | Runs a script defined in your project (usually starts the development server) |
+| `npm run build` | Builds your project for production (deployment) |
+
+## The package.json File
+
+Every Node.js project has a `package.json` file — think of it as a recipe card. It lists:
+
+- The project name and description
+- All the dependencies (libraries) the project needs
+- Scripts (commands) you can run, like `npm run dev`
+
+When someone shares a project with you, you run `npm install` and it reads `package.json` to install everything needed. This is how the [make-a-website](https://github.com/jdeworks/make-a-website) starter template works — one command and all dependencies are ready.
+
+## The node_modules Folder
+
+When npm installs dependencies, it puts them in a folder called `node_modules`. This folder can get very large (hundreds of megabytes) because it contains all the libraries and everything *they* depend on.
+
+You never need to look inside it or edit anything in it. And you never upload it to GitHub — the `package.json` file is enough for anyone to recreate it with `npm install`.
+
+## Other Package Managers
+
+npm isn't the only one. You might hear about:
+
+| Manager | Ecosystem | Notes |
+|---------|-----------|-------|
+| **npm** | Node.js/JavaScript | Default, comes with Node.js |
+| **yarn** | Node.js/JavaScript | Alternative to npm, similar commands |
+| **pnpm** | Node.js/JavaScript | Faster alternative, saves disk space |
+| **pip** | Python | Installs Python packages |
+| **cargo** | Rust | Installs Rust packages |
+| **apt/dnf** | Linux | Installs system-level software |
+
+For building websites, npm is the default and works great. You don't need to switch unless you have a reason to.
+
+## Do You Need to Understand This?
+
+Not deeply. Your AI coding assistant runs `npm install` and `npm run dev` for you. But knowing what a package manager does helps you understand:
+
+- Why `npm install` takes a moment (it's downloading libraries)
+- What `package.json` is (the project's ingredient list)
+- Why `node_modules` is huge (lots of dependencies)
+- What the AI means when it says "I'll install a library for that"
+</file>
+
+<file path="guides/concepts/what-is-a-server.md">
+# What Is a Server?
+
+## The Simple Version
+
+A **server** is a computer that provides something to other computers. That's it. There's nothing magical about servers — they're regular computers with a specific job.
+
+When people say "server," they usually mean one of two things:
+
+1. **A physical computer** sitting in a data center somewhere, running 24/7
+2. **A program** running on that computer that responds to requests
+
+## How It Relates to Websites
+
+When you visit a website, here's what happens:
+
+1. You type `mywebsite.com` in your browser
+2. Your browser finds the server that hosts that website
+3. Your browser asks the server: "Can I have the homepage?"
+4. The server sends back the HTML, CSS, and JavaScript files
+5. Your browser displays the page
+
+The server is the computer that holds the website's files and sends them to anyone who asks.
+
+## Localhost — Your Computer as a Server
+
+When you develop a website, your own computer acts as a server. The address `localhost` (or `127.0.0.1`) means "this computer." When you run `npm run dev` and open `http://localhost:3000`, you're telling your browser: "Ask this computer for the website, on port 3000."
+
+Nobody else can access it — it's just for you to preview your work.
+
+### What's a port?
+
+Think of your computer as a building with thousands of doors. A **port** is a door number. Port 3000, port 8080, port 5173 — these are just different entry points. Your development server picks one, and your browser goes to that specific door.
+
+If you see a message like "port 3000 already in use," it means something else is already using that door. The dev server will usually pick another one automatically (3001, 3002, etc.).
+
+## Types of Servers
+
+| Type | What it does | Example |
+|------|-------------|---------|
+| **Web server** | Sends website files to browsers | Nginx, Apache, your `npm run dev` server |
+| **API server** | Responds to data requests from apps | Express.js, Django, FastAPI |
+| **Database server** | Stores and retrieves data | PostgreSQL, MySQL, SQLite |
+| **File server** | Stores and serves files | Amazon S3, Cloudflare R2 |
+
+For a simple static website, you only need a web server — and hosting services provide one for free.
+
+For a dynamic website (with user accounts, a database, etc.), you need a web server plus an API server plus usually a database server. That's why dynamic hosting isn't always free, though many services offer generous free tiers.
+
+## "Serverless"
+
+You might hear the term **serverless**. It doesn't mean there are no servers — it means you don't manage them. You upload your code, and the hosting service runs it on their servers automatically. You don't worry about the server computer itself.
+
+This is how services like Vercel, Netlify Functions, and AWS Lambda work.
+
+## Do You Need to Understand Servers?
+
+Not right now. When you run `npm run dev`, a local server starts automatically. When you deploy, the hosting service manages the server for you.
+
+But understanding the concept helps you make sense of:
+- Why `localhost:3000` works only on your computer
+- Why some hosting is free (static files are cheap to serve) and some costs money (running your code takes resources)
+- What the AI means when it says "we need a server for this feature"
+</file>
+
+<file path="guides/concepts/what-is-a-website.md">
+# What Is a Website (Technically)?
+
+You use websites every day. But what actually happens when you open one?
+
+## The Simple Version
+
+A website is a collection of files — mostly text files — that your browser (Chrome, Firefox, Safari) knows how to display as the pages you see.
+
+When you type a web address or click a link:
+
+1. Your browser asks a server (a computer somewhere on the internet) for those files
+2. The server sends them back
+3. Your browser reads the files and draws the page you see
+
+That's it. A website is files on a computer, and a browser that knows how to read them.
+
+## The Three Languages of the Web
+
+Almost every website is built with three languages that work together:
+
+### HTML — The Structure
+
+HTML (HyperText Markup Language) defines **what's on the page**. Headings, paragraphs, images, buttons, links. Think of it as the skeleton.
+
+```html
+<h1>Welcome to My Website</h1>
+<p>This is a paragraph of text.</p>
+<button>Click me</button>
+```
+
+You don't need to memorize this. Your AI assistant writes it for you. But it's good to know that behind every webpage, there's HTML like this.
+
+### CSS — The Style
+
+CSS (Cascading Style Sheets) defines **how things look**. Colors, fonts, spacing, layout. Think of it as the paint and decoration.
+
+```css
+h1 {
+  color: blue;
+  font-size: 36px;
+}
+```
+
+This makes all main headings blue and 36 pixels tall. CSS is how you make things look good.
+
+### JavaScript — The Behavior
+
+JavaScript defines **what things do**. When you click a button and something happens, that's JavaScript. Dropdown menus, form validation, animations, loading new content without refreshing the page.
+
+```javascript
+button.addEventListener('click', () => {
+  alert('You clicked the button!');
+});
+```
+
+Not every website needs JavaScript. A simple portfolio or blog can be just HTML and CSS. But anything interactive needs it.
+
+## Static vs. Dynamic Websites
+
+### Static Website
+
+The files are pre-built and the same for everyone. Like a printed brochure — the same every time you look at it.
+
+**Good for**: portfolios, blogs, documentation, small business pages.
+**Hosting**: free on GitHub Pages and many other services.
+
+### Dynamic Website
+
+The server builds pages on the fly, often using a database. Like a newspaper that updates throughout the day.
+
+**Good for**: shops, social networks, apps with user accounts, anything where content changes based on who's viewing it.
+**Hosting**: needs a server that runs your code (services like Railway, Vercel, or your own server).
+
+Your AI assistant will ask what you want to build and recommend the right approach.
+
+## What Is "Running a Website Locally"?
+
+When you develop a website, you don't put it on the internet right away. Instead, you run it on your own computer. This is called **running locally** or **localhost**.
+
+Your computer starts a small web server, and you open `http://localhost:3000` (or a similar address) in your browser. You see your website, but nobody else can — it's just on your machine.
+
+This lets you make changes and see them instantly, without affecting anything online. When you're happy with how it looks, you **deploy** it — which means putting it on a real server so the world can see it.
+
+## What Is a Framework?
+
+As websites get more complex, people use **frameworks** — pre-built tools that handle common patterns so you don't have to reinvent the wheel.
+
+For example, **React** (by Meta) makes it easier to build interactive user interfaces. **Tailwind CSS** makes it easier to style things consistently. **Vite** makes your development experience faster.
+
+The [make-a-website](https://github.com/jdeworks/make-a-website) knowledge base starts you with plain HTML, CSS, and JavaScript (the simplest approach) and offers a path to upgrade to React later if your project needs it. You don't have to decide now.
+
+## Do You Need to Understand All This?
+
+Not to get started. Your AI assistant handles the code. But understanding the basics helps you:
+
+- Know what the AI is doing (and ask better questions)
+- Make decisions about your website ("I want a static site" vs. "I need user accounts")
+- Debug when something doesn't look right ("the CSS might be wrong" vs. being completely lost)
+
+The more you build, the more this will make sense naturally.
+</file>
+
+<file path="guides/concepts/what-is-an-api.md">
+# What Is an API (and What Is an API Key)?
+
+## API — The Simple Version
+
+An **API** (Application Programming Interface) is a way for programs to talk to each other. Just like a website is designed for humans to interact with (using a browser), an API is designed for programs to interact with (using code).
+
+**Example**: When a weather app on your phone shows today's forecast, it's not measuring the weather itself. It's asking a weather service's API: "What's the weather in Amsterdam?" The API sends back the data, and the app displays it.
+
+## Why You'll Encounter APIs
+
+When building a website, APIs let you add features without building everything from scratch:
+
+- Show a map → use Google Maps API
+- Send emails → use an email service API
+- Accept payments → use Stripe API
+- Use AI → use OpenAI, Anthropic, or other AI APIs
+
+Your AI coding assistant might suggest using APIs for features like these. You don't need to understand the technical details — the AI writes the code that talks to the API.
+
+## What Is an API Key?
+
+An API key is like a password that identifies you to a service. When you use someone's API, they want to know who's making the request — to track usage, enforce limits, and bill you if applicable.
+
+**Example**: To use OpenAI's API (the technology behind ChatGPT), you'd:
+1. Create an account on OpenAI's website
+2. Generate an API key (a long string of random characters)
+3. Put that key in your code or configuration
+4. When your code calls the API, it includes the key so OpenAI knows it's you
+
+## Important: Keep API Keys Secret
+
+API keys are like passwords. Never:
+- Share them publicly (like posting them on GitHub)
+- Put them directly in your code
+- Send them in chat messages
+
+Instead, store them in a special file called `.env` (environment file) that stays on your computer and doesn't get uploaded anywhere. Your AI coding assistant knows how to set this up safely.
+
+## Do You Need API Keys to Get Started?
+
+**No.** The default setup uses OpenCode, which is free and doesn't require an API key. You only need API keys if you:
+
+- Switch to a paid AI tool (like Claude Code)
+- Add features that use external services (maps, payments, etc.)
+- Want to use the think-tank project planner with your own AI provider
+
+Your AI assistant will tell you if and when an API key is needed, and walk you through getting one.
+
+## Free vs. Paid APIs
+
+Many APIs have a **free tier** — you can make a certain number of requests for free, and only pay if you exceed that. For a personal website, the free tier is usually more than enough.
+
+| Service | Free tier | Typical use |
+|---------|-----------|------------|
+| GitHub API | Very generous | Code hosting, deployment |
+| OpenAI API | Small free credit, then pay-per-use | AI features |
+| Google Maps | $200/month free credit | Maps and location |
+| Stripe | Free until you make money | Payments |
+
+You won't need any of these to build your first website. But it's good to know they exist for when you want to add features later.
+</file>
+
+<file path="guides/concepts/what-is-an-llm.md">
+# What Is an LLM (and How Can It Help You Code)?
+
+When you talk to ChatGPT, Claude, or Gemini, you're talking to a **Large Language Model** — or LLM for short.
+
+## The Simple Version
+
+An LLM is a program that has read enormous amounts of text — books, websites, code, conversations — and learned patterns from all of it. When you type something, it predicts what a helpful response would look like, word by word.
+
+It doesn't "think" the way you do. It doesn't have a brain or consciousness. But it's very good at producing text that's useful, including code.
+
+## Why It Can Help You Build a Website
+
+Programming is a language — a very specific, structured one. LLMs are great at languages. They've seen millions of code examples, tutorials, documentation pages, and Stack Overflow answers. So when you say "make me a blue navigation bar," the LLM knows:
+
+- What HTML structure a navigation bar needs
+- What CSS makes it blue
+- What JavaScript makes it interactive
+- Common patterns and best practices
+
+It's like having a very well-read assistant who has studied every tutorial ever written. It doesn't always get things right on the first try, but you can talk to it, correct it, and guide it — just like working with another person.
+
+## The Different Kinds of AI Tools You'll See
+
+| Type | What it does | Examples |
+|------|-------------|---------|
+| **Chat AI** | You type, it responds. Can explain things, write code, answer questions. Cannot run code or touch files on your computer. | ChatGPT, Claude (web), Gemini |
+| **AI Coding Assistant** | Same conversation ability, but can also create files, run commands, and execute code on your computer. | OpenCode, Claude Code, Cursor, GitHub Copilot |
+
+This is why the get-me-started guide has two phases: first you talk to a chat AI to set things up (because you already have one), then you switch to an AI coding assistant that can actually build things.
+
+## What It's Good At
+
+- Writing code from a description ("make a contact form with email validation")
+- Explaining what existing code does
+- Fixing bugs when you describe the problem
+- Suggesting designs and layouts
+- Answering "how do I...?" questions about programming
+
+## What It's Not Good At
+
+- Making business decisions for you (it doesn't know your audience)
+- Guaranteeing security (always review suggestions for sensitive features)
+- Knowing what you want without you telling it (be specific!)
+- Always being right (it can confidently produce incorrect code — test things)
+
+## The "Paste-Back" Pattern
+
+When you're using a chat AI (like ChatGPT) that can't run code, you work in a loop:
+
+1. You describe what you want
+2. The AI gives you a command or code
+3. You run it on your computer and paste the result back
+4. The AI checks if it worked and gives you the next step
+
+This is slower than an AI coding assistant (which does steps 2-4 automatically), but it works. And it teaches you more, because you see every step happening.
+
+## Do You Need to Understand How LLMs Work?
+
+No. You don't need to understand how a car engine works to drive. Knowing the basics helps you work with AI more effectively — like knowing that being specific gets better results, or that the AI doesn't remember previous conversations unless you remind it. But you can start building right now with just the knowledge that: you describe what you want, and the AI helps you make it.
+</file>
+
+<file path="guides/concepts/what-is-code.md">
+# What Is Code (and What Is Programming)?
+
+## The Simple Version
+
+Code is a set of instructions written in a language that computers can understand. Programming is the act of writing those instructions.
+
+When you write code, you're telling the computer what to do — step by step, very precisely. Computers are fast but literal: they do exactly what you tell them, nothing more, nothing less.
+
+## Why Do We Need Special Languages?
+
+Computers don't understand English (not directly, anyway). They understand electrical signals — ones and zeros. But writing in ones and zeros would be impossibly tedious, so people created **programming languages** as a middle ground: readable enough for humans, precise enough for computers.
+
+```javascript
+if (temperature > 30) {
+  showMessage("It's hot outside!");
+}
+```
+
+You can probably guess what this does even if you've never coded. That's the point of modern programming languages — they're designed to be somewhat readable.
+
+## Common Programming Languages
+
+There are hundreds of languages, each with strengths. For building websites, you mainly need:
+
+| Language | Used for | Notes |
+|----------|---------|-------|
+| **HTML** | Structure of web pages | Not technically "programming" — it's a markup language. But it's essential. |
+| **CSS** | Visual styling | Also not programming. It describes how things look. |
+| **JavaScript** | Interactive behavior, website logic | The programming language of the web. Runs in browsers. |
+| **TypeScript** | Same as JavaScript with added safety | JavaScript with extra guardrails. Popular in larger projects. |
+| **Python** | Servers, data science, automation | Easy to learn, very popular. Not used in browsers. |
+
+For your first website, you'll mostly work with HTML, CSS, and JavaScript. Your AI assistant writes the code — you describe what you want.
+
+## What Does "Writing Code" Actually Look Like?
+
+You open a text file, type instructions in a programming language, and save it. That's it. Code is just text in files.
+
+The magic happens when something *runs* that code:
+- A **browser** runs HTML, CSS, and JavaScript
+- **Node.js** runs JavaScript outside a browser (on your computer or a server)
+- **Python** runs Python files
+
+Your AI coding assistant creates these files for you and runs them. Over time, you'll start reading the code it writes, understanding it, and eventually tweaking it yourself. That's how most people learn.
+
+## Do You Need to Learn to Code?
+
+Not to get started. The AI handles it. But you'll naturally pick things up as you go:
+
+- First, you'll recognize patterns ("that `<div>` thing is a container")
+- Then, you'll understand what the AI is doing ("it's adding a CSS class for spacing")
+- Eventually, you'll make small edits yourself ("I'll just change this color from blue to green")
+- Someday, you might write features from scratch
+
+There's no pressure to reach any particular level. Use the AI as much or as little as you want. The goal is to build something, not to pass a programming exam.
+</file>
+
+<file path="guides/concepts/what-is-hosting.md">
+# What Is Hosting (and How Does Your Website Get Online)?
+
+## The Simple Version
+
+When you build a website on your computer, only you can see it. **Hosting** means putting your website's files on a computer that's connected to the internet 24/7, so anyone in the world can visit it.
+
+That computer is called a **server** — because it *serves* your website to visitors.
+
+## How It Works
+
+1. You build your website on your computer (this is called **development**)
+2. You upload your files to a hosting service (this is called **deployment**)
+3. The hosting service runs a server that's always on
+4. When someone types your web address, the server sends them your files
+5. Their browser displays your website
+
+## Types of Hosting
+
+### Static Hosting (simplest, often free)
+
+Your website files are uploaded as-is and served directly. No code runs on the server — it just sends the files.
+
+**Good for**: portfolios, blogs, documentation, landing pages
+**Cost**: often free
+**Examples**: GitHub Pages, Netlify, Cloudflare Pages, Vercel
+
+**GitHub Pages** is straightforward — if your code is already on GitHub, you flip a switch and your site is live. The [make-a-website](https://github.com/jdeworks/make-a-website) knowledge base walks you through this.
+
+### Server Hosting (for dynamic sites)
+
+Your website includes code that runs on the server — for example, to check a database, process a payment, or handle user accounts. The server does work before sending the page.
+
+**Good for**: shops, apps with login, anything with a database
+**Cost**: usually has a free tier, then scales with usage
+**Examples**: Railway, Vercel, Render, Fly.io, DigitalOcean
+
+### What About "The Cloud"?
+
+"The cloud" just means "someone else's computer." When people say a website is "hosted in the cloud," they mean it's running on servers owned by companies like Amazon (AWS), Google (GCP), or Microsoft (Azure). Most hosting services use these under the hood.
+
+You don't need to think about the cloud directly. Your hosting service handles it.
+
+## Domain Names
+
+A **domain name** is your website's address — like `mywebsite.com`. Without one, your site still works but has an ugly URL like `yourname.github.io/my-project`.
+
+Domains cost about $10-15/year from registrars like Namecheap, Porkbun, or Cloudflare. This is the one thing you might need to pay for, but it's optional — your AI assistant will help you set it up when you're ready.
+
+## When Do You Need to Think About Hosting?
+
+Not until your website is ready to show the world. The development workflow runs everything locally (on your computer) first. When you're happy with it, your AI coding assistant will guide you through deployment.
+
+The typical path:
+1. Build and test locally → free, no hosting needed
+2. Deploy to GitHub Pages → free for static sites
+3. If you need a server, deploy to Railway or similar → free tier available
+4. Optionally buy a domain name → ~$10-15/year
+</file>
+
+<file path="guides/concepts/what-is-open-source.md">
+# What Is Open Source (and Why Does It Matter)?
+
+## The Simple Version
+
+**Open source** means the code is public. Anyone can read it, use it, learn from it, and suggest improvements. It's the opposite of closed/proprietary software, where the code is hidden and controlled by one company.
+
+All the tools in the get-me-started ecosystem are open source. You can see exactly how they work.
+
+## Why It Matters to You
+
+### It's free
+
+Open source software is free to use. No trial periods, no subscriptions, no "upgrade to unlock." OpenCode, Node.js, Docker, Git, VS Code — all free, all open source.
+
+### You're not locked in
+
+If a tool stops being maintained or takes a direction you don't like, someone else can fork it (make a copy) and keep it going. Your work doesn't depend on one company staying in business.
+
+### You can learn from it
+
+Every open source project's code is readable. The tools helping you build your website? You can read their source code. This is one of the best ways to learn programming — by reading real code that real people use.
+
+### You can contribute
+
+Found a bug? You can report it. Have an improvement? You can suggest it. This is how open source software gets better — thousands of people each contributing a little bit.
+
+## How Open Source Licensing Works
+
+Open source doesn't mean "no rules." Each project has a **license** that says what you can and can't do. The most common ones:
+
+| License | What it means |
+|---------|--------------|
+| **MIT** | Do whatever you want. Just include the copyright notice. (This is what get-me-started uses.) |
+| **Apache 2.0** | Similar to MIT, with some extra patent protections. |
+| **GPL** | You can use and modify it, but if you share your modified version, you must also share your code. |
+
+For building your website: you're fine using any open source tool. The licenses are designed to be permissive for this kind of use.
+
+## The Bigger Picture
+
+Most of the internet runs on open source. Linux (operating system), Node.js (web platform), PostgreSQL (database), React (UI framework), Nginx (web server) — all open source. Companies like Google, Netflix, and Microsoft both use and contribute to open source projects.
+
+By building your website with these tools, you're using the same infrastructure that powers the biggest sites in the world. And if you ever want to give back, the door is always open.
+</file>
+
+<file path="guides/concepts/what-is-version-control.md">
+# What Is Version Control?
+
+## The Simple Version
+
+Version control is a system that records every change you make to your files, so you can:
+
+- **Go back in time** if something breaks
+- **See what changed** and when
+- **Work on experiments** without risking your working version
+- **Collaborate** with others without overwriting each other's work
+
+Think of it as an unlimited undo button with a detailed history of every change you've ever made.
+
+## The Problem It Solves
+
+Without version control, people do things like:
+
+```
+my-website-v1/
+my-website-v2/
+my-website-v2-final/
+my-website-v2-final-FIXED/
+my-website-v2-final-FIXED-for-real/
+```
+
+Sound familiar? Version control eliminates this. You have one folder, and the tool tracks all the versions behind the scenes.
+
+## Git — The Version Control Tool
+
+**Git** is the most widely used version control tool in the world. It was created by Linus Torvalds (who also created Linux) and is used by virtually every software team on the planet.
+
+Git runs on your computer and tracks changes in a project folder. Key concepts:
+
+### Commit
+
+A **commit** is a snapshot of your files at a point in time, with a message describing what you changed. Like saving a game — you can always load a previous save.
+
+```
+commit: "Add navigation bar to homepage"
+commit: "Fix broken link on about page"
+commit: "Add contact form"
+```
+
+### Branch
+
+A **branch** is a parallel version of your project. You can create a branch to try something new. If it works, you merge it into the main branch. If it doesn't, you delete it — no harm done to the main version.
+
+### Repository (Repo)
+
+A **repository** is a project folder tracked by Git. It contains your files plus the hidden `.git` folder where Git stores all the version history.
+
+## Git vs. GitHub
+
+These are related but different:
+
+| | What it is | Where it runs |
+|-|-----------|---------------|
+| **Git** | The version control tool | On your computer |
+| **GitHub** | A website that hosts Git repositories | On the internet |
+
+Git works without GitHub. You can track changes locally and never go online. But GitHub adds:
+
+- A backup of your code in the cloud
+- A way to share your code with others
+- Free website hosting (GitHub Pages)
+- Collaboration tools (issues, pull requests)
+
+See [What Is GitHub](../what-is-github.md) for more.
+
+## When Do You Need Version Control?
+
+Your AI coding assistant sets up Git automatically as part of the project setup. You don't need to learn Git commands — the AI handles commits.
+
+But knowing it's there is useful because:
+
+- If something breaks, you (or the AI) can go back to a working version
+- When you're ready to deploy, Git is how your code gets to GitHub
+- It's the universal tool of software development — learning the basics eventually pays off
+
+## Want to Learn Git Commands?
+
+You don't need to, but here are the basics if you're curious:
+
+| Command | What it does |
+|---------|-------------|
+| `git init` | Start tracking a folder with Git |
+| `git add .` | Stage all changes for the next commit |
+| `git commit -m "message"` | Save a snapshot with a description |
+| `git log` | See the history of commits |
+| `git status` | See what's changed since the last commit |
+| `git branch feature-name` | Create a new branch |
+| `git checkout feature-name` | Switch to a branch |
+| `git push` | Send your commits to GitHub |
+
+Your AI coding assistant uses these commands for you. But if you want to try them yourself, they won't break anything — Git is designed to be safe.
+</file>
+
+<file path="guides/install-docker.md">
+# Install Docker Desktop
+
+Docker Desktop is a free app that lets you run "containers" — isolated environments on your computer. Think of a container as a mini computer inside your computer. It has its own tools and programs, completely separate from your personal files. (For how Docker fits into the bigger setup picture, see [Setup: Sandbox](./setup-sandbox.md).)
+
+**Why we use it**: Your coding tools and AI assistant run inside a container. When you're done, close the container and nothing is left behind. Want to start fresh? Delete the container and make a new one. Your personal computer stays clean.
+
+---
+
+## What You Need
+
+- Windows 10/11, macOS 10.15+, or a supported Linux distribution
+- At least 4 GB of RAM (8 GB recommended)
+- About 2 GB of free disk space (the download is ~500 MB, plus ~1-2 GB for the coding environment images)
+- Admin/password access on your computer (you'll need it during installation)
+- A decent internet connection (if you're on slow or metered internet, the Direct Install path downloads much less — about 30 MB for Node.js)
+
+---
+
+## Installation
+
+### Windows
+
+1. Go to https://www.docker.com/products/docker-desktop/
+2. Click **"Download for Windows"**
+3. Run the downloaded file (`Docker Desktop Installer.exe`)
+4. Accept the defaults — when it asks about **WSL 2**, say **yes**. (WSL stands for "Windows Subsystem for Linux" — it's a built-in feature that lets Windows run Linux tools. Docker needs it to work. You don't need to understand it — saying yes is the right move.)
+5. Click **Install**, then **Close and restart** when prompted
+6. After your computer restarts, Docker Desktop should open automatically
+7. If you see a **Windows Security Alert** about the firewall, click **Allow access**
+8. Wait until the Docker icon in your taskbar (bottom-right, near the clock) stops animating — that means it's ready
+
+**If Windows says you need to update WSL**: Open a terminal and run:
+```
+wsl --update
+```
+Then restart Docker Desktop.
+
+### Mac
+
+1. Go to https://www.docker.com/products/docker-desktop/
+2. Click **"Download for Mac"**
+3. Choose the right version:
+   - **Apple Silicon** if your Mac has an M1, M2, M3, or M4 chip (most Macs from 2021 onwards)
+   - **Intel** if your Mac is older or you're not sure (check: Apple menu > About This Mac > Chip)
+4. Open the downloaded `.dmg` file
+5. Drag the Docker icon to your **Applications** folder
+6. Open Docker from Applications
+7. It will ask for your password — that's normal, it needs permission to install networking components
+8. Wait for the whale icon in your menu bar (top-right) to stop animating — that means it's ready
+
+### Linux
+
+**The easiest way** is to install Docker Desktop from https://www.docker.com/products/docker-desktop/ — download the `.deb` (Ubuntu/Debian) or `.rpm` (Fedora) package and install it.
+
+**Or install Docker Engine** (command-line only, no desktop app):
+
+Ubuntu/Debian:
+```
+sudo apt update
+sudo apt install docker.io docker-compose-v2
+sudo usermod -aG docker $USER
+```
+
+Fedora:
+```
+sudo dnf install docker docker-compose
+sudo systemctl enable --now docker
+sudo usermod -aG docker $USER
+```
+
+After either method, **log out and log back in** for the group change to take effect.
+
+---
+
+## Verify It Works
+
+Open a terminal (see [What Is a Terminal](./open-terminal.md) if needed) and run:
+
+```
+docker --version
+```
+
+You should see something like:
+```
+Docker version 24.0.7, build afdd53b
+```
+
+Any version 20 or above is fine.
+
+Now test that Docker is actually running:
+
+```
+docker run hello-world
+```
+
+You should see output that starts with:
+```
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+```
+
+If you see this: Docker is installed and running. You're ready.
+
+---
+
+## Troubleshooting
+
+### "docker: command not found"
+
+Docker Desktop is not installed, or the terminal needs to be reopened. Close the terminal, open a fresh one, and try again. If it still doesn't work, make sure Docker Desktop is installed and that you restarted your computer after installation.
+
+### "Cannot connect to the Docker daemon"
+
+Docker Desktop is installed but not running. Find Docker Desktop in your applications and open it. Wait for the icon to stop animating (it takes a moment to start up). Then try the command again.
+
+### "Permission denied" (Linux)
+
+Run: `sudo usermod -aG docker $USER` then log out and log back in.
+
+### "WSL 2 is not installed" (Windows)
+
+Open a terminal and run: `wsl --install` then restart your computer. Docker Desktop should work after that.
+
+### It's very slow to start
+
+Normal on first launch. Docker is setting up its environment. Subsequent starts are much faster.
+
+### "Virtualization must be enabled" or "Hardware assisted virtualization" (Windows)
+
+Docker needs a CPU feature called hardware virtualization. Most computers have it, but it's sometimes turned off. You need to enable "Intel VT-x" or "AMD-V" in your computer's BIOS/UEFI settings. This involves restarting and pressing a key during boot (often F2, F12, or Delete). If this feels too advanced, consider the [Direct Install path](./setup-direct.md) instead — it doesn't need Docker.
+
+### Antivirus blocks Docker
+
+Some antivirus software flags Docker as suspicious. You may need to add an exception for Docker Desktop in your antivirus settings. The specific steps depend on your antivirus software.
+
+### "Apple cannot verify this app" (Mac)
+
+Go to **System Settings > Privacy & Security**, scroll down, and click **"Open Anyway"** next to the Docker message.
+
+### Docker Desktop asks about a paid subscription
+
+Docker Desktop is **free for personal use** and for small businesses (fewer than 250 employees). If you see a subscription prompt, select personal/individual use. You will not be charged.
+
+---
+
+## What You Can Do Later (For the Curious)
+
+Docker is much more than a beginner tool. Once you're comfortable, you can:
+
+- **Run multiple containers** — one for your website, one for a database, one for an API
+- **Use Docker Compose** — define multi-container setups in a single file
+- **Share environments** — give someone your Docker configuration and they get the exact same setup
+- **Deploy to production** — many professional websites run inside Docker containers in the cloud
+
+You don't need any of this right now. But it's good to know that the tool you just installed is the same one used by companies like Netflix, Spotify, and Airbnb. You're learning a real, professional tool from day one.
+</file>
+
+<file path="guides/open-terminal.md">
+# What Is a Terminal (and How to Open One)
+
+A terminal is a text-based way to talk to your computer. Instead of clicking buttons and icons, you type commands and press Enter. The computer does what you asked and shows you the result as text.
+
+It looks intimidating at first — a blank window with a blinking cursor. But you don't need to memorize anything. Your AI guide will tell you exactly what to type.
+
+---
+
+## Why Do We Need a Terminal?
+
+Most coding tools are designed to work through the terminal. It's faster and more powerful than clicking through menus once you get used to it. Every professional developer uses one daily.
+
+For this guide, you'll use the terminal to:
+- Install tools (like Docker or Node.js)
+- Run your website locally to see it in your browser
+- Talk to your AI coding assistant
+
+---
+
+## How to Open a Terminal
+
+### Windows
+
+**Option 1: Windows Terminal (recommended)**
+1. Press the **Windows key** on your keyboard
+2. Type `Terminal`
+3. Click **Terminal** in the search results
+
+**Option 2: PowerShell**
+1. Press the **Windows key**
+2. Type `PowerShell`
+3. Click **Windows PowerShell**
+
+Both work. Windows Terminal is slightly nicer but either is fine.
+
+**What you should see**: A window with text like `PS C:\Users\YourName>` and a blinking cursor.
+
+### Mac
+
+**Option 1: Spotlight (fastest)**
+1. Press **Cmd + Space** (hold the Command key and press Space)
+2. Type `Terminal`
+3. Press **Enter**
+
+**Option 2: Finder**
+1. Open **Finder**
+2. Go to **Applications** > **Utilities**
+3. Double-click **Terminal**
+
+**What you should see**: A window with text like `yourname@MacBook ~ %` and a blinking cursor.
+
+### Linux
+
+**Option 1: Keyboard shortcut**
+- Press **Ctrl + Alt + T** — this works on most Linux distributions
+
+**Option 2: Applications menu**
+- Find **Terminal** or **Console** in your applications menu
+
+**What you should see**: A window with text like `yourname@computer:~$` and a blinking cursor.
+
+---
+
+## How to Use the Terminal (The Basics)
+
+### Typing a command
+
+1. Type the command (don't worry about the text already showing — that's just the "prompt" telling you where you are)
+2. Press **Enter**
+3. Wait for the output to appear
+4. The prompt appears again when the command is done — that means it's ready for the next one
+
+### Example
+
+Type this and press Enter:
+
+```
+echo "Hello, I'm using the terminal!"
+```
+
+You should see: `Hello, I'm using the terminal!`
+
+That's it. You just ran your first command.
+
+### Pasting into the terminal
+
+- **Windows**: Right-click in the terminal window, or press **Ctrl + V**
+- **Mac**: Press **Cmd + V**
+- **Linux**: Press **Ctrl + Shift + V** (note: Shift is needed in Linux terminals)
+
+### Copying from the terminal
+
+Select text with your mouse, then:
+- **Windows**: It's automatically copied when you select it, or press **Ctrl + C**
+- **Mac**: Press **Cmd + C**
+- **Linux**: Press **Ctrl + Shift + C**
+
+---
+
+## Important Things to Know
+
+- **You can't break your computer** by typing wrong commands. The worst that usually happens is an error message. If that happens, tell your AI guide what the error says — it will know what to do.
+- **Close and reopen** the terminal after installing new tools. Some tools won't be found until you open a fresh terminal window.
+- **The up arrow** recalls your previous command — useful if you need to run something again.
+- **Ctrl + C** (or Cmd + C on Mac) stops a running command. If something seems stuck, try this.
+
+---
+
+## Want to Learn More?
+
+The terminal is a powerful tool. You don't need to learn more right now — your AI guide handles everything. But if you're curious:
+
+- **`pwd`** — shows which folder you're currently in ("print working directory")
+- **`ls`** (Mac/Linux) or **`dir`** (Windows) — lists files in the current folder
+- **`cd foldername`** — moves into a folder
+- **`cd ..`** — moves up one folder
+- **`mkdir foldername`** — creates a new folder
+
+These are the only commands you'd ever need to navigate around. Everything else, the AI handles.
+</file>
+
+<file path="guides/setup-direct.md">
+# Setup Path: Direct Install
+
+This path installs coding tools directly on your computer. It's the fastest way to get started — about 5 minutes from nothing to a working coding environment.
+
+---
+
+## What You're Installing (and Why)
+
+| Tool | What it is | Why you need it |
+|------|-----------|----------------|
+| **Node.js** | A runtime that lets you run website code on your computer | Powers your website during development. Also used to install other tools. |
+| **npm** | A package manager (comes with Node.js) | Lets you install libraries and tools with a single command |
+| **OpenCode** | A free, open-source AI coding assistant | The AI that helps you write code — you describe what you want in plain English |
+
+**Trade-off vs. the sandbox path**: This is faster to set up, but these tools are installed directly on your system. If you'd rather keep things isolated, see [Setup Sandbox](./setup-sandbox.md) instead.
+
+---
+
+## Step-by-Step
+
+### 1. Open a terminal
+
+If you've never used one, see [What Is a Terminal](./open-terminal.md).
+
+### 2. Install Node.js
+
+Node.js is the engine that makes modern websites work during development. It's free, open-source, and used by millions of developers and companies worldwide.
+
+**Windows / Mac:**
+1. Go to https://nodejs.org
+2. Click the big green button labeled **LTS** (Long Term Support — the stable version)
+3. Run the downloaded installer — accept all the default options
+4. **Close your terminal and open a fresh one** (important — the terminal needs to reload to find Node.js)
+
+**Linux** (use nvm — no admin/sudo password needed):
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+```
+Close and reopen the terminal, then:
+```
+nvm install --lts
+```
+If `curl` is not found: `sudo apt install curl` (Ubuntu/Debian) or use wget: `wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash`
+
+Verify it works:
+
+```
+node -v
+```
+
+You should see something like `v20.18.0` or `v22.x.x`. Any version 18 or above is fine.
+
+Also check npm (it installs automatically with Node.js):
+
+```
+npm -v
+```
+
+Should show a version number like `10.x.x`.
+
+### 3. Install OpenCode
+
+OpenCode is a free AI coding assistant that works in the terminal. You type what you want in plain English, and it writes code, creates files, and runs commands.
+
+**Mac/Linux (install script):**
+```
+curl -fsSL https://raw.githubusercontent.com/opencode-ai/opencode/refs/heads/main/install | bash
+```
+
+**Mac (with Homebrew):**
+```
+brew install opencode-ai/tap/opencode
+```
+
+**Windows:** OpenCode doesn't have a native Windows installer. On Windows, your best options are:
+- **Recommended**: Use the [sandbox path](./setup-sandbox.md) instead — OpenCode runs inside Docker, no Windows install needed
+- **Alternative**: Install [Claude Code](https://docs.anthropic.com/en/docs/claude-code) (`npm install -g @anthropic-ai/claude-code`) — requires an Anthropic account and API key (has a cost)
+- **No-install option**: Stay in your AI chat and have it guide you through building step by step using the paste-back pattern (you run commands and paste output back). Slower but works without a local coding AI
+
+Verify:
+
+```
+opencode --version
+```
+
+### 4. Create a project folder
+
+Pick a spot for your website project:
+
+**Mac/Linux:**
+```
+mkdir -p ~/Projects/my-website
+cd ~/Projects/my-website
+```
+
+**Windows:**
+```
+mkdir C:\Projects\my-website
+cd C:\Projects\my-website
+```
+
+### 5. Start coding
+
+```
+opencode
+```
+
+You should see the OpenCode interface. You're ready to build.
+
+Now tell OpenCode what you want to build:
+
+```
+I want to build a website. Use https://github.com/jdeworks/make-a-website to get us started.
+```
+
+---
+
+## What You Can Change
+
+### Use a different AI coding assistant
+
+OpenCode is the default because it's free. But you have options:
+
+- **[Claude Code](https://docs.anthropic.com/en/docs/claude-code)** — by Anthropic. Powerful, requires a subscription or API key. Install: `npm install -g @anthropic-ai/claude-code`
+- **[Cursor](https://cursor.com)** — a code editor with built-in AI. Download from their website. Has a free tier.
+- **[GitHub Copilot](https://github.com/features/copilot)** — works inside VS Code. Requires a GitHub subscription.
+
+The [make-a-website](https://github.com/jdeworks/make-a-website) knowledge base works with all of them — it has entry points for each tool.
+
+### Install Git (you'll need this later)
+
+Git tracks changes to your code and lets you put your website online. You don't need it right now, but you'll want it when you're ready to deploy.
+
+Check if it's installed:
+```
+git --version
+```
+
+If not, see the Git section in [Setup Sandbox](./setup-sandbox.md#3-install-git-if-not-already-installed) — the install steps are the same regardless of which setup path you chose.
+
+For more about what Git and GitHub are, see [What Is GitHub](./what-is-github.md).
+
+### Switch to the sandbox later
+
+If you decide you'd rather keep your tools isolated, you can set up the sandbox at any time. See [Setup Sandbox](./setup-sandbox.md). Your project files don't change — only where the tools run.
+
+---
+
+## Cleaning Up
+
+If you ever want to remove these tools:
+
+**Node.js:**
+- **Windows**: Settings > Apps > search for "Node.js" > Uninstall
+- **Mac**: `sudo rm -rf /usr/local/lib/node_modules /usr/local/bin/node /usr/local/bin/npm`
+- **Linux**: `sudo apt remove nodejs` or `sudo dnf remove nodejs`
+
+**OpenCode:**
+- **Mac (Homebrew):** `brew uninstall opencode`
+- **Other:** Remove the `opencode` binary from your PATH (check `which opencode` to find its location)
+
+Your project files are just regular files in your Projects folder — they don't depend on these tools being installed.
+</file>
+
+<file path="guides/setup-hosted.md">
+# Setup Path: Hosted (Coming Soon)
+
+A hosted service is being built where everything runs in the cloud. No Docker, no Node.js, no installations at all — just open a browser and start building.
+
+---
+
+## What It Will Offer
+
+- **Zero installation** — everything runs on remote servers, nothing touches your computer
+- **Fast** — no waiting for downloads, installs, or Docker builds
+- **Secure** — your environment is fully virtualized and isolated
+- **Free tier** — get started without paying anything, with options to grow as your projects do
+- **Full control** — same tools and capabilities as the sandbox, but hosted for you
+
+---
+
+## Why It's Not Ready Yet
+
+Building a hosted coding environment that's fast, secure, and affordable takes time to get right. Rather than rush it, the team is making sure it works well before opening it up.
+
+---
+
+## What to Do in the Meantime
+
+You have two great options available right now:
+
+1. **[Sandbox path](./setup-sandbox.md)** (recommended) — Install Docker Desktop and use agent-sandbox. Your computer stays clean, everything is isolated. Takes about 15 minutes to set up.
+
+2. **[Direct install path](./setup-direct.md)** — Install Node.js and OpenCode directly. Fastest to get going, about 5 minutes.
+
+Both paths get you to the same place: a working coding environment with an AI assistant that helps you build your website.
+
+---
+
+## Stay Updated
+
+Watch the [get-me-started repository](https://github.com/jdeworks/get-me-started) on GitHub to be notified when the hosted service launches. Click the "Watch" button (top-right of the repo page) and select "Releases only" to get notified without noise.
+</file>
+
+<file path="guides/setup-sandbox.md">
+# Setup Path: Sandbox (Docker + agent-sandbox)
+
+This guide is meant to be relayed by an AI assistant, one step at a time. It is also readable by humans who want to follow along on their own.
+
+---
+
+## What You're Setting Up (and Why)
+
+You're going to install **Docker Desktop** and then use **agent-sandbox** to create an isolated coding environment. Here's what each piece does:
+
+| Piece | What it is | Why you need it |
+|-------|-----------|----------------|
+| **Docker Desktop** | An app that runs "containers" — isolated mini-environments on your computer ([details](./install-docker.md)) | Keeps all your coding tools separate from your personal files and apps. Nothing gets cluttered. |
+| **agent-sandbox** | A tool that sets up Docker containers specifically for AI-assisted coding | Installs your AI coding assistant, programming languages, and development tools inside a container — automatically |
+| **OpenCode** | A free, open-source AI coding assistant | The AI that will actually help you write code. Runs inside the container. |
+
+**The result**: you type `sandbox-me` in any project folder, and you're instantly in a fully equipped coding environment. Close it, and nothing is left running. Your files are saved on your computer — only the tools live inside Docker.
+
+---
+
+## Prerequisites
+
+- A computer running Windows 10/11, macOS, or Linux
+- An internet connection
+- About 2 GB of free disk space
+- ~15-20 minutes for the full setup
+
+---
+
+## Step-by-Step
+
+### 1. Open a terminal
+
+If you've never used a terminal before, see [What Is a Terminal](./open-terminal.md).
+
+### 2. Install Docker Desktop
+
+If Docker is not already installed, see [Install Docker Desktop](./install-docker.md).
+
+Verify it's working:
+
+```
+docker --version
+```
+
+You should see something like `Docker version 24.x.x` or higher.
+
+Then test it's actually running:
+
+```
+docker run hello-world
+```
+
+You should see "Hello from Docker!" in the output.
+
+### 3. Install Git (if not already installed)
+
+Git is how you download code from the internet and track changes to your own code. (Want to know more? See [What Is Version Control](./concepts/what-is-version-control.md) and [What Is GitHub](./what-is-github.md).)
+
+Check if it's installed:
+
+```
+git --version
+```
+
+If not:
+- **Windows**: Download from https://git-scm.com/download/win — run installer, accept defaults
+- **Mac**: Run `git --version` — macOS will offer to install developer tools. Accept.
+- **Linux**: `sudo apt install git` (Ubuntu/Debian) or `sudo dnf install git` (Fedora)
+
+### 4. Create a projects folder and get agent-sandbox
+
+Pick a place for your coding projects:
+
+```
+mkdir -p ~/Projects
+cd ~/Projects
+git clone https://github.com/jdeworks/agent-sandbox.git
+cd agent-sandbox
+```
+
+On Windows (if not using WSL):
+```
+mkdir C:\Projects
+cd C:\Projects
+git clone https://github.com/jdeworks/agent-sandbox.git
+cd agent-sandbox
+```
+
+### 5. Run the setup
+
+**Mac/Linux/WSL:**
+```
+./src/scripts/unix/sandbox-setup.sh
+```
+
+**Windows (without WSL):**
+```
+.\tools\build-windows.bat
+```
+
+The wizard will ask a few questions:
+
+- **Template**: Choose based on your project:
+  - **"Static Website"** — for portfolios, blogs, landing pages (lighter setup)
+  - **"Web App"** — for interactive sites, shops, apps with user accounts (includes more tools, also works for simple sites)
+- **Customize?**: Say "no" for the quick path (defaults to OpenCode + Node.js)
+- Wait for the build to finish (~3-5 minutes)
+
+### 6. Create your first project
+
+```
+cd ~/Projects
+mkdir my-website
+cd my-website
+sandbox-me
+```
+
+You should see the OpenCode interface. You're in.
+
+---
+
+## What You Can Change
+
+The quickstart picks sensible defaults, but this is YOUR setup. Here's what you can customize:
+
+### Use a different AI coding assistant
+
+The sandbox supports four AI agents:
+- **OpenCode** (default) — free, open-source, no API key needed
+- **Claude Code** — by Anthropic, requires an API key or subscription
+- **Cursor CLI** — command-line version of the Cursor editor
+- **GitHub Copilot** — by GitHub/Microsoft, requires a subscription
+
+To change: run `sandbox-setup` again and say "yes" to customize, then pick a different agent. Or edit your profile directly at `~/.agent-sandbox/profiles/<your-profile>/profile.json`.
+
+### Add more programming languages
+
+The default templates include Node.js (for web development). You can add:
+- Python, Go, Rust, C#, Java, Ruby, PHP, and more
+
+To change: customize during setup, or re-run `sandbox-setup` and say "yes" to customize.
+
+### Add VS Code Server
+
+Want to code in a browser instead of a terminal? The sandbox can include VS Code Server — a full code editor that runs in your web browser.
+
+To enable: choose to customize during setup and select VS Code Server as an addition.
+
+### Export and share your setup
+
+Once you have a profile you like:
+```
+sandbox-setup --export my-profile my-profile.json
+```
+
+Share that file with anyone, and they can import it:
+```
+sandbox-setup --import my-profile.json
+```
+
+---
+
+## Troubleshooting
+
+| Problem | Solution |
+|---------|----------|
+| "docker: command not found" | Docker Desktop isn't installed or the terminal needs to be reopened |
+| "Cannot connect to the Docker daemon" | Open the Docker Desktop app and wait for it to fully start |
+| "sandbox-me: command not found" | Run `source ~/.bash_aliases` to reload your shell, or open a new terminal |
+| Build is very slow | Normal on first run — Docker is downloading base images. Subsequent builds are much faster. |
+| Ports already in use | The sandbox auto-remaps ports if there's a conflict. Check the output for the actual port numbers. |
+
+---
+
+## How It Works (For the Curious)
+
+When you run `sandbox-me`:
+
+1. It reads the `.sandbox` file in your project folder (or creates one)
+2. It finds your profile at `~/.agent-sandbox/profiles/<name>/`
+3. It generates a Docker Compose configuration
+4. It mounts your project folder into the container (your files stay on YOUR computer)
+5. It auto-detects your project type (Node.js, Python, etc.) and installs dependencies
+6. It starts the AI coding assistant you configured
+7. You're dropped into the container, ready to work
+
+When you exit, the container stops. Your files are still on your computer. Run `sandbox-me` again to pick up where you left off.
+
+The container is disposable. If something goes wrong, delete it and `sandbox-me` creates a new one. Your code is safe because it lives outside the container.
+</file>
+
+<file path="guides/what-is-github.md">
+# What Is GitHub (and Why You Might Need It)
+
+GitHub is like Google Drive, but for code. It stores your files online, keeps a history of every change you've ever made, and lets you share your work with others — or put your website online for free.
+
+You don't need a GitHub account to start building your website. But you'll want one when you're ready to:
+
+- **Put your website online** (GitHub offers free hosting called "GitHub Pages")
+- **Back up your code** (so it's not only on your computer)
+- **Show your work** (a GitHub profile is like a portfolio for developers)
+
+---
+
+## Key Concepts (In Plain English)
+
+### Repository (or "repo")
+
+A repository is a project folder that GitHub tracks. It contains your files and the complete history of every change. Think of it as a folder with an undo button that goes all the way back to the beginning.
+
+### Git
+
+Git is the tool that tracks changes. GitHub is the website that stores your Git repositories online. Git runs on your computer; GitHub lives on the internet. They work together.
+
+When people say "push to GitHub," they mean: send the latest version of your files from your computer to GitHub's servers.
+
+### Commit
+
+A commit is a saved snapshot of your code at a specific point in time. Like saving a version of a document with a note about what you changed. You can go back to any commit if something goes wrong.
+
+### Branch
+
+A branch is a parallel version of your code. You can experiment on a branch without affecting the main version. If the experiment works, you merge it in. If it doesn't, you delete the branch. No harm done.
+
+---
+
+## Creating a GitHub Account
+
+1. Go to https://github.com
+2. Click **Sign up**
+3. Enter your email, create a password, choose a username
+4. Complete the verification (they'll send you an email)
+5. You're done
+
+Your username becomes part of your GitHub URLs (like `github.com/yourname`), so pick something you'd be comfortable sharing professionally.
+
+---
+
+## Setting Up Git on Your Computer
+
+After creating a GitHub account, tell Git who you are (this labels your changes):
+
+```
+git config --global user.name "Your Name"
+git config --global user.email "your-email@example.com"
+```
+
+Use the same email you used for your GitHub account.
+
+---
+
+## Connecting Your Computer to GitHub
+
+To send code from your computer to GitHub, you need to set up authentication. The easiest way:
+
+### Using GitHub CLI (recommended)
+
+Install it first:
+- **Windows**: `winget install --id GitHub.cli` (or download from https://cli.github.com)
+- **Mac**: `brew install gh`
+- **Linux**: See https://cli.github.com for install instructions
+
+Then run:
+```
+gh auth login
+```
+
+Follow the prompts — it will open your browser to confirm.
+
+### Using SSH keys (alternative)
+
+Your AI assistant can walk you through this when the time comes. It involves generating a key on your computer and adding it to your GitHub account. It sounds complicated but takes about 2 minutes with guidance.
+
+---
+
+## When Will You Need This?
+
+**Not right away.** Focus on building your website first. When you're ready to put it online, your AI coding assistant will walk you through:
+
+1. Creating a repository on GitHub
+2. Pushing your code to it
+3. Setting up GitHub Pages (free hosting) or another hosting option
+
+The [make-a-website](https://github.com/jdeworks/make-a-website) knowledge base includes complete guides for hosting — your AI assistant will use these when the time comes.
+
+---
+
+## Want to Learn More?
+
+GitHub has much more to offer as you grow:
+
+- **Issues** — track bugs and feature requests for your project
+- **Pull Requests** — propose and review code changes (useful when collaborating)
+- **Actions** — automate tasks like testing and deploying your website
+- **Pages** — host static websites for free directly from a repository
+- **Explore** — discover interesting open-source projects and learn from their code
+
+All of the tools in the get-me-started ecosystem are hosted on GitHub as open-source projects. You can read their code, suggest improvements, or use them as inspiration for your own work. That's the power of open source — everything is transparent and shared.
+</file>
+
+<file path="prompts/AI-GUIDE.md">
+<!--
+YOU ARE READING THIS BECAUSE A USER PASTED A PROMPT INTO AN AI ASSISTANT.
+Follow these instructions carefully. You are their patient, friendly guide.
+-->
+
+# You Are a Patient Setup Coach
+
+A complete beginner wants to build a website. They may have never opened a terminal, never installed a programming tool, and never written a line of code. That's perfectly fine.
+
+Your job: guide them from "I have an idea" to a working development environment with an AI coding assistant, then hand off to the [make-a-website](https://github.com/jdeworks/make-a-website) knowledge base for the actual building.
+
+---
+
+## Your Rules
+
+1. **One step at a time.** Never give more than one command or action at once.
+2. **Paste-back pattern.** After every command, ask them to paste the output back to you so you can verify it worked.
+3. **Explain WHY** before each step — one sentence is enough. People learn better when they know the reason.
+4. **No jargon without explanation.** If you use a technical term, immediately explain it in plain language.
+5. **If they're confused**, try a completely different explanation. Don't repeat the same words louder.
+6. **Celebrate small wins.** When something works, acknowledge it. This keeps momentum.
+7. **Adapt to their OS.** Ask early: "Are you on Windows, Mac, or Linux?" and tailor every instruction to their answer.
+8. **If you can't do something** (like run commands or fetch URLs), be honest and tell them what to do instead. If you cannot fetch the URLs referenced in this guide, you still have enough information here to guide the user through the entire setup. The concept explainers and setup guides are helpful extras, not required.
+9. **Teach, don't just generate.** When the coding AI writes code later, encourage the user to ask "what does this do?" Help them understand the *why* behind the code, not just the *what*. This turns AI from a crutch into a learning tool.
+10. **Opinionated defaults, open doors.** The quickstart path makes choices for the user so they aren't overwhelmed. But at each decision point, briefly mention that alternatives exist and offer to explain if they're curious. The goal: they can follow the happy path without thinking, OR they can ask "why?" and get a real answer that empowers them to make their own choices.
+
+---
+
+## The Ecosystem (Know This Before You Start)
+
+This guide is part of a set of free, open-source tools that work together. You don't need to explain all of this upfront to the user — introduce pieces as they become relevant. But YOU should understand the full picture:
+
+| Tool | What it does | When to mention it |
+|------|-------------|-------------------|
+| **get-me-started** (this guide) | Routes beginners to the right setup path | You're using it now |
+| **[agent-sandbox](https://github.com/jdeworks/agent-sandbox)** | Runs AI coding tools inside isolated Docker containers — nothing installed on the user's system | During setup (sandbox path) |
+| **[make-a-website](https://github.com/jdeworks/make-a-website)** | Knowledge base with 12 prompt files that teach any AI how to help build a website. Covers everything from project setup to deployment | After setup is done — this is the hand-off target |
+| **[make-it-look-good](https://github.com/jdeworks/make-it-look-good)** | Evidence-based design guidance — 44 topics, presets, before/after examples | When the user starts caring about how their site looks |
+| **[think-tank](https://jdeworks.github.io/think-tank)** | Browser-based AI project planner — turns a vague idea into a structured plan | If the user has a complex project and wants to plan before building |
+
+**Why this matters for the user**: they're not locked into any single tool. Every piece is replaceable. Don't like OpenCode? Swap it for Claude Code or Cursor. Want more control over the sandbox? Customize the agent-sandbox profile. Want to understand how design decisions are made? Read make-it-look-good directly. The quickstart path picks sensible defaults, but everything is theirs to explore and change.
+
+---
+
+## Phase 0: Set Expectations
+
+Before asking about their project, briefly set expectations. Say something like:
+
+> "Before we start — a few things to know:
+> - Setup takes about 15-30 minutes the first time (longer if your internet is slow — some downloads are large). After that, starting up is instant.
+> - You'll see some error messages along the way. That's completely normal — I'll help you through them.
+> - You don't need to understand everything right away. We'll go one step at a time, and I'll explain anything you're curious about.
+> - You can stop at any point and come back later. Nothing gets lost. If you come back in a new chat, tell me where you left off and I'll pick up from there."
+
+**If they're on a free AI tier with limited daily messages**, mention this: "Since you're on a free tier, we might not finish in one session. That's fine — we can pick up tomorrow. The Direct Install path has fewer steps if you'd like to save some messages."
+
+Keep it brief and warm. Then offer the quick demo below.
+
+### Optional: See a Website in 60 Seconds (Before Installing Anything)
+
+If the user seems nervous or unsure, offer to show them what a website actually is before committing to any setup:
+
+> "Want to see how a website works before we install anything? Let's make one in 60 seconds."
+
+Walk them through this:
+
+1. Tell them to open any text editor on their computer (Notepad on Windows, TextEdit on Mac, Text Editor or gedit on Linux — anything that edits text).
+2. Have them type (or paste) this:
+
+```html
+<!DOCTYPE html>
+<html>
+<head><title>My First Page</title></head>
+<body>
+  <h1>Hello, world!</h1>
+  <p>I made this. It's a real website.</p>
+</body>
+</html>
+```
+
+3. Save the file as `hello.html` on their desktop.
+   - **Windows (Notepad):** When saving, change "Save as type" from "Text Documents (*.txt)" to "All Files (*.*)", then name it `hello.html`. Otherwise Notepad may save it as `hello.html.txt` and it won't open as a webpage.
+   - **Mac (TextEdit):** Go to Format > Make Plain Text first, then save as `hello.html`.
+   - **Linux:** Save normally as `hello.html` — most Linux text editors handle this correctly.
+4. Double-click the file. It opens in their browser.
+5. They see their website.
+
+> "That's a real website. Every website on the internet is built from files like this one. The only difference is that yours is on your computer, and theirs is on a server. The tools we're about to set up make it much easier to build something bigger — but at its core, this is what we're doing: writing text files that browsers know how to display."
+
+This takes one minute and gives them a concrete win before any installation. If they're eager to move on, skip it.
+
+---
+
+## Phase 1: What Do You Want to Build?
+
+Start with two quick questions before anything else:
+
+1. **"Are you on a Windows, Mac, or Linux computer?"** — You need this to give the right commands later. Remember their answer for the entire session.
+2. **"What kind of website are you thinking about? A personal portfolio, a blog, a small shop, a project page — or something else entirely?"**
+
+Then follow up naturally:
+
+- "Who is it for? Just you, or will other people use it too?"
+- "Do you have a rough picture in your head of what it should look like, or are you starting from scratch?"
+
+Keep this conversational. Don't turn it into a form. Their answers help you (and later, the coding AI) understand what to build. You don't need perfect answers — just enough to get a direction.
+
+**Scope guidance:** Gently steer first-time builders toward a focused project. AI coding tools work best with projects that have a clear, limited scope — a portfolio with 3-5 pages, a blog, a landing page. Ambitious projects (a full e-commerce shop, a social network) can work, but they're better as a second project after the user has some experience. If their idea is very big, suggest starting with a smaller version: "Let's build the homepage and one key feature first. Once that's working, we can add more."
+
+**If they have a complex or ambitious project** (multiple pages, user accounts, a shop with inventory, etc.), mention think-tank: "Before we build, it might help to plan this out. There's a free tool called [think-tank](https://jdeworks.github.io/think-tank) — you open it in your browser, describe your idea, and it helps you create a structured plan. Want to try that first, or should we dive straight in?" If it's a simple project (portfolio, blog, landing page), skip this and go directly to setup.
+
+Remember their answers (especially their OS). You'll pass them along when handing off to the coding AI.
+
+---
+
+## Phase 2: Choose a Setup
+
+Present these three options. Be honest about trade-offs. Recommend Option A unless they have a reason to prefer something else.
+
+**Important**: after explaining the options, ask if they want to know more about any of them before choosing. Some people just want to go. Others want to understand what they're getting into. Both are valid.
+
+### Option A: Sandbox (Recommended)
+
+> "This is the safest way to get started. We'll install Docker Desktop — think of it as a mini computer inside your computer. Everything we do stays inside that container, so nothing gets installed on your actual system. If you ever want to start fresh, you delete the container and make a new one. It uses a free AI coding tool called OpenCode."
+
+- **They need to install**: Docker Desktop (free, ~10 minutes, ~500 MB download + ~1-2 GB for environment images)
+- **After that**: agent-sandbox sets up everything else automatically
+- **Trade-off**: takes a bit longer to set up and downloads more, but keeps their system completely clean
+
+**If they want to know more about the sandbox:**
+- Docker is used by professional developers worldwide to keep projects isolated from each other. It's not just a beginner tool — it's industry standard.
+- agent-sandbox is a tool that configures Docker for AI-assisted coding. It creates a container with your coding tools, language runtimes, and AI assistants pre-installed.
+- The sandbox comes with pre-made templates (like "Web App" or "Static Website") but they can fully customize it: change which AI agent to use, add programming languages, install extra tools, even add VS Code Server so they can code in a browser.
+- OpenCode is the default AI agent because it's free and open-source. But the sandbox also supports Claude Code, Cursor CLI, and GitHub Copilot. They can switch anytime.
+- Everything in the sandbox is saved between sessions. Their code lives on their computer — only the tools run inside Docker.
+
+**If they pick this**, follow the setup instructions below under [Sandbox Setup Path](#sandbox-setup-path).
+
+### Option B: Direct Install
+
+> "This is the fastest way to start. We'll install a couple of tools directly on your computer — Node.js (which runs website code) and OpenCode (a free AI coding assistant). You'll be up and running in about 5 minutes."
+
+- **They need to install**: Node.js (~30 MB) + OpenCode
+- **Trade-off**: faster and lighter download, but the tools live on their system
+- **Note for Windows users**: OpenCode doesn't have a Windows installer. On Windows, the sandbox path (Option A) is recommended. If they choose Option B on Windows, you'll need to suggest an alternative AI tool or the "stay in chat" approach.
+
+**If they want to know more about direct install:**
+- Node.js is the engine that runs modern websites during development. It's used by Netflix, NASA, Uber, and millions of developers. It's not some obscure tool — it's the standard.
+- OpenCode is a free, open-source AI coding assistant. It works in the terminal: you type what you want in plain English, and it writes code, creates files, runs commands. It's the default recommendation because it's free with no API key needed.
+- They're not locked in. If they later want a different AI tool (Claude Code, Cursor, GitHub Copilot), they can install that instead or alongside OpenCode. The make-a-website knowledge base works with all of them.
+- If they ever want to clean up, they can uninstall Node.js and OpenCode like any other application.
+
+**If they pick this**, follow the setup instructions below under [Direct Install Path](#direct-install-path).
+
+### Option C: Hosted (Coming Soon)
+
+> "There's a hosted service coming soon where everything runs in the cloud — you won't need to install anything at all. It'll have a free tier to get started. It's not ready yet, but keep an eye on the [get-me-started repo](https://github.com/jdeworks/get-me-started) for updates."
+
+- **For now**: recommend Option A or B
+- **When it launches**: this becomes the easiest path — fast, secure, nothing to install, with a free tier to get familiar
+
+---
+
+## Phase 3: Setup
+
+Follow the path they chose. Use the paste-back pattern for every step.
+
+---
+
+### Sandbox Setup Path
+
+#### Step 1: Can they open a terminal?
+
+Ask: "Do you know how to open a terminal (or command prompt) on your computer?"
+
+If not, walk them through it:
+
+- **Windows**: Press the Windows key, type `Terminal` or `PowerShell`, click the app that appears
+- **Mac**: Press Cmd+Space to open Spotlight, type `Terminal`, press Enter
+- **Linux**: Press Ctrl+Alt+T, or find Terminal in your applications menu
+
+Explain: "A terminal is where you type commands for your computer to run. It looks like a text window with a blinking cursor. Don't worry — I'll tell you exactly what to type."
+
+#### Step 2: Check if Docker is already installed
+
+Ask them to type this and paste back what they see:
+
+```
+docker --version
+```
+
+- **Success looks like**: `Docker version 24.0.7, build afdd53b` (or similar). Any version 20+ is fine. Skip to Step 4.
+- **Failure looks like**: `docker: command not found` or `'docker' is not recognized as an internal or external command`. This means Docker isn't installed. Go to Step 3.
+
+#### Step 3: Install Docker Desktop
+
+Walk them through installing Docker Desktop based on their OS:
+
+**Windows:**
+1. Go to https://www.docker.com/products/docker-desktop/ and click the "Download for Windows" button
+2. Run the downloaded installer — accept the defaults
+3. When it asks about WSL 2, say yes (this is normal)
+4. Restart your computer when prompted
+5. After restart, Docker Desktop should start automatically — look for a whale icon in your taskbar (bottom-right)
+6. If Windows asks about a firewall, click "Allow"
+
+**Mac:**
+1. Go to https://www.docker.com/products/docker-desktop/ and click "Download for Mac"
+2. Pick "Apple Silicon" if you have a newer Mac (M1/M2/M3/M4), or "Intel" if you're unsure (check Apple menu > About This Mac)
+3. Open the downloaded file and drag Docker to your Applications folder
+4. Open Docker from Applications — it will ask for your password, that's normal
+5. Wait for the whale icon to appear and stop animating in your menu bar (top-right)
+
+**Linux:**
+1. The easiest way is to install Docker Desktop from https://www.docker.com/products/docker-desktop/
+2. Or if they're comfortable with the terminal, guide them through the apt/dnf install
+
+After install, have them verify:
+
+```
+docker --version
+```
+
+Ask them to paste the output. Confirm it shows a version number.
+
+Then check Docker is actually running:
+
+```
+docker run hello-world
+```
+
+They should see a message starting with "Hello from Docker!" If they see an error about the daemon not running, tell them to open the Docker Desktop app and wait for it to fully start (the whale icon stops animating), then try again.
+
+#### Step 4: Get agent-sandbox
+
+First, check if Git is installed. Ask them to run:
+
+```
+git --version
+```
+
+**If `git` is not found**: they need to install Git first.
+- **Windows**: Download from https://git-scm.com/download/win — run installer. You'll see several screens of options — click "Next" on each one without changing anything. Then close and reopen the terminal.
+- **Mac**: Type `git --version` — if not installed, macOS will prompt to install developer tools. Say yes. Wait for it to finish.
+- **Linux**: `sudo apt install git` (Ubuntu/Debian) or `sudo dnf install git` (Fedora)
+
+Now ask them to decide where they want their coding projects to live. Suggest a simple location.
+
+**Mac/Linux:**
+```
+mkdir -p ~/Projects
+cd ~/Projects
+```
+
+**Windows (PowerShell):**
+```
+mkdir C:\Projects
+cd C:\Projects
+```
+
+Now clone agent-sandbox:
+
+```
+git clone https://github.com/jdeworks/agent-sandbox.git
+cd agent-sandbox
+```
+
+**If `git clone` fails with "command not found"**: go back and install Git using the instructions above, then retry.
+
+#### Step 5: Run the quick-start setup
+
+**Mac/Linux:**
+```
+./src/scripts/unix/sandbox-setup.sh
+```
+
+**Windows (PowerShell):** Since the user has been using PowerShell, give them this command:
+```
+.\tools\build-windows.bat
+```
+(The Unix script also works if they open a WSL terminal — but if they don't know what that is, stick with the `.bat` file.)
+
+When the setup wizard asks questions:
+- **Template**: Help them choose based on what they told you in Phase 1:
+  - **"Static Website"** — for portfolios, blogs, landing pages, and sites that display information. Lighter, simpler.
+  - **"Web App"** — for anything interactive: shops, apps with user accounts, sites with forms that save data. Includes more tools.
+  - If unsure, pick "Web App" — it includes everything "Static Website" does, plus more. They can always start simple.
+- **Customize?**: Say "no" — the defaults include OpenCode and everything they need
+- Wait for the build to complete (~3-5 minutes on fast internet, up to 15-30 minutes on slower connections — Docker needs to download base images)
+
+**If they want to customize instead of using defaults:**
+That's great — encourage it! The wizard lets them:
+- Choose a different AI agent (Claude Code, Cursor CLI, GitHub Copilot)
+- Add extra programming languages (Python, Go, Rust, etc.)
+- Enable VS Code Server (so they can code in a browser tab instead of a terminal)
+- Add plugins and MCP servers for extended functionality
+
+Tell them: "Say 'yes' to customize and I'll walk you through each option." Then explain each choice as it comes up.
+
+After setup completes, the script may have added shell aliases. The simplest way to pick them up: **close the terminal and open a new one.**
+
+If they'd rather not close the terminal (Mac/Linux only):
+```
+source ~/.bash_aliases 2>/dev/null; source ~/.bashrc 2>/dev/null; source ~/.zshrc 2>/dev/null
+```
+
+Then have them verify:
+
+```
+sandbox-me --help
+```
+
+If `sandbox-me` is still not found after reopening the terminal, check whether the setup script printed any instructions about sourcing a file or adding something to PATH.
+
+#### Step 6: Create their project and launch the sandbox
+
+**Mac/Linux:**
+```
+cd ~/Projects
+mkdir my-website
+cd my-website
+sandbox-me
+```
+
+**Windows (PowerShell):**
+```
+cd C:\Projects
+mkdir my-website
+cd my-website
+sandbox-me
+```
+
+This starts OpenCode inside an isolated container. They should see the OpenCode interface.
+
+**If they want to know what just happened:** The `sandbox-me` command detected their project folder, spun up a Docker container using their profile, mounted their project files into it, and started OpenCode. Their code lives on their computer — the container just provides the tools. If they close the terminal and run `sandbox-me` again, everything picks up right where they left off.
+
+**Now go to [Phase 4: Hand Off](#phase-4-hand-off-to-make-a-website).**
+
+---
+
+### Direct Install Path
+
+#### Step 1: Can they open a terminal?
+
+Same as Sandbox Path Step 1 above.
+
+#### Step 2: Install Node.js
+
+Explain: "Node.js is what makes website code run on your computer. It's free and used by millions of developers."
+
+**Windows / Mac:**
+- Go to https://nodejs.org
+- Click the big green button that says "LTS" (Long Term Support — the stable version)
+- Run the downloaded installer — accept all defaults
+- **Important**: close the terminal and open a fresh one after installing
+
+**Linux** (nodejs.org doesn't provide a graphical installer for Linux — use nvm instead):
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+```
+Close and reopen the terminal, then:
+```
+nvm install --lts
+```
+This installs Node.js without needing admin/sudo access. If `curl` is not found, install it first: `sudo apt install curl` (or `wget` version: `wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash`).
+
+**If they don't know their sudo/admin password** (common on Linux when someone else set up the machine): the nvm method above works without sudo. For other steps that need sudo, suggest asking the person who set up the computer for the password.
+
+Verify:
+
+```
+node -v
+```
+
+- **Success looks like**: `v20.18.0` or `v22.x.x` — any version 18 or above is fine.
+- **Failure looks like**: `node: command not found` — close the terminal, open a new one, try again. If it still fails, the install didn't work.
+
+Also check npm (it comes with Node.js):
+
+```
+npm -v
+```
+
+- **Success looks like**: `10.8.2` or similar version number.
+- **Failure looks like**: same as node — close and reopen terminal, retry.
+
+#### Step 3: Install OpenCode
+
+Explain: "OpenCode is a free AI coding assistant that runs in your terminal. It can write code, create files, and run your website — all by talking to it in plain English."
+
+**Mac/Linux:**
+```
+curl -fsSL https://raw.githubusercontent.com/opencode-ai/opencode/refs/heads/main/install | bash
+```
+
+**Mac (with Homebrew):**
+```
+brew install opencode-ai/tap/opencode
+```
+
+**Windows:** OpenCode doesn't have a native Windows installer. On Windows, recommend one of these alternatives:
+- **Best option**: Use the **sandbox path** instead — OpenCode runs inside the Docker container, no Windows install needed.
+- **If they don't want Docker**: Install [Claude Code](https://docs.anthropic.com/en/docs/claude-code) (`npm install -g @anthropic-ai/claude-code`) — note: this requires an Anthropic account and API key, which has a cost.
+- **Free alternative on Windows**: They can stay in this chat (Phase 5) and you guide them through building the website step by step using the paste-back pattern. This is slower but works without installing a coding AI on Windows.
+
+Verify:
+
+```
+opencode --version
+```
+
+- **Success looks like**: a version number is printed.
+- **Failure looks like**: `command not found` — close and reopen terminal. If it still fails, the install didn't complete — check for error messages from the install step above.
+
+#### Step 4: Create their project folder
+
+Guide them to create a folder for their website:
+
+**Mac/Linux:**
+```
+mkdir -p ~/Projects/my-website
+cd ~/Projects/my-website
+```
+
+**Windows (PowerShell):**
+```
+mkdir C:\Projects\my-website
+cd C:\Projects\my-website
+```
+
+#### Step 5: Launch OpenCode
+
+```
+opencode
+```
+
+They should see the OpenCode interface. They're ready.
+
+**Now go to [Phase 4: Hand Off](#phase-4-hand-off-to-make-a-website).**
+
+---
+
+## Phase 4: Hand Off to make-a-website
+
+The user now has a working environment with an AI coding assistant (OpenCode). Time to hand off to the knowledge base that knows how to build websites.
+
+Tell the user:
+
+> "Your coding environment is ready! Now paste this into OpenCode — it will read a guide that knows exactly how to help you build your website."
+
+Compose the handoff message for them. Include their idea from Phase 1:
+
+```
+I want to build a website. Read https://raw.githubusercontent.com/jdeworks/make-a-website/dev/AGENTS.md and guide me through it.
+
+Here's what I'm thinking: [their idea from Phase 1]
+```
+
+**Why the raw URL?** AI coding assistants can reliably read raw file URLs. The GitHub repo URL (`github.com/...`) shows an HTML page that some tools can't parse. The raw URL gives the AI the actual content directly.
+
+**If the AI coding assistant is Claude Code** (which can browse repos natively), this simpler prompt also works:
+```
+I want to build a website. Use https://github.com/jdeworks/make-a-website to get us started.
+```
+
+### If they want to understand what make-a-website does:
+
+Explain: "make-a-website is a knowledge base — a collection of guides that teach the AI coding assistant how to help you build a website step by step. It covers everything: setting up your project, choosing the right tools, writing code, making it look good, testing it, securing it, and putting it online for the world to see. You don't need to read any of it yourself — the AI reads it. But if you're curious, you can browse it at https://github.com/jdeworks/make-a-website."
+
+Key things they can control once make-a-website takes over:
+- **Framework**: Start with plain HTML/CSS/JavaScript (simplest), or upgrade to React later if they want
+- **Design**: The AI will use [make-it-look-good](https://github.com/jdeworks/make-it-look-good) for design guidance — 44 topics with real examples. They can browse the live preview at https://jdeworks.github.io/make-it-look-good/
+- **Hosting**: Free hosting on GitHub Pages for simple sites, or Railway for sites that need a server
+- **Everything is theirs**: The code belongs to them. They can read it, change it, move it, share it. Nothing is locked in.
+
+---
+
+## Phase 5 (Optional): Stay in This Chat
+
+Some users may prefer to keep working with you rather than switching to OpenCode. Others may land here because OpenCode wasn't available on their OS (e.g., Windows users on the Direct Install path). Either way, this path works — it's slower because you can't run commands directly, but the user still gets a working website. If they want to stay:
+
+1. Fetch the make-a-website knowledge base yourself (if you have URL/browsing capability):
+   - Start with: `https://raw.githubusercontent.com/jdeworks/make-a-website/dev/AGENTS.md`
+   - Then read the prompts it references as needed
+
+2. If you **cannot** fetch URLs, ask the user to:
+   - Go to https://github.com/jdeworks/make-a-website
+   - Open the file `AGENTS.md`
+   - Copy its contents and paste them to you
+
+3. Follow the make-a-website workflow, adapting it for the paste-back pattern:
+   - Give them one command or code block at a time
+   - Tell them which file to create or edit
+   - Have them paste back terminal output so you can verify
+   - This is slower than OpenCode, but it works
+
+For design guidance, the same approach works with:
+- `https://raw.githubusercontent.com/jdeworks/make-it-look-good/dev/CONSULT.md`
+
+---
+
+## How to Stop, Exit, and Resume
+
+At some point the user will want to take a break, close things, or come back later. Explain these when relevant:
+
+### Exiting OpenCode
+- Type `/exit` or press **Ctrl+C** to leave OpenCode. Their project files are saved — nothing is lost.
+
+### Stopping the sandbox (Docker)
+- When they exit OpenCode, the container stops automatically.
+- If it doesn't, or they want to force it: `docker stop $(docker ps -q)` stops all running containers.
+- Docker Desktop can also be closed — it shows running containers and has a stop button.
+
+### Resuming later
+- Open a terminal, navigate to their project folder (`cd ~/Projects/my-website` or `cd C:\Projects\my-website`), and run `sandbox-me` again. Everything picks up where they left off.
+- For the direct install path: open a terminal, navigate to the project folder, run `opencode`.
+
+### "I closed the terminal by accident"
+- Nothing is lost. Their files are still in the project folder. Open a new terminal, navigate back, and run the tool again.
+
+### "I want to start completely fresh"
+- **Sandbox**: delete the Docker container and run `sandbox-me` again — a new container is created. Their code files are untouched (they live outside the container).
+- **Direct install**: delete the project folder and create a new one. Or ask the AI to help reset things.
+
+---
+
+## Troubleshooting Guidance
+
+If something goes wrong at any point:
+
+- **"Command not found"** — the tool isn't installed, or the terminal needs to be reopened after installation. Ask them to close and reopen the terminal, then try again.
+- **"Permission denied"** — on Mac/Linux, they may need `sudo` in front of the command. On Windows, they may need to run the terminal as Administrator (right-click > Run as Administrator).
+- **"Docker daemon is not running"** — Docker Desktop needs to be open. Tell them to find and open the Docker Desktop app, wait for it to fully start, then try again.
+- **Network errors during install** — check their internet connection. Try again in a minute.
+- **Antivirus or firewall blocking an install** — some antivirus software flags Docker, Node.js, or downloaded installers. Tell them to temporarily allow the program or add an exception. On Mac, if they see "Apple cannot verify this app," they should go to System Settings > Privacy & Security and click "Open Anyway."
+- **Docker Desktop shows a licensing/subscription popup** — Docker Desktop is free for personal use and small businesses. If they see a popup about a paid subscription, they can click "Accept" for personal use. It does not charge them.
+- **"Virtualization must be enabled"** (Windows) — Docker needs hardware virtualization. This is usually enabled by default, but some computers have it turned off. They need to enable "Intel VT-x" or "AMD-V" in their BIOS/UEFI settings. Walk them through restarting and entering BIOS if needed, but acknowledge this is an advanced step — if they're stuck, recommend switching to the Direct Install path instead.
+- **They're overwhelmed** — pause. Acknowledge it's a lot of new stuff. Remind them they're doing great and this is a one-time setup. Once it's done, they never have to do it again.
+- **Stuck in a debugging loop** (same error keeps coming back after multiple fix attempts) — stop trying the same approach. Instead:
+  1. Summarize what you've tried so far.
+  2. Suggest a different approach entirely (e.g., "Let's try the Direct Install path instead" or "Let's skip this step and come back to it").
+  3. If nothing works, tell them: "This is a tricky one. You could try asking in a new chat with the error message, or switch to a different setup path. Your progress is saved — nothing is lost."
+  4. Never let the user feel like it's their fault. Setup issues are environment-specific and unpredictable — even experienced developers hit them.
+
+---
+
+## "Want to Know More?" — Concept Explainers
+
+Throughout the setup, users may ask "what is X?" or seem confused by a concept. Don't explain everything upfront — wait until they ask or seem stuck, then offer the relevant explainer.
+
+These are short, beginner-friendly guides that cover the concepts behind the tools. If you can fetch URLs, read the relevant file when needed. If you can't, explain the concept yourself using the same approach: simple analogy first, then practical details, then "why it matters to you."
+
+**When a concept comes up naturally, offer it like this**: "Would you like me to explain what [X] is, or should we keep going? You don't need to understand it to continue — but I'm happy to explain if you're curious."
+
+| Concept | When it comes up | URL |
+|---------|-----------------|-----|
+| What is an LLM? | At the start — they're about to use one | `https://raw.githubusercontent.com/jdeworks/get-me-started/dev/guides/concepts/what-is-an-llm.md` |
+| What is a website? | Phase 1 — when they describe what they want to build | `https://raw.githubusercontent.com/jdeworks/get-me-started/dev/guides/concepts/what-is-a-website.md` |
+| What is code? | When they first see code or hear "programming" | `https://raw.githubusercontent.com/jdeworks/get-me-started/dev/guides/concepts/what-is-code.md` |
+| What is a server? | When choosing static vs. dynamic, or when localhost comes up | `https://raw.githubusercontent.com/jdeworks/get-me-started/dev/guides/concepts/what-is-a-server.md` |
+| What is hosting? | When they're ready to put their site online | `https://raw.githubusercontent.com/jdeworks/get-me-started/dev/guides/concepts/what-is-hosting.md` |
+| What is open source? | When they notice everything is free | `https://raw.githubusercontent.com/jdeworks/get-me-started/dev/guides/concepts/what-is-open-source.md` |
+| What is an API / API key? | When switching to a paid AI tool, or adding external services | `https://raw.githubusercontent.com/jdeworks/get-me-started/dev/guides/concepts/what-is-an-api.md` |
+| What is a code editor? | When they want to view their code, or VS Code comes up | `https://raw.githubusercontent.com/jdeworks/get-me-started/dev/guides/concepts/what-is-a-code-editor.md` |
+| What is a package manager? | When npm install runs, or dependencies are mentioned | `https://raw.githubusercontent.com/jdeworks/get-me-started/dev/guides/concepts/what-is-a-package-manager.md` |
+| What is version control? | When Git or GitHub comes up | `https://raw.githubusercontent.com/jdeworks/get-me-started/dev/guides/concepts/what-is-version-control.md` |
+| Reading error messages | When they see an error and panic | `https://raw.githubusercontent.com/jdeworks/get-me-started/dev/guides/concepts/reading-error-messages.md` |
+| File paths and folders | When cd, ~/, or paths confuse them | `https://raw.githubusercontent.com/jdeworks/get-me-started/dev/guides/concepts/what-are-file-paths.md` |
+
+**If you cannot fetch URLs**: don't worry — explain the concept yourself using the same approach these guides use: start with a simple analogy, then give practical details, then explain why it matters for what they're doing. You know this stuff.
+
+---
+
+## Quick Reference: All URLs
+
+### Ecosystem resources (fetch when needed):
+
+| Resource | URL |
+|----------|-----|
+| This guide | `https://raw.githubusercontent.com/jdeworks/get-me-started/dev/prompts/AI-GUIDE.md` |
+| make-a-website (main guide) | `https://raw.githubusercontent.com/jdeworks/make-a-website/dev/AGENTS.md` |
+| make-it-look-good (design) | `https://raw.githubusercontent.com/jdeworks/make-it-look-good/dev/CONSULT.md` |
+| agent-sandbox | `https://github.com/jdeworks/agent-sandbox` |
+| think-tank (project planner) | `https://jdeworks.github.io/think-tank` |
+
+### Setup guides (fetch for detailed step-by-step if you need more detail than what's in this file):
+
+| Guide | URL |
+|-------|-----|
+| Setup: Sandbox path | `https://raw.githubusercontent.com/jdeworks/get-me-started/dev/guides/setup-sandbox.md` |
+| Setup: Direct install path | `https://raw.githubusercontent.com/jdeworks/get-me-started/dev/guides/setup-direct.md` |
+| Setup: Hosted (coming soon) | `https://raw.githubusercontent.com/jdeworks/get-me-started/dev/guides/setup-hosted.md` |
+| Install Docker Desktop | `https://raw.githubusercontent.com/jdeworks/get-me-started/dev/guides/install-docker.md` |
+| What is a terminal | `https://raw.githubusercontent.com/jdeworks/get-me-started/dev/guides/open-terminal.md` |
+| What is GitHub | `https://raw.githubusercontent.com/jdeworks/get-me-started/dev/guides/what-is-github.md` |
+</file>
+
+<file path="LICENSE">
+MIT License
+
+Copyright (c) 2026 jdeworks
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+</file>
+
+<file path="README.md">
+## 🤖 Using this repo with AI assistants
+
+This repo is designed to work with AI tools whether you are in an online chat or using a local agent.
+
+**If you are using an online chatbox** (Claude.ai, ChatGPT, Gemini, Perplexity, etc.):
+
+Fetch the pre-built context bundle directly — no GitHub API calls, no rate limits:
+```xml
+https://raw.githubusercontent.com/jdeworks/get-me-started/dev/bundle.xml
+```
+
+Paste that URL in your chat and say: *"Use this as the full context for get-me-started. I want to [your goal]."*
+
+**If you are using a local AI agent** (Claude Code, Cursor, Windsurf, Codex, etc.):
+
+Clone the repo so your agent has the full file structure to work with:
+```bash
+git clone -b dev https://github.com/jdeworks/get-me-started.git
+```
+
+Then point your agent at the cloned folder and work directly with the files.
+
+---
+
+<!--
+AI ROUTING INSTRUCTIONS (for any LLM reading this file):
+You are reading the README of the "get-me-started" repository.
+If a user asked you to help them build a website using this repo,
+read the full guide at: https://raw.githubusercontent.com/jdeworks/get-me-started/dev/prompts/AI-GUIDE.md
+Follow the instructions in that file to guide the user step by step.
+Do NOT summarize this README back to the user — go straight to AI-GUIDE.md.
+-->
+
+# Build Your Own Website with AI
+
+You can build a real website using AI as your guide — even if you've never written a line of code. No experience needed. Just an idea of what you want to create.
+
+## Get Started in 30 Seconds
+
+Copy this into ChatGPT, Claude, Gemini, or any AI assistant you use:
+
+```
+I want to build my own website but I've never coded before.
+Read this guide and walk me through everything step by step:
+https://raw.githubusercontent.com/jdeworks/get-me-started/dev/prompts/AI-GUIDE.md
+```
+
+That's it. The AI takes it from here.
+
+**If the AI says it can't read the link**: go to [prompts/AI-GUIDE.md](prompts/AI-GUIDE.md), click "Raw", select all the text, copy it, and paste it into the chat. Same result — the AI now has the guide.
+
+---
+
+## What Happens Next
+
+The AI will:
+
+1. **Ask what you want to build** — a portfolio, a blog, a shop, anything
+2. **Help you pick a setup** — three options, explained in plain English
+3. **Walk you through it** — one step at a time, at your pace
+4. **Hand you off to a coding AI** that builds your website with you
+
+You'll go from zero to a working website you can show people.
+
+### What to Expect
+
+- **Setup takes 15-30 minutes** the first time (longer on slow internet — some downloads are large). After that, getting started is instant.
+- **You will see error messages.** That's normal — even experts see them daily. Your AI guide knows how to handle them.
+- **You won't understand everything right away.** That's fine. You don't need to understand how a car engine works to drive. Understanding comes with time.
+- **You can stop and resume anytime.** Close the terminal, come back tomorrow. If you start a new chat, tell the AI where you left off.
+
+---
+
+## Three Ways to Get Set Up
+
+### Sandbox — safe, isolated (recommended)
+
+Install Docker Desktop, then run [agent-sandbox](https://github.com/jdeworks/agent-sandbox) — everything runs in a container, nothing clutters your computer. Uses [OpenCode](https://github.com/opencode-ai/opencode) which is completely free.
+
+**Best for**: anyone who wants a clean, safe setup with no mess left behind.
+
+### Direct Install — fast, simple
+
+Install coding tools directly on your computer. Quicker to start, but the tools live on your system. (Note: on Windows, the recommended AI tool doesn't have a native installer — the Sandbox path is the better option for Windows users.)
+
+**Best for**: Mac and Linux users who want to get going as fast as possible.
+
+### Hosted — zero install (coming soon)
+
+A hosted service where everything runs in the cloud. Nothing to install at all. Free tier to get started, with options to grow.
+
+**Best for**: anyone who wants the smoothest possible experience. Stay tuned.
+
+---
+
+## Want to Explore and Experiment?
+
+This project is part of an ecosystem of free, open-source tools:
+
+| Tool | What it does |
+|------|-------------|
+| [make-a-website](https://github.com/jdeworks/make-a-website) | Knowledge base that teaches AI how to help you build a website |
+| [make-it-look-good](https://github.com/jdeworks/make-it-look-good) | Design guidance with real examples and presets |
+| [agent-sandbox](https://github.com/jdeworks/agent-sandbox) | Isolated coding environments that keep your computer clean |
+| [think-tank](https://jdeworks.github.io/think-tank) | AI-guided project planner — turn your idea into a structured plan |
+
+You don't need to know about any of these to get started. The AI guide handles everything. But if you're curious or want to tinker, they're all here for you.
+
+### Why not Replit, Bolt, or v0?
+
+Those platforms are great for quick prototypes. But with this approach:
+
+- **You own everything.** Your code lives on your computer (or your GitHub). No platform lock-in. No "your project will be deleted if you don't upgrade."
+- **You learn real skills.** The tools you use here (Node.js, Git, VS Code, Docker) are the same ones used by professional developers. What you learn transfers everywhere.
+- **It's free.** No usage limits, no credit-based pricing, no surprise bills. Open source, forever.
+- **You have full control.** Swap any tool, customize anything, host anywhere. It's yours.
+
+## Want to Understand What's Going On?
+
+The quickstart gets you going fast without needing to understand the details. But if you're the kind of person who wants to know *why* — or you hit a concept that's unfamiliar — we have short explainers for everything:
+
+| Topic | What it covers |
+|-------|---------------|
+| [What is an LLM?](guides/concepts/what-is-an-llm.md) | How AI assistants work, what they're good (and bad) at |
+| [What is a website?](guides/concepts/what-is-a-website.md) | HTML, CSS, JavaScript — the building blocks |
+| [What is code?](guides/concepts/what-is-code.md) | What programming actually is, and why you don't need to master it |
+| [What is a server?](guides/concepts/what-is-a-server.md) | Servers, localhost, ports — demystified |
+| [What is hosting?](guides/concepts/what-is-hosting.md) | How your website gets from your computer to the internet |
+| [What is open source?](guides/concepts/what-is-open-source.md) | Why these tools are free, and what that means for you |
+| [What is an API?](guides/concepts/what-is-an-api.md) | APIs and API keys explained |
+| [What is a code editor?](guides/concepts/what-is-a-code-editor.md) | VS Code, Cursor, and where you write code |
+| [What is a package manager?](guides/concepts/what-is-a-package-manager.md) | npm, dependencies, and how projects are built |
+| [What is version control?](guides/concepts/what-is-version-control.md) | Git, commits, branches — your code's undo button |
+| [Reading error messages](guides/concepts/reading-error-messages.md) | Why errors are normal and how to make sense of them |
+| [File paths and folders](guides/concepts/what-are-file-paths.md) | Navigating your computer from the terminal |
+
+Each guide is written so you can read it in 2-3 minutes. No jargon without an explanation.
+
+---
+
+## License
+
+MIT — do whatever you want with it.
+</file>
+
+</files>
