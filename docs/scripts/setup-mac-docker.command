@@ -33,7 +33,7 @@ echo ""
 # These are Apple's developer tools. They include Git, which we need
 # to download project files from the internet. They come directly from
 # Apple and are completely safe.
-echo -e "${BOLD}[1/5] Checking for developer tools (includes Git)...${NC}"
+echo -e "${BOLD}[1/4] Checking for developer tools (includes Git)...${NC}"
 if xcode-select -p &>/dev/null; then
     echo -e "${GREEN}  Already installed.${NC}"
 else
@@ -53,7 +53,7 @@ echo ""
 # Docker creates isolated "containers" — like mini computers inside your
 # computer. Your AI coding tool will run inside one. This keeps everything
 # clean and separate from the rest of your system.
-echo -e "${BOLD}[2/5] Checking for Docker...${NC}"
+echo -e "${BOLD}[2/4] Checking for Docker...${NC}"
 if command -v docker &>/dev/null; then
     echo -e "${GREEN}  Docker $(docker --version | cut -d' ' -f3 | tr -d ',') is already installed.${NC}"
 else
@@ -97,25 +97,10 @@ fi
 echo -e "${GREEN}  Docker is running.${NC}"
 echo ""
 
-# --- Step 3: Create SSH key ---
-# An SSH key is like a digital ID card for your computer. It lets your
-# computer prove who it is to GitHub (where your code will be saved)
-# without typing a password every time.
-echo -e "${BOLD}[3/5] Setting up a secure key for GitHub...${NC}"
-if [ -f "$HOME/.ssh/id_ed25519" ]; then
-    echo -e "${GREEN}  SSH key already exists.${NC}"
-else
-    echo "  Creating a secure key..."
-    mkdir -p "$HOME/.ssh"
-    ssh-keygen -t ed25519 -f "$HOME/.ssh/id_ed25519" -N "" -q
-    echo -e "${GREEN}  Key created.${NC}"
-fi
-echo ""
-
-# --- Step 4: Create Projects folder and clone agent-sandbox ---
+# --- Step 3: Create Projects folder and clone agent-sandbox ---
 # agent-sandbox is the tool that sets up your AI coding environment
 # inside Docker. It comes with ready-made configurations.
-echo -e "${BOLD}[4/5] Setting up Projects folder...${NC}"
+echo -e "${BOLD}[3/4] Setting up Projects folder...${NC}"
 PROJECTS_DIR="$HOME/Projects"
 if [ -d "$PROJECTS_DIR" ]; then
     echo -e "${GREEN}  ~/Projects already exists.${NC}"
@@ -125,7 +110,7 @@ else
 fi
 
 SANDBOX_DIR="$PROJECTS_DIR/agent-sandbox"
-echo -e "${BOLD}[5/5] Downloading agent-sandbox...${NC}"
+echo -e "${BOLD}[4/4] Downloading agent-sandbox...${NC}"
 if [ -d "$SANDBOX_DIR" ]; then
     echo -e "${GREEN}  agent-sandbox already exists.${NC}"
 else
@@ -143,17 +128,7 @@ echo "Everything is installed! Go back to your AI chat and tell it:"
 echo ""
 echo -e "  ${BOLD}The setup is done. What do I do next?${NC}"
 echo ""
-echo -e "${YELLOW}────────────────────────────────────────${NC}"
-echo -e "${BOLD}Optional but recommended: Connect to GitHub${NC}"
-echo ""
-echo "GitHub saves your work online (free backup) and lets you publish"
-echo "your website for the world to see. You can skip this for now."
-echo ""
-echo "Your computer's key (you'll need this for GitHub):"
-echo -e "${GREEN}"
-cat "$HOME/.ssh/id_ed25519.pub"
-echo -e "${NC}"
-echo "Guide: https://jdeworks.github.io/get-me-started/github.html"
-echo -e "${YELLOW}────────────────────────────────────────${NC}"
+echo "Or start the sandbox directly:"
+echo "  cd ~/Projects && mkdir my-website && cd my-website && sandbox-me"
 echo ""
 read -p "Press Enter to close..."

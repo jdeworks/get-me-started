@@ -28,7 +28,9 @@
         <button class="os-btn" onclick="showExplain('win-safe')">Windows<br><small>Safe install</small></button>
         <button class="os-btn" onclick="showExplain('win-quick')">Windows<br><small>Quick install</small></button>
         <button class="os-btn" onclick="showExplain('mac')">Mac<br><small>Quick install</small></button>
+        <button class="os-btn" onclick="showExplain('mac-docker')">Mac<br><small>Safe install</small></button>
         <button class="os-btn" onclick="showExplain('linux')">Linux<br><small>Quick install</small></button>
+        <button class="os-btn" onclick="showExplain('linux-docker')">Linux<br><small>Safe install</small></button>
       </div>
     </section>
 
@@ -428,6 +430,159 @@ RED=<span class="str">'\033[0;31m'</span>  NC=<span class="str">'\033[0m'</span>
 <span class="cmd">echo</span> <span class="str">"  The setup is done. What do I do next?"</span>
 <span class="cmd">echo</span> <span class="str">"Or open OpenCode directly:"</span>
 <span class="cmd">echo</span> <span class="str">"  cd ~/Projects && mkdir my-website && cd my-website && opencode"</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== MAC DOCKER ===================== -->
+    <section id="explain-mac-docker" class="step explanation-section hidden">
+      <h2>setup-mac-docker.command — Safe install</h2>
+      <div class="code-viewer">
+        <div class="code-viewer-header">setup-mac-docker.command</div>
+        <div class="code-viewer-body">
+          <div class="cv-section">Header + setup (lines 1-16)</div>
+          <div class="cv-line" data-tip="#!/bin/bash tells your Mac to run this file using Bash. Lines starting with # are comments — notes for humans. These explain this is the safe install using Docker. 'set -e' stops the script if anything fails. The color code lines (BOLD, GREEN, etc.) are for visual styling only.">
+            <span class="cv-ln">1-16</span><span class="cv-code"><span class="cmt">#!/bin/bash
+# get-me-started: Mac SAFE setup (Docker + agent-sandbox)
+# Everything runs inside Docker — nothing gets installed on your system.</span>
+<span class="cmd">set -e</span>
+BOLD=<span class="str">'\033[1m'</span>  GREEN=<span class="str">'\033[0;32m'</span> ...</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Welcome message (lines 17-31)</div>
+          <div class="cv-line" data-tip="'echo' prints text on your screen. These lines show the title banner, explain this sets up an isolated environment, and warn that your password may be needed. Nothing is installed yet.">
+            <span class="cv-ln">17-31</span><span class="cv-code"><span class="cmd">echo</span> -e <span class="str">"  Get Me Started — Mac Safe Setup"</span>
+<span class="cmd">echo</span> <span class="str">"This will set up an isolated coding environment..."</span>
+<span class="cmd">echo</span> <span class="str">"Note: This script may ask for your password..."</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Step 1: Developer tools (lines 32-51)</div>
+          <div class="cv-line" data-tip="Checks if Apple's developer tools are already installed. These include Git, which is needed to download agent-sandbox later. If not installed, triggers Apple's own installer popup.">
+            <span class="cv-ln">37</span><span class="cv-code"><span class="kw">if</span> xcode-select -p &amp;&gt;/dev/null; <span class="kw">then</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="Triggers Apple's developer tools installer. A popup from Apple appears — completely safe. The script then waits (checking every 5 seconds) until the installation finishes.">
+            <span class="cv-ln">42-47</span><span class="cv-code">    <span class="cmd">xcode-select --install</span>
+    <span class="kw">until</span> xcode-select -p &amp;&gt;/dev/null; <span class="kw">do</span>
+        sleep 5
+    <span class="kw">done</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Step 2: Docker Desktop (lines 52-98)</div>
+          <div class="cv-line" data-tip="Checks if Docker is already installed. Docker creates isolated 'containers' where your AI tools run — nothing touches the rest of your system.">
+            <span class="cv-ln">57</span><span class="cv-code"><span class="kw">if</span> command -v docker &amp;&gt;/dev/null; <span class="kw">then</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="If Docker isn't installed, shows instructions and opens the Docker download page in your browser. You install Docker Desktop manually (drag to Applications), then come back to the script.">
+            <span class="cv-ln">62-73</span><span class="cv-code">    <span class="cmd">echo</span> <span class="str">"Please install Docker Desktop:"</span>
+    <span class="cmd">echo</span> <span class="str">"1. Go to https://www.docker.com/products/docker-desktop/"</span>
+    <span class="cmd">open</span> <span class="str">"https://www.docker.com/products/docker-desktop/"</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="Checks if Docker is running (installed but not started). If not, opens Docker Desktop and waits up to 2 minutes for it to start. The whale icon in your menu bar stops animating when Docker is ready.">
+            <span class="cv-ln">83-97</span><span class="cv-code"><span class="kw">if</span> ! docker info &amp;&gt;/dev/null 2&gt;&amp;1; <span class="kw">then</span>
+    <span class="cmd">open</span> -a <span class="str">"Docker"</span>
+    <span class="kw">for</span> i <span class="kw">in</span> $(seq 1 60); <span class="kw">do</span>
+        <span class="kw">if</span> docker info &amp;&gt;/dev/null; <span class="kw">then break; fi</span>
+        sleep 2
+    <span class="kw">done</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Step 3: Projects folder (lines 100-110)</div>
+          <div class="cv-line" data-tip="Creates ~/Projects — a regular folder where your website files will live. Skipped if it already exists.">
+            <span class="cv-ln">108</span><span class="cv-code">    <span class="cmd">mkdir -p</span> <span class="str">"$PROJECTS_DIR"</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Step 4: Download agent-sandbox (lines 112-120)</div>
+          <div class="cv-line" data-tip="Uses Git (installed in Step 1) to download agent-sandbox from GitHub. agent-sandbox sets up your AI coding environment inside Docker with ready-made templates. Skipped if already downloaded.">
+            <span class="cv-ln">117</span><span class="cv-code">    <span class="cmd">git clone</span> <span class="str">https://github.com/jdeworks/agent-sandbox.git</span> <span class="str">"$SANDBOX_DIR"</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Done (lines 122-134)</div>
+          <div class="cv-line" data-tip="Shows 'All done!' and tells you how to continue — go back to your AI chat or start the sandbox directly with the commands shown.">
+            <span class="cv-ln">122-134</span><span class="cv-code"><span class="cmd">echo</span> -e <span class="str">"  All done!"</span>
+<span class="cmd">echo</span> <span class="str">"Go back to your AI chat and tell it:"</span>
+<span class="cmd">echo</span> <span class="str">"  The setup is done. What do I do next?"</span>
+<span class="cmd">echo</span> <span class="str">"Or start the sandbox directly:"</span>
+<span class="cmd">echo</span> <span class="str">"  cd ~/Projects && mkdir my-website && cd my-website && sandbox-me"</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== LINUX DOCKER ===================== -->
+    <section id="explain-linux-docker" class="step explanation-section hidden">
+      <h2>setup-linux-docker.sh — Safe install</h2>
+      <div class="code-viewer">
+        <div class="code-viewer-header">setup-linux-docker.sh</div>
+        <div class="code-viewer-body">
+          <div class="cv-section">Header + setup (lines 1-15)</div>
+          <div class="cv-line" data-tip="#!/bin/bash tells Linux to run this with Bash. Comments explain this is the safe install. 'set -e' stops on errors. Color codes are for visual styling.">
+            <span class="cv-ln">1-15</span><span class="cv-code"><span class="cmt">#!/bin/bash
+# get-me-started: Linux SAFE setup (Docker + agent-sandbox)</span>
+<span class="cmd">set -e</span>
+BOLD=<span class="str">'\033[1m'</span> ...</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Welcome + detect package manager (lines 17-48)</div>
+          <div class="cv-line" data-tip="Shows the title and password warning. Then detects which package manager your Linux uses (apt for Ubuntu/Debian, dnf for Fedora, pacman for Arch). This determines how software gets installed.">
+            <span class="cv-ln">17-48</span><span class="cv-code"><span class="cmd">echo</span> <span class="str">"Get Me Started — Linux Safe Setup"</span>
+<span class="kw">if</span> command -v apt; <span class="kw">then</span> PKG=<span class="str">"apt"</span>
+<span class="kw">elif</span> command -v dnf; <span class="kw">then</span> PKG=<span class="str">"dnf"</span>
+<span class="kw">elif</span> command -v pacman; <span class="kw">then</span> PKG=<span class="str">"pacman"</span>
+<span class="kw">else</span> <span class="cmd">exit</span> 1 <span class="kw">fi</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Step 1: Install Git (lines 50-63)</div>
+          <div class="cv-line" data-tip="Checks if Git is installed. If not, installs it using your system's package manager. Git is needed to download agent-sandbox in Step 4. May ask for your password.">
+            <span class="cv-ln">55-63</span><span class="cv-code"><span class="kw">if</span> command -v git &amp;&gt;/dev/null; <span class="kw">then</span>
+    <span class="cmd">echo</span> <span class="str">"Git already installed"</span>
+<span class="kw">else</span>
+    $PKG_INSTALL git
+<span class="kw">fi</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Step 2: Install Docker (lines 65-98)</div>
+          <div class="cv-line" data-tip="Checks if Docker is installed. If not, downloads and runs Docker's official install script. Then adds your user to the 'docker' group so you can use Docker without typing 'sudo' every time. You may need to log out and back in for this to take effect.">
+            <span class="cv-ln">74-90</span><span class="cv-code"><span class="kw">if</span> command -v docker; <span class="kw">then</span>
+    <span class="cmd">echo</span> <span class="str">"Docker already installed"</span>
+<span class="kw">else</span>
+    <span class="cmd">curl -fsSL</span> <span class="str">https://get.docker.com</span> | $SUDO sh
+    $SUDO usermod -aG docker <span class="str">"$USER"</span>
+<span class="kw">fi</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Step 3: Projects folder (lines 100-110)</div>
+          <div class="cv-line" data-tip="Creates ~/Projects folder. Skipped if it already exists.">
+            <span class="cv-ln">107</span><span class="cv-code">    <span class="cmd">mkdir -p</span> <span class="str">"$PROJECTS_DIR"</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Step 4: Download agent-sandbox (lines 112-120)</div>
+          <div class="cv-line" data-tip="Uses Git to download agent-sandbox from GitHub. This tool sets up your AI coding environment inside Docker with ready-made templates. Skipped if already downloaded.">
+            <span class="cv-ln">119</span><span class="cv-code">    <span class="cmd">git clone</span> <span class="str">https://github.com/jdeworks/agent-sandbox.git</span> <span class="str">"$SANDBOX_DIR"</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Done (lines 122-134)</div>
+          <div class="cv-line" data-tip="Shows 'All done!' with instructions to continue — either go back to your AI chat or start the sandbox directly.">
+            <span class="cv-ln">122-134</span><span class="cv-code"><span class="cmd">echo</span> <span class="str">"All done!"</span>
+<span class="cmd">echo</span> <span class="str">"Go back to your AI chat..."</span>
+<span class="cmd">echo</span> <span class="str">"Or start the sandbox:"</span>
+<span class="cmd">echo</span> <span class="str">"  cd ~/Projects && mkdir my-website && cd my-website && sandbox-me"</span></span><span class="cv-hint-icon">?</span>
             <div class="cv-explain"></div>
           </div>
         </div>
