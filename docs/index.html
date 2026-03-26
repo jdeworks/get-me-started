@@ -110,69 +110,68 @@ I want to build a website but I've never coded before.">Copy to clipboard</butto
         <div id="win-safe" class="option-content">
           <p>This runs everything inside a <span class="term">protected space<span class="tip">A separate area on your computer where programs run without affecting anything else. Think of it like a guest room — the guest has everything they need, but they don't rearrange your furniture.</span></span> on your computer. Nothing touches the rest of your system, and you can delete the whole thing cleanly anytime.</p>
 
-          <p>You need two things:</p>
-
           <div class="download-box">
-            <a href="https://www.docker.com/products/docker-desktop/" target="_blank" class="download-btn">
-              1. Get Docker Desktop
+            <a href="scripts/setup-windows.ps1" download class="download-btn">
+              Download for Windows
             </a>
-            <span class="file-info">Free download from docker.com — install it first, then continue below</span>
-          </div>
-
-          <div class="download-box">
-            <a href="https://github.com/jdeworks/agent-sandbox/releases/latest/download/agent-sandbox.exe" download class="download-btn">
-              2. Download Agent Sandbox
-            </a>
-            <span class="file-info">agent-sandbox.exe — standalone app, no installation needed</span>
+            <span class="file-info">setup-windows.ps1 — installs Docker + downloads the AI coding app</span>
+            <a href="explained.html#win-safe" class="explain-link">What does this script do? Read it line by line &rarr;</a>
           </div>
 
           <div class="for-guided">
-            <h3>How to use it:</h3>
+            <h3>How to run it:</h3>
             <div class="visual-steps">
               <div class="visual-step">
                 <div class="step-number">1</div>
                 <div class="step-content">
-                  <p>Install Docker Desktop (from the first link above). You may need to <strong>restart your computer</strong> once after installing.</p>
+                  <p>Find the downloaded file (usually in your <strong>Downloads</strong> folder)</p>
+                  <div class="screenshot-box">
+                    <img src="img/windows-downloads.svg" alt="Windows Downloads folder showing the setup file" width="480">
+                  </div>
                 </div>
               </div>
               <div class="visual-step">
                 <div class="step-number">2</div>
                 <div class="step-content">
-                  <p><strong>Double-click</strong> agent-sandbox.exe. A setup wizard will open.</p>
+                  <p><strong>Right-click</strong> the file and choose <strong>"Run with PowerShell"</strong></p>
+                  <div class="screenshot-box">
+                    <img src="img/windows-rightclick.svg" alt="Right-click menu showing Run with PowerShell option" width="360">
+                  </div>
                 </div>
               </div>
               <div class="visual-step">
                 <div class="step-number">3</div>
                 <div class="step-content">
-                  <p>Pick a template (like <strong>"Static Website"</strong> or <strong>"Web Application"</strong>) and click through the wizard.</p>
+                  <p>If Windows asks <em>"Do you want to allow this app to make changes?"</em> — click <strong>Yes</strong>.</p>
+                  <p class="explanation">Why? The script needs permission to install Docker. This is the same popup you see when installing any app.</p>
                 </div>
               </div>
               <div class="visual-step">
                 <div class="step-number">4</div>
                 <div class="step-content">
-                  <p>When it asks for a project folder, create one (e.g., <code>C:\Projects\my-website</code>) and select it.</p>
+                  <p>Wait for it to finish. You may need to <strong>restart your computer</strong> once (Docker needs this). After restarting, run the script again — it picks up where it left off.</p>
                 </div>
               </div>
               <div class="visual-step">
                 <div class="step-number">5</div>
                 <div class="step-content">
-                  <p>The AI coding tool will open automatically inside the protected space. You're ready to build!</p>
+                  <p>When it says <strong>"All done!"</strong>, open <strong>agent-sandbox.exe</strong> from your Downloads folder. A visual wizard will guide you through picking a template and a project folder.</p>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="for-standard">
-            <h3>How to use it:</h3>
+            <h3>How to run it:</h3>
             <ol>
-              <li>Install Docker Desktop and restart if prompted</li>
-              <li>Double-click agent-sandbox.exe</li>
-              <li>Pick a template and a project folder</li>
-              <li>The AI coding tool opens automatically</li>
+              <li>Right-click the .ps1 file &rarr; <strong>Run with PowerShell</strong></li>
+              <li>Accept permission prompt, wait for Docker install</li>
+              <li>Restart if prompted, run script again</li>
+              <li>Open agent-sandbox.exe, pick a template and folder</li>
             </ol>
           </div>
 
-          <p class="for-express">Install Docker Desktop, run agent-sandbox.exe, pick a template and folder.</p>
+          <p class="for-express">Right-click .ps1 &rarr; Run with PowerShell. Installs Docker + downloads agent-sandbox.exe. Restart if needed, re-run. Open the .exe, pick template + folder.</p>
         </div>
 
         <div id="win-quick" class="option-content hidden">
