@@ -14,6 +14,26 @@
   </header>
 
   <main>
+    <!-- Experience level -->
+    <section class="step">
+      <h2>How much detail would you like?</h2>
+      <p>Pick what feels right. You can change this anytime.</p>
+      <div class="level-selector">
+        <button class="level-btn selected" data-level="guided" onclick="setLevel('guided')">
+          Step by step
+          <small>Explain everything along the way</small>
+        </button>
+        <button class="level-btn" data-level="standard" onclick="setLevel('standard')">
+          Just the essentials
+          <small>I'm comfortable with computers</small>
+        </button>
+        <button class="level-btn" data-level="express" onclick="setLevel('express')">
+          Quick setup
+          <small>I've done this kind of thing before</small>
+        </button>
+      </div>
+    </section>
+
     <!-- Step 1: Detect OS -->
     <section id="os-select" class="step">
       <h2>Step 1 — What computer are you using?</h2>
@@ -53,7 +73,7 @@
         </div>
 
         <div id="win-safe" class="option-content">
-          <p>This installs everything inside a <strong>protected space</strong> on your computer — like a bubble. Nothing touches the rest of your system, and you can delete the whole thing cleanly anytime.</p>
+          <p data-level="all">This installs everything inside a <span class="term">protected space<span class="tip">A separate area on your computer where programs run without affecting anything else. Think of it like a guest room — the guest has everything they need, but they don't rearrange your furniture. In tech, this is called a "container."</span></span> on your computer. Nothing touches the rest of your system, and you can delete the whole thing cleanly anytime.</p>
 
           <div class="download-box">
             <a href="scripts/setup-windows.ps1" download class="download-btn">
@@ -68,7 +88,7 @@
         </div>
 
         <div id="win-quick" class="option-content hidden">
-          <p>This installs the AI coding tool (<strong>OpenCode</strong>) and <strong>Node.js</strong> directly on your computer. Faster to set up, but the tools live on your system permanently (you can uninstall them anytime like any other app).</p>
+          <p>This installs the <span class="term">AI coding tool<span class="tip">A program called OpenCode that writes website code for you. You describe what you want in plain words, and it creates it. It's free and open source.</span></span> and <span class="term">Node.js<span class="tip">The engine that runs website code on your computer. Used by millions of developers worldwide (Netflix, Uber, NASA all use it). It's free.</span></span> directly on your computer. Faster to set up, but the tools live on your system permanently (you can uninstall them anytime like any other app).</p>
 
           <div class="download-box">
             <a href="scripts/setup-windows-direct.ps1" download class="download-btn">
@@ -119,7 +139,7 @@
 
       <!-- Mac instructions -->
       <div id="instructions-mac" class="instructions hidden">
-        <p>This script will install the tools you need: <strong>Node.js</strong> and <strong>OpenCode</strong> (your AI coding assistant). Takes about 5 minutes.</p>
+        <p>This installs <span class="term">Node.js<span class="tip">The engine that runs website code on your computer. It's free, used by millions of developers.</span></span> and <span class="term">OpenCode<span class="tip">A free AI coding assistant. You describe what you want in plain words, and it writes the code for you.</span></span> (your AI coding assistant). Takes about 5 minutes.</p>
 
         <div class="download-box">
           <a id="dl-mac" href="scripts/setup-mac.command" download class="download-btn">
@@ -177,7 +197,7 @@
 
       <!-- Linux instructions -->
       <div id="instructions-linux" class="instructions hidden">
-        <p>This script will install the tools you need: <strong>Node.js</strong> and <strong>OpenCode</strong> (your AI coding assistant). Takes about 5 minutes.</p>
+        <p>This installs <span class="term">Node.js<span class="tip">The engine that runs website code on your computer. It's free, used by millions of developers.</span></span> and <span class="term">OpenCode<span class="tip">A free AI coding assistant. You describe what you want in plain words, and it writes the code for you.</span></span> (your AI coding assistant). Takes about 5 minutes.</p>
 
         <div class="download-box">
           <a id="dl-linux" href="scripts/setup-linux.sh" download class="download-btn">
@@ -277,7 +297,7 @@
           <div class="journey-marker">&#x1F310;</div>
           <div class="journey-content">
             <strong>Put it online</strong>
-            <span>The AI walks you through publishing it for the world to see. Free options available.</span>
+            <span>The AI walks you through publishing. <span class="term">Simple sites<span class="tip">A "simple site" shows the same pages to everyone — like a brochure. Things like a shop homepage, portfolio, or blog. These can be hosted completely free on GitHub Pages. If your site needs a login system, payments, or a database, that's a "dynamic site" which needs a different (still affordable) hosting option — the AI will help you figure this out.</span></span> can be hosted for free on GitHub. More complex sites have affordable options too.</span>
           </div>
         </div>
       </div>

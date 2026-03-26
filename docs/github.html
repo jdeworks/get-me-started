@@ -22,7 +22,7 @@
         <strong>This step is optional.</strong> You can start building your website without GitHub. But we recommend setting it up because:
         <ul style="margin: 0.5rem 0 0 1.25rem;">
           <li><strong>Free backup</strong> — your work is saved online, even if something happens to your computer</li>
-          <li><strong>Free hosting</strong> — you can publish your website for the world to see at yourname.github.io</li>
+          <li><strong>Free hosting</strong> — you can publish <span class="term">simple websites<span class="tip">A website that shows the same pages to everyone — like a digital brochure for your shop, a portfolio, or a blog. These work great on GitHub Pages (free). If you later need features like user accounts, payments, or a database, the AI will help you find affordable hosting for that.</span></span> for the world to see at yourname.github.io</li>
           <li><strong>Easy sharing</strong> — send anyone a link to see your code or your site</li>
         </ul>
       </div>
@@ -186,8 +186,8 @@
       document.getElementById(id).classList.remove('hidden');
     }
 
-    // Copy button handlers
     document.addEventListener('DOMContentLoaded', () => {
+      // Copy buttons
       document.querySelectorAll('.copy-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           navigator.clipboard.writeText(btn.dataset.copy).then(() => {
@@ -196,6 +196,17 @@
             setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
           });
         });
+      });
+      // Term tooltips
+      document.querySelectorAll('.term').forEach(term => {
+        term.addEventListener('click', (e) => {
+          document.querySelectorAll('.term.open').forEach(t => { if (t !== term) t.classList.remove('open'); });
+          term.classList.toggle('open');
+          e.stopPropagation();
+        });
+      });
+      document.addEventListener('click', () => {
+        document.querySelectorAll('.term.open').forEach(t => t.classList.remove('open'));
       });
     });
   </script>

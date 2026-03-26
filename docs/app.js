@@ -70,4 +70,50 @@ function showWinOption(id) {
 // Expose globally for inline onclick
 window.showWinOption = showWinOption;
 
-document.addEventListener('DOMContentLoaded', init);
+// Term tooltips — click to toggle on mobile, hover works on desktop
+function initTerms() {
+  document.querySelectorAll('.term').forEach(term => {
+    term.addEventListener('click', (e) => {
+      // Close all others first
+      document.querySelectorAll('.term.open').forEach(t => {
+        if (t !== term) t.classList.remove('open');
+      });
+      term.classList.toggle('open');
+      e.stopPropagation();
+    });
+  });
+  // Close tooltips when clicking elsewhere
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.term.open').forEach(t => t.classList.remove('open'));
+  });
+}
+
+// Experience level selector
+function setLevel(level) {
+  document.body.className = document.body.className
+    .replace(/level-\w+/g, '')
+    .trim();
+  if (level !== 'guided') {
+    document.body.classList.add('level-' + level);
+  }
+  document.querySelectorAll('.level-btn').forEach(btn => {
+    btn.classList.toggle('selected', btn.dataset.level === level);
+  });
+  // Save preference
+  try { localStorage.setItem('gms-level', level); } catch(e) {}
+}
+window.setLevel = setLevel;
+
+function initLevel() {
+  try {
+    var saved = localStorage.getItem('gms-level');
+    if (saved) { setLevel(saved); return; }
+  } catch(e) {}
+  setLevel('guided');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  init();
+  initTerms();
+  initLevel();
+});

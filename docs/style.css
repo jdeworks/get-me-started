@@ -422,6 +422,97 @@ footer a:hover {
   text-decoration: underline;
 }
 
+/* === Inline term tooltips === */
+.term {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: #999;
+  text-underline-offset: 3px;
+  cursor: help;
+  position: relative;
+}
+
+.term .tip {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.2s ease;
+  opacity: 0;
+  background: #f0f4ff;
+  border-left: 3px solid #4361ee;
+  border-radius: 0 6px 6px 0;
+  padding: 0 0.75rem;
+  margin-top: 0;
+  font-size: 0.88rem;
+  color: #444;
+  font-style: normal;
+  line-height: 1.5;
+}
+
+.term:hover .tip,
+.term.open .tip {
+  max-height: 120px;
+  padding: 0.5rem 0.75rem;
+  margin-top: 0.35rem;
+  opacity: 1;
+}
+
+/* === Experience level selector === */
+.level-selector {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.level-btn {
+  flex: 1;
+  min-width: 150px;
+  padding: 0.75rem 0.5rem;
+  font-size: 0.95rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s ease;
+}
+
+.level-btn:hover {
+  border-color: #4361ee;
+  background: #f8faff;
+}
+
+.level-btn.selected {
+  border-color: #4361ee;
+  background: #e8edff;
+}
+
+.level-btn small {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.level-btn.selected small {
+  color: #4361ee;
+}
+
+/* Content visibility for experience levels */
+[data-level="guided"] { display: block; }
+[data-level="standard"] { display: none; }
+[data-level="express"] { display: none; }
+
+body.level-standard [data-level="guided"] { display: none; }
+body.level-standard [data-level="standard"] { display: block; }
+
+body.level-express [data-level="guided"] { display: none; }
+body.level-express [data-level="express"] { display: block; }
+
+/* Shared content visible in all modes */
+[data-level="all"] { display: block; }
+
 /* === Utility === */
 .hidden {
   display: none !important;
