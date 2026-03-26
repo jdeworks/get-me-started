@@ -1,7 +1,7 @@
 #!/bin/bash
 # get-me-started: Linux setup helper (Quick install)
 # This script installs Node.js and OpenCode so you can build websites with AI.
-# It's safe to run — it only installs free, open-source tools.
+# It's safe to run. It only installs free, open-source tools.
 #
 # You can open this file in any text editor to read exactly what it
 # does before running it. Every step is commented.
@@ -16,16 +16,16 @@ NC='\033[0m' # No Color
 
 echo ""
 echo -e "${BOLD}========================================${NC}"
-echo -e "${BOLD}  Get Me Started — Linux Setup${NC}"
+echo -e "${BOLD}  Get Me Started - Linux Setup${NC}"
 echo -e "${BOLD}========================================${NC}"
 echo ""
 echo "This will install the tools you need to build websites with AI."
 echo "It should take about 5 minutes."
 echo ""
 echo -e "${YELLOW}Note: This script may ask for your password at some points.${NC}"
-echo "This is your computer's login password — it's needed to install"
+echo "This is your computer's login password. It's needed to install"
 echo "programs, just like when you install any app. You won't see the"
-echo "characters as you type — that's a security feature, not a bug."
+echo "characters as you type. That's a security feature, not a bug."
 echo ""
 
 # --- Detect package manager ---
@@ -80,7 +80,7 @@ if [ -d "$HOME/Projects" ]; then
     echo -e "${GREEN}  ~/Projects already exists.${NC}"
 else
     mkdir -p "$HOME/Projects"
-    echo -e "${GREEN}  Created ~/Projects — this is where your websites will live.${NC}"
+    echo -e "${GREEN}  Created ~/Projects. This is where your websites will live.${NC}"
 fi
 echo ""
 

@@ -1,6 +1,6 @@
 # get-me-started: Windows direct setup helper (Quick install)
 # This script installs Node.js and OpenCode directly on your computer.
-# It's the quick path — faster to set up, tools live on your system.
+# It's the quick path. Faster to set up, tools live on your system.
 #
 # You can open this file in any text editor (like Notepad) to read
 # exactly what it does before running it. Every step is commented.
@@ -19,7 +19,7 @@ Write-Host "This will install Node.js and OpenCode on your computer."
 Write-Host "It should take about 5 minutes."
 Write-Host ""
 Write-Host "Note: Windows may ask 'Do you want to allow this app to make changes?'" -ForegroundColor Yellow
-Write-Host "Click 'Yes' — this is how Windows asks for your permission to install"
+Write-Host "Click 'Yes'. This is how Windows asks for your permission to install"
 Write-Host "programs. It's the same popup you see when installing any app."
 Write-Host ""
 

@@ -3,27 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Set up GitHub — Get Me Started</title>
+  <title>Set up GitHub - Get Me Started</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode" id="theme-btn">&#x1F319;</button>
   <header>
     <p><a href="index.html">&larr; Back to setup</a></p>
     <h1>Set up GitHub</h1>
-    <p class="subtitle">Save your work and put your website online — for free</p>
+    <p class="subtitle">Save your work and put your website online, for free</p>
   </header>
 
   <main>
     <section class="step">
-      <p><strong>What is GitHub?</strong> It's a free website where your project files are stored safely online. It's like a backup that also lets you publish your website for the world to see. Millions of people use it — it's the standard.</p>
+      <p><strong>What is GitHub?</strong> It's a free website where your project files are stored safely online. It's like a backup that also lets you publish your website for the world to see. Millions of people use it. It's the standard.</p>
 
       <div class="info-note">
         <strong>This step is optional.</strong> You can start building your website without GitHub. But we recommend setting it up because:
         <ul style="margin: 0.5rem 0 0 1.25rem;">
-          <li><strong>Free backup</strong> — your work is saved online, even if something happens to your computer</li>
-          <li><strong>Free hosting</strong> — you can publish <span class="term">simple websites<span class="tip">A website that shows the same pages to everyone — like a digital brochure for your shop, a portfolio, or a blog. These work great on GitHub Pages (free). If you later need features like user accounts, payments, or a database, the AI will help you find affordable hosting for that.</span></span> for the world to see at yourname.github.io</li>
-          <li><strong>Easy sharing</strong> — send anyone a link to see your code or your site</li>
+          <li><strong>Free backup:</strong> your work is saved online, even if something happens to your computer</li>
+          <li><strong>Free hosting:</strong> you can publish <span class="term">simple websites<span class="tip">A website that shows the same pages to everyone, like a digital brochure for your shop, a portfolio, or a blog. These work great on GitHub Pages (free). If you later need features like user accounts, payments, or a database, the AI will help you find affordable hosting for that.</span></span> for the world to see at yourname.github.io</li>
+          <li><strong>Easy sharing:</strong> send anyone a link to see your code or your site</li>
         </ul>
       </div>
 
@@ -32,7 +33,7 @@
 
     <!-- Step 1: Create account -->
     <section class="step">
-      <h2>Step 1 — Create a free account</h2>
+      <h2>Step 1: Create a free account</h2>
       <div class="visual-steps">
         <div class="visual-step">
           <div class="step-number">1</div>
@@ -73,20 +74,16 @@
           </div>
         </div>
       </div>
-      <p>That's it — you have a GitHub account!</p>
+      <p>That's it, you have a GitHub account!</p>
     </section>
 
-    <!-- Step 2: Add your SSH key -->
+    <!-- Step 2: Create your key and connect -->
     <section class="step">
-      <h2>Step 2 — Connect your computer to GitHub</h2>
+      <h2>Step 2: Connect your computer to GitHub</h2>
 
-      <p>When the setup script ran, it created a special "key" on your computer. This key lets your computer talk to GitHub securely — like a digital ID card. Now we need to tell GitHub about it.</p>
+      <p>We need to create a secure "key" on your computer. Think of it like a digital ID card that lets your computer prove who it is to GitHub, without typing a password every time.</p>
 
-      <div class="info-note">
-        <strong>Your key should have been printed at the end of the setup script.</strong> It looks like a long line starting with <code>ssh-ed25519</code> followed by random letters and numbers. If you closed that window, don't worry — follow the instructions below to find it again.
-      </div>
-
-      <h3>Find your key</h3>
+      <p>Pick your computer type, then run the command shown. It installs Git (if needed) and creates your key in one go:</p>
 
       <div class="os-buttons" style="margin-bottom: 1rem;">
         <button class="os-btn" onclick="showKeyHelp('key-win')">Windows</button>
@@ -95,30 +92,45 @@
       </div>
 
       <div id="key-win" class="key-help hidden">
-        <p>Open PowerShell (press the Windows key, type "PowerShell", click it) and paste this:</p>
+        <p><strong>Step A:</strong> Open PowerShell (press the Windows key, type "PowerShell", click it) and paste this to install Git and create your key:</p>
+        <div class="code-block">
+          <code>winget install --id Git.Git --accept-source-agreements --accept-package-agreements; ssh-keygen -t ed25519 -N '""' -f "$env:USERPROFILE\.ssh\id_ed25519" -q</code>
+          <button class="copy-btn" data-copy="winget install --id Git.Git --accept-source-agreements --accept-package-agreements; ssh-keygen -t ed25519 -N '&quot;&quot;' -f &quot;$env:USERPROFILE\.ssh\id_ed25519&quot; -q">Copy</button>
+        </div>
+        <p class="explanation">This installs Git (a tool for saving and sharing your code) and creates a secure key. If Git is already installed, it skips that part. The key is saved in a hidden folder on your computer.</p>
+
+        <p><strong>Step B:</strong> Now copy your key by pasting this:</p>
         <div class="code-block">
           <code>type $env:USERPROFILE\.ssh\id_ed25519.pub</code>
           <button class="copy-btn" data-copy="type $env:USERPROFILE\.ssh\id_ed25519.pub">Copy</button>
         </div>
-        <p>Select the entire output (starting with <code>ssh-ed25519</code>) and copy it.</p>
+        <p>Select the entire output (starts with <code>ssh-ed25519</code>) and copy it.</p>
       </div>
 
       <div id="key-mac" class="key-help hidden">
-        <p>Open Terminal and paste this:</p>
+        <p><strong>Step A:</strong> Open Terminal (press Cmd+Space, type "Terminal", press Enter) and paste this:</p>
         <div class="code-block">
-          <code>cat ~/.ssh/id_ed25519.pub | pbcopy</code>
-          <button class="copy-btn" data-copy="cat ~/.ssh/id_ed25519.pub | pbcopy">Copy</button>
+          <code>ssh-keygen -t ed25519 -N "" -f ~/.ssh/id_ed25519 -q; cat ~/.ssh/id_ed25519.pub | pbcopy</code>
+          <button class="copy-btn" data-copy='ssh-keygen -t ed25519 -N "" -f ~/.ssh/id_ed25519 -q; cat ~/.ssh/id_ed25519.pub | pbcopy'>Copy</button>
         </div>
-        <p>This copies the key to your clipboard automatically. You can just paste it in the next step.</p>
+        <p class="explanation">This creates a secure key and copies it to your clipboard automatically. Git is already included with your Mac's developer tools. If you already have a key, this won't overwrite it.</p>
+        <p>Your key is now on your clipboard. Just paste it in the next step.</p>
       </div>
 
       <div id="key-linux" class="key-help hidden">
-        <p>Open a terminal and paste this:</p>
+        <p><strong>Step A:</strong> Open a terminal (Ctrl+Alt+T) and paste this to install Git and create your key:</p>
+        <div class="code-block">
+          <code>sudo apt install -y git 2>/dev/null || sudo dnf install -y git 2>/dev/null; ssh-keygen -t ed25519 -N "" -f ~/.ssh/id_ed25519 -q</code>
+          <button class="copy-btn" data-copy='sudo apt install -y git 2>/dev/null || sudo dnf install -y git 2>/dev/null; ssh-keygen -t ed25519 -N "" -f ~/.ssh/id_ed25519 -q'>Copy</button>
+        </div>
+        <p class="explanation">This installs Git (if needed) and creates a secure key. May ask for your password.</p>
+
+        <p><strong>Step B:</strong> Copy your key:</p>
         <div class="code-block">
           <code>cat ~/.ssh/id_ed25519.pub</code>
           <button class="copy-btn" data-copy="cat ~/.ssh/id_ed25519.pub">Copy</button>
         </div>
-        <p>Select the entire output (starting with <code>ssh-ed25519</code>) and copy it.</p>
+        <p>Select the entire output (starts with <code>ssh-ed25519</code>) and copy it.</p>
       </div>
 
       <h3>Add it to GitHub</h3>
@@ -157,7 +169,7 @@
         <div class="visual-step">
           <div class="step-number">5</div>
           <div class="step-content">
-            <p>GitHub may ask you to confirm your password — enter it and confirm.</p>
+            <p>GitHub may ask you to confirm your password. Enter it and confirm.</p>
           </div>
         </div>
       </div>
@@ -177,10 +189,20 @@
   </main>
 
   <footer>
-    <p>Part of the <a href="https://github.com/jdeworks/get-me-started">get-me-started</a> project — free, open source, yours to keep.</p>
+    <p>Part of the <a href="https://github.com/jdeworks/get-me-started">get-me-started</a> project. Free, open source, yours to keep.</p>
   </footer>
 
   <script>
+    // Theme toggle
+    function toggleTheme() {
+      var b = document.body;
+      if (b.classList.contains('dark')) { b.classList.remove('dark'); b.classList.add('light'); localStorage.setItem('gms-theme','light'); }
+      else if (b.classList.contains('light')) { b.classList.remove('light'); b.classList.add('dark'); localStorage.setItem('gms-theme','dark'); }
+      else { var d = matchMedia('(prefers-color-scheme:dark)').matches; b.classList.add(d?'light':'dark'); localStorage.setItem('gms-theme',d?'light':'dark'); }
+      var btn = document.getElementById('theme-btn'); if(btn) btn.textContent = (b.classList.contains('dark')||(!b.classList.contains('light')&&matchMedia('(prefers-color-scheme:dark)').matches))?'\u2600':'\uD83C\uDF19';
+    }
+    (function(){try{var t=localStorage.getItem('gms-theme');if(t)document.body.classList.add(t);}catch(e){}var btn=document.getElementById('theme-btn');if(btn){var d=document.body.classList.contains('dark')||(!document.body.classList.contains('light')&&matchMedia('(prefers-color-scheme:dark)').matches);btn.textContent=d?'\u2600':'\uD83C\uDF19';}})();
+
     function showKeyHelp(id) {
       document.querySelectorAll('.key-help').forEach(el => el.classList.add('hidden'));
       document.getElementById(id).classList.remove('hidden');

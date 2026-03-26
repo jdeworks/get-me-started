@@ -9,10 +9,10 @@
   <circle cx="38" cy="14" r="6" fill="#ffbd2e"/>
   <circle cx="56" cy="14" r="6" fill="#28c840"/>
   <!-- Title -->
-  <text x="280" y="18" text-anchor="middle" font-family="-apple-system, SF Pro, Helvetica, sans-serif" font-size="12" fill="#aaa">setup-mac.command — 80x24</text>
+  <text x="280" y="18" text-anchor="middle" font-family="-apple-system, SF Pro, Helvetica, sans-serif" font-size="12" fill="#aaa">setup-mac.command - 80x24</text>
   <!-- Terminal content -->
   <text x="16" y="52" font-family="SF Mono, Menlo, monospace" font-size="12.5" fill="#ddd">========================================</text>
-  <text x="16" y="70" font-family="SF Mono, Menlo, monospace" font-size="12.5" fill="#ddd">  Get Me Started — Mac Setup</text>
+  <text x="16" y="70" font-family="SF Mono, Menlo, monospace" font-size="12.5" fill="#ddd">  Get Me Started - Mac Setup</text>
   <text x="16" y="88" font-family="SF Mono, Menlo, monospace" font-size="12.5" fill="#ddd">========================================</text>
   <text x="16" y="114" font-family="SF Mono, Menlo, monospace" font-size="12.5" fill="#999">[1/4] Checking for developer tools...</text>
   <text x="16" y="132" font-family="SF Mono, Menlo, monospace" font-size="12.5" fill="#28c840">  Already installed.</text>

@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Get Me Started — Set Up Your Website Builder</title>
+  <title>Get Me Started - Set Up Your Website Builder</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode" id="theme-btn">&#x1F319;</button>
   <header>
     <h1>Get Me Started</h1>
     <p class="subtitle">Set up your AI website builder in a few clicks</p>
@@ -29,12 +30,12 @@ IMPORTANT RULES:
 - After each step, ask "Any questions, or shall we continue?"
 
 THE FLOW (reveal one step at a time):
-1. First, ask what I want my website to do — in my own words.
+1. First, ask what I want my website to do, in my own words.
 2. After I describe it, send me to https://jdeworks.github.io/get-me-started/ to set up the tools.
 3. After setup is done, tell me how to start OpenCode and paste this into it:
    "I want to build a website. Read https://raw.githubusercontent.com/jdeworks/make-a-website/dev/AGENTS.md and guide me through it."
 
-Start now — ask me what I want to build.
+Start now. Ask me what I want to build.
 
 For full guide: https://raw.githubusercontent.com/jdeworks/get-me-started/dev/prompts/AI-GUIDE.md</pre>
         <button class="copy-btn prompt-copy" data-copy="You are a friendly, patient guide helping me build my first website. I've never coded before. Be warm, encouraging, and explain things simply. Always invite me to ask questions if anything is unclear.
@@ -46,18 +47,18 @@ IMPORTANT RULES:
 - After each step, ask &quot;Any questions, or shall we continue?&quot;
 
 THE FLOW (reveal one step at a time):
-1. First, ask what I want my website to do — in my own words.
+1. First, ask what I want my website to do, in my own words.
 2. After I describe it, send me to https://jdeworks.github.io/get-me-started/ to set up the tools.
 3. After setup is done, tell me how to start OpenCode and paste this into it:
    &quot;I want to build a website. Read https://raw.githubusercontent.com/jdeworks/make-a-website/dev/AGENTS.md and guide me through it.&quot;
 
-Start now — ask me what I want to build.
+Start now. Ask me what I want to build.
 
 For full guide: https://raw.githubusercontent.com/jdeworks/get-me-started/dev/prompts/AI-GUIDE.md">Copy to clipboard
       </div>
 
       <div class="prompt-buttons">
-        <a href="https://chatgpt.com/?q=You%20are%20a%20friendly%2C%20patient%20guide%20helping%20me%20build%20my%20first%20website.%20I%27ve%20never%20coded%20before.%20Be%20warm%2C%20encouraging%2C%20and%20explain%20things%20simply.%20Always%20invite%20me%20to%20ask%20questions%20if%20anything%20is%20unclear.%0A%0AIMPORTANT%20RULES%3A%0A-%20Keep%20each%20reply%20short%3A%202-4%20sentences%20%2B%20one%20question.%20No%20bullet%20lists%20or%20numbered%20steps.%0A-%20I%20won%27t%20write%20any%20code.%20A%20free%20AI%20tool%20called%20OpenCode%20does%20that%20for%20me.%0A-%20Your%20job%3A%20help%20me%20set%20it%20up%20step%20by%20step%2C%20then%20hand%20off%20to%20OpenCode.%0A-%20After%20each%20step%2C%20ask%20%22Any%20questions%2C%20or%20shall%20we%20continue%3F%22%0A%0ATHE%20FLOW%20%28reveal%20one%20step%20at%20a%20time%29%3A%0A1.%20First%2C%20ask%20what%20I%20want%20my%20website%20to%20do%20%E2%80%94%20in%20my%20own%20words.%0A2.%20After%20I%20describe%20it%2C%20send%20me%20to%20https%3A//jdeworks.github.io/get-me-started/%20to%20set%20up%20the%20tools.%0A3.%20After%20setup%20is%20done%2C%20tell%20me%20how%20to%20start%20OpenCode%20and%20paste%20this%20into%20it%3A%0A%20%20%20%22I%20want%20to%20build%20a%20website.%20Read%20https%3A//raw.githubusercontent.com/jdeworks/make-a-website/dev/AGENTS.md%20and%20guide%20me%20through%20it.%22%0A%0AStart%20now%20%E2%80%94%20ask%20me%20what%20I%20want%20to%20build.%0A%0AFor%20full%20guide%3A%20https%3A//raw.githubusercontent.com/jdeworks/get-me-started/dev/prompts/AI-GUIDE.md" target="_blank" class="open-in-btn chatgpt">
+        <a href="https://chatgpt.com/?q=You%20are%20a%20friendly%2C%20patient%20guide%20helping%20me%20build%20my%20first%20website.%20I%27ve%20never%20coded%20before.%20Be%20warm%2C%20encouraging%2C%20and%20explain%20things%20simply.%20Always%20invite%20me%20to%20ask%20questions%20if%20anything%20is%20unclear.%0A%0AIMPORTANT%20RULES%3A%0A-%20Keep%20each%20reply%20short%3A%202-4%20sentences%20%2B%20one%20question.%20No%20bullet%20lists%20or%20numbered%20steps.%0A-%20I%20won%27t%20write%20any%20code.%20A%20free%20AI%20tool%20called%20OpenCode%20does%20that%20for%20me.%0A-%20Your%20job%3A%20help%20me%20set%20it%20up%20step%20by%20step%2C%20then%20hand%20off%20to%20OpenCode.%0A-%20After%20each%20step%2C%20ask%20%22Any%20questions%2C%20or%20shall%20we%20continue%3F%22%0A%0ATHE%20FLOW%20%28reveal%20one%20step%20at%20a%20time%29%3A%0A1.%20First%2C%20ask%20what%20I%20want%20my%20website%20to%20do%2C%20in%20my%20own%20words.%0A2.%20After%20I%20describe%20it%2C%20send%20me%20to%20https%3A//jdeworks.github.io/get-me-started/%20to%20set%20up%20the%20tools.%0A3.%20After%20setup%20is%20done%2C%20tell%20me%20how%20to%20start%20OpenCode%20and%20paste%20this%20into%20it%3A%0A%20%20%20%22I%20want%20to%20build%20a%20website.%20Read%20https%3A//raw.githubusercontent.com/jdeworks/make-a-website/dev/AGENTS.md%20and%20guide%20me%20through%20it.%22%0A%0AStart%20now.%20Ask%20me%20what%20I%20want%20to%20build.%0A%0AFor%20full%20guide%3A%20https%3A//raw.githubusercontent.com/jdeworks/get-me-started/dev/prompts/AI-GUIDE.md" target="_blank" class="open-in-btn chatgpt">
           Open in ChatGPT
         </a>
         <a href="https://claude.ai/new" target="_blank" class="open-in-btn claude">
@@ -97,7 +98,7 @@ For full guide: https://raw.githubusercontent.com/jdeworks/get-me-started/dev/pr
 
     <!-- Step 1: Detect OS -->
     <section id="os-select" class="step">
-      <h2>Step 1 — What computer are you using?</h2>
+      <h2>Step 1: What computer are you using?</h2>
       <p>We detected: <strong id="os-detected">checking...</strong></p>
       <div class="os-buttons">
         <button class="os-btn" data-os="windows" id="btn-windows">
@@ -117,7 +118,7 @@ For full guide: https://raw.githubusercontent.com/jdeworks/get-me-started/dev/pr
 
     <!-- Step 2: Download script (shown after OS chosen) -->
     <section id="download-section" class="step hidden">
-      <h2>Step 2 — Download the setup helper</h2>
+      <h2>Step 2: Download the setup helper</h2>
 
       <div class="safety-callout for-guided">
         Not sure what the script does? That's okay. <a href="explained.html">See exactly what it does and why &rarr;</a><br>
@@ -134,13 +135,13 @@ For full guide: https://raw.githubusercontent.com/jdeworks/get-me-started/dev/pr
         </div>
 
         <div id="win-safe" class="option-content">
-          <p>This runs everything inside a <span class="term">protected space<span class="tip">A separate area on your computer where programs run without affecting anything else. Think of it like a guest room — the guest has everything they need, but they don't rearrange your furniture.</span></span> on your computer. Nothing touches the rest of your system, and you can delete the whole thing cleanly anytime.</p>
+          <p>This runs everything inside a <span class="term">protected space<span class="tip">A separate area on your computer where programs run without affecting anything else. Think of it like a guest room. The guest has everything they need, but they don't rearrange your furniture.</span></span> on your computer. Nothing touches the rest of your system, and you can delete the whole thing cleanly anytime.</p>
 
           <div class="download-box">
             <a href="scripts/setup-windows.ps1" download class="download-btn">
               Download for Windows
             </a>
-            <span class="file-info">setup-windows.ps1 — installs Docker + downloads the AI coding app</span>
+            <span class="file-info">setup-windows.ps1, installs Docker + downloads the AI coding app</span>
             <a href="explained.html#win-safe" class="explain-link">What does this script do? Read it line by line &rarr;</a>
           </div>
 
@@ -168,14 +169,14 @@ For full guide: https://raw.githubusercontent.com/jdeworks/get-me-started/dev/pr
               <div class="visual-step">
                 <div class="step-number">3</div>
                 <div class="step-content">
-                  <p>If Windows asks <em>"Do you want to allow this app to make changes?"</em> — click <strong>Yes</strong>.</p>
+                  <p>If Windows asks <em>"Do you want to allow this app to make changes?"</em>, click <strong>Yes</strong>.</p>
                   <p class="explanation">Why? The script needs permission to install Docker. This is the same popup you see when installing any app.</p>
                 </div>
               </div>
               <div class="visual-step">
                 <div class="step-number">4</div>
                 <div class="step-content">
-                  <p>Wait for it to finish. You may need to <strong>restart your computer</strong> once (Docker needs this). After restarting, run the script again — it picks up where it left off.</p>
+                  <p>Wait for it to finish. You may need to <strong>restart your computer</strong> once (Docker needs this). After restarting, run the script again. It picks up where it left off.</p>
                 </div>
               </div>
               <div class="visual-step">
@@ -207,7 +208,7 @@ For full guide: https://raw.githubusercontent.com/jdeworks/get-me-started/dev/pr
             <a href="scripts/setup-windows-direct.ps1" download class="download-btn">
               Download for Windows
             </a>
-            <span class="file-info">setup-windows-direct.ps1 — about 3 KB</span>
+            <span class="file-info">setup-windows-direct.ps1, about 3 KB</span>
             <a href="explained.html#win-quick" class="explain-link">What does this script do? Read it line by line &rarr;</a>
           </div>
 
@@ -235,7 +236,7 @@ For full guide: https://raw.githubusercontent.com/jdeworks/get-me-started/dev/pr
               <div class="visual-step">
                 <div class="step-number">3</div>
                 <div class="step-content">
-                  <p>If Windows asks <em>"Do you want to allow this app to make changes?"</em> — click <strong>Yes</strong>.</p>
+                  <p>If Windows asks <em>"Do you want to allow this app to make changes?"</em>, click <strong>Yes</strong>.</p>
                   <p class="explanation">Why? The script needs permission to install programs. Same popup as installing any app.</p>
                 </div>
               </div>
@@ -281,7 +282,7 @@ For full guide: https://raw.githubusercontent.com/jdeworks/get-me-started/dev/pr
             <a href="scripts/setup-mac.command" download class="download-btn">
               Download for Mac
             </a>
-            <span class="file-info">setup-mac.command — about 3 KB</span>
+            <span class="file-info">setup-mac.command, about 3 KB</span>
             <a href="explained.html#mac" class="explain-link">What does this script do? Read it line by line &rarr;</a>
           </div>
 
@@ -309,7 +310,7 @@ For full guide: https://raw.githubusercontent.com/jdeworks/get-me-started/dev/pr
               <div class="visual-step">
                 <div class="step-number">4</div>
                 <div class="step-content">
-                  <p>Enter your <strong>password</strong> if asked. You won't see characters as you type — that's normal.</p>
+                  <p>Enter your <strong>password</strong> if asked. You won't see characters as you type. That's normal.</p>
                 </div>
               </div>
               <div class="visual-step">
@@ -323,18 +324,18 @@ For full guide: https://raw.githubusercontent.com/jdeworks/get-me-started/dev/pr
         </div>
 
         <div id="mac-safe" class="option-content hidden">
-          <p>This installs everything inside a <span class="term">protected space<span class="tip">A separate area on your computer where programs run without affecting anything else. Think of it like a guest room — the guest has everything they need, but they don't rearrange your furniture.</span></span> using Docker. Nothing touches the rest of your system. Takes about 15-20 minutes.</p>
+          <p>This installs everything inside a <span class="term">protected space<span class="tip">A separate area on your computer where programs run without affecting anything else. Think of it like a guest room. The guest has everything they need, but they don't rearrange your furniture.</span></span> using Docker. Nothing touches the rest of your system. Takes about 15-20 minutes.</p>
 
           <div class="download-box">
             <a href="scripts/setup-mac-docker.command" download class="download-btn">
               Download for Mac
             </a>
-            <span class="file-info">setup-mac-docker.command — about 4 KB</span>
+            <span class="file-info">setup-mac-docker.command, about 4 KB</span>
             <a href="explained.html#mac-docker" class="explain-link">What does this script do? Read it line by line &rarr;</a>
           </div>
 
           <div class="info-note">
-            <strong>Note:</strong> You'll need to install Docker Desktop manually — the script will open the download page and guide you through it.
+            <strong>Note:</strong> You'll need to install Docker Desktop manually. The script will open the download page and guide you through it.
           </div>
 
           <div class="for-guided">
@@ -389,7 +390,7 @@ For full guide: https://raw.githubusercontent.com/jdeworks/get-me-started/dev/pr
             <a href="scripts/setup-linux.sh" download class="download-btn">
               Download for Linux
             </a>
-            <span class="file-info">setup-linux.sh — about 3 KB</span>
+            <span class="file-info">setup-linux.sh, about 3 KB</span>
             <a href="explained.html#linux" class="explain-link">What does this script do? Read it line by line &rarr;</a>
           </div>
 
@@ -410,7 +411,7 @@ For full guide: https://raw.githubusercontent.com/jdeworks/get-me-started/dev/pr
               </div>
               <div class="visual-step">
                 <div class="step-number">3</div>
-                <div class="step-content"><p>Enter your <strong>password</strong> if asked. You won't see characters — that's normal.</p></div>
+                <div class="step-content"><p>Enter your <strong>password</strong> if asked. You won't see characters. That's normal.</p></div>
               </div>
               <div class="visual-step">
                 <div class="step-number">4</div>
@@ -429,7 +430,7 @@ For full guide: https://raw.githubusercontent.com/jdeworks/get-me-started/dev/pr
             <a href="scripts/setup-linux-docker.sh" download class="download-btn">
               Download for Linux
             </a>
-            <span class="file-info">setup-linux-docker.sh — about 4 KB</span>
+            <span class="file-info">setup-linux-docker.sh, about 4 KB</span>
             <a href="explained.html#linux-docker" class="explain-link">What does this script do? Read it line by line &rarr;</a>
           </div>
 
@@ -450,7 +451,7 @@ For full guide: https://raw.githubusercontent.com/jdeworks/get-me-started/dev/pr
               </div>
               <div class="visual-step">
                 <div class="step-number">3</div>
-                <div class="step-content"><p>Enter your <strong>password</strong> if asked. You won't see characters — that's normal.</p></div>
+                <div class="step-content"><p>Enter your <strong>password</strong> if asked. You won't see characters. That's normal.</p></div>
               </div>
               <div class="visual-step">
                 <div class="step-number">4</div>
@@ -466,7 +467,7 @@ For full guide: https://raw.githubusercontent.com/jdeworks/get-me-started/dev/pr
 
     <!-- Step 3: What's next (dynamically shown based on OS + install type) -->
     <section id="next-section" class="step">
-      <h2>Step 3 — Start building</h2>
+      <h2>Step 3: Start building</h2>
 
       <!-- Always show: AI chat return option -->
       <div class="next-option">
@@ -540,7 +541,7 @@ sandbox-me</code>
     <!-- Your journey -->
     <section class="step">
       <h2>Your journey from here</h2>
-      <p>You don't need to think about all of this now — the AI handles each step when you get there. But here's what the full path looks like:</p>
+      <p>You don't need to think about all of this now. The AI handles each step when you get there. But here's what the full path looks like:</p>
 
       <div class="journey">
         <div class="journey-step current">
@@ -570,7 +571,7 @@ sandbox-me</code>
           <div class="journey-marker">&#x1F3A8;</div>
           <div class="journey-content">
             <strong>Make it look good</strong>
-            <span>Colors, fonts, layout — the AI helps you design it.</span>
+            <span>Colors, fonts, layout. The AI helps you design it.</span>
             <span class="journey-tool">Powered by <a href="https://github.com/jdeworks/make-it-look-good">make-it-look-good</a></span>
           </div>
         </div>
@@ -578,7 +579,7 @@ sandbox-me</code>
           <div class="journey-marker">&#x1F310;</div>
           <div class="journey-content">
             <strong>Put it online</strong>
-            <span>The AI walks you through publishing. <span class="term">Simple sites<span class="tip">A "simple site" shows the same pages to everyone — like a brochure. Things like a shop homepage, portfolio, or blog. These can be hosted completely free on GitHub Pages. If your site needs a login system, payments, or a database, that's a "dynamic site" which needs a different (still affordable) hosting option — the AI will help you figure this out.</span></span> can be hosted for free on GitHub. More complex sites have affordable options too.</span>
+            <span>The AI walks you through publishing. <span class="term">Simple sites<span class="tip">A "simple site" shows the same pages to everyone, like a brochure. Things like a shop homepage, portfolio, or blog. These can be hosted completely free on GitHub Pages. If your site needs a login system, payments, or a database, that's a "dynamic site" which needs a different (still affordable) hosting option. The AI will help you figure this out.</span></span> can be hosted for free on GitHub. More complex sites have affordable options too.</span>
           </div>
         </div>
       </div>
@@ -589,18 +590,18 @@ sandbox-me</code>
     <!-- Troubleshooting -->
     <section id="trouble" class="step">
       <h2>Something went wrong?</h2>
-      <p>Don't worry — this happens sometimes. Copy the error message you see and paste it back to your AI chatbot. It can help you fix it.</p>
+      <p>Don't worry, this happens sometimes. Copy the error message you see and paste it back to your AI chatbot. It can help you fix it.</p>
       <p>Common issues:</p>
       <ul>
-        <li><strong>Windows says "Windows protected your PC"</strong> — Click "More info", then "Run anyway". This appears because the script isn't signed by a big company. It's safe.</li>
-        <li><strong>Mac says the file "can't be opened"</strong> — Right-click the file, choose "Open", then click "Open" again.</li>
-        <li><strong>"Permission denied"</strong> — On Mac/Linux, the script may need your password. On Windows, right-click and choose "Run as Administrator".</li>
+        <li><strong>Windows says "Windows protected your PC"</strong>: Click "More info", then "Run anyway". This appears because the script isn't signed by a big company. It's safe.</li>
+        <li><strong>Mac says the file "can't be opened"</strong>: Right-click the file, choose "Open", then click "Open" again.</li>
+        <li><strong>"Permission denied"</strong>: On Mac/Linux, the script may need your password. On Windows, right-click and choose "Run as Administrator".</li>
       </ul>
     </section>
   </main>
 
   <footer>
-    <p>Part of the <a href="https://github.com/jdeworks/get-me-started">get-me-started</a> project — free, open source, yours to keep.</p>
+    <p>Part of the <a href="https://github.com/jdeworks/get-me-started">get-me-started</a> project. Free, open source, yours to keep.</p>
   </footer>
 
   <script src="app.js"></script>

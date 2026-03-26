@@ -15,7 +15,7 @@ function init() {
   if (detected === 'windows') label.textContent = 'Windows';
   else if (detected === 'mac') label.textContent = 'Mac';
   else if (detected === 'linux') label.textContent = 'Linux';
-  else label.textContent = 'unknown — please pick below';
+  else label.textContent = 'unknown, please pick below';
 
   // Pre-select detected OS
   if (detected) {
@@ -156,7 +156,7 @@ window.showWinOption = showWinOption;
 window.showMacOption = showMacOption;
 window.showLinuxOption = showLinuxOption;
 
-// Term tooltips — click to toggle on mobile, hover works on desktop
+// Term tooltips: click to toggle on mobile, hover works on desktop
 function initTerms() {
   document.querySelectorAll('.term').forEach(term => {
     term.addEventListener('click', (e) => {
@@ -198,8 +198,54 @@ function initLevel() {
   setLevel('guided');
 }
 
+// Theme toggle (dark/light)
+function toggleTheme() {
+  var isDark = document.body.classList.contains('dark');
+  var isLight = document.body.classList.contains('light');
+
+  if (isDark) {
+    document.body.classList.remove('dark');
+    document.body.classList.add('light');
+    try { localStorage.setItem('gms-theme', 'light'); } catch(e) {}
+  } else if (isLight) {
+    document.body.classList.remove('light');
+    document.body.classList.add('dark');
+    try { localStorage.setItem('gms-theme', 'dark'); } catch(e) {}
+  } else {
+    // No manual override yet. Check system preference and toggle opposite.
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (prefersDark) {
+      document.body.classList.add('light');
+      try { localStorage.setItem('gms-theme', 'light'); } catch(e) {}
+    } else {
+      document.body.classList.add('dark');
+      try { localStorage.setItem('gms-theme', 'dark'); } catch(e) {}
+    }
+  }
+  updateThemeIcon();
+}
+
+function updateThemeIcon() {
+  var btn = document.getElementById('theme-btn');
+  if (!btn) return;
+  var isDark = document.body.classList.contains('dark') ||
+    (!document.body.classList.contains('light') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  btn.textContent = isDark ? '\u2600' : '\uD83C\uDF19';
+}
+
+function initTheme() {
+  try {
+    var saved = localStorage.getItem('gms-theme');
+    if (saved === 'dark') document.body.classList.add('dark');
+    else if (saved === 'light') document.body.classList.add('light');
+  } catch(e) {}
+  updateThemeIcon();
+}
+window.toggleTheme = toggleTheme;
+
 document.addEventListener('DOMContentLoaded', () => {
   init();
   initTerms();
   initLevel();
+  initTheme();
 });

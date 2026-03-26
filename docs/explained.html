@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>What the setup scripts do — Get Me Started</title>
+  <title>What the setup scripts do - Get Me Started</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="code-viewer.css">
 </head>
 <body>
+  <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode" id="theme-btn">&#x1F319;</button>
   <header>
     <p><a href="index.html">&larr; Back to setup</a></p>
     <h1>What the setup scripts do</h1>
@@ -18,7 +19,7 @@
   <main>
     <section class="step">
       <p>Every single line of the script is shown below with a plain-language explanation. Nothing is hidden or summarized.</p>
-      <p><strong>Verify it yourself:</strong> right-click the downloaded file, open it with any text editor (Notepad on Windows, TextEdit on Mac), and compare — line for line, what you see here is what's in the file.</p>
+      <p><strong>Verify it yourself:</strong> right-click the downloaded file, open it with any text editor (Notepad on Windows, TextEdit on Mac), and compare. Line for line, what you see here is what's in the file.</p>
       <p><em>Click any line to see what it does.</em></p>
     </section>
 
@@ -42,16 +43,16 @@
 
     <!-- ===================== WINDOWS SAFE ===================== -->
     <section id="explain-win-safe" class="step explanation-section hidden">
-      <h2>setup-windows.ps1 — Safe install</h2>
+      <h2>setup-windows.ps1: Safe install</h2>
       <div class="code-viewer">
-        <div class="code-viewer-header">setup-windows.ps1 — 136 lines</div>
+        <div class="code-viewer-header">setup-windows.ps1, 136 lines</div>
         <div class="code-viewer-body">
           <div class="cv-section">Header comments (lines 1-12)</div>
-          <div class="cv-line" data-tip="Lines starting with # are comments. They're notes for humans — your computer ignores them completely. These explain what the script does before it does anything.">
+          <div class="cv-line" data-tip="Lines starting with # are comments. They're notes for humans. Your computer ignores them completely. These explain what the script does before it does anything.">
             <span class="cv-ln">1</span><span class="cv-code"><span class="cmt"># get-me-started: Windows setup helper (Safe install)</span></span><span class="cv-hint-icon">?</span>
             <div class="cv-explain"></div>
           </div>
-          <div class="cv-line" data-tip="More comments explaining what the 3 steps are: install Docker, download agent-sandbox, create a folder. Nothing runs yet — these are just notes.">
+          <div class="cv-line" data-tip="More comments explaining what the 3 steps are: install Docker, download agent-sandbox, create a folder. Nothing runs yet. These are just notes.">
             <span class="cv-ln">2-12</span><span class="cv-code"><span class="cmt"># This script does 3 things:
 #   1. Installs Docker Desktop ...
 #   2. Downloads agent-sandbox.exe ...
@@ -67,7 +68,7 @@
           </div>
 
           <div class="cv-section">Welcome message (lines 19-31)</div>
-          <div class="cv-line" data-tip="Write-Host prints text on your screen. These lines display the welcome banner and explain what's about to happen. -ForegroundColor changes the text color (Cyan = light blue, Yellow = warning color). This is just informational — nothing is installed yet.">
+          <div class="cv-line" data-tip="Write-Host prints text on your screen. These lines display the welcome banner and explain what's about to happen. -ForegroundColor changes the text color (Cyan = light blue, Yellow = warning color). This is just informational. Nothing is installed yet.">
             <span class="cv-ln">19-31</span><span class="cv-code"><span class="cmd">Write-Host</span> <span class="str">"========================================"</span> -ForegroundColor Cyan
 <span class="cmd">Write-Host</span> <span class="str">"  Get Me Started - Windows Safe Setup"</span> -ForegroundColor Cyan
 <span class="cmd">Write-Host</span> <span class="str">"This sets up an isolated coding environment..."</span>
@@ -76,7 +77,7 @@
           </div>
 
           <div class="cv-section">Check for winget (lines 33-46)</div>
-          <div class="cv-line" data-tip="Checks if 'winget' is available on your computer. winget is Windows' built-in app installer — like an app store from the command line. It comes pre-installed on Windows 10 (version 1809+) and Windows 11. If it's missing, your Windows may need an update.">
+          <div class="cv-line" data-tip="Checks if 'winget' is available on your computer. winget is Windows' built-in app installer, like an app store from the command line. It comes pre-installed on Windows 10 (version 1809+) and Windows 11. If it's missing, your Windows may need an update.">
             <span class="cv-ln">37</span><span class="cv-code">$hasWinget = <span class="cmd">Get-Command</span> winget -ErrorAction SilentlyContinue</span><span class="cv-hint-icon">?</span>
             <div class="cv-explain"></div>
           </div>
@@ -94,7 +95,7 @@
             <span class="cv-ln">55</span><span class="cv-code">$hasDocker = <span class="cmd">Get-Command</span> docker -ErrorAction SilentlyContinue</span><span class="cv-hint-icon">?</span>
             <div class="cv-explain"></div>
           </div>
-          <div class="cv-line" data-tip="If Docker isn't installed, this line installs it using winget. Docker Desktop creates isolated 'containers' — like a mini computer inside your computer. Your AI coding tool runs inside one. --accept-source-agreements and --accept-package-agreements skip the 'do you agree?' prompts so you don't have to click through them. This is the biggest download (~500 MB).">
+          <div class="cv-line" data-tip="If Docker isn't installed, this line installs it using winget. Docker Desktop creates isolated 'containers', like a mini computer inside your computer. Your AI coding tool runs inside one. --accept-source-agreements and --accept-package-agreements skip the 'do you agree?' prompts so you don't have to click through them. This is the biggest download (~500 MB).">
             <span class="cv-ln">62</span><span class="cv-code">    <span class="cmd">winget install</span> --id Docker.DockerDesktop --accept-source-agreements --accept-package-agreements</span><span class="cv-hint-icon">?</span>
             <div class="cv-explain"></div>
           </div>
@@ -113,11 +114,11 @@
             <span class="cv-ln">79</span><span class="cv-code"><span class="kw">if</span> (Test-Path $sandboxExe) {</span><span class="cv-hint-icon">?</span>
             <div class="cv-explain"></div>
           </div>
-          <div class="cv-line" data-tip="Downloads agent-sandbox.exe from GitHub. GitHub is where developers share open-source code. This downloads the latest version of the app. Invoke-WebRequest is PowerShell's way of downloading a file from the internet — similar to clicking a download link in your browser.">
+          <div class="cv-line" data-tip="Downloads agent-sandbox.exe from GitHub. GitHub is where developers share open-source code. This downloads the latest version of the app. Invoke-WebRequest is PowerShell's way of downloading a file from the internet, similar to clicking a download link in your browser.">
             <span class="cv-ln">85</span><span class="cv-code">    <span class="cmd">Invoke-WebRequest</span> -Uri $downloadUrl -OutFile $sandboxExe -UseBasicParsing</span><span class="cv-hint-icon">?</span>
             <div class="cv-explain"></div>
           </div>
-          <div class="cv-line" data-tip="If the download fails (bad internet, server down, etc.), these lines show an error and give you the URL to download manually in your browser. The script continues — this isn't a fatal error.">
+          <div class="cv-line" data-tip="If the download fails (bad internet, server down, etc.), these lines show an error and give you the URL to download manually in your browser. The script continues. This isn't a fatal error.">
             <span class="cv-ln">87-91</span><span class="cv-code">    <span class="kw">catch</span> {
         <span class="cmd">Write-Host</span> <span class="str">"Download failed. You can download it manually..."</span>
     }</span><span class="cv-hint-icon">?</span>
@@ -125,11 +126,11 @@
           </div>
 
           <div class="cv-section">Step 3: Create Projects folder (lines 95-106)</div>
-          <div class="cv-line" data-tip="Checks if C:\\Projects already exists. If it does, nothing happens — the script just tells you it's there.">
+          <div class="cv-line" data-tip="Checks if C:\\Projects already exists. If it does, nothing happens. The script just tells you it's there.">
             <span class="cv-ln">100</span><span class="cv-code"><span class="kw">if</span> (Test-Path $projectsPath) {</span><span class="cv-hint-icon">?</span>
             <div class="cv-explain"></div>
           </div>
-          <div class="cv-line" data-tip="Creates the folder C:\\Projects. This is just a regular folder — you can see it in File Explorer. It's where your website files will live. '| Out-Null' just hides the confirmation message that PowerShell normally prints.">
+          <div class="cv-line" data-tip="Creates the folder C:\\Projects. This is just a regular folder. You can see it in File Explorer. It's where your website files will live. '| Out-Null' just hides the confirmation message that PowerShell normally prints.">
             <span class="cv-ln">103</span><span class="cv-code">    <span class="cmd">New-Item</span> -ItemType Directory -Path $projectsPath | Out-Null</span><span class="cv-hint-icon">?</span>
             <div class="cv-explain"></div>
           </div>
@@ -156,12 +157,12 @@
 
     <!-- ===================== WINDOWS QUICK ===================== -->
     <section id="explain-win-quick" class="step explanation-section hidden">
-      <h2>setup-windows-direct.ps1 — Quick install</h2>
+      <h2>setup-windows-direct.ps1: Quick install</h2>
       <div class="code-viewer">
-        <div class="code-viewer-header">setup-windows-direct.ps1 — 91 lines</div>
+        <div class="code-viewer-header">setup-windows-direct.ps1, 91 lines</div>
         <div class="code-viewer-body">
           <div class="cv-section">Header + allow script to run (lines 1-11)</div>
-          <div class="cv-line" data-tip="Comments (lines starting with #) are notes for humans — your computer ignores them. They explain this is the quick install that puts Node.js and OpenCode directly on your computer.">
+          <div class="cv-line" data-tip="Comments (lines starting with #) are notes for humans. Your computer ignores them. They explain this is the quick install that puts Node.js and OpenCode directly on your computer.">
             <span class="cv-ln">1-8</span><span class="cv-code"><span class="cmt"># get-me-started: Windows direct setup helper (Quick install)
 # This script installs Node.js and OpenCode directly on your computer.
 # HOW TO RUN: Right-click this file > "Run with PowerShell"</span></span><span class="cv-hint-icon">?</span>
@@ -173,7 +174,7 @@
           </div>
 
           <div class="cv-section">Welcome message (lines 13-24)</div>
-          <div class="cv-line" data-tip="Write-Host prints text on your screen. These lines show the title banner and explain that Windows may ask permission. -ForegroundColor sets the text color. Nothing is installed yet — this is just information.">
+          <div class="cv-line" data-tip="Write-Host prints text on your screen. These lines show the title banner and explain that Windows may ask permission. -ForegroundColor sets the text color. Nothing is installed yet. This is just information.">
             <span class="cv-ln">13-24</span><span class="cv-code"><span class="cmd">Write-Host</span> <span class="str">"  Get Me Started - Windows Quick Setup"</span> -ForegroundColor Cyan
 <span class="cmd">Write-Host</span> <span class="str">"This will install Node.js and OpenCode..."</span>
 <span class="cmd">Write-Host</span> <span class="str">"Note: Windows may ask 'Do you want to allow...'"</span> -ForegroundColor Yellow</span><span class="cv-hint-icon">?</span>
@@ -206,13 +207,13 @@
             <span class="cv-ln">55</span><span class="cv-code">$hasOpenCode = <span class="cmd">Get-Command</span> opencode -ErrorAction SilentlyContinue</span><span class="cv-hint-icon">?</span>
             <div class="cv-explain"></div>
           </div>
-          <div class="cv-line" data-tip="Installs OpenCode using npm (Node.js's package manager, which was just installed). '-g' means 'install it so it works from anywhere on the computer.' OpenCode is the free AI coding assistant — you describe what you want in plain words, it writes the code.">
+          <div class="cv-line" data-tip="Installs OpenCode using npm (Node.js's package manager, which was just installed). '-g' means 'install it so it works from anywhere on the computer.' OpenCode is the free AI coding assistant. You describe what you want in plain words, it writes the code.">
             <span class="cv-ln">62</span><span class="cv-code">    <span class="cmd">npm install</span> -g opencode-ai</span><span class="cv-hint-icon">?</span>
             <div class="cv-explain"></div>
           </div>
 
           <div class="cv-section">Step 3: Create Projects folder (lines 67-76)</div>
-          <div class="cv-line" data-tip="Creates C:\\Projects — a regular folder where your website files will live. You can see it in File Explorer. Skipped if it already exists.">
+          <div class="cv-line" data-tip="Creates C:\\Projects, a regular folder where your website files will live. You can see it in File Explorer. Skipped if it already exists.">
             <span class="cv-ln">73</span><span class="cv-code">    <span class="cmd">New-Item</span> -ItemType Directory -Path $projectsPath | Out-Null</span><span class="cv-hint-icon">?</span>
             <div class="cv-explain"></div>
           </div>
@@ -231,12 +232,12 @@
 
     <!-- ===================== MAC ===================== -->
     <section id="explain-mac" class="step explanation-section hidden">
-      <h2>setup-mac.command — Quick install</h2>
+      <h2>setup-mac.command: Quick install</h2>
       <div class="code-viewer">
-        <div class="code-viewer-header">setup-mac.command — 111 lines</div>
+        <div class="code-viewer-header">setup-mac.command, 111 lines</div>
         <div class="code-viewer-body">
           <div class="cv-section">Header (lines 1-7)</div>
-          <div class="cv-line" data-tip="The first line (#!/bin/bash) tells your Mac to run this file using Bash — a program that executes commands. Lines starting with # are comments (notes for humans). They explain this is the Mac quick install.">
+          <div class="cv-line" data-tip="The first line (#!/bin/bash) tells your Mac to run this file using Bash, a program that executes commands. Lines starting with # are comments (notes for humans). They explain this is the Mac quick install.">
             <span class="cv-ln">1-7</span><span class="cv-code"><span class="cmt">#!/bin/bash
 # get-me-started: Mac setup helper (Quick install)
 # This script installs Node.js and OpenCode so you can build websites with AI.
@@ -250,7 +251,7 @@
             <span class="cv-ln">9</span><span class="cv-code"><span class="cmd">set -e</span></span><span class="cv-hint-icon">?</span>
             <div class="cv-explain"></div>
           </div>
-          <div class="cv-line" data-tip="These lines define color codes for the text you'll see. BOLD makes text stand out, GREEN means success, YELLOW means 'heads up', RED means error, NC means 'back to normal.' This is just visual styling — nothing is installed.">
+          <div class="cv-line" data-tip="These lines define color codes for the text you'll see. BOLD makes text stand out, GREEN means success, YELLOW means 'heads up', RED means error, NC means 'back to normal.' This is just visual styling. Nothing is installed.">
             <span class="cv-ln">11-15</span><span class="cv-code">BOLD=<span class="str">'\033[1m'</span>
 GREEN=<span class="str">'\033[0;32m'</span>
 YELLOW=<span class="str">'\033[0;33m'</span>
@@ -261,7 +262,7 @@ NC=<span class="str">'\033[0m'</span> <span class="cmt"># No Color</span></span>
 
           <div class="cv-section">Welcome message (lines 17-29)</div>
           <div class="cv-line" data-tip="'echo' prints text on your screen. These lines show the title banner, time estimate, and a note about the password prompt. 'echo -e' enables the color codes defined above. Nothing is installed yet.">
-            <span class="cv-ln">17-29</span><span class="cv-code"><span class="cmd">echo</span> -e <span class="str">"  Get Me Started — Mac Setup"</span>
+            <span class="cv-ln">17-29</span><span class="cv-code"><span class="cmd">echo</span> -e <span class="str">"  Get Me Started - Mac Setup"</span>
 <span class="cmd">echo</span> <span class="str">"This will install the tools you need..."</span>
 <span class="cmd">echo</span> -e <span class="str">"Note: This script may ask for your password..."</span>
 <span class="cmd">echo</span> <span class="str">"This is your computer's login password..."</span></span><span class="cv-hint-icon">?</span>
@@ -269,7 +270,7 @@ NC=<span class="str">'\033[0m'</span> <span class="cmt"># No Color</span></span>
           </div>
 
           <div class="cv-section">Step 1: Developer tools (lines 31-47)</div>
-          <div class="cv-line" data-tip="Checks if Apple's developer tools are already installed. 'xcode-select -p' returns the path to the tools if they exist. '&>/dev/null' hides the output — we only care if the command succeeds or fails.">
+          <div class="cv-line" data-tip="Checks if Apple's developer tools are already installed. 'xcode-select -p' returns the path to the tools if they exist. '&>/dev/null' hides the output. We only care if the command succeeds or fails.">
             <span class="cv-ln">33</span><span class="cv-code"><span class="kw">if</span> xcode-select -p &amp;&gt;/dev/null; <span class="kw">then</span></span><span class="cv-hint-icon">?</span>
             <div class="cv-explain"></div>
           </div>
@@ -297,7 +298,7 @@ NC=<span class="str">'\033[0m'</span> <span class="cmt"># No Color</span></span>
             <span class="cv-ln">57</span><span class="cv-code">        <span class="cmd">brew install</span> node</span><span class="cv-hint-icon">?</span>
             <div class="cv-explain"></div>
           </div>
-          <div class="cv-line" data-tip="If Homebrew isn't installed, this downloads and installs it first. Homebrew is the standard way to install developer tools on Mac — it's free, open source, and trusted by millions. 'curl' downloads the installer, and 'bash' runs it. This may ask for your password.">
+          <div class="cv-line" data-tip="If Homebrew isn't installed, this downloads and installs it first. Homebrew is the standard way to install developer tools on Mac. It's free, open source, and trusted by millions. 'curl' downloads the installer, and 'bash' runs it. This may ask for your password.">
             <span class="cv-ln">60</span><span class="cv-code">        /bin/bash -c <span class="str">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</span></span><span class="cv-hint-icon">?</span>
             <div class="cv-explain"></div>
           </div>
@@ -315,7 +316,7 @@ NC=<span class="str">'\033[0m'</span> <span class="cmt"># No Color</span></span>
             <span class="cv-ln">75</span><span class="cv-code"><span class="kw">if</span> command -v opencode &amp;&gt;/dev/null; <span class="kw">then</span></span><span class="cv-hint-icon">?</span>
             <div class="cv-explain"></div>
           </div>
-          <div class="cv-line" data-tip="Installs OpenCode using Homebrew. OpenCode is the free AI coding assistant — you describe what you want in plain words, and it writes the code for you. 'opencode-ai/tap/opencode' tells Homebrew where to find it (a 'tap' is like a custom app catalog).">
+          <div class="cv-line" data-tip="Installs OpenCode using Homebrew. OpenCode is the free AI coding assistant. You describe what you want in plain words, and it writes the code for you. 'opencode-ai/tap/opencode' tells Homebrew where to find it (a 'tap' is like a custom app catalog).">
             <span class="cv-ln">80</span><span class="cv-code">        <span class="cmd">brew install</span> opencode-ai/tap/opencode</span><span class="cv-hint-icon">?</span>
             <div class="cv-explain"></div>
           </div>
@@ -335,7 +336,7 @@ NC=<span class="str">'\033[0m'</span> <span class="cmt"># No Color</span></span>
           </div>
 
           <div class="cv-section">Done (lines 98-111)</div>
-          <div class="cv-line" data-tip="Shows 'All done!' and tells you how to continue — either go back to your AI chat, or open OpenCode directly by running the commands shown. 'read -p' waits for you to press Enter before closing.">
+          <div class="cv-line" data-tip="Shows 'All done!' and tells you how to continue: either go back to your AI chat, or open OpenCode directly by running the commands shown. 'read -p' waits for you to press Enter before closing.">
             <span class="cv-ln">98-110</span><span class="cv-code"><span class="cmd">echo</span> -e <span class="str">"  All done!"</span>
 <span class="cmd">echo</span> <span class="str">"Go back to your AI chat and tell it:"</span>
 <span class="cmd">echo</span> <span class="str">"  The setup is done. What do I do next?"</span>
@@ -350,18 +351,18 @@ NC=<span class="str">'\033[0m'</span> <span class="cmt"># No Color</span></span>
 
     <!-- ===================== LINUX ===================== -->
     <section id="explain-linux" class="step explanation-section hidden">
-      <h2>setup-linux.sh — Quick install</h2>
+      <h2>setup-linux.sh: Quick install</h2>
       <div class="code-viewer">
-        <div class="code-viewer-header">setup-linux.sh — 98 lines</div>
+        <div class="code-viewer-header">setup-linux.sh, 98 lines</div>
         <div class="code-viewer-body">
           <div class="cv-section">Header + setup (lines 1-15)</div>
-          <div class="cv-line" data-tip="#!/bin/bash tells Linux to run this file using Bash (a command interpreter). Lines starting with # are comments — notes for humans, ignored by the computer.">
+          <div class="cv-line" data-tip="#!/bin/bash tells Linux to run this file using Bash (a command interpreter). Lines starting with # are comments (notes for humans, ignored by the computer).">
             <span class="cv-ln">1-7</span><span class="cv-code"><span class="cmt">#!/bin/bash
 # get-me-started: Linux setup helper (Quick install)
 # This script installs Node.js and OpenCode so you can build websites with AI.</span></span><span class="cv-hint-icon">?</span>
             <div class="cv-explain"></div>
           </div>
-          <div class="cv-line" data-tip="'set -e' stops the script immediately if any command fails. Color codes (BOLD, GREEN, etc.) are for visual styling — making text colored so success shows green, warnings show yellow, etc.">
+          <div class="cv-line" data-tip="'set -e' stops the script immediately if any command fails. Color codes (BOLD, GREEN, etc.) are for visual styling, making text colored so success shows green, warnings show yellow, etc.">
             <span class="cv-ln">9-15</span><span class="cv-code"><span class="cmd">set -e</span>
 BOLD=<span class="str">'\033[1m'</span>  GREEN=<span class="str">'\033[0;32m'</span>  YELLOW=<span class="str">'\033[0;33m'</span>
 RED=<span class="str">'\033[0;31m'</span>  NC=<span class="str">'\033[0m'</span></span><span class="cv-hint-icon">?</span>
@@ -370,7 +371,7 @@ RED=<span class="str">'\033[0;31m'</span>  NC=<span class="str">'\033[0m'</span>
 
           <div class="cv-section">Welcome message (lines 17-29)</div>
           <div class="cv-line" data-tip="'echo' prints text on your screen. These lines show the title, time estimate, and a note about password prompts. Nothing is installed yet.">
-            <span class="cv-ln">17-29</span><span class="cv-code"><span class="cmd">echo</span> -e <span class="str">"  Get Me Started — Linux Setup"</span>
+            <span class="cv-ln">17-29</span><span class="cv-code"><span class="cmd">echo</span> -e <span class="str">"  Get Me Started - Linux Setup"</span>
 <span class="cmd">echo</span> <span class="str">"This will install the tools you need..."</span>
 <span class="cmd">echo</span> <span class="str">"Note: This script may ask for your password..."</span></span><span class="cv-hint-icon">?</span>
             <div class="cv-explain"></div>
@@ -396,7 +397,7 @@ RED=<span class="str">'\033[0;31m'</span>  NC=<span class="str">'\033[0m'</span>
             <span class="cv-ln">52</span><span class="cv-code"><span class="kw">if</span> command -v node &amp;&gt;/dev/null; <span class="kw">then</span></span><span class="cv-hint-icon">?</span>
             <div class="cv-explain"></div>
           </div>
-          <div class="cv-line" data-tip="Downloads and installs nvm (Node Version Manager) — a safe way to install Node.js that doesn't need admin/root access. 'curl -o-' downloads the installer script, and '| bash' runs it.">
+          <div class="cv-line" data-tip="Downloads and installs nvm (Node Version Manager), a safe way to install Node.js that doesn't need admin/root access. 'curl -o-' downloads the installer script, and '| bash' runs it.">
             <span class="cv-ln">58</span><span class="cv-code">    <span class="cmd">curl -o-</span> <span class="str">https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh</span> | bash</span><span class="cv-hint-icon">?</span>
             <div class="cv-explain"></div>
           </div>
@@ -430,7 +431,7 @@ RED=<span class="str">'\033[0;31m'</span>  NC=<span class="str">'\033[0m'</span>
           </div>
 
           <div class="cv-section">Done (lines 87-98)</div>
-          <div class="cv-line" data-tip="Shows 'All done!' and tells you how to continue — either go back to your AI chat, or start OpenCode directly with the commands shown.">
+          <div class="cv-line" data-tip="Shows 'All done!' and tells you how to continue: either go back to your AI chat, or start OpenCode directly with the commands shown.">
             <span class="cv-ln">87-98</span><span class="cv-code"><span class="cmd">echo</span> -e <span class="str">"  All done!"</span>
 <span class="cmd">echo</span> <span class="str">"Go back to your AI chat and tell it:"</span>
 <span class="cmd">echo</span> <span class="str">"  The setup is done. What do I do next?"</span>
@@ -444,15 +445,15 @@ RED=<span class="str">'\033[0;31m'</span>  NC=<span class="str">'\033[0m'</span>
 
     <!-- ===================== MAC DOCKER ===================== -->
     <section id="explain-mac-docker" class="step explanation-section hidden">
-      <h2>setup-mac-docker.command — Safe install</h2>
+      <h2>setup-mac-docker.command: Safe install</h2>
       <div class="code-viewer">
         <div class="code-viewer-header">setup-mac-docker.command</div>
         <div class="code-viewer-body">
           <div class="cv-section">Header + setup (lines 1-16)</div>
-          <div class="cv-line" data-tip="#!/bin/bash tells your Mac to run this file using Bash. Lines starting with # are comments — notes for humans. These explain this is the safe install using Docker. 'set -e' stops the script if anything fails. The color code lines (BOLD, GREEN, etc.) are for visual styling only.">
+          <div class="cv-line" data-tip="#!/bin/bash tells your Mac to run this file using Bash. Lines starting with # are comments (notes for humans). These explain this is the safe install using Docker. 'set -e' stops the script if anything fails. The color code lines (BOLD, GREEN, etc.) are for visual styling only.">
             <span class="cv-ln">1-16</span><span class="cv-code"><span class="cmt">#!/bin/bash
 # get-me-started: Mac SAFE setup (Docker + agent-sandbox)
-# Everything runs inside Docker — nothing gets installed on your system.</span>
+# Everything runs inside Docker. Nothing gets installed on your system.</span>
 <span class="cmd">set -e</span>
 BOLD=<span class="str">'\033[1m'</span>  GREEN=<span class="str">'\033[0;32m'</span> ...</span><span class="cv-hint-icon">?</span>
             <div class="cv-explain"></div>
@@ -460,7 +461,7 @@ BOLD=<span class="str">'\033[1m'</span>  GREEN=<span class="str">'\033[0;32m'</s
 
           <div class="cv-section">Welcome message (lines 17-31)</div>
           <div class="cv-line" data-tip="'echo' prints text on your screen. These lines show the title banner, explain this sets up an isolated environment, and warn that your password may be needed. Nothing is installed yet.">
-            <span class="cv-ln">17-31</span><span class="cv-code"><span class="cmd">echo</span> -e <span class="str">"  Get Me Started — Mac Safe Setup"</span>
+            <span class="cv-ln">17-31</span><span class="cv-code"><span class="cmd">echo</span> -e <span class="str">"  Get Me Started - Mac Safe Setup"</span>
 <span class="cmd">echo</span> <span class="str">"This will set up an isolated coding environment..."</span>
 <span class="cmd">echo</span> <span class="str">"Note: This script may ask for your password..."</span></span><span class="cv-hint-icon">?</span>
             <div class="cv-explain"></div>
@@ -471,7 +472,7 @@ BOLD=<span class="str">'\033[1m'</span>  GREEN=<span class="str">'\033[0;32m'</s
             <span class="cv-ln">37</span><span class="cv-code"><span class="kw">if</span> xcode-select -p &amp;&gt;/dev/null; <span class="kw">then</span></span><span class="cv-hint-icon">?</span>
             <div class="cv-explain"></div>
           </div>
-          <div class="cv-line" data-tip="Triggers Apple's developer tools installer. A popup from Apple appears — completely safe. The script then waits (checking every 5 seconds) until the installation finishes.">
+          <div class="cv-line" data-tip="Triggers Apple's developer tools installer. A popup from Apple appears. Completely safe. The script then waits (checking every 5 seconds) until the installation finishes.">
             <span class="cv-ln">42-47</span><span class="cv-code">    <span class="cmd">xcode-select --install</span>
     <span class="kw">until</span> xcode-select -p &amp;&gt;/dev/null; <span class="kw">do</span>
         sleep 5
@@ -480,7 +481,7 @@ BOLD=<span class="str">'\033[1m'</span>  GREEN=<span class="str">'\033[0;32m'</s
           </div>
 
           <div class="cv-section">Step 2: Docker Desktop (lines 52-98)</div>
-          <div class="cv-line" data-tip="Checks if Docker is already installed. Docker creates isolated 'containers' where your AI tools run — nothing touches the rest of your system.">
+          <div class="cv-line" data-tip="Checks if Docker is already installed. Docker creates isolated 'containers' where your AI tools run. Nothing touches the rest of your system.">
             <span class="cv-ln">57</span><span class="cv-code"><span class="kw">if</span> command -v docker &amp;&gt;/dev/null; <span class="kw">then</span></span><span class="cv-hint-icon">?</span>
             <div class="cv-explain"></div>
           </div>
@@ -501,7 +502,7 @@ BOLD=<span class="str">'\033[1m'</span>  GREEN=<span class="str">'\033[0;32m'</s
           </div>
 
           <div class="cv-section">Step 3: Projects folder (lines 100-110)</div>
-          <div class="cv-line" data-tip="Creates ~/Projects — a regular folder where your website files will live. Skipped if it already exists.">
+          <div class="cv-line" data-tip="Creates ~/Projects, a regular folder where your website files will live. Skipped if it already exists.">
             <span class="cv-ln">108</span><span class="cv-code">    <span class="cmd">mkdir -p</span> <span class="str">"$PROJECTS_DIR"</span></span><span class="cv-hint-icon">?</span>
             <div class="cv-explain"></div>
           </div>
@@ -513,7 +514,7 @@ BOLD=<span class="str">'\033[1m'</span>  GREEN=<span class="str">'\033[0;32m'</s
           </div>
 
           <div class="cv-section">Done (lines 122-134)</div>
-          <div class="cv-line" data-tip="Shows 'All done!' and tells you how to continue — go back to your AI chat or start the sandbox directly with the commands shown.">
+          <div class="cv-line" data-tip="Shows 'All done!' and tells you how to continue: go back to your AI chat or start the sandbox directly with the commands shown.">
             <span class="cv-ln">122-134</span><span class="cv-code"><span class="cmd">echo</span> -e <span class="str">"  All done!"</span>
 <span class="cmd">echo</span> <span class="str">"Go back to your AI chat and tell it:"</span>
 <span class="cmd">echo</span> <span class="str">"  The setup is done. What do I do next?"</span>
@@ -527,7 +528,7 @@ BOLD=<span class="str">'\033[1m'</span>  GREEN=<span class="str">'\033[0;32m'</s
 
     <!-- ===================== LINUX DOCKER ===================== -->
     <section id="explain-linux-docker" class="step explanation-section hidden">
-      <h2>setup-linux-docker.sh — Safe install</h2>
+      <h2>setup-linux-docker.sh: Safe install</h2>
       <div class="code-viewer">
         <div class="code-viewer-header">setup-linux-docker.sh</div>
         <div class="code-viewer-body">
@@ -542,7 +543,7 @@ BOLD=<span class="str">'\033[1m'</span> ...</span><span class="cv-hint-icon">?</
 
           <div class="cv-section">Welcome + detect package manager (lines 17-48)</div>
           <div class="cv-line" data-tip="Shows the title and password warning. Then detects which package manager your Linux uses (apt for Ubuntu/Debian, dnf for Fedora, pacman for Arch). This determines how software gets installed.">
-            <span class="cv-ln">17-48</span><span class="cv-code"><span class="cmd">echo</span> <span class="str">"Get Me Started — Linux Safe Setup"</span>
+            <span class="cv-ln">17-48</span><span class="cv-code"><span class="cmd">echo</span> <span class="str">"Get Me Started - Linux Safe Setup"</span>
 <span class="kw">if</span> command -v apt; <span class="kw">then</span> PKG=<span class="str">"apt"</span>
 <span class="kw">elif</span> command -v dnf; <span class="kw">then</span> PKG=<span class="str">"dnf"</span>
 <span class="kw">elif</span> command -v pacman; <span class="kw">then</span> PKG=<span class="str">"pacman"</span>
@@ -584,7 +585,7 @@ BOLD=<span class="str">'\033[1m'</span> ...</span><span class="cv-hint-icon">?</
           </div>
 
           <div class="cv-section">Done (lines 122-134)</div>
-          <div class="cv-line" data-tip="Shows 'All done!' with instructions to continue — either go back to your AI chat or start the sandbox directly.">
+          <div class="cv-line" data-tip="Shows 'All done!' with instructions to continue: either go back to your AI chat or start the sandbox directly.">
             <span class="cv-ln">122-134</span><span class="cv-code"><span class="cmd">echo</span> <span class="str">"All done!"</span>
 <span class="cmd">echo</span> <span class="str">"Go back to your AI chat..."</span>
 <span class="cmd">echo</span> <span class="str">"Or start the sandbox:"</span>
@@ -601,10 +602,20 @@ BOLD=<span class="str">'\033[1m'</span> ...</span><span class="cv-hint-icon">?</
   </main>
 
   <footer>
-    <p>Part of the <a href="https://github.com/jdeworks/get-me-started">get-me-started</a> project — free, open source, yours to keep.</p>
+    <p>Part of the <a href="https://github.com/jdeworks/get-me-started">get-me-started</a> project. Free, open source, yours to keep.</p>
   </footer>
 
   <script>
+    // Theme toggle
+    function toggleTheme() {
+      var b = document.body;
+      if (b.classList.contains('dark')) { b.classList.remove('dark'); b.classList.add('light'); localStorage.setItem('gms-theme','light'); }
+      else if (b.classList.contains('light')) { b.classList.remove('light'); b.classList.add('dark'); localStorage.setItem('gms-theme','dark'); }
+      else { var d = matchMedia('(prefers-color-scheme:dark)').matches; b.classList.add(d?'light':'dark'); localStorage.setItem('gms-theme',d?'light':'dark'); }
+      var btn = document.getElementById('theme-btn'); if(btn) btn.textContent = (b.classList.contains('dark')||(!b.classList.contains('light')&&matchMedia('(prefers-color-scheme:dark)').matches))?'\u2600':'\uD83C\uDF19';
+    }
+    (function(){try{var t=localStorage.getItem('gms-theme');if(t)document.body.classList.add(t);}catch(e){}var btn=document.getElementById('theme-btn');if(btn){var d=document.body.classList.contains('dark')||(!document.body.classList.contains('light')&&matchMedia('(prefers-color-scheme:dark)').matches);btn.textContent=d?'\u2600':'\uD83C\uDF19';}})();
+
     function showExplain(id) {
       document.querySelectorAll('.explanation-section').forEach(function(el) { el.classList.add('hidden'); });
       var el = document.getElementById('explain-' + id);

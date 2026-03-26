@@ -1,4 +1,4 @@
-/* Code viewer — full-width code with hover/click explanations */
+/* Code viewer: full-width code with hover/click explanations */
 .code-viewer {
   border: 1px solid #d0d0d0;
   border-radius: 8px;
@@ -104,7 +104,7 @@
 .cv-code .str { color: #ce9178; }
 .cv-code .cmt { color: #6a9955; font-style: italic; }
 
-/* Explanation callout — appears below the line on hover/click */
+/* Explanation callout: appears below the line on hover/click */
 .cv-explain {
   display: block;
   max-height: 0;

@@ -1,4 +1,4 @@
-# Requirements — get-me-started
+# Requirements: get-me-started
 
 This document defines what the project must deliver and how to verify it works. Every feature has a testable acceptance criterion.
 
@@ -80,7 +80,7 @@ The AI-GUIDE.md is the instruction set for AI chatbots. When a user pastes the p
 
 **Test:** Click every "What does this script do?" link. Each must open explained.html scrolled to the correct section.
 
-### 3.5 Step 3 (next steps) — OS-aware
+### 3.5 Step 3 (next steps), OS-aware
 - **MUST** show the correct next step based on OS + install type chosen in Steps 1-2
 - Windows safe: "Open agent-sandbox.exe" (no terminal commands)
 - Windows quick: PowerShell commands with `C:\Projects`
@@ -153,7 +153,7 @@ The AI-GUIDE.md is the instruction set for AI chatbots. When a user pastes the p
 - Step numbering **MUST** be consistent (e.g., [1/3], [2/3], [3/3])
 - Header comments **MUST** say "You can open this file in any text editor to read exactly what it does"
 
-**Test:** Run each script on a clean system. Run again on the same system — all steps should show "already installed" and complete instantly.
+**Test:** Run each script on a clean system. Run again on the same system. All steps should show "already installed" and complete instantly.
 
 ### 5.3 Windows safe install specifics
 - Downloads agent-sandbox.exe from GitHub Releases (not git clone)
@@ -205,7 +205,7 @@ The AI-GUIDE.md is the instruction set for AI chatbots. When a user pastes the p
 
 ## 9. Known Limitations
 
-- ChatGPT may ignore the guide's format rules despite explicit instructions. The prompt includes "Your first reply should ONLY ask me what I want to build — nothing else" as a direct constraint, but ChatGPT compliance varies.
+- ChatGPT may ignore the guide's format rules despite explicit instructions. The prompt includes "Your first reply should ONLY ask me what I want to build, nothing else" as a direct constraint, but ChatGPT compliance varies.
 - The `?q=` parameter for ChatGPT is undocumented and may break.
 - Claude and Gemini do not support pre-filled prompts via URL.
 - Scripts require internet access. No offline mode.
@@ -219,9 +219,9 @@ The AI-GUIDE.md is the instruction set for AI chatbots. When a user pastes the p
 Run these before any release:
 
 ### ChatGPT flow
-- [ ] Paste prompt into ChatGPT — first response is short + one question
-- [ ] Reply with website idea — response sends to setup page
-- [ ] Reply "setup is done" — response gives OpenCode launch instructions
+- [ ] Paste prompt into ChatGPT. First response is short + one question
+- [ ] Reply with website idea. Response sends to setup page
+- [ ] Reply "setup is done". Response gives OpenCode launch instructions
 - [ ] ChatGPT never mentions VS Code, code editors, or asks user to write code
 
 ### Setup page

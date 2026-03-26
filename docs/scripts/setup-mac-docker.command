@@ -16,7 +16,7 @@ NC='\033[0m'
 
 echo ""
 echo -e "${BOLD}========================================${NC}"
-echo -e "${BOLD}  Get Me Started — Mac Safe Setup${NC}"
+echo -e "${BOLD}  Get Me Started - Mac Safe Setup${NC}"
 echo -e "${BOLD}========================================${NC}"
 echo ""
 echo "This will set up an isolated coding environment using Docker."
@@ -24,9 +24,9 @@ echo "Nothing gets installed on your system except Docker and Git."
 echo "It should take about 15-20 minutes (mostly downloading)."
 echo ""
 echo -e "${YELLOW}Note: This script may ask for your password at some points.${NC}"
-echo "This is your computer's login password — it's needed to install"
+echo "This is your computer's login password. It's needed to install"
 echo "programs, just like when you install any app. You won't see the"
-echo "characters as you type — that's a security feature, not a bug."
+echo "characters as you type. That's a security feature, not a bug."
 echo ""
 
 # --- Step 1: Install Xcode Command Line Tools (includes Git) ---
@@ -38,7 +38,7 @@ if xcode-select -p &>/dev/null; then
     echo -e "${GREEN}  Already installed.${NC}"
 else
     echo "  Installing Xcode Command Line Tools..."
-    echo "  A popup may appear — click 'Install' and wait for it to finish."
+    echo "  A popup may appear. Click 'Install' and wait for it to finish."
     xcode-select --install 2>/dev/null || true
     echo ""
     echo -e "${YELLOW}  Waiting for installation to complete...${NC}"
@@ -50,7 +50,7 @@ fi
 echo ""
 
 # --- Step 2: Install Docker Desktop ---
-# Docker creates isolated "containers" — like mini computers inside your
+# Docker creates isolated "containers", like mini computers inside your
 # computer. Your AI coding tool will run inside one. This keeps everything
 # clean and separate from the rest of your system.
 echo -e "${BOLD}[2/4] Checking for Docker...${NC}"
