@@ -82,8 +82,7 @@
   font-family: "SF Mono", "Cascadia Code", Consolas, monospace;
   font-size: 0.82rem;
   color: #e0e0e0;
-  white-space: pre;
-  overflow-x: auto;
+  white-space: pre-line;
   line-height: 1.5;
   min-width: 0;
 }
