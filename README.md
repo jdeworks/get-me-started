@@ -20,7 +20,7 @@ Go to **[jdeworks.github.io/get-me-started](https://jdeworks.github.io/get-me-st
 Copy this into ChatGPT, Claude, Gemini, or any AI assistant:
 
 ```
-Read this guide and follow the instructions in it to help me step by step:
+Read this guide and follow it exactly. Your first reply should ONLY ask me what I want to build — nothing else:
 https://raw.githubusercontent.com/jdeworks/get-me-started/dev/prompts/AI-GUIDE.md
 
 I want to build a website. [describe what kind — a portfolio, blog, shop, etc.]
