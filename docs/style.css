@@ -247,6 +247,54 @@ footer a:hover {
   text-decoration: underline;
 }
 
+/* === Explanation text === */
+.explanation {
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+  margin-top: 0.25rem;
+}
+
+/* === Option tabs (Windows safe/quick) === */
+.option-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+
+.option-tab {
+  flex: 1;
+  padding: 0.7rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.option-tab:hover {
+  border-color: #4361ee;
+  background: #f0f4ff;
+}
+
+.option-tab.selected {
+  border-color: #4361ee;
+  background: #e8edff;
+  color: #4361ee;
+}
+
+/* === Info note === */
+.info-note {
+  background: #fff8e1;
+  border-left: 4px solid #ffbd2e;
+  padding: 0.75rem 1rem;
+  margin: 0.75rem 0;
+  border-radius: 0 6px 6px 0;
+  font-size: 0.95rem;
+}
+
 /* === Utility === */
 .hidden {
   display: none !important;

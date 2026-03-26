@@ -1,6 +1,6 @@
-# get-me-started: Windows setup helper
-# This script installs Git and Docker Desktop so you can build websites with AI.
-# Everything runs inside a safe, isolated container on your computer.
+# get-me-started: Windows direct setup helper
+# This script installs Node.js and OpenCode directly on your computer.
+# It's the quick path — faster to set up, tools live on your system.
 #
 # HOW TO RUN: Right-click this file > "Run with PowerShell"
 
@@ -9,11 +9,11 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
 
 Write-Host ""
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "  Get Me Started - Windows Setup" -ForegroundColor Cyan
+Write-Host "  Get Me Started - Windows Quick Setup" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
-Write-Host "This will install the tools you need to build websites with AI."
-Write-Host "It should take about 10-15 minutes."
+Write-Host "This will install Node.js and OpenCode on your computer."
+Write-Host "It should take about 5 minutes."
 Write-Host ""
 Write-Host "Note: Windows may ask 'Do you want to allow this app to make changes?'" -ForegroundColor Yellow
 Write-Host "Click 'Yes' — this is how Windows asks for your permission to install"
@@ -40,6 +40,7 @@ if ($hasGit) {
     Write-Host "  $gitVersion is already installed." -ForegroundColor Green
 } else {
     Write-Host "  Installing Git..." -ForegroundColor Yellow
+    Write-Host "  (Your computer needs permission to install programs.)" -ForegroundColor Gray
     winget install --id Git.Git --accept-source-agreements --accept-package-agreements
     # Refresh PATH
     $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
@@ -47,44 +48,43 @@ if ($hasGit) {
 }
 Write-Host ""
 
-# --- Install Docker Desktop ---
-Write-Host "[2/4] Checking for Docker Desktop..." -ForegroundColor White
-$hasDocker = Get-Command docker -ErrorAction SilentlyContinue
-if ($hasDocker) {
-    $dockerVersion = docker --version
-    Write-Host "  $dockerVersion is already installed." -ForegroundColor Green
+# --- Install Node.js ---
+Write-Host "[2/4] Checking for Node.js..." -ForegroundColor White
+$hasNode = Get-Command node -ErrorAction SilentlyContinue
+if ($hasNode) {
+    $nodeVersion = node -v
+    Write-Host "  Node.js $nodeVersion is already installed." -ForegroundColor Green
 } else {
-    Write-Host "  Installing Docker Desktop..." -ForegroundColor Yellow
-    Write-Host "  This is a large download (~500 MB). Please be patient." -ForegroundColor Yellow
-    winget install --id Docker.DockerDesktop --accept-source-agreements --accept-package-agreements
-    Write-Host "  Docker Desktop installed." -ForegroundColor Green
-    Write-Host ""
-    Write-Host "  IMPORTANT: You may need to restart your computer for Docker to work." -ForegroundColor Yellow
-    Write-Host "  After restarting, Docker Desktop will start automatically." -ForegroundColor Yellow
+    Write-Host "  Installing Node.js..." -ForegroundColor Yellow
+    winget install --id OpenJS.NodeJS.LTS --accept-source-agreements --accept-package-agreements
+    # Refresh PATH
+    $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+    Write-Host "  Node.js installed." -ForegroundColor Green
+}
+Write-Host ""
+
+# --- Install OpenCode ---
+Write-Host "[3/4] Checking for OpenCode..." -ForegroundColor White
+$hasOpenCode = Get-Command opencode -ErrorAction SilentlyContinue
+if ($hasOpenCode) {
+    Write-Host "  OpenCode is already installed." -ForegroundColor Green
+} else {
+    Write-Host "  Installing OpenCode..." -ForegroundColor Yellow
+    # Refresh PATH again in case node was just installed
+    $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+    npm install -g opencode-ai
+    Write-Host "  OpenCode installed." -ForegroundColor Green
 }
 Write-Host ""
 
 # --- Create Projects folder ---
-Write-Host "[3/4] Creating your Projects folder..." -ForegroundColor White
+Write-Host "[4/4] Creating your Projects folder..." -ForegroundColor White
 $projectsPath = "C:\Projects"
 if (Test-Path $projectsPath) {
     Write-Host "  C:\Projects already exists." -ForegroundColor Green
 } else {
     New-Item -ItemType Directory -Path $projectsPath | Out-Null
     Write-Host "  Created C:\Projects - this is where your websites will live." -ForegroundColor Green
-}
-Write-Host ""
-
-# --- Clone agent-sandbox ---
-Write-Host "[4/4] Downloading agent-sandbox..." -ForegroundColor White
-$sandboxPath = "$projectsPath\agent-sandbox"
-if (Test-Path $sandboxPath) {
-    Write-Host "  agent-sandbox already exists at $sandboxPath." -ForegroundColor Green
-} else {
-    # Refresh PATH again in case git was just installed
-    $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-    git clone https://github.com/jdeworks/agent-sandbox.git $sandboxPath
-    Write-Host "  agent-sandbox downloaded." -ForegroundColor Green
 }
 Write-Host ""
 
@@ -97,14 +97,5 @@ Write-Host "Everything is installed. Go back to your AI chat and tell it:"
 Write-Host ""
 Write-Host '  "The setup is done. What do I do next?"' -ForegroundColor White
 Write-Host ""
-
-# Check if restart is needed
-$hasDockerNow = Get-Command docker -ErrorAction SilentlyContinue
-if (-not $hasDockerNow) {
-    Write-Host "NOTE: You may need to RESTART your computer before Docker works." -ForegroundColor Yellow
-    Write-Host "After restarting, come back to your AI chat and continue." -ForegroundColor Yellow
-    Write-Host ""
-}
-
 Write-Host "Press Enter to close..."
 Read-Host

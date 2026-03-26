@@ -39,13 +39,37 @@
 
       <!-- Windows instructions -->
       <div id="instructions-windows" class="instructions hidden">
-        <p>This script will install the tools you need: <strong>Git</strong> and <strong>Docker Desktop</strong>. Everything runs inside a safe, isolated space on your computer.</p>
+        <p>Choose your setup style:</p>
 
-        <div class="download-box">
-          <a id="dl-windows" href="scripts/setup-windows.ps1" download class="download-btn">
-            Download setup for Windows
-          </a>
-          <span class="file-info">setup-windows.ps1 — about 4 KB</span>
+        <div class="option-tabs">
+          <button class="option-tab selected" data-option="win-safe" onclick="showWinOption('win-safe')">Safe install (recommended)</button>
+          <button class="option-tab" data-option="win-quick" onclick="showWinOption('win-quick')">Quick install</button>
+        </div>
+
+        <div id="win-safe" class="option-content">
+          <p>This installs everything inside a <strong>protected space</strong> on your computer — like a bubble. Nothing touches the rest of your system, and you can delete the whole thing cleanly anytime.</p>
+
+          <div class="download-box">
+            <a href="scripts/setup-windows.ps1" download class="download-btn">
+              Download safe setup for Windows
+            </a>
+            <span class="file-info">setup-windows.ps1 — about 4 KB</span>
+          </div>
+
+          <div class="info-note">
+            <strong>After it finishes:</strong> You may need to <strong>restart your computer</strong> once. This is because Docker (the tool that creates the protected space) needs a restart to fully activate. After restarting, everything is ready.
+          </div>
+        </div>
+
+        <div id="win-quick" class="option-content hidden">
+          <p>This installs the AI coding tool (<strong>OpenCode</strong>) and <strong>Node.js</strong> directly on your computer. Faster to set up, but the tools live on your system permanently (you can uninstall them anytime like any other app).</p>
+
+          <div class="download-box">
+            <a href="scripts/setup-windows-direct.ps1" download class="download-btn">
+              Download quick setup for Windows
+            </a>
+            <span class="file-info">setup-windows-direct.ps1 — about 3 KB</span>
+          </div>
         </div>
 
         <h3>How to run it:</h3>
@@ -71,7 +95,8 @@
           <div class="visual-step">
             <div class="step-number">3</div>
             <div class="step-content">
-              <p>If Windows asks <em>"Do you want to allow this app to make changes?"</em> — click <strong>Yes</strong>. This is normal — the script needs permission to install programs.</p>
+              <p>If Windows asks <em>"Do you want to allow this app to make changes?"</em> — click <strong>Yes</strong>.</p>
+              <p class="explanation">Why? The script needs permission to install programs on your computer. This is how Windows makes sure you're okay with it. It's the same popup you see when installing any app.</p>
             </div>
           </div>
           <div class="visual-step">
@@ -131,7 +156,8 @@
           <div class="visual-step">
             <div class="step-number">4</div>
             <div class="step-content">
-              <p>It may ask for your <strong>password</strong> — this is your computer's login password. Type it and press Enter. (You won't see the characters as you type — that's normal.)</p>
+              <p>It may ask for your <strong>password</strong> — this is your computer's login password. Type it and press Enter.</p>
+              <p class="explanation">Why? Installing programs on a Mac requires your permission, just like when you install an app from the internet. You won't see the characters as you type — that's normal, it's a security feature.</p>
             </div>
           </div>
           <div class="visual-step">
@@ -179,7 +205,8 @@
           <div class="visual-step">
             <div class="step-number">3</div>
             <div class="step-content">
-              <p>It may ask for your password. Type it and press Enter.</p>
+              <p>It may ask for your <strong>password</strong>. Type it and press Enter.</p>
+              <p class="explanation">Why? Installing programs on Linux requires your permission. You won't see the characters as you type — that's normal, it's a security feature.</p>
             </div>
           </div>
           <div class="visual-step">

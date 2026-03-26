@@ -19,6 +19,11 @@ echo ""
 echo "This will install the tools you need to build websites with AI."
 echo "It should take about 5 minutes."
 echo ""
+echo -e "${YELLOW}Note: This script may ask for your password at some points.${NC}"
+echo "This is your computer's login password — it's needed to install"
+echo "programs, just like when you install any app. You won't see the"
+echo "characters as you type — that's a security feature, not a bug."
+echo ""
 
 # --- Detect package manager ---
 if command -v apt &>/dev/null; then

@@ -60,4 +60,14 @@ function selectOS(os) {
   document.getElementById('download-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
+// Windows option tabs (safe vs quick)
+function showWinOption(id) {
+  document.querySelectorAll('.option-content').forEach(el => el.classList.add('hidden'));
+  document.querySelectorAll('.option-tab').forEach(el => el.classList.remove('selected'));
+  document.getElementById(id).classList.remove('hidden');
+  document.querySelector('[data-option="' + id + '"]').classList.add('selected');
+}
+// Expose globally for inline onclick
+window.showWinOption = showWinOption;
+
 document.addEventListener('DOMContentLoaded', init);
