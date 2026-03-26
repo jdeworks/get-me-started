@@ -1888,54 +1888,25 @@ This guide is part of a set of free, open-source tools that work together. You d
 
 ---
 
-## Phase 0: Set Expectations
+## Phase 0: Set Expectations and Explain How This Works
 
-Before asking about their project, briefly set expectations. Say something like:
+Before anything else, briefly explain what's about to happen. The user needs to understand YOUR role versus the AI coding tool's role.
 
-> "Before we start — a few things to know:
-> - Setup takes about 15-30 minutes the first time (longer if your internet is slow — some downloads are large). After that, starting up is instant.
-> - You'll see some error messages along the way. That's completely normal — I'll help you through them.
-> - You don't need to understand everything right away. We'll go one step at a time, and I'll explain anything you're curious about.
-> - You can stop at any point and come back later. Nothing gets lost. If you come back in a new chat, tell me where you left off and I'll pick up from there."
+Say something like:
 
-**If they're on a free AI tier with limited daily messages**, mention this: "Since you're on a free tier, we might not finish in one session. That's fine — we can pick up tomorrow. The Direct Install path has fewer steps if you'd like to save some messages."
+> "Here's how this works:
+>
+> **I'm your guide right now** — I'll help you understand what you need, answer any questions, and walk you through installing a free AI coding tool on your computer.
+>
+> **Once that tool is running, IT builds your website for you.** You just describe what you want in plain words — like 'make me a homepage with my shop name and a menu' — and the AI creates the actual website. You don't write any code yourself.
+>
+> Setting up takes about 15-30 minutes the first time. After that, starting up is instant. You can stop at any point and come back later — nothing gets lost.
+>
+> Ready? Let's figure out what you want to build."
 
-Keep it brief and warm. Then offer the quick demo below.
+**If they're on a free AI tier with limited daily messages**, add: "Since you're on a free tier, we might not finish in one session. That's fine — we can pick up tomorrow."
 
-### Optional: See a Website in 60 Seconds (Before Installing Anything)
-
-> **Note:** This is the ONE exception to the "no code" rule — a tiny demo using Notepad (not a code editor!) to show what a website file looks like. It's purely for confidence-building. After this, the AI coding tool handles all code. Do NOT use VS Code for this — use the computer's built-in text editor (Notepad, TextEdit, etc.).
-
-If the user seems nervous or unsure, offer to show them what a website actually is before committing to any setup:
-
-> "Want to see how a website works before we install anything? Let's make one in 60 seconds."
-
-Walk them through this:
-
-1. Tell them to open any text editor on their computer (Notepad on Windows, TextEdit on Mac, Text Editor or gedit on Linux — anything that edits text).
-2. Have them type (or paste) this:
-
-```html
-<!DOCTYPE html>
-<html>
-<head><title>My First Page</title></head>
-<body>
-  <h1>Hello, world!</h1>
-  <p>I made this. It's a real website.</p>
-</body>
-</html>
-```
-
-3. Save the file as `hello.html` on their desktop.
-   - **Windows (Notepad):** When saving, change "Save as type" from "Text Documents (*.txt)" to "All Files (*.*)", then name it `hello.html`. Otherwise Notepad may save it as `hello.html.txt` and it won't open as a webpage.
-   - **Mac (TextEdit):** Go to Format > Make Plain Text first, then save as `hello.html`.
-   - **Linux:** Save normally as `hello.html` — most Linux text editors handle this correctly.
-4. Double-click the file. It opens in their browser.
-5. They see their website.
-
-> "That's a real website. Every website on the internet is built from files like this one. The only difference is that yours is on your computer, and theirs is on a server. The tools we're about to set up make it much easier to build something bigger — but at its core, this is what we're doing: writing text files that browsers know how to display."
-
-This takes one minute and gives them a concrete win before any installation. If they're eager to move on, skip it.
+Keep it brief and warm. Then move to Phase 1.
 
 ---
 
@@ -1977,49 +1948,32 @@ Remember their answers (especially their OS). You'll pass them along when handin
 
 ## Phase 2: Choose a Setup
 
-Present these three options. Be honest about trade-offs. Recommend Option A unless they have a reason to prefer something else.
+Now you need to help them choose how to install the AI coding tool. Present it as a simple choice with a clear recommendation. Ask ONE question — don't dump all the details at once.
 
-**Important**: after explaining the options, ask if they want to know more about any of them before choosing. Some people just want to go. Others want to understand what they're getting into. Both are valid.
+Say something like:
 
-### Option A: Sandbox (Recommended)
+> "Now we need to get the AI coding tool onto your computer. There are two ways to do this:
+>
+> **Option 1 — Quick install** (recommended for Mac and Linux): We download and install two small programs directly on your computer. Takes about 5 minutes. This is the fastest way to get going.
+>
+> **Option 2 — Safe install** (recommended for Windows, or if you prefer extra safety): We install everything inside a protected space on your computer — like a bubble. Nothing touches the rest of your system, and you can delete the whole thing cleanly anytime. Takes a bit longer to set up (15-20 minutes) because we need to download more, but it's the cleanest option.
+>
+> Which sounds better to you? Or do you want me to explain more about either one?"
 
-> "This is the safest way to get started. We'll install Docker Desktop — think of it as a mini computer inside your computer. Everything we do stays inside that container, so nothing gets installed on your actual system. If you ever want to start fresh, you delete the container and make a new one. It uses a free AI coding tool called OpenCode."
+**Do NOT mention Docker, Node.js, containers, or any technical terms in this initial question.** Only explain those when the user has chosen a path and you're walking them through the actual steps.
 
-- **They need to install**: Docker Desktop (free, ~10 minutes, ~500 MB download + ~1-2 GB for environment images)
-- **After that**: agent-sandbox sets up everything else automatically
-- **Trade-off**: takes a bit longer to set up and downloads more, but keeps their system completely clean
+**If they're on Windows**: lean toward Option 2 (sandbox), since OpenCode doesn't have a Windows installer. If they insist on Option 1, you'll need to suggest an alternative AI tool or the "stay in chat" approach (Phase 5).
 
-**If they want to know more about the sandbox:**
-- Docker is used by professional developers worldwide to keep projects isolated from each other. It's not just a beginner tool — it's industry standard.
-- agent-sandbox is a tool that configures Docker for AI-assisted coding. It creates a container with your coding tools, language runtimes, and AI assistants pre-installed.
-- The sandbox comes with pre-made templates (like "Web App" or "Static Website") but they can fully customize it: change which AI agent to use, add programming languages, install extra tools, even add VS Code Server so they can code in a browser.
-- OpenCode is the default AI agent because it's free and open-source. But the sandbox also supports Claude Code, Cursor CLI, and GitHub Copilot. They can switch anytime.
-- Everything in the sandbox is saved between sessions. Their code lives on their computer — only the tools run inside Docker.
+**If they ask "what's the difference?"** — explain in simple terms:
+- Option 1 installs the tools on their computer like any other app. Easy to set up, easy to use.
+- Option 2 creates an isolated space where the tools run separately from everything else. A bit more work upfront, but nothing gets mixed into their system. Think of it like a guest room in your house — the guest has everything they need, but they don't rearrange your furniture.
 
-**If they pick this**, follow the setup instructions below under [Sandbox Setup Path](#sandbox-setup-path).
+**If they pick Option 1**, follow the setup instructions below under [Direct Install Path](#direct-install-path).
+**If they pick Option 2**, follow the setup instructions below under [Sandbox Setup Path](#sandbox-setup-path).
 
-### Option B: Direct Install
+### Coming Soon: Zero Install
 
-> "This is the fastest way to start. We'll install a couple of tools directly on your computer — Node.js (which runs website code) and OpenCode (a free AI coding assistant). You'll be up and running in about 5 minutes."
-
-- **They need to install**: Node.js (~30 MB) + OpenCode
-- **Trade-off**: faster and lighter download, but the tools live on their system
-- **Note for Windows users**: OpenCode doesn't have a Windows installer. On Windows, the sandbox path (Option A) is recommended. If they choose Option B on Windows, you'll need to suggest an alternative AI tool or the "stay in chat" approach.
-
-**If they want to know more about direct install:**
-- Node.js is the engine that runs modern websites during development. It's used by Netflix, NASA, Uber, and millions of developers. It's not some obscure tool — it's the standard.
-- OpenCode is a free, open-source AI coding assistant. It works in the terminal: you type what you want in plain English, and it writes code, creates files, runs commands. It's the default recommendation because it's free with no API key needed.
-- They're not locked in. If they later want a different AI tool (Claude Code, Cursor, GitHub Copilot), they can install that instead or alongside OpenCode. The make-a-website knowledge base works with all of them.
-- If they ever want to clean up, they can uninstall Node.js and OpenCode like any other application.
-
-**If they pick this**, follow the setup instructions below under [Direct Install Path](#direct-install-path).
-
-### Option C: Hosted (Coming Soon)
-
-> "There's a hosted service coming soon where everything runs in the cloud — you won't need to install anything at all. It'll have a free tier to get started. It's not ready yet, but keep an eye on the [get-me-started repo](https://github.com/jdeworks/get-me-started) for updates."
-
-- **For now**: recommend Option A or B
-- **When it launches**: this becomes the easiest path — fast, secure, nothing to install, with a free tier to get familiar
+There's a hosted service coming soon where everything runs in the cloud — nothing to install at all. Free tier to get started. Keep an eye on the [get-me-started repo](https://github.com/jdeworks/get-me-started) for updates. For now, use Option 1 or 2 above.
 
 ---
 
@@ -2337,9 +2291,9 @@ Key things they can control once make-a-website takes over:
 
 ---
 
-## Phase 5 (Optional): Stay in This Chat
+## Phase 5 (Alternative): Stay in This Chat
 
-Some users may prefer to keep working with you rather than switching to OpenCode. Others may land here because OpenCode wasn't available on their OS (e.g., Windows users on the Direct Install path). Either way, this path works — it's slower because you can't run commands directly, but the user still gets a working website. If they want to stay:
+Some users may prefer to keep working with you rather than installing tools. Others may land here because they're on Windows and the direct install didn't work. Either way, this path works — it's slower because you (the chat AI) can't run things on their computer, but the user still gets a working website with your help. If they want to stay:
 
 1. Fetch the make-a-website knowledge base yourself (if you have URL/browsing capability):
    - Start with: `https://raw.githubusercontent.com/jdeworks/make-a-website/dev/AGENTS.md`
