@@ -388,13 +388,42 @@ I want to build a website but I've never coded before.">Copy to clipboard</butto
 
     <!-- Step 3: What's next -->
     <section id="next-section" class="step">
-      <h2>Step 3 — Go back to your AI chat</h2>
-      <p>Once the setup is done, go back to your AI chatbot (ChatGPT, Claude, Gemini — wherever you started) and tell it:</p>
-      <div class="code-block">
-        <code>The setup is done. What do I do next?</code>
-        <button class="copy-btn" data-copy="The setup is done. What do I do next?">Copy</button>
+      <h2>Step 3 — Start building</h2>
+      <p>Setup is done! Now it's time to build your website. Pick the option that matches how you got here:</p>
+
+      <div class="next-option">
+        <h3>If you came from an AI chat (ChatGPT, Claude, Gemini, etc.)</h3>
+        <p>Go back to your chat and tell it:</p>
+        <div class="code-block">
+          <code>The setup is done. What do I do next?</code>
+          <button class="copy-btn" data-copy="The setup is done. What do I do next?">Copy</button>
+        </div>
+        <p>The AI will guide you from here.</p>
       </div>
-      <p>The AI will guide you from here.</p>
+
+      <div class="next-option">
+        <h3>If you have OpenCode running (the quick install)</h3>
+        <p>Open a terminal, go to your Projects folder, and paste this into OpenCode:</p>
+        <div class="code-block">
+          <code>I want to build a website. Read https://raw.githubusercontent.com/jdeworks/make-a-website/dev/AGENTS.md and guide me through it.</code>
+          <button class="copy-btn" data-copy="I want to build a website. Read https://raw.githubusercontent.com/jdeworks/make-a-website/dev/AGENTS.md and guide me through it.">Copy</button>
+        </div>
+        <p>OpenCode will read the guide and walk you through building your site step by step.</p>
+      </div>
+
+      <div class="next-option">
+        <h3>If you have the sandbox set up (the safe install)</h3>
+        <p>Open a terminal, go to your Projects folder, create a folder for your website, and start the sandbox:</p>
+        <div class="code-block">
+          <code>cd ~/Projects && mkdir my-website && cd my-website && sandbox-me</code>
+          <button class="copy-btn" data-copy="cd ~/Projects && mkdir my-website && cd my-website && sandbox-me">Copy</button>
+        </div>
+        <p>Once OpenCode opens inside the sandbox, paste this:</p>
+        <div class="code-block">
+          <code>I want to build a website. Read https://raw.githubusercontent.com/jdeworks/make-a-website/dev/AGENTS.md and guide me through it.</code>
+          <button class="copy-btn" data-copy="I want to build a website. Read https://raw.githubusercontent.com/jdeworks/make-a-website/dev/AGENTS.md and guide me through it.">Copy</button>
+        </div>
+      </div>
     </section>
 
     <!-- Your journey -->

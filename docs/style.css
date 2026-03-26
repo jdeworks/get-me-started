@@ -663,6 +663,19 @@ body.level-express .for-guided { display: none; }
 body.level-express .for-standard { display: none; }
 body.level-express .for-express { display: block; }
 
+/* === Next-step options === */
+.next-option {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.next-option h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
 /* === Utility === */
 .hidden {
   display: none !important;
