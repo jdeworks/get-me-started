@@ -382,6 +382,25 @@ footer a:hover {
   text-decoration: underline;
 }
 
+.journey-step.optional {
+  opacity: 0.85;
+}
+
+.badge-optional {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #666;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 1px 6px;
+  vertical-align: middle;
+  margin-left: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
 /* === Safety callout === */
 .safety-callout {
   background: #f0f7ff;

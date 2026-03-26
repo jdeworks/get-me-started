@@ -119,18 +119,23 @@ if (-not $hasDockerNow) {
     Write-Host ""
 }
 
-Write-Host "--- NEXT STEP: Connect to GitHub ---" -ForegroundColor Cyan
+Write-Host "Go back to your AI chat and tell it:"
 Write-Host ""
-Write-Host "Your computer's key (copy everything below this line):" -ForegroundColor White
-Write-Host "----------------------------------------" -ForegroundColor Yellow
-Get-Content "$env:USERPROFILE\.ssh\id_ed25519.pub"
-Write-Host "----------------------------------------" -ForegroundColor Yellow
-Write-Host ""
-Write-Host "Now go to this page to set up GitHub and add your key:"
-Write-Host "  https://jdeworks.github.io/get-me-started/github.html" -ForegroundColor White
-Write-Host ""
-Write-Host "Or go back to your AI chat and tell it:"
 Write-Host '  "The setup is done. What do I do next?"' -ForegroundColor White
+Write-Host ""
+Write-Host "----------------------------------------" -ForegroundColor Yellow
+Write-Host "Optional but recommended: Connect to GitHub" -ForegroundColor Cyan
+Write-Host ""
+Write-Host "GitHub saves your work online (free backup) and lets you publish"
+Write-Host "your website for the world to see. You can skip this for now and"
+Write-Host "set it up later - but we recommend it."
+Write-Host ""
+Write-Host "Your computer's key (you'll need this for GitHub):" -ForegroundColor White
+Write-Host "" -ForegroundColor Green
+Get-Content "$env:USERPROFILE\.ssh\id_ed25519.pub"
+Write-Host ""
+Write-Host "Guide: https://jdeworks.github.io/get-me-started/github.html" -ForegroundColor White
+Write-Host "----------------------------------------" -ForegroundColor Yellow
 Write-Host ""
 Write-Host "Press Enter to close..."
 Read-Host
