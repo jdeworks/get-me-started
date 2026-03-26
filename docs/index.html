@@ -108,19 +108,71 @@ I want to build a website but I've never coded before.">Copy to clipboard</butto
         </div>
 
         <div id="win-safe" class="option-content">
-          <p>This installs everything inside a <span class="term">protected space<span class="tip">A separate area on your computer where programs run without affecting anything else. Think of it like a guest room — the guest has everything they need, but they don't rearrange your furniture. In tech, this is called a "container."</span></span> on your computer. Nothing touches the rest of your system, and you can delete the whole thing cleanly anytime.</p>
+          <p>This runs everything inside a <span class="term">protected space<span class="tip">A separate area on your computer where programs run without affecting anything else. Think of it like a guest room — the guest has everything they need, but they don't rearrange your furniture.</span></span> on your computer. Nothing touches the rest of your system, and you can delete the whole thing cleanly anytime.</p>
+
+          <p>You need two things:</p>
 
           <div class="download-box">
-            <a href="scripts/setup-windows.ps1" download class="download-btn">
-              Download safe setup for Windows
+            <a href="https://www.docker.com/products/docker-desktop/" target="_blank" class="download-btn">
+              1. Get Docker Desktop
             </a>
-            <span class="file-info">setup-windows.ps1 — about 4 KB</span>
-            <a href="explained.html#win-safe" class="explain-link">What does this script do? Read it line by line &rarr;</a>
+            <span class="file-info">Free download from docker.com — install it first, then continue below</span>
           </div>
 
-          <div class="info-note">
-            <strong>After it finishes:</strong> You may need to <strong>restart your computer</strong> once. This is because Docker (the tool that creates the protected space) needs a restart to fully activate. After restarting, everything is ready.
+          <div class="download-box">
+            <a href="https://github.com/jdeworks/agent-sandbox/releases/latest/download/agent-sandbox.exe" download class="download-btn">
+              2. Download Agent Sandbox
+            </a>
+            <span class="file-info">agent-sandbox.exe — standalone app, no installation needed</span>
           </div>
+
+          <div class="for-guided">
+            <h3>How to use it:</h3>
+            <div class="visual-steps">
+              <div class="visual-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                  <p>Install Docker Desktop (from the first link above). You may need to <strong>restart your computer</strong> once after installing.</p>
+                </div>
+              </div>
+              <div class="visual-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                  <p><strong>Double-click</strong> agent-sandbox.exe. A setup wizard will open.</p>
+                </div>
+              </div>
+              <div class="visual-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                  <p>Pick a template (like <strong>"Static Website"</strong> or <strong>"Web Application"</strong>) and click through the wizard.</p>
+                </div>
+              </div>
+              <div class="visual-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                  <p>When it asks for a project folder, create one (e.g., <code>C:\Projects\my-website</code>) and select it.</p>
+                </div>
+              </div>
+              <div class="visual-step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                  <p>The AI coding tool will open automatically inside the protected space. You're ready to build!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="for-standard">
+            <h3>How to use it:</h3>
+            <ol>
+              <li>Install Docker Desktop and restart if prompted</li>
+              <li>Double-click agent-sandbox.exe</li>
+              <li>Pick a template and a project folder</li>
+              <li>The AI coding tool opens automatically</li>
+            </ol>
+          </div>
+
+          <p class="for-express">Install Docker Desktop, run agent-sandbox.exe, pick a template and folder.</p>
         </div>
 
         <div id="win-quick" class="option-content hidden">
@@ -128,7 +180,7 @@ I want to build a website but I've never coded before.">Copy to clipboard</butto
 
           <div class="download-box">
             <a href="scripts/setup-windows-direct.ps1" download class="download-btn">
-              Download quick setup for Windows
+              Download for Windows
             </a>
             <span class="file-info">setup-windows-direct.ps1 — about 3 KB</span>
             <a href="explained.html#win-quick" class="explain-link">What does this script do? Read it line by line &rarr;</a>
@@ -205,7 +257,7 @@ I want to build a website but I've never coded before.">Copy to clipboard</butto
 
           <div class="download-box">
             <a href="scripts/setup-mac.command" download class="download-btn">
-              Download quick setup for Mac
+              Download for Mac
             </a>
             <span class="file-info">setup-mac.command — about 3 KB</span>
             <a href="explained.html#mac" class="explain-link">What does this script do? Read it line by line &rarr;</a>
@@ -217,7 +269,7 @@ I want to build a website but I've never coded before.">Copy to clipboard</butto
 
           <div class="download-box">
             <a href="scripts/setup-mac-docker.command" download class="download-btn">
-              Download safe setup for Mac
+              Download for Mac
             </a>
             <span class="file-info">setup-mac-docker.command — about 4 KB</span>
             <a href="explained.html#mac-docker" class="explain-link">What does this script do? Read it line by line &rarr;</a>
@@ -306,7 +358,7 @@ I want to build a website but I've never coded before.">Copy to clipboard</butto
 
           <div class="download-box">
             <a href="scripts/setup-linux.sh" download class="download-btn">
-              Download quick setup for Linux
+              Download for Linux
             </a>
             <span class="file-info">setup-linux.sh — about 3 KB</span>
             <a href="explained.html#linux" class="explain-link">What does this script do? Read it line by line &rarr;</a>
@@ -318,7 +370,7 @@ I want to build a website but I've never coded before.">Copy to clipboard</butto
 
           <div class="download-box">
             <a href="scripts/setup-linux-docker.sh" download class="download-btn">
-              Download safe setup for Linux
+              Download for Linux
             </a>
             <span class="file-info">setup-linux-docker.sh — about 4 KB</span>
             <a href="explained.html#linux-docker" class="explain-link">What does this script do? Read it line by line &rarr;</a>

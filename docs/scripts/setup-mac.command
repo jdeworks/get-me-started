@@ -85,21 +85,8 @@ else
 fi
 echo ""
 
-# --- Generate SSH key for GitHub ---
-echo -e "${BOLD}[4/5] Setting up a secure key for GitHub...${NC}"
-if [ -f "$HOME/.ssh/id_ed25519" ]; then
-    echo -e "${GREEN}  SSH key already exists.${NC}"
-else
-    echo "  Creating a secure key so your computer can talk to GitHub..."
-    echo "  (This is like a digital ID card for your computer.)"
-    mkdir -p "$HOME/.ssh"
-    ssh-keygen -t ed25519 -f "$HOME/.ssh/id_ed25519" -N "" -q
-    echo -e "${GREEN}  Key created.${NC}"
-fi
-echo ""
-
 # --- Create Projects folder ---
-echo -e "${BOLD}[5/5] Creating your Projects folder...${NC}"
+echo -e "${BOLD}[4/4] Creating your Projects folder...${NC}"
 if [ -d "$HOME/Projects" ]; then
     echo -e "${GREEN}  ~/Projects already exists.${NC}"
 else
@@ -117,18 +104,7 @@ echo "Everything is installed! Go back to your AI chat and tell it:"
 echo ""
 echo -e "  ${BOLD}The setup is done. What do I do next?${NC}"
 echo ""
-echo -e "${YELLOW}────────────────────────────────────────${NC}"
-echo -e "${BOLD}Optional but recommended: Connect to GitHub${NC}"
-echo ""
-echo "GitHub saves your work online (free backup) and lets you publish"
-echo "your website for the world to see. You can skip this for now and"
-echo "set it up later — but we recommend it."
-echo ""
-echo "Your computer's key (you'll need this for GitHub):"
-echo -e "${GREEN}"
-cat "$HOME/.ssh/id_ed25519.pub"
-echo -e "${NC}"
-echo "Guide: https://jdeworks.github.io/get-me-started/github.html"
-echo -e "${YELLOW}────────────────────────────────────────${NC}"
+echo "Or open OpenCode directly:"
+echo "  cd ~/Projects && mkdir my-website && cd my-website && opencode"
 echo ""
 read -p "Press Enter to close..."
