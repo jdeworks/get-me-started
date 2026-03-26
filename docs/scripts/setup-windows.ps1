@@ -1,6 +1,9 @@
-# get-me-started: Windows setup helper
+# get-me-started: Windows setup helper (Safe install)
 # This script installs Git and Docker Desktop so you can build websites with AI.
 # Everything runs inside a safe, isolated container on your computer.
+#
+# You can open this file in any text editor (like Notepad) to read
+# exactly what it does before running it. Every step is commented.
 #
 # HOW TO RUN: Right-click this file > "Run with PowerShell"
 

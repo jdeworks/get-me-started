@@ -1,6 +1,9 @@
-# get-me-started: Windows direct setup helper
+# get-me-started: Windows direct setup helper (Quick install)
 # This script installs Node.js and OpenCode directly on your computer.
 # It's the quick path — faster to set up, tools live on your system.
+#
+# You can open this file in any text editor (like Notepad) to read
+# exactly what it does before running it. Every step is commented.
 #
 # HOW TO RUN: Right-click this file > "Run with PowerShell"
 

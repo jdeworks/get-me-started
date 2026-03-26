@@ -1,7 +1,10 @@
 #!/bin/bash
-# get-me-started: Mac setup helper
+# get-me-started: Mac setup helper (Quick install)
 # This script installs Node.js and OpenCode so you can build websites with AI.
 # It's safe to run — it only installs free, open-source tools.
+#
+# You can open this file in any text editor (like TextEdit) to read
+# exactly what it does before running it. Every step is commented.
 
 set -e
 

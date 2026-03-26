@@ -67,8 +67,24 @@ function showWinOption(id) {
   document.getElementById(id).classList.remove('hidden');
   document.querySelector('[data-option="' + id + '"]').classList.add('selected');
 }
+function showMacOption(id) {
+  document.querySelectorAll('#instructions-mac .option-content').forEach(el => el.classList.add('hidden'));
+  document.querySelectorAll('#instructions-mac .option-tab').forEach(el => el.classList.remove('selected'));
+  document.getElementById(id).classList.remove('hidden');
+  document.querySelector('#instructions-mac [data-option="' + id + '"]').classList.add('selected');
+}
+
+function showLinuxOption(id) {
+  document.querySelectorAll('#instructions-linux .option-content').forEach(el => el.classList.add('hidden'));
+  document.querySelectorAll('#instructions-linux .option-tab').forEach(el => el.classList.remove('selected'));
+  document.getElementById(id).classList.remove('hidden');
+  document.querySelector('#instructions-linux [data-option="' + id + '"]').classList.add('selected');
+}
+
 // Expose globally for inline onclick
 window.showWinOption = showWinOption;
+window.showMacOption = showMacOption;
+window.showLinuxOption = showLinuxOption;
 
 // Term tooltips — click to toggle on mobile, hover works on desktop
 function initTerms() {
