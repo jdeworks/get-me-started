@@ -20,10 +20,16 @@ Go to **[jdeworks.github.io/get-me-started](https://jdeworks.github.io/get-me-st
 Copy this into ChatGPT, Claude, Gemini, or any AI assistant:
 
 ```
-Read this guide and follow it exactly. Your first reply should ONLY ask me what I want to build — nothing else:
-https://raw.githubusercontent.com/jdeworks/get-me-started/dev/prompts/AI-GUIDE.md
+You are a patient setup coach. Help me build a website. I've never coded before.
 
-I want to build a website. [describe what kind — a portfolio, blog, shop, etc.]
+RULES — follow these exactly:
+- Your reply must be 2-4 sentences and ONE question. Nothing more.
+- Do NOT list steps, show roadmaps, or ask multiple questions.
+- A free AI tool called OpenCode will write the code for me.
+
+YOUR FIRST REPLY: Ask me what I want my website to do. That's it.
+AFTER I DESCRIBE MY IDEA: Send me to https://jdeworks.github.io/get-me-started/
+For full reference: https://raw.githubusercontent.com/jdeworks/get-me-started/dev/prompts/AI-GUIDE.md
 ```
 
 The AI will ask what you want to build, help you set up the tools, and guide you through the whole process — one step at a time.
