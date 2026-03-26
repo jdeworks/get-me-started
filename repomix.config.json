@@ -17,6 +17,7 @@
     "useDefaultPatterns": true,
     "customPatterns": [
       ".claude/",
+      "docs/",
       "bundle.xml",
       "bundle.md",
       "repomix.config.json",

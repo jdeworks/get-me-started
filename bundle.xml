@@ -35,7 +35,7 @@ The content is organized as follows:
 <notes>
 - Some files may have been excluded based on .gitignore rules and Repomix's configuration
 - Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
-- Files matching these patterns are excluded: .claude/, bundle.xml, bundle.md, repomix.config.json, .repomixignore, prompts/BUNDLE-HEADER.md
+- Files matching these patterns are excluded: .claude/, docs/, bundle.xml, bundle.md, repomix.config.json, .repomixignore, prompts/BUNDLE-HEADER.md
 - Files matching patterns in .gitignore are excluded
 - Files matching default ignore patterns are excluded
 - Empty lines have been removed from all files
@@ -1934,38 +1934,35 @@ Remember their answers (especially their OS). You'll pass them along when handin
 
 ---
 
-## Phase 2: Choose a Setup
+## Phase 2: Set Up the AI Coding Tool
 
-Now you need to help them choose how to install the AI coding tool. Present it as a simple choice with a clear recommendation. Ask ONE question — don't dump all the details at once.
+There is a **setup page** that makes this easy. Tell the user:
 
-Say something like:
-
-> "Now we need to get the AI coding tool onto your computer. There are two ways to do this:
+> "Great! Now let's get the AI coding tool installed. There's a page that will help you do this — it will detect your computer type and give you a small file to download. That file sets everything up for you.
 >
-> **Option 1 — Quick install** (recommended for Mac and Linux): We download and install two small programs directly on your computer. Takes about 5 minutes. This is the fastest way to get going.
+> Go to this page: **https://jdeworks.github.io/get-me-started/**
 >
-> **Option 2 — Safe install** (recommended for Windows, or if you prefer extra safety): We install everything inside a protected space on your computer — like a bubble. Nothing touches the rest of your system, and you can delete the whole thing cleanly anytime. Takes a bit longer to set up (15-20 minutes) because we need to download more, but it's the cleanest option.
->
-> Which sounds better to you? Or do you want me to explain more about either one?"
+> It will show you which button to click and exactly what to do. Follow the steps there, and once it says 'All done!', come back here and tell me."
 
-**Do NOT mention Docker, Node.js, containers, or any technical terms in this initial question.** Only explain those when the user has chosen a path and you're walking them through the actual steps.
+**That's it for this phase.** The setup page handles OS detection, provides the right script, and shows visual step-by-step instructions with screenshots. You don't need to explain Docker, Node.js, or any technical details — the page and script take care of everything.
 
-**If they're on Windows**: lean toward Option 2 (sandbox), since OpenCode doesn't have a Windows installer. If they insist on Option 1, you'll need to suggest an alternative AI tool or the "stay in chat" approach (Phase 5).
+**If the user can't access the page** (or prefers you to guide them manually), fall back to the manual setup instructions below in [Phase 3: Manual Setup](#phase-3-setup).
 
-**If they ask "what's the difference?"** — explain in simple terms:
-- Option 1 installs the tools on their computer like any other app. Easy to set up, easy to use.
-- Option 2 creates an isolated space where the tools run separately from everything else. A bit more work upfront, but nothing gets mixed into their system. Think of it like a guest room in your house — the guest has everything they need, but they don't rearrange your furniture.
+**If they ask what the setup installs**, explain in simple terms:
+- **Mac/Linux**: It installs two small programs — one that runs website code, and one that's your AI coding assistant. Both are free.
+- **Windows**: It installs a tool that creates a safe, isolated space on your computer where the AI coding assistant runs. Nothing touches the rest of your system. Think of it like a guest room in your house — the guest has everything they need, but they don't rearrange your furniture.
 
-**If they pick Option 1**, follow the setup instructions below under [Direct Install Path](#direct-install-path).
-**If they pick Option 2**, follow the setup instructions below under [Sandbox Setup Path](#sandbox-setup-path).
+**After they finish the setup page**, go to [Phase 4: Hand Off](#phase-4-hand-off-to-make-a-website).
 
 ### Coming Soon: Zero Install
 
-There's a hosted service coming soon where everything runs in the cloud — nothing to install at all. Free tier to get started. Keep an eye on the [get-me-started repo](https://github.com/jdeworks/get-me-started) for updates. For now, use Option 1 or 2 above.
+There's a hosted service coming soon where everything runs in the cloud — nothing to install at all. Free tier to get started. Keep an eye on the [get-me-started repo](https://github.com/jdeworks/get-me-started) for updates.
 
 ---
 
-## Phase 3: Setup
+## Phase 3: Manual Setup (Fallback)
+
+Only use this if the user can't use the setup page at https://jdeworks.github.io/get-me-started/. If they used the setup page successfully, skip to Phase 4.
 
 Follow the path they chose. Use the paste-back pattern for every step.
 

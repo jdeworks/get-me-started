@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Me Started — Set Up Your Website Builder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Get Me Started</h1>
+    <p class="subtitle">Set up your AI website builder in a few clicks</p>
+  </header>
+
+  <main>
+    <!-- Step 1: Detect OS -->
+    <section id="os-select" class="step">
+      <h2>Step 1 — What computer are you using?</h2>
+      <p>We detected: <strong id="os-detected">checking...</strong></p>
+      <div class="os-buttons">
+        <button class="os-btn" data-os="windows" id="btn-windows">
+          <span class="os-icon">&#x1F5A5;</span>
+          Windows
+        </button>
+        <button class="os-btn" data-os="mac" id="btn-mac">
+          <span class="os-icon">&#x1F34E;</span>
+          Mac
+        </button>
+        <button class="os-btn" data-os="linux" id="btn-linux">
+          <span class="os-icon">&#x1F427;</span>
+          Linux
+        </button>
+      </div>
+    </section>
+
+    <!-- Step 2: Download script (shown after OS chosen) -->
+    <section id="download-section" class="step hidden">
+      <h2>Step 2 — Download the setup helper</h2>
+
+      <!-- Windows instructions -->
+      <div id="instructions-windows" class="instructions hidden">
+        <p>This script will install the tools you need: <strong>Git</strong> and <strong>Docker Desktop</strong>. Everything runs inside a safe, isolated space on your computer.</p>
+
+        <div class="download-box">
+          <a id="dl-windows" href="scripts/setup-windows.ps1" download class="download-btn">
+            Download setup for Windows
+          </a>
+          <span class="file-info">setup-windows.ps1 — about 4 KB</span>
+        </div>
+
+        <h3>How to run it:</h3>
+        <div class="visual-steps">
+          <div class="visual-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <p>Find the downloaded file (usually in your <strong>Downloads</strong> folder)</p>
+              <div class="screenshot-box">
+                <img src="img/windows-downloads.svg" alt="Windows Downloads folder showing the setup file" width="480">
+              </div>
+            </div>
+          </div>
+          <div class="visual-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <p><strong>Right-click</strong> the file and choose <strong>"Run with PowerShell"</strong></p>
+              <div class="screenshot-box">
+                <img src="img/windows-rightclick.svg" alt="Right-click menu showing Run with PowerShell option" width="360">
+              </div>
+            </div>
+          </div>
+          <div class="visual-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <p>If Windows asks <em>"Do you want to allow this app to make changes?"</em> — click <strong>Yes</strong>. This is normal — the script needs permission to install programs.</p>
+            </div>
+          </div>
+          <div class="visual-step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <p>Wait for it to finish. You'll see a message saying <strong>"All done!"</strong></p>
+              <div class="screenshot-box">
+                <img src="img/windows-done.svg" alt="Terminal showing setup complete message" width="520">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mac instructions -->
+      <div id="instructions-mac" class="instructions hidden">
+        <p>This script will install the tools you need: <strong>Node.js</strong> and <strong>OpenCode</strong> (your AI coding assistant). Takes about 5 minutes.</p>
+
+        <div class="download-box">
+          <a id="dl-mac" href="scripts/setup-mac.command" download class="download-btn">
+            Download setup for Mac
+          </a>
+          <span class="file-info">setup-mac.command — about 3 KB</span>
+        </div>
+
+        <h3>How to run it:</h3>
+        <div class="visual-steps">
+          <div class="visual-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <p>Find the downloaded file in your <strong>Downloads</strong> folder</p>
+            </div>
+          </div>
+          <div class="visual-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <p><strong>Double-click</strong> the file. A Terminal window will open.</p>
+              <div class="screenshot-box">
+                <img src="img/mac-terminal.svg" alt="Mac Terminal window running the setup script" width="520">
+              </div>
+            </div>
+          </div>
+          <div class="visual-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <p>If macOS says <em>"can't be opened because it's from an unidentified developer"</em>:</p>
+              <ul>
+                <li><strong>Right-click</strong> (or Control-click) the file</li>
+                <li>Choose <strong>"Open"</strong> from the menu</li>
+                <li>Click <strong>"Open"</strong> again in the dialog</li>
+              </ul>
+              <div class="screenshot-box">
+                <img src="img/mac-gatekeeper.svg" alt="macOS Gatekeeper dialog with Open button highlighted" width="400">
+              </div>
+            </div>
+          </div>
+          <div class="visual-step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <p>It may ask for your <strong>password</strong> — this is your computer's login password. Type it and press Enter. (You won't see the characters as you type — that's normal.)</p>
+            </div>
+          </div>
+          <div class="visual-step">
+            <div class="step-number">5</div>
+            <div class="step-content">
+              <p>Wait for it to finish. You'll see <strong>"All done!"</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Linux instructions -->
+      <div id="instructions-linux" class="instructions hidden">
+        <p>This script will install the tools you need: <strong>Node.js</strong> and <strong>OpenCode</strong> (your AI coding assistant). Takes about 5 minutes.</p>
+
+        <div class="download-box">
+          <a id="dl-linux" href="scripts/setup-linux.sh" download class="download-btn">
+            Download setup for Linux
+          </a>
+          <span class="file-info">setup-linux.sh — about 3 KB</span>
+        </div>
+
+        <h3>How to run it:</h3>
+        <div class="visual-steps">
+          <div class="visual-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <p>Open a terminal (press <strong>Ctrl + Alt + T</strong> on most systems)</p>
+            </div>
+          </div>
+          <div class="visual-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <p>Type these two lines and press Enter after each:</p>
+              <div class="code-block">
+                <code>chmod +x ~/Downloads/setup-linux.sh</code>
+                <button class="copy-btn" data-copy="chmod +x ~/Downloads/setup-linux.sh">Copy</button>
+              </div>
+              <div class="code-block">
+                <code>~/Downloads/setup-linux.sh</code>
+                <button class="copy-btn" data-copy="~/Downloads/setup-linux.sh">Copy</button>
+              </div>
+            </div>
+          </div>
+          <div class="visual-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <p>It may ask for your password. Type it and press Enter.</p>
+            </div>
+          </div>
+          <div class="visual-step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <p>Wait for it to finish. You'll see <strong>"All done!"</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 3: What's next -->
+    <section id="next-section" class="step">
+      <h2>Step 3 — Go back to your AI chat</h2>
+      <p>Once the setup is done, go back to your AI chatbot (ChatGPT, Claude, Gemini — wherever you started) and tell it:</p>
+      <div class="code-block">
+        <code>The setup is done. What do I do next?</code>
+        <button class="copy-btn" data-copy="The setup is done. What do I do next?">Copy</button>
+      </div>
+      <p>The AI will guide you from here to build your website.</p>
+    </section>
+
+    <!-- Troubleshooting -->
+    <section id="trouble" class="step">
+      <h2>Something went wrong?</h2>
+      <p>Don't worry — this happens sometimes. Copy the error message you see and paste it back to your AI chatbot. It can help you fix it.</p>
+      <p>Common issues:</p>
+      <ul>
+        <li><strong>Windows says "Windows protected your PC"</strong> — Click "More info", then "Run anyway". This appears because the script isn't signed by a big company. It's safe.</li>
+        <li><strong>Mac says the file "can't be opened"</strong> — Right-click the file, choose "Open", then click "Open" again.</li>
+        <li><strong>"Permission denied"</strong> — On Mac/Linux, the script may need your password. On Windows, right-click and choose "Run as Administrator".</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Part of the <a href="https://github.com/jdeworks/get-me-started">get-me-started</a> project — free, open source, yours to keep.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

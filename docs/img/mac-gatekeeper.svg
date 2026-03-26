@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200">
+  <!-- Dialog background -->
+  <rect width="400" height="200" rx="12" fill="#f6f6f6" stroke="#d0d0d0" stroke-width="1"/>
+  <!-- Warning icon -->
+  <circle cx="40" cy="60" r="20" fill="#ffbd2e"/>
+  <text x="40" y="67" text-anchor="middle" font-family="SF Pro, -apple-system, sans-serif" font-size="20" fill="#fff" font-weight="bold">!</text>
+  <!-- Text -->
+  <text x="72" y="48" font-family="SF Pro, -apple-system, sans-serif" font-size="13" fill="#1a1a1a" font-weight="600">"setup-mac.command" can't be opened because</text>
+  <text x="72" y="66" font-family="SF Pro, -apple-system, sans-serif" font-size="13" fill="#1a1a1a" font-weight="600">it is from an unidentified developer.</text>
+  <text x="72" y="90" font-family="SF Pro, -apple-system, sans-serif" font-size="11" fill="#666">Right-click the file and choose "Open" to bypass this.</text>
+  <!-- Buttons -->
+  <rect x="220" y="130" width="80" height="32" rx="6" fill="#e0e0e0"/>
+  <text x="260" y="150" text-anchor="middle" font-family="SF Pro, -apple-system, sans-serif" font-size="12" fill="#333">Cancel</text>
+  <rect x="310" y="130" width="72" height="32" rx="6" fill="#4361ee"/>
+  <text x="346" y="150" text-anchor="middle" font-family="SF Pro, -apple-system, sans-serif" font-size="12" fill="#fff" font-weight="600">Open</text>
+  <!-- Arrow pointing to Open -->
+  <text x="346" y="122" text-anchor="middle" font-family="SF Pro, sans-serif" font-size="14" fill="#4361ee">&#x2193; click this</text>
+</svg>
