@@ -437,30 +437,42 @@ I want to build a website but I've never coded before.">Copy to clipboard</butto
       </div>
     </section>
 
-    <!-- Step 3: What's next -->
+    <!-- Step 3: What's next (dynamically shown based on OS + install type) -->
     <section id="next-section" class="step">
       <h2>Step 3 — Start building</h2>
-      <p>Setup is done! Now it's time to build your website. Pick the option that matches how you got here:</p>
 
+      <!-- Always show: AI chat return option -->
       <div class="next-option">
-        <h3>If you came from an AI chat (ChatGPT, Claude, Gemini, etc.)</h3>
+        <h3>If you came from an AI chat</h3>
         <p>Go back to your chat and tell it:</p>
         <div class="code-block">
           <code>The setup is done. What do I do next?</code>
           <button class="copy-btn" data-copy="The setup is done. What do I do next?">Copy</button>
         </div>
-        <p>The AI will guide you from here.</p>
       </div>
 
-      <div class="next-option">
-        <h3>If you have OpenCode installed (the quick install)</h3>
-        <p>Open a terminal and start OpenCode in your Projects folder:</p>
-        <div class="code-block">
-          <code>cd ~/Projects
+      <!-- Quick install (all OS): open terminal, launch opencode -->
+      <div id="next-quick" class="next-option hidden">
+        <h3>Or launch OpenCode directly</h3>
+        <div id="next-quick-unix" class="hidden">
+          <p>Open a terminal and run:</p>
+          <div class="code-block">
+            <code>cd ~/Projects
 mkdir my-website
 cd my-website
 opencode</code>
-          <button class="copy-btn" data-copy="cd ~/Projects && mkdir my-website && cd my-website && opencode">Copy</button>
+            <button class="copy-btn" data-copy="cd ~/Projects && mkdir my-website && cd my-website && opencode">Copy</button>
+          </div>
+        </div>
+        <div id="next-quick-win" class="hidden">
+          <p>Open PowerShell and run:</p>
+          <div class="code-block">
+            <code>cd C:\Projects
+mkdir my-website
+cd my-website
+opencode</code>
+            <button class="copy-btn" data-copy="cd C:\Projects; mkdir my-website; cd my-website; opencode">Copy</button>
+          </div>
         </div>
         <p>Once OpenCode opens, paste this:</p>
         <div class="code-block">
@@ -469,8 +481,9 @@ opencode</code>
         </div>
       </div>
 
-      <div class="next-option">
-        <h3>If you used the safe install on Windows</h3>
+      <!-- Safe install Windows: open the .exe -->
+      <div id="next-safe-win" class="next-option hidden">
+        <h3>Or open Agent Sandbox</h3>
         <p>Open <strong>agent-sandbox.exe</strong> from your Downloads folder. The wizard will ask you to pick a template and a project folder. Once the AI coding tool opens, paste this:</p>
         <div class="code-block">
           <code>I want to build a website. Read https://raw.githubusercontent.com/jdeworks/make-a-website/dev/AGENTS.md and guide me through it.</code>
@@ -478,9 +491,10 @@ opencode</code>
         </div>
       </div>
 
-      <div class="next-option">
-        <h3>If you used the safe install on Mac or Linux</h3>
-        <p>Open a terminal, create a folder for your website, and start the sandbox:</p>
+      <!-- Safe install Mac/Linux: terminal + sandbox-me -->
+      <div id="next-safe-unix" class="next-option hidden">
+        <h3>Or launch the sandbox</h3>
+        <p>Open a terminal and run:</p>
         <div class="code-block">
           <code>cd ~/Projects
 mkdir my-website

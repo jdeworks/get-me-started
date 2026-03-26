@@ -81,6 +81,76 @@ function showLinuxOption(id) {
   document.querySelector('#instructions-linux [data-option="' + id + '"]').classList.add('selected');
 }
 
+// Track user's choices for Step 3
+var userOS = null;
+var userInstall = null; // 'quick' or 'safe'
+
+function updateStep3() {
+  // Hide all dynamic next-step cards
+  ['next-quick', 'next-safe-win', 'next-safe-unix', 'next-quick-unix', 'next-quick-win'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.add('hidden');
+  });
+
+  if (!userOS || !userInstall) return;
+
+  if (userInstall === 'quick') {
+    var el = document.getElementById('next-quick');
+    if (el) el.classList.remove('hidden');
+    if (userOS === 'windows') {
+      var w = document.getElementById('next-quick-win');
+      if (w) w.classList.remove('hidden');
+    } else {
+      var u = document.getElementById('next-quick-unix');
+      if (u) u.classList.remove('hidden');
+    }
+  } else if (userInstall === 'safe') {
+    if (userOS === 'windows') {
+      var el = document.getElementById('next-safe-win');
+      if (el) el.classList.remove('hidden');
+    } else {
+      var el = document.getElementById('next-safe-unix');
+      if (el) el.classList.remove('hidden');
+    }
+  }
+}
+
+// Override option tab functions to track install type
+var _origShowWinOption = showWinOption;
+showWinOption = function(id) {
+  _origShowWinOption(id);
+  userInstall = id.includes('safe') ? 'safe' : 'quick';
+  updateStep3();
+};
+
+var _origShowMacOption = showMacOption;
+showMacOption = function(id) {
+  _origShowMacOption(id);
+  userInstall = id.includes('safe') ? 'safe' : 'quick';
+  updateStep3();
+};
+
+var _origShowLinuxOption = showLinuxOption;
+showLinuxOption = function(id) {
+  _origShowLinuxOption(id);
+  userInstall = id.includes('safe') ? 'safe' : 'quick';
+  updateStep3();
+};
+
+// Override selectOS to track OS choice
+var _origSelectOS = selectOS;
+selectOS = function(os) {
+  userOS = os;
+  // Set default install type based on OS
+  if (os === 'windows') {
+    userInstall = 'safe'; // Windows defaults to safe
+  } else {
+    userInstall = 'quick'; // Mac/Linux default to quick
+  }
+  _origSelectOS(os);
+  updateStep3();
+};
+
 // Expose globally for inline onclick
 window.showWinOption = showWinOption;
 window.showMacOption = showMacOption;
