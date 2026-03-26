@@ -2425,16 +2425,11 @@ This repo is designed to work with AI tools whether you are in an online chat or
 
 Copy and paste this prompt directly into your chat:
 ```
-Fetch this file — it contains the full codebase of a beginner guide project called "get-me-started":
-https://raw.githubusercontent.com/jdeworks/get-me-started/dev/bundle.md
-
-Read the file called "prompts/AI-GUIDE.md" inside it and follow those instructions to help me.
+Read this guide and follow the instructions in it to help me step by step:
+https://raw.githubusercontent.com/jdeworks/get-me-started/dev/prompts/AI-GUIDE.md
 
 I want to build a website. [describe what kind — a portfolio, blog, shop, etc.]
 ```
-
-> **Tip:** If that doesn't work well, try pasting the prompt with the XML version instead:
-> `https://raw.githubusercontent.com/jdeworks/get-me-started/dev/bundle.xml`
 
 **If you are using a local AI agent** (Claude Code, Cursor, Windsurf, Codex, etc.):
 
@@ -2462,10 +2457,8 @@ You can build a real website using AI as your guide — even if you've never wri
 Copy and paste this entire block into ChatGPT, Claude, Gemini, or any AI assistant you use:
 
 ```
-Fetch this file — it contains the full codebase of a beginner guide project called "get-me-started":
-https://raw.githubusercontent.com/jdeworks/get-me-started/dev/bundle.md
-
-Read the file called "prompts/AI-GUIDE.md" inside it and follow those instructions to help me.
+Read this guide and follow the instructions in it to help me step by step:
+https://raw.githubusercontent.com/jdeworks/get-me-started/dev/prompts/AI-GUIDE.md
 
 I want to build my own website but I've never coded before.
 ```
@@ -2473,6 +2466,8 @@ I want to build my own website but I've never coded before.
 That's it. The AI takes it from here.
 
 **If the AI can't read the link**: go to [prompts/AI-GUIDE.md](prompts/AI-GUIDE.md), click "Raw", select all the text, copy it, and paste it into the chat. Same result — the AI now has the guide.
+
+> **For AI agents that can read full repos**: the bundle files ([bundle.md](bundle.md), [bundle.xml](bundle.xml)) contain the entire project and are useful for local AI tools that benefit from full codebase context.
 
 ---
 
