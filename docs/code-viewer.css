@@ -21,7 +21,7 @@
 .code-viewer-body {
   background: #151b28;
   padding: 0;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 /* Section headers within code */
@@ -80,11 +80,10 @@
   font-family: "SF Mono", "Cascadia Code", Consolas, monospace;
   font-size: 0.82rem;
   color: #e0e0e0;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
+  white-space: pre;
+  overflow-x: auto;
   line-height: 1.5;
   min-width: 0;
-  max-width: calc(100% - 60px);
 }
 
 /* Hint icon (? bubble) */
