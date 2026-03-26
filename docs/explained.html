@@ -12,16 +12,16 @@
   <header>
     <p><a href="index.html">&larr; Back to setup</a></p>
     <h1>What the setup scripts do</h1>
-    <p class="subtitle">Every step, explained in plain language</p>
+    <p class="subtitle">Every line, explained in plain language</p>
   </header>
 
   <main>
     <section class="step">
-      <p>We want you to feel safe running these scripts. No surprises, no hidden steps.</p>
-      <p><strong>You can verify this yourself:</strong> right-click the downloaded file and open it with any text editor (Notepad on Windows, TextEdit on Mac). Every line has a comment explaining what it does. What you see below matches the file exactly.</p>
+      <p>Every single line of the script is shown below with a plain-language explanation. Nothing is hidden or summarized.</p>
+      <p><strong>Verify it yourself:</strong> right-click the downloaded file, open it with any text editor (Notepad on Windows, TextEdit on Mac), and compare — line for line, what you see here is what's in the file.</p>
+      <p><em>Click any line to see what it does.</em></p>
     </section>
 
-    <!-- Script selector -->
     <section class="step">
       <h2>Which script did you download?</h2>
       <div class="os-buttons">
@@ -32,235 +32,406 @@
       </div>
     </section>
 
-    <!-- ==================== WINDOWS SAFE ==================== -->
+    <!-- ===================== WINDOWS SAFE ===================== -->
     <section id="explain-win-safe" class="step explanation-section hidden">
-      <h2>Windows — Safe install (Docker)</h2>
+      <h2>setup-windows.ps1 — Safe install</h2>
+      <div class="code-viewer">
+        <div class="code-viewer-header">setup-windows.ps1 — 136 lines</div>
+        <div class="code-viewer-body">
+          <div class="cv-section">Header comments (lines 1-12)</div>
+          <div class="cv-line" data-tip="Lines starting with # are comments. They're notes for humans — your computer ignores them completely. These explain what the script does before it does anything.">
+            <span class="cv-ln">1</span><span class="cv-code"><span class="cmt"># get-me-started: Windows setup helper (Safe install)</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="More comments explaining what the 3 steps are: install Docker, download agent-sandbox, create a folder. Nothing runs yet — these are just notes.">
+            <span class="cv-ln">2-12</span><span class="cv-code"><span class="cmt"># This script does 3 things:
+#   1. Installs Docker Desktop ...
+#   2. Downloads agent-sandbox.exe ...
+#   3. Creates a Projects folder ...
+# HOW TO RUN: Right-click this file > "Run with PowerShell"</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
 
-      <details class="script-source">
-        <summary>Plain-language explanation</summary>
-        <div class="explain-steps-list">
-          <div class="explain-step"><h3>1. Check for winget</h3><p>Checks if Windows' built-in app installer is available. If missing, your Windows may need an update.</p></div>
-          <div class="explain-step"><h3>2. Install Git</h3><p>Installs Git — a tool for downloading project files from the internet. Free, safe, used by millions.</p><p class="explain-skip">Skipped if already installed.</p></div>
-          <div class="explain-step"><h3>3. Install Docker Desktop</h3><p>Installs Docker — creates isolated spaces ("containers") where your AI tools run. This is the largest download (~500 MB). Nothing else on your system is affected.</p><p class="explain-skip">Skipped if already installed. May need a restart.</p></div>
-          <div class="explain-step"><h3>4. Create SSH key</h3><p>Creates a secure key pair — like a digital ID card for your computer. Lets it talk to GitHub without a password. The key stays on your machine.</p><p class="explain-skip">Skipped if one exists.</p></div>
-          <div class="explain-step"><h3>5. Create Projects folder + download agent-sandbox</h3><p>Creates C:\Projects (where your websites live) and downloads agent-sandbox — the tool that sets up your AI coding environment inside Docker.</p><p class="explain-skip">Skipped if they already exist.</p></div>
-          <div class="explain-step result"><h3>Done!</h3><p>Shows "All done!", prints your SSH key, and links to the GitHub setup page.</p></div>
-        </div>
-      </details>
+          <div class="cv-section">Allow this script to run (line 17)</div>
+          <div class="cv-line" data-tip="PowerShell blocks scripts by default as a safety measure. This tells PowerShell: 'allow THIS script to run, just this one time, just in this window.' It doesn't change any system settings permanently.">
+            <span class="cv-ln">17</span><span class="cv-code"><span class="cmd">Set-ExecutionPolicy</span> -Scope Process -ExecutionPolicy Bypass -Force</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
 
-      <details class="script-source" open>
-        <summary>See the actual script — click any line to see what it does</summary>
-        <p>This is the real script. Open setup-windows.ps1 in Notepad to verify.</p>
-        <div class="code-viewer">
-          <div class="code-viewer-header">setup-windows.ps1</div>
-          <div class="code-viewer-body">
-            <div class="cv-section">Check winget</div>
-            <div class="cv-line" data-tip="Checks if Windows' built-in app installer (winget) is available. We need it to install the tools below.">
-              <span class="cv-ln">22</span><span class="cv-code"><span class="cmd">Get-Command</span> winget -ErrorAction SilentlyContinue</span><span class="cv-hint-icon">?</span>
-              <div class="cv-explain"></div>
-            </div>
-            <div class="cv-section">Install Git</div>
-            <div class="cv-line" data-tip="Installs Git — a free tool for downloading project files from the internet. Used by millions of developers. Skipped if already installed.">
-              <span class="cv-ln">38</span><span class="cv-code"><span class="cmd">winget install</span> --id Git.Git</span><span class="cv-hint-icon">?</span>
-              <div class="cv-explain"></div>
-            </div>
-            <div class="cv-section">Install Docker Desktop</div>
-            <div class="cv-line" data-tip="Installs Docker Desktop — creates isolated spaces where your AI coding tools run. This is the largest download (~500 MB). Skipped if already installed. You may need to restart your computer after this.">
-              <span class="cv-ln">51</span><span class="cv-code"><span class="cmd">winget install</span> --id Docker.DockerDesktop</span><span class="cv-hint-icon">?</span>
-              <div class="cv-explain"></div>
-            </div>
-            <div class="cv-section">Create SSH key</div>
-            <div class="cv-line" data-tip="Creates a secure key pair — like a digital ID card for your computer. Only the 'public' half gets shared with GitHub. Skipped if one already exists.">
-              <span class="cv-ln">68</span><span class="cv-code"><span class="cmd">ssh-keygen</span> -t ed25519 -N <span class="str">'&quot;&quot;'</span> -q</span><span class="cv-hint-icon">?</span>
-              <div class="cv-explain"></div>
-            </div>
-            <div class="cv-section">Projects folder + agent-sandbox</div>
-            <div class="cv-line" data-tip="Creates C:\\Projects — a regular folder where your website files will live. Skipped if it already exists.">
-              <span class="cv-ln">78</span><span class="cv-code"><span class="cmd">New-Item</span> -ItemType Directory -Path <span class="str">&quot;C:\Projects&quot;</span></span><span class="cv-hint-icon">?</span>
-              <div class="cv-explain"></div>
-            </div>
-            <div class="cv-line" data-tip="Downloads agent-sandbox — the tool that sets up your AI coding environment inside Docker. It has ready-made templates so you don't configure anything manually.">
-              <span class="cv-ln">88</span><span class="cv-code"><span class="cmd">git clone</span> <span class="str">https://github.com/jdeworks/agent-sandbox.git</span></span><span class="cv-hint-icon">?</span>
-              <div class="cv-explain"></div>
-            </div>
+          <div class="cv-section">Welcome message (lines 19-31)</div>
+          <div class="cv-line" data-tip="Write-Host prints text on your screen. These lines display the welcome banner and explain what's about to happen. -ForegroundColor changes the text color (Cyan = light blue, Yellow = warning color). This is just informational — nothing is installed yet.">
+            <span class="cv-ln">19-31</span><span class="cv-code"><span class="cmd">Write-Host</span> <span class="str">"========================================"</span> -ForegroundColor Cyan
+<span class="cmd">Write-Host</span> <span class="str">"  Get Me Started - Windows Safe Setup"</span> -ForegroundColor Cyan
+<span class="cmd">Write-Host</span> <span class="str">"This sets up an isolated coding environment..."</span>
+<span class="cmd">Write-Host</span> <span class="str">"Note: Windows may ask 'Do you want to allow...'"</span> -ForegroundColor Yellow</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Check for winget (lines 33-46)</div>
+          <div class="cv-line" data-tip="Checks if 'winget' is available on your computer. winget is Windows' built-in app installer — like an app store from the command line. It comes pre-installed on Windows 10 (version 1809+) and Windows 11. If it's missing, your Windows may need an update.">
+            <span class="cv-ln">37</span><span class="cv-code">$hasWinget = <span class="cmd">Get-Command</span> winget -ErrorAction SilentlyContinue</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="If winget wasn't found, show an error message and stop. The script can't install anything without winget. 'exit 1' means 'stop the script because something went wrong.'">
+            <span class="cv-ln">38-46</span><span class="cv-code"><span class="kw">if</span> (-not $hasWinget) {
+    <span class="cmd">Write-Host</span> <span class="str">"[!] winget not found."</span> -ForegroundColor Red
+    <span class="cmd">Write-Host</span> <span class="str">"Please update Windows or install 'App Installer'..."</span>
+    <span class="kw">exit</span> 1
+}</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Step 1: Install Docker Desktop (lines 48-69)</div>
+          <div class="cv-line" data-tip="Checks if Docker is already installed by looking for the 'docker' command. If it exists, it shows the version and skips to the next step. Nothing gets reinstalled.">
+            <span class="cv-ln">55</span><span class="cv-code">$hasDocker = <span class="cmd">Get-Command</span> docker -ErrorAction SilentlyContinue</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="If Docker isn't installed, this line installs it using winget. Docker Desktop creates isolated 'containers' — like a mini computer inside your computer. Your AI coding tool runs inside one. --accept-source-agreements and --accept-package-agreements skip the 'do you agree?' prompts so you don't have to click through them. This is the biggest download (~500 MB).">
+            <span class="cv-ln">62</span><span class="cv-code">    <span class="cmd">winget install</span> --id Docker.DockerDesktop --accept-source-agreements --accept-package-agreements</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="After installing Docker, these lines warn you that a restart might be needed. Docker needs a one-time restart to fully activate. If you re-run this script after restarting, it will skip Docker (already installed) and continue with the next step.">
+            <span class="cv-ln">65-67</span><span class="cv-code">    <span class="cmd">Write-Host</span> <span class="str">"IMPORTANT: You may need to restart..."</span> -ForegroundColor Yellow
+    <span class="cmd">Write-Host</span> <span class="str">"After restarting, run this script again..."</span> -ForegroundColor Yellow</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Step 2: Download agent-sandbox (lines 71-93)</div>
+          <div class="cv-line" data-tip="Sets the download destination to your Downloads folder. $env:USERPROFILE is your home folder (like C:\\Users\\YourName). So this file ends up at C:\\Users\\YourName\\Downloads\\agent-sandbox.exe.">
+            <span class="cv-ln">78</span><span class="cv-code">$sandboxExe = <span class="str">"$env:USERPROFILE\Downloads\agent-sandbox.exe"</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="Checks if agent-sandbox.exe was already downloaded. If the file exists, it skips the download.">
+            <span class="cv-ln">79</span><span class="cv-code"><span class="kw">if</span> (Test-Path $sandboxExe) {</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="Downloads agent-sandbox.exe from GitHub. GitHub is where developers share open-source code. This downloads the latest version of the app. Invoke-WebRequest is PowerShell's way of downloading a file from the internet — similar to clicking a download link in your browser.">
+            <span class="cv-ln">85</span><span class="cv-code">    <span class="cmd">Invoke-WebRequest</span> -Uri $downloadUrl -OutFile $sandboxExe -UseBasicParsing</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="If the download fails (bad internet, server down, etc.), these lines show an error and give you the URL to download manually in your browser. The script continues — this isn't a fatal error.">
+            <span class="cv-ln">87-91</span><span class="cv-code">    <span class="kw">catch</span> {
+        <span class="cmd">Write-Host</span> <span class="str">"Download failed. You can download it manually..."</span>
+    }</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Step 3: Create Projects folder (lines 95-106)</div>
+          <div class="cv-line" data-tip="Checks if C:\\Projects already exists. If it does, nothing happens — the script just tells you it's there.">
+            <span class="cv-ln">100</span><span class="cv-code"><span class="kw">if</span> (Test-Path $projectsPath) {</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="Creates the folder C:\\Projects. This is just a regular folder — you can see it in File Explorer. It's where your website files will live. '| Out-Null' just hides the confirmation message that PowerShell normally prints.">
+            <span class="cv-ln">103</span><span class="cv-code">    <span class="cmd">New-Item</span> -ItemType Directory -Path $projectsPath | Out-Null</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Done + next steps (lines 108-136)</div>
+          <div class="cv-line" data-tip="Checks one more time if Docker is available. If it still isn't (because a restart is needed), it reminds you to restart. If it is, this check passes silently.">
+            <span class="cv-ln">115-120</span><span class="cv-code">$hasDockerNow = <span class="cmd">Get-Command</span> docker -ErrorAction SilentlyContinue
+<span class="kw">if</span> (-not $hasDockerNow) {
+    <span class="cmd">Write-Host</span> <span class="str">"NOTE: You may need to RESTART..."</span> -ForegroundColor Yellow
+}</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="Shows you the next steps: open agent-sandbox.exe, pick a template, and start building. Then waits for you to press Enter before closing the window.">
+            <span class="cv-ln">122-135</span><span class="cv-code"><span class="cmd">Write-Host</span> <span class="str">"Next steps:"</span> -ForegroundColor Cyan
+<span class="cmd">Write-Host</span> <span class="str">"  1. Open agent-sandbox.exe from your Downloads folder"</span>
+<span class="cmd">Write-Host</span> <span class="str">"  2. Pick a template and choose C:\Projects as your folder"</span>
+<span class="cmd">Write-Host</span> <span class="str">"  3. The AI coding tool opens automatically"</span>
+<span class="cmd">Read-Host</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
           </div>
         </div>
-      </details>
+      </div>
     </section>
 
-    <!-- ==================== WINDOWS QUICK ==================== -->
+    <!-- ===================== WINDOWS QUICK ===================== -->
     <section id="explain-win-quick" class="step explanation-section hidden">
-      <h2>Windows — Quick install</h2>
+      <h2>setup-windows-direct.ps1 — Quick install</h2>
+      <div class="code-viewer">
+        <div class="code-viewer-header">setup-windows-direct.ps1 — 91 lines</div>
+        <div class="code-viewer-body">
+          <div class="cv-section">Header + allow script to run (lines 1-11)</div>
+          <div class="cv-line" data-tip="Comments (lines starting with #) are notes for humans — your computer ignores them. They explain this is the quick install that puts Node.js and OpenCode directly on your computer.">
+            <span class="cv-ln">1-8</span><span class="cv-code"><span class="cmt"># get-me-started: Windows direct setup helper (Quick install)
+# This script installs Node.js and OpenCode directly on your computer.
+# HOW TO RUN: Right-click this file > "Run with PowerShell"</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="Allows this script to run in the current PowerShell window. PowerShell blocks scripts by default for safety. This only affects this one window, this one time.">
+            <span class="cv-ln">11</span><span class="cv-code"><span class="cmd">Set-ExecutionPolicy</span> -Scope Process -ExecutionPolicy Bypass -Force</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
 
-      <details class="script-source">
-        <summary>Plain-language explanation</summary>
-        <div class="explain-steps-list">
-          <div class="explain-step"><h3>1. Check for winget</h3><p>Checks if Windows' built-in app installer is available.</p></div>
-          <div class="explain-step"><h3>2. Install Git</h3><p>Downloads project files from the internet. Free, safe.</p><p class="explain-skip">Skipped if already installed.</p></div>
-          <div class="explain-step"><h3>3. Install Node.js</h3><p>The engine that runs website code on your computer. Used by Netflix, Uber, NASA.</p><p class="explain-skip">Skipped if already installed.</p></div>
-          <div class="explain-step"><h3>4. Install OpenCode</h3><p>The free AI coding assistant. You describe what you want, it writes the code.</p><p class="explain-skip">Skipped if already installed.</p></div>
-          <div class="explain-step"><h3>5. Create SSH key</h3><p>Digital ID card for your computer. Stays on your machine.</p><p class="explain-skip">Skipped if one exists.</p></div>
-          <div class="explain-step"><h3>6. Create Projects folder</h3><p>Where your websites will live. Just a regular folder.</p><p class="explain-skip">Skipped if it exists.</p></div>
-          <div class="explain-step result"><h3>Done!</h3><p>Shows "All done!" and prints your SSH key.</p></div>
-        </div>
-      </details>
+          <div class="cv-section">Welcome message (lines 13-24)</div>
+          <div class="cv-line" data-tip="Write-Host prints text on your screen. These lines show the title banner and explain that Windows may ask permission. -ForegroundColor sets the text color. Nothing is installed yet — this is just information.">
+            <span class="cv-ln">13-24</span><span class="cv-code"><span class="cmd">Write-Host</span> <span class="str">"  Get Me Started - Windows Quick Setup"</span> -ForegroundColor Cyan
+<span class="cmd">Write-Host</span> <span class="str">"This will install Node.js and OpenCode..."</span>
+<span class="cmd">Write-Host</span> <span class="str">"Note: Windows may ask 'Do you want to allow...'"</span> -ForegroundColor Yellow</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
 
-      <details class="script-source" open>
-        <summary>See the actual script — click any line to see what it does</summary>
-        <p>This is the real script. Open setup-windows-direct.ps1 in Notepad to verify.</p>
-        <div class="code-viewer">
-          <div class="code-viewer-header">setup-windows-direct.ps1</div>
-          <div class="code-viewer-body">
-            <div class="cv-section">Install Git</div>
-            <div class="cv-line" data-tip="Installs Git — downloads project files from the internet. Free, safe. Skipped if already installed.">
-              <span class="cv-ln">38</span><span class="cv-code"><span class="cmd">winget install</span> --id Git.Git</span><span class="cv-hint-icon">?</span>
-              <div class="cv-explain"></div>
-            </div>
-            <div class="cv-section">Install Node.js</div>
-            <div class="cv-line" data-tip="Installs Node.js — the engine that runs website code on your computer. Used by millions of developers worldwide. Skipped if already installed.">
-              <span class="cv-ln">51</span><span class="cv-code"><span class="cmd">winget install</span> --id OpenJS.NodeJS.LTS</span><span class="cv-hint-icon">?</span>
-              <div class="cv-explain"></div>
-            </div>
-            <div class="cv-section">Install OpenCode</div>
-            <div class="cv-line" data-tip="Installs OpenCode — the free AI that writes website code for you. You describe what you want in plain words. Skipped if already installed.">
-              <span class="cv-ln">67</span><span class="cv-code"><span class="cmd">npm install</span> -g opencode-ai</span><span class="cv-hint-icon">?</span>
-              <div class="cv-explain"></div>
-            </div>
-            <div class="cv-section">SSH key + Projects folder</div>
-            <div class="cv-line" data-tip="Creates a digital ID card for your computer to talk to GitHub securely. Skipped if one already exists.">
-              <span class="cv-ln">77</span><span class="cv-code"><span class="cmd">ssh-keygen</span> -t ed25519</span><span class="cv-hint-icon">?</span>
-              <div class="cv-explain"></div>
-            </div>
-            <div class="cv-line" data-tip="Creates C:\\Projects — where your website files will live. Skipped if it exists.">
-              <span class="cv-ln">85</span><span class="cv-code"><span class="cmd">New-Item</span> -Path <span class="str">&quot;C:\Projects&quot;</span></span><span class="cv-hint-icon">?</span>
-              <div class="cv-explain"></div>
-            </div>
+          <div class="cv-section">Check for winget (lines 26-36)</div>
+          <div class="cv-line" data-tip="Checks if winget (Windows' built-in app installer) exists. If not, shows an error and stops. Without winget, we can't install anything.">
+            <span class="cv-ln">27-36</span><span class="cv-code">$hasWinget = <span class="cmd">Get-Command</span> winget -ErrorAction SilentlyContinue
+<span class="kw">if</span> (-not $hasWinget) { ... <span class="kw">exit</span> 1 }</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Step 1: Install Node.js (lines 38-51)</div>
+          <div class="cv-line" data-tip="Checks if Node.js is already installed. If it is, shows the version and skips to the next step.">
+            <span class="cv-ln">40</span><span class="cv-code">$hasNode = <span class="cmd">Get-Command</span> node -ErrorAction SilentlyContinue</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="Installs Node.js LTS (Long Term Support = the stable version) using winget. Node.js is the engine that runs website code on your computer. It's free, used by millions of developers (Netflix, Uber, NASA).">
+            <span class="cv-ln">46</span><span class="cv-code">    <span class="cmd">winget install</span> --id OpenJS.NodeJS.LTS --accept-source-agreements --accept-package-agreements</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="After installing Node.js, this refreshes the list of available commands. Without this, PowerShell might not find 'node' or 'npm' until you close and reopen the window. This saves you that step.">
+            <span class="cv-ln">48</span><span class="cv-code">    $env:Path = [System.Environment]::GetEnvironmentVariable(<span class="str">"Path"</span>,<span class="str">"Machine"</span>) + <span class="str">";"</span> + [System.Environment]::GetEnvironmentVariable(<span class="str">"Path"</span>,<span class="str">"User"</span>)</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Step 2: Install OpenCode (lines 53-65)</div>
+          <div class="cv-line" data-tip="Checks if OpenCode is already installed. If it is, skips this step.">
+            <span class="cv-ln">55</span><span class="cv-code">$hasOpenCode = <span class="cmd">Get-Command</span> opencode -ErrorAction SilentlyContinue</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="Installs OpenCode using npm (Node.js's package manager, which was just installed). '-g' means 'install it so it works from anywhere on the computer.' OpenCode is the free AI coding assistant — you describe what you want in plain words, it writes the code.">
+            <span class="cv-ln">62</span><span class="cv-code">    <span class="cmd">npm install</span> -g opencode-ai</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Step 3: Create Projects folder (lines 67-76)</div>
+          <div class="cv-line" data-tip="Creates C:\\Projects — a regular folder where your website files will live. You can see it in File Explorer. Skipped if it already exists.">
+            <span class="cv-ln">73</span><span class="cv-code">    <span class="cmd">New-Item</span> -ItemType Directory -Path $projectsPath | Out-Null</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Done (lines 78-91)</div>
+          <div class="cv-line" data-tip="Shows 'All done!' and tells you to go back to your AI chat. Read-Host waits for you to press Enter before closing the window so you can read the message.">
+            <span class="cv-ln">78-90</span><span class="cv-code"><span class="cmd">Write-Host</span> <span class="str">"  All done!"</span> -ForegroundColor Green
+<span class="cmd">Write-Host</span> <span class="str">"Go back to your AI chat and tell it:"</span>
+<span class="cmd">Write-Host</span> <span class="str">'  "The setup is done. What do I do next?"'</span>
+<span class="cmd">Read-Host</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
           </div>
         </div>
-      </details>
+      </div>
     </section>
 
-    <!-- ==================== MAC ==================== -->
+    <!-- ===================== MAC ===================== -->
     <section id="explain-mac" class="step explanation-section hidden">
-      <h2>Mac — Quick install</h2>
+      <h2>setup-mac.command — Quick install</h2>
+      <div class="code-viewer">
+        <div class="code-viewer-header">setup-mac.command — 111 lines</div>
+        <div class="code-viewer-body">
+          <div class="cv-section">Header (lines 1-7)</div>
+          <div class="cv-line" data-tip="The first line (#!/bin/bash) tells your Mac to run this file using Bash — a program that executes commands. Lines starting with # are comments (notes for humans). They explain this is the Mac quick install.">
+            <span class="cv-ln">1-7</span><span class="cv-code"><span class="cmt">#!/bin/bash
+# get-me-started: Mac setup helper (Quick install)
+# This script installs Node.js and OpenCode so you can build websites with AI.
+# You can open this file in any text editor (like TextEdit) to read
+# exactly what it does before running it.</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
 
-      <details class="script-source">
-        <summary>Plain-language explanation</summary>
-        <div class="explain-steps-list">
-          <div class="explain-step"><h3>1. Developer tools (includes Git)</h3><p>Installs Apple's command line tools. Includes Git for downloading project files. A popup from Apple may appear — completely safe.</p><p class="explain-skip">Skipped if already installed.</p></div>
-          <div class="explain-step"><h3>2. Install Node.js</h3><p>The engine that runs website code. Installed via Homebrew (Mac's app manager). If Homebrew isn't installed, it installs that first. May ask for your password.</p><p class="explain-skip">Skipped if already installed.</p></div>
-          <div class="explain-step"><h3>3. Install OpenCode</h3><p>The free AI coding assistant. You describe what you want, it writes the code.</p><p class="explain-skip">Skipped if already installed.</p></div>
-          <div class="explain-step"><h3>4. Create SSH key</h3><p>Digital ID card for your computer. Only the public half is shared.</p><p class="explain-skip">Skipped if one exists.</p></div>
-          <div class="explain-step"><h3>5. Create Projects folder</h3><p>~/Projects — where your websites will live.</p><p class="explain-skip">Skipped if it exists.</p></div>
-          <div class="explain-step result"><h3>Done!</h3><p>Shows "All done!" and prints your SSH key.</p></div>
-        </div>
-      </details>
+          <div class="cv-section">Setup (lines 9-15)</div>
+          <div class="cv-line" data-tip="'set -e' tells the script to stop immediately if any command fails, instead of continuing. This prevents a broken install from going unnoticed.">
+            <span class="cv-ln">9</span><span class="cv-code"><span class="cmd">set -e</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="These lines define color codes for the text you'll see. BOLD makes text stand out, GREEN means success, YELLOW means 'heads up', RED means error, NC means 'back to normal.' This is just visual styling — nothing is installed.">
+            <span class="cv-ln">11-15</span><span class="cv-code">BOLD=<span class="str">'\033[1m'</span>
+GREEN=<span class="str">'\033[0;32m'</span>
+YELLOW=<span class="str">'\033[0;33m'</span>
+RED=<span class="str">'\033[0;31m'</span>
+NC=<span class="str">'\033[0m'</span> <span class="cmt"># No Color</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
 
-      <details class="script-source" open>
-        <summary>See the actual script — click any line to see what it does</summary>
-        <p>This is the real script. Open setup-mac.command in TextEdit to verify.</p>
-        <div class="code-viewer">
-          <div class="code-viewer-header">setup-mac.command</div>
-          <div class="code-viewer-body">
-            <div class="cv-section">Developer tools</div>
-            <div class="cv-line" data-tip="Checks if Apple's developer tools are already installed. These include Git (for downloading files) and other essentials.">
-              <span class="cv-ln">33</span><span class="cv-code"><span class="kw">if</span> xcode-select -p &amp;&gt;/dev/null; <span class="kw">then</span></span><span class="cv-hint-icon">?</span>
-              <div class="cv-explain"></div>
-            </div>
-            <div class="cv-line" data-tip="If not installed, triggers Apple's own installer popup. This is from Apple, completely safe. The script waits for it to finish.">
-              <span class="cv-ln">38</span><span class="cv-code">    <span class="cmd">xcode-select --install</span></span><span class="cv-hint-icon">?</span>
-              <div class="cv-explain"></div>
-            </div>
-            <div class="cv-section">Node.js</div>
-            <div class="cv-line" data-tip="Checks if Node.js is already on your Mac. If yes, skips this step entirely.">
-              <span class="cv-ln">51</span><span class="cv-code"><span class="kw">if</span> command -v node &amp;&gt;/dev/null; <span class="kw">then</span></span><span class="cv-hint-icon">?</span>
-              <div class="cv-explain"></div>
-            </div>
-            <div class="cv-line" data-tip="Installs Node.js using Homebrew (Mac's standard app manager). Node.js is the engine that runs website code on your computer.">
-              <span class="cv-ln">57</span><span class="cv-code">    <span class="cmd">brew install</span> node</span><span class="cv-hint-icon">?</span>
-              <div class="cv-explain"></div>
-            </div>
-            <div class="cv-line" data-tip="If Homebrew isn't installed, downloads and installs it first. Homebrew is free, open source, and trusted by millions of Mac users. May ask for your password.">
-              <span class="cv-ln">60</span><span class="cv-code">    curl -fsSL <span class="str">https://...Homebrew/install/...</span> | bash</span><span class="cv-hint-icon">?</span>
-              <div class="cv-explain"></div>
-            </div>
-            <div class="cv-section">OpenCode</div>
-            <div class="cv-line" data-tip="Checks if OpenCode is already installed. If yes, skips.">
-              <span class="cv-ln">75</span><span class="cv-code"><span class="kw">if</span> command -v opencode &amp;&gt;/dev/null; <span class="kw">then</span></span><span class="cv-hint-icon">?</span>
-              <div class="cv-explain"></div>
-            </div>
-            <div class="cv-line" data-tip="Installs OpenCode — the free AI coding assistant. You describe what you want in plain words, it writes the code for you.">
-              <span class="cv-ln">80</span><span class="cv-code">    <span class="cmd">brew install</span> opencode-ai/tap/opencode</span><span class="cv-hint-icon">?</span>
-              <div class="cv-explain"></div>
-            </div>
-            <div class="cv-section">SSH key</div>
-            <div class="cv-line" data-tip="Creates a secure key pair — like a digital ID card for your computer. Only the 'public' half is shared with GitHub. Skipped if one already exists.">
-              <span class="cv-ln">96</span><span class="cv-code">    <span class="cmd">ssh-keygen</span> -t ed25519 -N <span class="str">""</span> -q</span><span class="cv-hint-icon">?</span>
-              <div class="cv-explain"></div>
-            </div>
-            <div class="cv-section">Projects folder</div>
-            <div class="cv-line" data-tip="Creates a 'Projects' folder in your home directory. This is where your websites will live. You can find it in Finder. Skipped if it already exists.">
-              <span class="cv-ln">106</span><span class="cv-code">    <span class="cmd">mkdir -p</span> <span class="str">"$HOME/Projects"</span></span><span class="cv-hint-icon">?</span>
-              <div class="cv-explain"></div>
-            </div>
+          <div class="cv-section">Welcome message (lines 17-29)</div>
+          <div class="cv-line" data-tip="'echo' prints text on your screen. These lines show the title banner, time estimate, and a note about the password prompt. 'echo -e' enables the color codes defined above. Nothing is installed yet.">
+            <span class="cv-ln">17-29</span><span class="cv-code"><span class="cmd">echo</span> -e <span class="str">"  Get Me Started — Mac Setup"</span>
+<span class="cmd">echo</span> <span class="str">"This will install the tools you need..."</span>
+<span class="cmd">echo</span> -e <span class="str">"Note: This script may ask for your password..."</span>
+<span class="cmd">echo</span> <span class="str">"This is your computer's login password..."</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Step 1: Developer tools (lines 31-47)</div>
+          <div class="cv-line" data-tip="Checks if Apple's developer tools are already installed. 'xcode-select -p' returns the path to the tools if they exist. '&>/dev/null' hides the output — we only care if the command succeeds or fails.">
+            <span class="cv-ln">33</span><span class="cv-code"><span class="kw">if</span> xcode-select -p &amp;&gt;/dev/null; <span class="kw">then</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="If the tools aren't installed, this triggers Apple's own installer. A popup from Apple will appear on your screen asking you to install developer tools. This is from Apple, completely safe. The script then waits (checking every 5 seconds) until the installation is complete.">
+            <span class="cv-ln">38</span><span class="cv-code">    <span class="cmd">xcode-select --install</span> 2&gt;/dev/null || true</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="'until' creates a loop that keeps checking if the tools are installed yet, waiting 5 seconds between checks. Once installed, the loop ends and the script continues.">
+            <span class="cv-ln">42-44</span><span class="cv-code">    <span class="kw">until</span> xcode-select -p &amp;&gt;/dev/null; <span class="kw">do</span>
+        sleep 5
+    <span class="kw">done</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Step 2: Node.js (lines 49-71)</div>
+          <div class="cv-line" data-tip="Checks if Node.js is already installed by looking for the 'node' command. 'command -v' returns the path to a program if it exists. If Node.js is found, shows its version and skips this step.">
+            <span class="cv-ln">51</span><span class="cv-code"><span class="kw">if</span> command -v node &amp;&gt;/dev/null; <span class="kw">then</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="Checks if Homebrew (Mac's popular app manager) is installed. If yes, uses it to install Node.js.">
+            <span class="cv-ln">56</span><span class="cv-code">    <span class="kw">if</span> command -v brew &amp;&gt;/dev/null; <span class="kw">then</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="Installs Node.js using Homebrew. Node.js is the engine that runs website code on your computer during development. It's free, used by millions of developers (Netflix, Uber, NASA all use it).">
+            <span class="cv-ln">57</span><span class="cv-code">        <span class="cmd">brew install</span> node</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="If Homebrew isn't installed, this downloads and installs it first. Homebrew is the standard way to install developer tools on Mac — it's free, open source, and trusted by millions. 'curl' downloads the installer, and 'bash' runs it. This may ask for your password.">
+            <span class="cv-ln">60</span><span class="cv-code">        /bin/bash -c <span class="str">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="After installing Homebrew, these lines make it available in this session. On newer Macs (M1/M2/M3/M4), Homebrew lives in /opt/homebrew. On older Intel Macs, it's in /usr/local. 'eval' runs the setup command that Homebrew needs.">
+            <span class="cv-ln">62-66</span><span class="cv-code">        <span class="kw">if</span> [ -f /opt/homebrew/bin/brew ]; <span class="kw">then</span>
+            <span class="cmd">eval</span> <span class="str">"$(/opt/homebrew/bin/brew shellenv)"</span>
+        <span class="kw">elif</span> [ -f /usr/local/bin/brew ]; <span class="kw">then</span>
+            <span class="cmd">eval</span> <span class="str">"$(/usr/local/bin/brew shellenv)"</span>
+        <span class="kw">fi</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Step 3: OpenCode (lines 73-86)</div>
+          <div class="cv-line" data-tip="Checks if OpenCode is already installed. If yes, skips this step.">
+            <span class="cv-ln">75</span><span class="cv-code"><span class="kw">if</span> command -v opencode &amp;&gt;/dev/null; <span class="kw">then</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="Installs OpenCode using Homebrew. OpenCode is the free AI coding assistant — you describe what you want in plain words, and it writes the code for you. 'opencode-ai/tap/opencode' tells Homebrew where to find it (a 'tap' is like a custom app catalog).">
+            <span class="cv-ln">80</span><span class="cv-code">        <span class="cmd">brew install</span> opencode-ai/tap/opencode</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="If Homebrew isn't available, downloads and installs OpenCode directly using curl instead. Same result, different method.">
+            <span class="cv-ln">82</span><span class="cv-code">        <span class="cmd">curl -fsSL</span> <span class="str">https://raw.githubusercontent.com/opencode-ai/opencode/refs/heads/main/install</span> | bash</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Step 4: Projects folder (lines 88-96)</div>
+          <div class="cv-line" data-tip="Checks if ~/Projects exists. The ~ symbol means your home folder (like /Users/YourName). If the folder already exists, it skips this step.">
+            <span class="cv-ln">90</span><span class="cv-code"><span class="kw">if</span> [ -d <span class="str">"$HOME/Projects"</span> ]; <span class="kw">then</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="Creates the Projects folder. 'mkdir' means 'make directory' (directory = folder). '-p' means 'don't complain if it already exists.' This is where your website files will live. You can find it in Finder under your home folder.">
+            <span class="cv-ln">93</span><span class="cv-code">    <span class="cmd">mkdir -p</span> <span class="str">"$HOME/Projects"</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Done (lines 98-111)</div>
+          <div class="cv-line" data-tip="Shows 'All done!' and tells you how to continue — either go back to your AI chat, or open OpenCode directly by running the commands shown. 'read -p' waits for you to press Enter before closing.">
+            <span class="cv-ln">98-110</span><span class="cv-code"><span class="cmd">echo</span> -e <span class="str">"  All done!"</span>
+<span class="cmd">echo</span> <span class="str">"Go back to your AI chat and tell it:"</span>
+<span class="cmd">echo</span> <span class="str">"  The setup is done. What do I do next?"</span>
+<span class="cmd">echo</span> <span class="str">"Or open OpenCode directly:"</span>
+<span class="cmd">echo</span> <span class="str">"  cd ~/Projects && mkdir my-website && cd my-website && opencode"</span>
+<span class="cmd">read</span> -p <span class="str">"Press Enter to close..."</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
           </div>
         </div>
-      </details>
+      </div>
     </section>
 
-    <!-- ==================== LINUX ==================== -->
+    <!-- ===================== LINUX ===================== -->
     <section id="explain-linux" class="step explanation-section hidden">
-      <h2>Linux — Quick install</h2>
+      <h2>setup-linux.sh — Quick install</h2>
+      <div class="code-viewer">
+        <div class="code-viewer-header">setup-linux.sh — 98 lines</div>
+        <div class="code-viewer-body">
+          <div class="cv-section">Header + setup (lines 1-15)</div>
+          <div class="cv-line" data-tip="#!/bin/bash tells Linux to run this file using Bash (a command interpreter). Lines starting with # are comments — notes for humans, ignored by the computer.">
+            <span class="cv-ln">1-7</span><span class="cv-code"><span class="cmt">#!/bin/bash
+# get-me-started: Linux setup helper (Quick install)
+# This script installs Node.js and OpenCode so you can build websites with AI.</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="'set -e' stops the script immediately if any command fails. Color codes (BOLD, GREEN, etc.) are for visual styling — making text colored so success shows green, warnings show yellow, etc.">
+            <span class="cv-ln">9-15</span><span class="cv-code"><span class="cmd">set -e</span>
+BOLD=<span class="str">'\033[1m'</span>  GREEN=<span class="str">'\033[0;32m'</span>  YELLOW=<span class="str">'\033[0;33m'</span>
+RED=<span class="str">'\033[0;31m'</span>  NC=<span class="str">'\033[0m'</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
 
-      <details class="script-source">
-        <summary>Plain-language explanation</summary>
-        <div class="explain-steps-list">
-          <div class="explain-step"><h3>1. Install Git</h3><p>Downloads project files. Uses your system's package manager (apt, dnf, or pacman). May ask for your password.</p><p class="explain-skip">Skipped if already installed.</p></div>
-          <div class="explain-step"><h3>2. Install Node.js</h3><p>The engine that runs website code. Installed via nvm (doesn't need admin access).</p><p class="explain-skip">Skipped if already installed.</p></div>
-          <div class="explain-step"><h3>3. Install OpenCode</h3><p>The free AI coding assistant.</p><p class="explain-skip">Skipped if already installed.</p></div>
-          <div class="explain-step"><h3>4. Create SSH key</h3><p>Digital ID card for your computer.</p><p class="explain-skip">Skipped if one exists.</p></div>
-          <div class="explain-step"><h3>5. Create Projects folder</h3><p>~/Projects — where your websites live.</p><p class="explain-skip">Skipped if it exists.</p></div>
-          <div class="explain-step result"><h3>Done!</h3><p>Shows "All done!" and prints your SSH key.</p></div>
-        </div>
-      </details>
+          <div class="cv-section">Welcome message (lines 17-29)</div>
+          <div class="cv-line" data-tip="'echo' prints text on your screen. These lines show the title, time estimate, and a note about password prompts. Nothing is installed yet.">
+            <span class="cv-ln">17-29</span><span class="cv-code"><span class="cmd">echo</span> -e <span class="str">"  Get Me Started — Linux Setup"</span>
+<span class="cmd">echo</span> <span class="str">"This will install the tools you need..."</span>
+<span class="cmd">echo</span> <span class="str">"Note: This script may ask for your password..."</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
 
-      <details class="script-source" open>
-        <summary>See the actual script — click any line to see what it does</summary>
-        <p>This is the real script. Open setup-linux.sh in any text editor to verify.</p>
-        <div class="code-viewer">
-          <div class="code-viewer-header">setup-linux.sh</div>
-          <div class="code-viewer-body">
-            <div class="cv-section">Install Git</div>
-            <div class="cv-line" data-tip="Installs Git using your system's package manager (apt, dnf, or pacman). May ask for your password. Skipped if already installed.">
-              <span class="cv-ln">52</span><span class="cv-code"><span class="cmd">sudo apt install</span> -y git</span><span class="cv-hint-icon">?</span>
-              <div class="cv-explain"></div>
-            </div>
-            <div class="cv-section">Install Node.js</div>
-            <div class="cv-line" data-tip="Downloads nvm (Node Version Manager) — a safe way to install Node.js without needing admin access.">
-              <span class="cv-ln">63</span><span class="cv-code">curl -o- <span class="str">https://...nvm/v0.40.1/install.sh</span> | bash</span><span class="cv-hint-icon">?</span>
-              <div class="cv-explain"></div>
-            </div>
-            <div class="cv-line" data-tip="Installs the latest stable version of Node.js — the engine that runs website code on your computer. Skipped if already installed.">
-              <span class="cv-ln">65</span><span class="cv-code"><span class="cmd">nvm install</span> --lts</span><span class="cv-hint-icon">?</span>
-              <div class="cv-explain"></div>
-            </div>
-            <div class="cv-section">Install OpenCode</div>
-            <div class="cv-line" data-tip="Downloads and installs OpenCode — the free AI that writes website code for you. Skipped if already installed.">
-              <span class="cv-ln">75</span><span class="cv-code">curl -fsSL <span class="str">https://...opencode/.../install</span> | bash</span><span class="cv-hint-icon">?</span>
-              <div class="cv-explain"></div>
-            </div>
-            <div class="cv-section">SSH key + Projects folder</div>
-            <div class="cv-line" data-tip="Creates a secure key pair — digital ID card for your computer. Skipped if one already exists.">
-              <span class="cv-ln">85</span><span class="cv-code"><span class="cmd">ssh-keygen</span> -t ed25519 -N <span class="str">""</span> -q</span><span class="cv-hint-icon">?</span>
-              <div class="cv-explain"></div>
-            </div>
-            <div class="cv-line" data-tip="Creates ~/Projects — where your website files will live. Skipped if it already exists.">
-              <span class="cv-ln">95</span><span class="cv-code"><span class="cmd">mkdir -p</span> <span class="str">"$HOME/Projects"</span></span><span class="cv-hint-icon">?</span>
-              <div class="cv-explain"></div>
-            </div>
+          <div class="cv-section">Detect package manager (lines 31-48)</div>
+          <div class="cv-line" data-tip="Linux comes in many versions (Ubuntu, Fedora, Arch, etc.) and each uses a different program to install software. This checks which one your system has: 'apt' (Ubuntu/Debian), 'dnf' (Fedora/Red Hat), or 'pacman' (Arch). If none are found, the script stops with an error.">
+            <span class="cv-ln">32-48</span><span class="cv-code"><span class="kw">if</span> command -v apt &amp;&gt;/dev/null; <span class="kw">then</span>
+    PKG_MANAGER=<span class="str">"apt"</span>
+<span class="kw">elif</span> command -v dnf &amp;&gt;/dev/null; <span class="kw">then</span>
+    PKG_MANAGER=<span class="str">"dnf"</span>
+<span class="kw">elif</span> command -v pacman &amp;&gt;/dev/null; <span class="kw">then</span>
+    PKG_MANAGER=<span class="str">"pacman"</span>
+<span class="kw">else</span>
+    <span class="cmd">echo</span> <span class="str">"Could not detect your package manager"</span>
+    <span class="kw">exit</span> 1
+<span class="kw">fi</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Step 1: Node.js via nvm (lines 50-64)</div>
+          <div class="cv-line" data-tip="Checks if Node.js is already installed. If it is, shows the version and skips to the next step.">
+            <span class="cv-ln">52</span><span class="cv-code"><span class="kw">if</span> command -v node &amp;&gt;/dev/null; <span class="kw">then</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="Downloads and installs nvm (Node Version Manager) — a safe way to install Node.js that doesn't need admin/root access. 'curl -o-' downloads the installer script, and '| bash' runs it.">
+            <span class="cv-ln">58</span><span class="cv-code">    <span class="cmd">curl -o-</span> <span class="str">https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh</span> | bash</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="Loads nvm into the current session so we can use it immediately. Without this line, you'd have to close and reopen the terminal first.">
+            <span class="cv-ln">60</span><span class="cv-code">    [ -s <span class="str">"$NVM_DIR/nvm.sh"</span> ] &amp;&amp; . <span class="str">"$NVM_DIR/nvm.sh"</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="Installs the latest LTS (Long Term Support = stable) version of Node.js using nvm. Node.js is the engine that runs website code on your computer.">
+            <span class="cv-ln">61</span><span class="cv-code">    <span class="cmd">nvm install</span> --lts</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Step 2: OpenCode (lines 66-75)</div>
+          <div class="cv-line" data-tip="Checks if OpenCode is already installed. If yes, skips this step.">
+            <span class="cv-ln">68</span><span class="cv-code"><span class="kw">if</span> command -v opencode &amp;&gt;/dev/null; <span class="kw">then</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="Downloads and installs OpenCode. 'curl -fsSL' downloads the installer silently (-s = silent, -f = fail on errors, -L = follow redirects). '| bash' runs the downloaded script. OpenCode is the free AI that writes code for you.">
+            <span class="cv-ln">72</span><span class="cv-code">    <span class="cmd">curl -fsSL</span> <span class="str">https://raw.githubusercontent.com/opencode-ai/opencode/refs/heads/main/install</span> | bash</span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Step 3: Projects folder (lines 77-85)</div>
+          <div class="cv-line" data-tip="Checks if ~/Projects exists (~ means your home folder). If it does, skips this step.">
+            <span class="cv-ln">79</span><span class="cv-code"><span class="kw">if</span> [ -d <span class="str">"$HOME/Projects"</span> ]; <span class="kw">then</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+          <div class="cv-line" data-tip="Creates the Projects folder. 'mkdir -p' means 'make this folder, and don't complain if it already exists.' This is where your website files will live.">
+            <span class="cv-ln">82</span><span class="cv-code">    <span class="cmd">mkdir -p</span> <span class="str">"$HOME/Projects"</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
+          </div>
+
+          <div class="cv-section">Done (lines 87-98)</div>
+          <div class="cv-line" data-tip="Shows 'All done!' and tells you how to continue — either go back to your AI chat, or start OpenCode directly with the commands shown.">
+            <span class="cv-ln">87-98</span><span class="cv-code"><span class="cmd">echo</span> -e <span class="str">"  All done!"</span>
+<span class="cmd">echo</span> <span class="str">"Go back to your AI chat and tell it:"</span>
+<span class="cmd">echo</span> <span class="str">"  The setup is done. What do I do next?"</span>
+<span class="cmd">echo</span> <span class="str">"Or open OpenCode directly:"</span>
+<span class="cmd">echo</span> <span class="str">"  cd ~/Projects && mkdir my-website && cd my-website && opencode"</span></span><span class="cv-hint-icon">?</span>
+            <div class="cv-explain"></div>
           </div>
         </div>
-      </details>
+      </div>
     </section>
 
     <section class="step">
@@ -274,7 +445,7 @@
 
   <script>
     function showExplain(id) {
-      document.querySelectorAll('.explanation-section').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.explanation-section').forEach(function(el) { el.classList.add('hidden'); });
       var el = document.getElementById('explain-' + id);
       if (el) {
         el.classList.remove('hidden');
@@ -282,16 +453,14 @@
       }
     }
 
-    // Code viewer: click line to show/hide explanation
     document.addEventListener('DOMContentLoaded', function() {
+      // Populate explanation divs from data-tip attributes
       document.querySelectorAll('.cv-line').forEach(function(line) {
         var tip = line.getAttribute('data-tip');
         var explainEl = line.querySelector('.cv-explain');
-        if (tip && explainEl) {
-          explainEl.textContent = tip;
-        }
+        if (tip && explainEl) explainEl.textContent = tip;
+
         line.addEventListener('click', function(e) {
-          // Close others
           document.querySelectorAll('.cv-line.open').forEach(function(l) {
             if (l !== line) l.classList.remove('open');
           });
@@ -300,11 +469,8 @@
         });
       });
 
-      // Close on click outside
       document.addEventListener('click', function() {
-        document.querySelectorAll('.cv-line.open').forEach(function(l) {
-          l.classList.remove('open');
-        });
+        document.querySelectorAll('.cv-line.open').forEach(function(l) { l.classList.remove('open'); });
       });
 
       // Auto-open from URL hash
