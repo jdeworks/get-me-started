@@ -284,10 +284,46 @@ For full guide: https://raw.githubusercontent.com/jdeworks/get-me-started/dev/pr
             <span class="file-info">setup-mac.command — about 3 KB</span>
             <a href="explained.html#mac" class="explain-link">What does this script do? Read it line by line &rarr;</a>
           </div>
+
+          <div class="for-guided">
+            <h3>How to run it:</h3>
+            <div class="visual-steps">
+              <div class="visual-step">
+                <div class="step-number">1</div>
+                <div class="step-content"><p>Find the file in your <strong>Downloads</strong> folder</p></div>
+              </div>
+              <div class="visual-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                  <p><strong>Double-click</strong> it. A Terminal window will open.</p>
+                  <div class="screenshot-box"><img src="img/mac-terminal.svg" alt="Mac Terminal running setup" width="520"></div>
+                </div>
+              </div>
+              <div class="visual-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                  <p>If macOS says <em>"can't be opened"</em>: <strong>Right-click</strong> the file, choose <strong>"Open"</strong>, click <strong>"Open"</strong> again.</p>
+                  <div class="screenshot-box"><img src="img/mac-gatekeeper.svg" alt="macOS Gatekeeper dialog" width="400"></div>
+                </div>
+              </div>
+              <div class="visual-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                  <p>Enter your <strong>password</strong> if asked. You won't see characters as you type — that's normal.</p>
+                </div>
+              </div>
+              <div class="visual-step">
+                <div class="step-number">5</div>
+                <div class="step-content"><p>Wait for <strong>"All done!"</strong></p></div>
+              </div>
+            </div>
+          </div>
+          <div class="for-standard"><h3>How to run it:</h3><ol><li>Double-click the file in Downloads</li><li>If blocked: right-click &rarr; Open &rarr; Open again</li><li>Enter password if prompted</li><li>Wait for "All done!"</li></ol></div>
+          <p class="for-express">Double-click .command file. Bypass Gatekeeper if needed. Enter password.</p>
         </div>
 
         <div id="mac-safe" class="option-content hidden">
-          <p>This installs everything inside a <span class="term">protected space<span class="tip">A separate area on your computer where programs run without affecting anything else. Think of it like a guest room — the guest has everything they need, but they don't rearrange your furniture.</span></span> using Docker. Nothing touches the rest of your system. Takes about 15-20 minutes because Docker is a larger download.</p>
+          <p>This installs everything inside a <span class="term">protected space<span class="tip">A separate area on your computer where programs run without affecting anything else. Think of it like a guest room — the guest has everything they need, but they don't rearrange your furniture.</span></span> using Docker. Nothing touches the rest of your system. Takes about 15-20 minutes.</p>
 
           <div class="download-box">
             <a href="scripts/setup-mac-docker.command" download class="download-btn">
@@ -300,70 +336,41 @@ For full guide: https://raw.githubusercontent.com/jdeworks/get-me-started/dev/pr
           <div class="info-note">
             <strong>Note:</strong> You'll need to install Docker Desktop manually — the script will open the download page and guide you through it.
           </div>
-        </div>
 
-        <!-- Guided -->
-        <div class="for-guided">
-          <h3>How to run it:</h3>
-          <div class="visual-steps">
-            <div class="visual-step">
-              <div class="step-number">1</div>
-              <div class="step-content">
-                <p>Find the downloaded file in your <strong>Downloads</strong> folder</p>
+          <div class="for-guided">
+            <h3>How to run it:</h3>
+            <div class="visual-steps">
+              <div class="visual-step">
+                <div class="step-number">1</div>
+                <div class="step-content"><p>Find the file in your <strong>Downloads</strong> folder</p></div>
               </div>
-            </div>
-            <div class="visual-step">
-              <div class="step-number">2</div>
-              <div class="step-content">
-                <p><strong>Double-click</strong> the file. A Terminal window will open.</p>
-                <div class="screenshot-box">
-                  <img src="img/mac-terminal.svg" alt="Mac Terminal window running the setup script" width="520">
+              <div class="visual-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                  <p><strong>Double-click</strong> it. A Terminal window will open.</p>
+                  <div class="screenshot-box"><img src="img/mac-terminal.svg" alt="Mac Terminal running setup" width="520"></div>
                 </div>
               </div>
-            </div>
-            <div class="visual-step">
-              <div class="step-number">3</div>
-              <div class="step-content">
-                <p>If macOS says <em>"can't be opened because it's from an unidentified developer"</em>:</p>
-                <ul>
-                  <li><strong>Right-click</strong> (or Control-click) the file</li>
-                  <li>Choose <strong>"Open"</strong> from the menu</li>
-                  <li>Click <strong>"Open"</strong> again in the dialog</li>
-                </ul>
-                <div class="screenshot-box">
-                  <img src="img/mac-gatekeeper.svg" alt="macOS Gatekeeper dialog with Open button highlighted" width="400">
+              <div class="visual-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                  <p>If macOS says <em>"can't be opened"</em>: <strong>Right-click</strong> the file, choose <strong>"Open"</strong>, click <strong>"Open"</strong> again.</p>
+                  <div class="screenshot-box"><img src="img/mac-gatekeeper.svg" alt="macOS Gatekeeper dialog" width="400"></div>
                 </div>
               </div>
-            </div>
-            <div class="visual-step">
-              <div class="step-number">4</div>
-              <div class="step-content">
-                <p>It may ask for your <strong>password</strong> — this is your computer's login password. Type it and press Enter.</p>
-                <p class="explanation">Why? Installing programs on a Mac requires your permission, just like when you install an app from the internet. You won't see the characters as you type — that's normal, it's a security feature.</p>
+              <div class="visual-step">
+                <div class="step-number">4</div>
+                <div class="step-content"><p>Enter your <strong>password</strong> if asked. The script will guide you through installing Docker Desktop (opens the download page for you).</p></div>
               </div>
-            </div>
-            <div class="visual-step">
-              <div class="step-number">5</div>
-              <div class="step-content">
-                <p>Wait for it to finish. You'll see <strong>"All done!"</strong></p>
+              <div class="visual-step">
+                <div class="step-number">5</div>
+                <div class="step-content"><p>Wait for <strong>"All done!"</strong></p></div>
               </div>
             </div>
           </div>
+          <div class="for-standard"><h3>How to run it:</h3><ol><li>Double-click the file in Downloads</li><li>If blocked: right-click &rarr; Open &rarr; Open again</li><li>Follow Docker install prompts</li><li>Wait for "All done!"</li></ol></div>
+          <p class="for-express">Double-click .command file. Bypass Gatekeeper. Follow Docker install prompts. Wait for completion.</p>
         </div>
-
-        <!-- Standard -->
-        <div class="for-standard">
-          <h3>How to run it:</h3>
-          <ol>
-            <li>Find the file in <strong>Downloads</strong> and <strong>double-click</strong> it</li>
-            <li>If blocked by Gatekeeper: right-click &rarr; <strong>Open</strong> &rarr; <strong>Open</strong> again</li>
-            <li>Enter your password if prompted</li>
-            <li>Wait for <strong>"All done!"</strong></li>
-          </ol>
-        </div>
-
-        <!-- Express -->
-        <p class="for-express">Double-click the <code>.command</code> file. Bypass Gatekeeper if needed (right-click &rarr; Open). Enter password when prompted.</p>
       </div>
 
       <!-- Linux instructions -->
@@ -385,10 +392,38 @@ For full guide: https://raw.githubusercontent.com/jdeworks/get-me-started/dev/pr
             <span class="file-info">setup-linux.sh — about 3 KB</span>
             <a href="explained.html#linux" class="explain-link">What does this script do? Read it line by line &rarr;</a>
           </div>
+
+          <div class="for-guided">
+            <h3>How to run it:</h3>
+            <div class="visual-steps">
+              <div class="visual-step">
+                <div class="step-number">1</div>
+                <div class="step-content"><p>Open a <span class="term">terminal<span class="tip">A text window where you type commands. Press Ctrl + Alt + T on most Linux systems.</span></span> (<strong>Ctrl + Alt + T</strong>)</p></div>
+              </div>
+              <div class="visual-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                  <p>Run these two commands:</p>
+                  <div class="code-block"><code>chmod +x ~/Downloads/setup-linux.sh</code><button class="copy-btn" data-copy="chmod +x ~/Downloads/setup-linux.sh">Copy</button></div>
+                  <div class="code-block"><code>~/Downloads/setup-linux.sh</code><button class="copy-btn" data-copy="~/Downloads/setup-linux.sh">Copy</button></div>
+                </div>
+              </div>
+              <div class="visual-step">
+                <div class="step-number">3</div>
+                <div class="step-content"><p>Enter your <strong>password</strong> if asked. You won't see characters — that's normal.</p></div>
+              </div>
+              <div class="visual-step">
+                <div class="step-number">4</div>
+                <div class="step-content"><p>Wait for <strong>"All done!"</strong></p></div>
+              </div>
+            </div>
+          </div>
+          <div class="for-standard"><h3>How to run it:</h3><ol><li>Open terminal (Ctrl+Alt+T)</li><li><code>chmod +x ~/Downloads/setup-linux.sh && ~/Downloads/setup-linux.sh</code></li><li>Enter password if prompted</li><li>Wait for "All done!"</li></ol></div>
+          <div class="for-express"><div class="code-block"><code>chmod +x ~/Downloads/setup-linux.sh && ~/Downloads/setup-linux.sh</code><button class="copy-btn" data-copy="chmod +x ~/Downloads/setup-linux.sh && ~/Downloads/setup-linux.sh">Copy</button></div></div>
         </div>
 
         <div id="linux-safe" class="option-content hidden">
-          <p>This installs everything inside a <span class="term">protected space<span class="tip">A separate area where programs run without affecting anything else on your system. You can delete the whole thing cleanly anytime.</span></span> using Docker. Nothing touches the rest of your system.</p>
+          <p>This installs everything inside a <span class="term">protected space<span class="tip">A separate area where programs run without affecting anything else. You can delete the whole thing cleanly anytime.</span></span> using Docker. Nothing touches the rest of your system.</p>
 
           <div class="download-box">
             <a href="scripts/setup-linux-docker.sh" download class="download-btn">
@@ -397,65 +432,34 @@ For full guide: https://raw.githubusercontent.com/jdeworks/get-me-started/dev/pr
             <span class="file-info">setup-linux-docker.sh — about 4 KB</span>
             <a href="explained.html#linux-docker" class="explain-link">What does this script do? Read it line by line &rarr;</a>
           </div>
-        </div>
 
-        <!-- Guided -->
-        <div class="for-guided">
-          <h3>How to run it:</h3>
-          <div class="visual-steps">
-            <div class="visual-step">
-              <div class="step-number">1</div>
-              <div class="step-content">
-                <p>Open a <span class="term">terminal<span class="tip">A text window where you can type commands for your computer. Press Ctrl + Alt + T on most Linux systems to open one.</span></span> (press <strong>Ctrl + Alt + T</strong> on most systems)</p>
+          <div class="for-guided">
+            <h3>How to run it:</h3>
+            <div class="visual-steps">
+              <div class="visual-step">
+                <div class="step-number">1</div>
+                <div class="step-content"><p>Open a terminal (<strong>Ctrl + Alt + T</strong>)</p></div>
               </div>
-            </div>
-            <div class="visual-step">
-              <div class="step-number">2</div>
-              <div class="step-content">
-                <p>Type these two lines and press Enter after each:</p>
-                <div class="code-block">
-                  <code>chmod +x ~/Downloads/setup-linux.sh</code>
-                  <button class="copy-btn" data-copy="chmod +x ~/Downloads/setup-linux.sh">Copy</button>
-                </div>
-                <div class="code-block">
-                  <code>~/Downloads/setup-linux.sh</code>
-                  <button class="copy-btn" data-copy="~/Downloads/setup-linux.sh">Copy</button>
+              <div class="visual-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                  <p>Run these two commands:</p>
+                  <div class="code-block"><code>chmod +x ~/Downloads/setup-linux-docker.sh</code><button class="copy-btn" data-copy="chmod +x ~/Downloads/setup-linux-docker.sh">Copy</button></div>
+                  <div class="code-block"><code>~/Downloads/setup-linux-docker.sh</code><button class="copy-btn" data-copy="~/Downloads/setup-linux-docker.sh">Copy</button></div>
                 </div>
               </div>
-            </div>
-            <div class="visual-step">
-              <div class="step-number">3</div>
-              <div class="step-content">
-                <p>It may ask for your <strong>password</strong>. Type it and press Enter.</p>
-                <p class="explanation">Why? Installing programs on Linux requires your permission. You won't see the characters as you type — that's normal, it's a security feature.</p>
+              <div class="visual-step">
+                <div class="step-number">3</div>
+                <div class="step-content"><p>Enter your <strong>password</strong> if asked. You won't see characters — that's normal.</p></div>
               </div>
-            </div>
-            <div class="visual-step">
-              <div class="step-number">4</div>
-              <div class="step-content">
-                <p>Wait for it to finish. You'll see <strong>"All done!"</strong></p>
+              <div class="visual-step">
+                <div class="step-number">4</div>
+                <div class="step-content"><p>Wait for <strong>"All done!"</strong></p></div>
               </div>
             </div>
           </div>
-        </div>
-
-        <!-- Standard -->
-        <div class="for-standard">
-          <h3>How to run it:</h3>
-          <ol>
-            <li>Open a terminal (<strong>Ctrl + Alt + T</strong>)</li>
-            <li>Run: <code>chmod +x ~/Downloads/setup-linux.sh && ~/Downloads/setup-linux.sh</code></li>
-            <li>Enter password if prompted</li>
-            <li>Wait for <strong>"All done!"</strong></li>
-          </ol>
-        </div>
-
-        <!-- Express -->
-        <div class="for-express">
-          <div class="code-block">
-            <code>chmod +x ~/Downloads/setup-linux.sh && ~/Downloads/setup-linux.sh</code>
-            <button class="copy-btn" data-copy="chmod +x ~/Downloads/setup-linux.sh && ~/Downloads/setup-linux.sh">Copy</button>
-          </div>
+          <div class="for-standard"><h3>How to run it:</h3><ol><li>Open terminal (Ctrl+Alt+T)</li><li><code>chmod +x ~/Downloads/setup-linux-docker.sh && ~/Downloads/setup-linux-docker.sh</code></li><li>Enter password if prompted</li><li>Wait for "All done!"</li></ol></div>
+          <div class="for-express"><div class="code-block"><code>chmod +x ~/Downloads/setup-linux-docker.sh && ~/Downloads/setup-linux-docker.sh</code><button class="copy-btn" data-copy="chmod +x ~/Downloads/setup-linux-docker.sh && ~/Downloads/setup-linux-docker.sh">Copy</button></div></div>
         </div>
       </div>
     </section>
