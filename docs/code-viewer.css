@@ -1,0 +1,117 @@
+/* Code viewer — two-column: real code on left, explanation on right */
+.code-viewer {
+  border: 1px solid #d0d0d0;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 1rem 0;
+  font-size: 0.85rem;
+}
+
+.code-viewer-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: #f6f8fa;
+  border-bottom: 1px solid #d0d0d0;
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.code-viewer-header .file-icon {
+  font-size: 1rem;
+}
+
+.code-viewer table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.code-viewer tr {
+  border-bottom: 1px solid #1e293b;
+}
+
+.code-viewer tr:last-child {
+  border-bottom: none;
+}
+
+.code-viewer tr:hover {
+  background: rgba(67, 97, 238, 0.06);
+}
+
+.code-viewer tr.section-header {
+  background: #1a1a2e;
+}
+
+.code-viewer tr.section-header td {
+  padding: 0.6rem 0.75rem 0.3rem;
+  font-weight: 600;
+  color: #7c8aff;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #2d3748;
+}
+
+/* Line number column */
+.code-viewer .ln {
+  width: 36px;
+  padding: 0.2rem 0.5rem;
+  text-align: right;
+  color: #4a5568;
+  background: #0f1219;
+  font-family: "SF Mono", "Cascadia Code", Consolas, monospace;
+  user-select: none;
+  vertical-align: top;
+  border-right: 1px solid #1e293b;
+}
+
+/* Code column */
+.code-viewer .code-col {
+  width: 55%;
+  padding: 0.2rem 0.75rem;
+  background: #151b28;
+  font-family: "SF Mono", "Cascadia Code", Consolas, monospace;
+  color: #e0e0e0;
+  white-space: pre;
+  overflow-x: auto;
+  vertical-align: top;
+}
+
+/* Syntax coloring */
+.code-viewer .code-col .comment { color: #6a9955; }
+.code-viewer .code-col .keyword { color: #569cd6; }
+.code-viewer .code-col .string { color: #ce9178; }
+.code-viewer .code-col .cmd { color: #dcdcaa; }
+
+/* Explanation column */
+.code-viewer .explain-col {
+  padding: 0.3rem 0.75rem;
+  background: #f8fafc;
+  color: #444;
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.4;
+  vertical-align: top;
+  border-left: 1px solid #e2e8f0;
+}
+
+.code-viewer .explain-col .plain {
+  font-size: 0.82rem;
+}
+
+.code-viewer .explain-col .skip-note {
+  font-size: 0.78rem;
+  color: #888;
+  font-style: italic;
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 700px) {
+  .code-viewer table { table-layout: auto; }
+  .code-viewer .code-col { width: auto; white-space: pre-wrap; word-break: break-all; }
+  .code-viewer .explain-col { display: block; border-left: none; border-top: 1px solid #e2e8f0; }
+  .code-viewer tr { display: flex; flex-direction: column; }
+  .code-viewer .ln { display: none; }
+}
