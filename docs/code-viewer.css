@@ -21,7 +21,6 @@
 .code-viewer-body {
   background: #151b28;
   padding: 0;
-  overflow: hidden;
 }
 
 /* Section headers within code */
@@ -40,13 +39,10 @@
 
 .cv-section:first-child { border-top: none; }
 
-/* Each code line */
+/* Each code line wrapper */
 .cv-line {
-  display: flex;
-  align-items: flex-start;
   border-bottom: 1px solid #1e293b;
   cursor: help;
-  position: relative;
 }
 
 .cv-line:last-child { border-bottom: none; }
@@ -57,6 +53,12 @@
 
 .cv-line:hover .cv-hint-icon {
   opacity: 1;
+}
+
+/* The clickable row with line number, code, and hint icon */
+.cv-line-row {
+  display: flex;
+  align-items: flex-start;
 }
 
 /* Line number */
@@ -103,9 +105,8 @@
 .cv-code .str { color: #ce9178; }
 .cv-code .cmt { color: #6a9955; font-style: italic; }
 
-/* Explanation callout: appears below the line on hover/click */
+/* Explanation callout: appears below the row on click */
 .cv-explain {
-  display: block;
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.25s ease, padding 0.25s ease, opacity 0.2s ease;
@@ -121,7 +122,7 @@
 }
 
 .cv-line.open .cv-explain {
-  max-height: 120px;
+  max-height: 200px;
   padding: 0.5rem 0.75rem;
   margin-bottom: 0.25rem;
   opacity: 1;
