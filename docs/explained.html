@@ -24,13 +24,19 @@
 
     <section class="step">
       <h2>Which script did you download?</h2>
-      <div class="os-buttons">
-        <button class="os-btn" onclick="showExplain('win-safe')">Windows<br><small>Safe install</small></button>
-        <button class="os-btn" onclick="showExplain('win-quick')">Windows<br><small>Quick install</small></button>
-        <button class="os-btn" onclick="showExplain('mac')">Mac<br><small>Quick install</small></button>
-        <button class="os-btn" onclick="showExplain('mac-docker')">Mac<br><small>Safe install</small></button>
-        <button class="os-btn" onclick="showExplain('linux')">Linux<br><small>Quick install</small></button>
-        <button class="os-btn" onclick="showExplain('linux-docker')">Linux<br><small>Safe install</small></button>
+      <div class="script-grid">
+        <div class="script-grid-header"></div>
+        <div class="script-grid-header">Windows</div>
+        <div class="script-grid-header">Mac</div>
+        <div class="script-grid-header">Linux</div>
+        <div class="script-grid-label">Safe install</div>
+        <button class="os-btn" onclick="showExplain('win-safe')">Windows<br><small>Safe</small></button>
+        <button class="os-btn" onclick="showExplain('mac-docker')">Mac<br><small>Safe</small></button>
+        <button class="os-btn" onclick="showExplain('linux-docker')">Linux<br><small>Safe</small></button>
+        <div class="script-grid-label">Quick install</div>
+        <button class="os-btn" onclick="showExplain('win-quick')">Windows<br><small>Quick</small></button>
+        <button class="os-btn" onclick="showExplain('mac')">Mac<br><small>Quick</small></button>
+        <button class="os-btn" onclick="showExplain('linux')">Linux<br><small>Quick</small></button>
       </div>
     </section>
 

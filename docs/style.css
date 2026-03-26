@@ -143,6 +143,46 @@ header h1 {
   color: #888;
 }
 
+/* === Script selector grid (3x2 + labels) === */
+.script-grid {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr 1fr;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  align-items: center;
+}
+
+.script-grid-header {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #555;
+  text-align: center;
+  padding-bottom: 0.25rem;
+}
+
+.script-grid-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #666;
+  padding-right: 0.5rem;
+  white-space: nowrap;
+}
+
+.script-grid .os-btn {
+  min-width: unset;
+  padding: 0.6rem 0.5rem;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 500px) {
+  .script-grid {
+    grid-template-columns: auto 1fr 1fr 1fr;
+    gap: 0.35rem;
+  }
+  .script-grid .os-btn { font-size: 0.8rem; padding: 0.5rem 0.3rem; }
+  .script-grid-label { font-size: 0.75rem; }
+}
+
 /* === OS buttons === */
 .os-buttons {
   display: flex;
