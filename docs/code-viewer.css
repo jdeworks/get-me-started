@@ -1,10 +1,9 @@
-/* Code viewer — two-column: real code on left, explanation on right */
+/* Code viewer — full-width code with hover/click explanations */
 .code-viewer {
   border: 1px solid #d0d0d0;
   border-radius: 8px;
   overflow: hidden;
   margin: 1rem 0;
-  font-size: 0.85rem;
 }
 
 .code-viewer-header {
@@ -19,99 +18,160 @@
   color: #555;
 }
 
-.code-viewer-header .file-icon {
-  font-size: 1rem;
+.code-viewer-body {
+  background: #151b28;
+  padding: 0;
+  overflow-x: auto;
 }
 
-.code-viewer table {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed;
-}
-
-.code-viewer tr {
-  border-bottom: 1px solid #1e293b;
-}
-
-.code-viewer tr:last-child {
-  border-bottom: none;
-}
-
-.code-viewer tr:hover {
-  background: rgba(67, 97, 238, 0.06);
-}
-
-.code-viewer tr.section-header {
-  background: #1a1a2e;
-}
-
-.code-viewer tr.section-header td {
-  padding: 0.6rem 0.75rem 0.3rem;
+/* Section headers within code */
+.cv-section {
+  display: block;
+  padding: 0.5rem 0.75rem 0.2rem;
+  font-family: -apple-system, "Segoe UI", sans-serif;
   font-weight: 600;
   color: #7c8aff;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  border-bottom: 1px solid #2d3748;
+  background: #1a1a2e;
+  border-top: 1px solid #2d3748;
 }
 
-/* Line number column */
-.code-viewer .ln {
+.cv-section:first-child { border-top: none; }
+
+/* Each code line */
+.cv-line {
+  display: flex;
+  align-items: flex-start;
+  border-bottom: 1px solid #1e293b;
+  cursor: help;
+  position: relative;
+}
+
+.cv-line:last-child { border-bottom: none; }
+
+.cv-line:hover {
+  background: rgba(67, 97, 238, 0.08);
+}
+
+.cv-line:hover .cv-hint-icon {
+  opacity: 1;
+}
+
+/* Line number */
+.cv-ln {
+  flex-shrink: 0;
   width: 36px;
-  padding: 0.2rem 0.5rem;
+  padding: 0.35rem 0.5rem;
   text-align: right;
   color: #4a5568;
   background: #0f1219;
   font-family: "SF Mono", "Cascadia Code", Consolas, monospace;
+  font-size: 0.8rem;
   user-select: none;
-  vertical-align: top;
   border-right: 1px solid #1e293b;
 }
 
-/* Code column */
-.code-viewer .code-col {
-  width: 55%;
-  padding: 0.2rem 0.75rem;
-  background: #151b28;
+/* Code content */
+.cv-code {
+  flex: 1;
+  padding: 0.35rem 0.75rem;
   font-family: "SF Mono", "Cascadia Code", Consolas, monospace;
+  font-size: 0.85rem;
   color: #e0e0e0;
   white-space: pre;
-  overflow-x: auto;
-  vertical-align: top;
+  line-height: 1.5;
+  min-width: 0;
+}
+
+/* Hint icon (? bubble) */
+.cv-hint-icon {
+  flex-shrink: 0;
+  padding: 0.35rem 0.5rem;
+  color: #4361ee;
+  font-size: 0.75rem;
+  opacity: 0.3;
+  transition: opacity 0.15s ease;
+  user-select: none;
 }
 
 /* Syntax coloring */
-.code-viewer .code-col .comment { color: #6a9955; }
-.code-viewer .code-col .keyword { color: #569cd6; }
-.code-viewer .code-col .string { color: #ce9178; }
-.code-viewer .code-col .cmd { color: #dcdcaa; }
+.cv-code .kw { color: #569cd6; }
+.cv-code .cmd { color: #dcdcaa; }
+.cv-code .str { color: #ce9178; }
+.cv-code .cmt { color: #6a9955; font-style: italic; }
 
-/* Explanation column */
-.code-viewer .explain-col {
-  padding: 0.3rem 0.75rem;
-  background: #f8fafc;
-  color: #444;
+/* Explanation callout — appears below the line on hover/click */
+.cv-explain {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease, padding 0.25s ease, opacity 0.2s ease;
+  opacity: 0;
+  background: #f0f4ff;
+  border-left: 3px solid #4361ee;
+  margin: 0 0.5rem;
+  border-radius: 0 0 6px 6px;
   font-family: -apple-system, "Segoe UI", sans-serif;
-  line-height: 1.4;
-  vertical-align: top;
-  border-left: 1px solid #e2e8f0;
+  font-size: 0.85rem;
+  color: #333;
+  line-height: 1.5;
 }
 
-.code-viewer .explain-col .plain {
-  font-size: 0.82rem;
+.cv-line.open .cv-explain {
+  max-height: 120px;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.25rem;
+  opacity: 1;
 }
 
-.code-viewer .explain-col .skip-note {
-  font-size: 0.78rem;
+.cv-explain .skip {
+  display: block;
+  font-size: 0.8rem;
   color: #888;
   font-style: italic;
+  margin-top: 0.15rem;
 }
 
-/* Responsive: stack on mobile */
-@media (max-width: 700px) {
-  .code-viewer table { table-layout: auto; }
-  .code-viewer .code-col { width: auto; white-space: pre-wrap; word-break: break-all; }
-  .code-viewer .explain-col { display: block; border-left: none; border-top: 1px solid #e2e8f0; }
-  .code-viewer tr { display: flex; flex-direction: column; }
-  .code-viewer .ln { display: none; }
+/* Script source toggle (details/summary) */
+.script-source {
+  margin-top: 1.25rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.script-source summary {
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  background: #f8f9fa;
+  color: #333;
+}
+
+.script-source summary::marker {
+  content: "";
+}
+
+.script-source summary::-webkit-details-marker {
+  display: none;
+}
+
+.script-source summary::before {
+  content: "+ ";
+  font-weight: 700;
+  color: #4361ee;
+}
+
+.script-source[open] summary::before {
+  content: "- ";
+}
+
+.script-source > p {
+  padding: 0.5rem 1rem 0;
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
 }

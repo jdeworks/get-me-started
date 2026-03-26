@@ -17,8 +17,8 @@
 
   <main>
     <section class="step">
-      <p>We want you to feel safe running these scripts. Below is a plain-language explanation of every single thing each script does, and why. No surprises, no hidden steps.</p>
-      <p><strong>You can verify this yourself:</strong> the scripts are plain text files. Right-click the downloaded file and open it with any text editor (Notepad on Windows, TextEdit on Mac, or any editor on Linux) to see exactly what's inside. Every line has a comment explaining what it does. What you see below matches the file exactly.</p>
+      <p>We want you to feel safe running these scripts. No surprises, no hidden steps.</p>
+      <p><strong>You can verify this yourself:</strong> right-click the downloaded file and open it with any text editor (Notepad on Windows, TextEdit on Mac). Every line has a comment explaining what it does. What you see below matches the file exactly.</p>
     </section>
 
     <!-- Script selector -->
@@ -27,402 +27,238 @@
       <div class="os-buttons">
         <button class="os-btn" onclick="showExplain('win-safe')">Windows<br><small>Safe install</small></button>
         <button class="os-btn" onclick="showExplain('win-quick')">Windows<br><small>Quick install</small></button>
-        <button class="os-btn" onclick="showExplain('mac')">Mac</button>
-        <button class="os-btn" onclick="showExplain('linux')">Linux</button>
+        <button class="os-btn" onclick="showExplain('mac')">Mac<br><small>Quick install</small></button>
+        <button class="os-btn" onclick="showExplain('linux')">Linux<br><small>Quick install</small></button>
       </div>
     </section>
 
-    <!-- Windows Safe (Docker) explanation -->
+    <!-- ==================== WINDOWS SAFE ==================== -->
     <section id="explain-win-safe" class="step explanation-section hidden">
       <h2>Windows — Safe install (Docker)</h2>
-      <p>This script sets up everything inside a protected space on your computer.</p>
 
-      <div class="explain-step">
-        <h3>Step 1: Check for winget</h3>
-        <div class="explain-what">The script checks if your computer has "winget" — a built-in tool that Windows uses to install programs (like an app store, but from the command line).</div>
-        <div class="explain-why"><strong>Why:</strong> All the programs we need can be installed through winget. If it's missing, your Windows may need an update.</div>
-      </div>
-
-      <div class="explain-step">
-        <h3>Step 2: Install Git</h3>
-        <div class="explain-what">The script checks if Git is already on your computer. If not, it installs it using winget.</div>
-        <div class="explain-why"><strong>Why:</strong> Git is a tool that downloads project files from the internet. We need it to get the AI coding setup files. It's free, used by millions of developers, and completely safe.</div>
-        <div class="explain-skip">If Git is already installed, this step is skipped entirely.</div>
-      </div>
-
-      <div class="explain-step">
-        <h3>Step 3: Install Docker Desktop</h3>
-        <div class="explain-what">The script checks if Docker is already installed. If not, it installs Docker Desktop using winget. This is the largest download (~500 MB).</div>
-        <div class="explain-why"><strong>Why:</strong> Docker creates isolated spaces (called "containers") on your computer. Your AI coding tool will run inside one of these containers. This means nothing gets mixed into your regular system — it's the "safe" part of the safe install.</div>
-        <div class="explain-skip">If Docker is already installed, this step is skipped. After installing, you may need to restart your computer once for Docker to fully activate.</div>
-      </div>
-
-      <div class="explain-step">
-        <h3>Step 4: Create an SSH key</h3>
-        <div class="explain-what">The script checks if you already have an SSH key. If not, it creates one — a pair of files in a hidden <code>.ssh</code> folder on your computer.</div>
-        <div class="explain-why"><strong>Why:</strong> An SSH key is like a digital ID card. It lets your computer prove who it is to GitHub without typing a password every time. The key stays on your computer and is never sent anywhere — only the "public" half gets shared with GitHub (you'll do that in the next step).</div>
-        <div class="explain-skip">Skipped if a key already exists. The key is NOT a password — it's a randomly generated pair of files that only your computer has.</div>
-      </div>
-
-      <div class="explain-step">
-        <h3>Step 5: Create a Projects folder</h3>
-        <div class="explain-what">The script creates a folder at <code>C:\Projects</code>.</div>
-        <div class="explain-why"><strong>Why:</strong> This is where your website files will live. It's just a regular folder — you can open it in File Explorer like any other folder.</div>
-        <div class="explain-skip">If the folder already exists, this step is skipped.</div>
-      </div>
-
-      <div class="explain-step">
-        <h3>Step 6: Download agent-sandbox</h3>
-        <div class="explain-what">The script uses Git to download the "agent-sandbox" project files into <code>C:\Projects\agent-sandbox</code>.</div>
-        <div class="explain-why"><strong>Why:</strong> Agent-sandbox is the tool that sets up your AI coding environment inside Docker. It comes with ready-made configurations so you don't have to set anything up manually.</div>
-        <div class="explain-skip">If the folder already exists, this step is skipped.</div>
-      </div>
-
-      <div class="explain-step result">
-        <h3>Done!</h3>
-        <div class="explain-what">The script shows "All done!" and waits for you to press Enter.</div>
-        <div class="explain-why"><strong>What you have now:</strong> Git, Docker Desktop, and the agent-sandbox files — everything needed for your AI coding assistant to run in a safe, isolated space.</div>
-      </div>
+      <details class="script-source">
+        <summary>Plain-language explanation</summary>
+        <div class="explain-steps-list">
+          <div class="explain-step"><h3>1. Check for winget</h3><p>Checks if Windows' built-in app installer is available. If missing, your Windows may need an update.</p></div>
+          <div class="explain-step"><h3>2. Install Git</h3><p>Installs Git — a tool for downloading project files from the internet. Free, safe, used by millions.</p><p class="explain-skip">Skipped if already installed.</p></div>
+          <div class="explain-step"><h3>3. Install Docker Desktop</h3><p>Installs Docker — creates isolated spaces ("containers") where your AI tools run. This is the largest download (~500 MB). Nothing else on your system is affected.</p><p class="explain-skip">Skipped if already installed. May need a restart.</p></div>
+          <div class="explain-step"><h3>4. Create SSH key</h3><p>Creates a secure key pair — like a digital ID card for your computer. Lets it talk to GitHub without a password. The key stays on your machine.</p><p class="explain-skip">Skipped if one exists.</p></div>
+          <div class="explain-step"><h3>5. Create Projects folder + download agent-sandbox</h3><p>Creates C:\Projects (where your websites live) and downloads agent-sandbox — the tool that sets up your AI coding environment inside Docker.</p><p class="explain-skip">Skipped if they already exist.</p></div>
+          <div class="explain-step result"><h3>Done!</h3><p>Shows "All done!", prints your SSH key, and links to the GitHub setup page.</p></div>
+        </div>
+      </details>
 
       <details class="script-source" open>
-        <summary>See the actual script — line by line</summary>
-        <p>This is the real script. Open it in Notepad to verify.</p>
+        <summary>See the actual script — click any line to see what it does</summary>
+        <p>This is the real script. Open setup-windows.ps1 in Notepad to verify.</p>
         <div class="code-viewer">
-          <div class="code-viewer-header"><span class="file-icon">&#x1F4C4;</span> setup-windows.ps1</div>
-          <table>
-            <tr class="section-header"><td colspan="3">Step 1: Check winget</td></tr>
-            <tr>
-              <td class="ln">22</td>
-              <td class="code-col"><span class="cmd">Get-Command</span> winget</td>
-              <td class="explain-col"><span class="plain">Checks if Windows' built-in app installer is available. If not, your Windows may need an update.</span></td>
-            </tr>
-            <tr class="section-header"><td colspan="3">Step 2: Git</td></tr>
-            <tr>
-              <td class="ln">33</td>
-              <td class="code-col"><span class="cmd">winget install</span> --id Git.Git</td>
-              <td class="explain-col"><span class="plain">Installs Git — downloads project files from the internet. Free, safe, used by millions.</span><br><span class="skip-note">Skipped if already installed</span></td>
-            </tr>
-            <tr class="section-header"><td colspan="3">Step 3: Docker Desktop</td></tr>
-            <tr>
-              <td class="ln">48</td>
-              <td class="code-col"><span class="cmd">winget install</span> --id Docker.DockerDesktop</td>
-              <td class="explain-col"><span class="plain">Installs Docker — creates isolated spaces where your AI tools run. Largest download (~500 MB).</span><br><span class="skip-note">Skipped if already installed. May need restart.</span></td>
-            </tr>
-            <tr class="section-header"><td colspan="3">Step 4: SSH key</td></tr>
-            <tr>
-              <td class="ln">68</td>
-              <td class="code-col"><span class="cmd">ssh-keygen</span> -t ed25519 -N <span class="string">'""'</span> -q</td>
-              <td class="explain-col"><span class="plain">Creates a digital ID card for your computer to talk to GitHub securely.</span><br><span class="skip-note">Skipped if one exists</span></td>
-            </tr>
-            <tr class="section-header"><td colspan="3">Step 5: Projects + agent-sandbox</td></tr>
-            <tr>
-              <td class="ln">78</td>
-              <td class="code-col"><span class="cmd">New-Item</span> -Path <span class="string">"C:\Projects"</span></td>
-              <td class="explain-col"><span class="plain">Creates the folder where your websites will live.</span></td>
-            </tr>
-            <tr>
-              <td class="ln">88</td>
-              <td class="code-col"><span class="cmd">git clone</span> <span class="string">https://...agent-sandbox.git</span></td>
-              <td class="explain-col"><span class="plain">Downloads the AI coding environment setup files into C:\Projects\agent-sandbox.</span></td>
-            </tr>
-          </table>
+          <div class="code-viewer-header">setup-windows.ps1</div>
+          <div class="code-viewer-body">
+            <div class="cv-section">Check winget</div>
+            <div class="cv-line" data-tip="Checks if Windows' built-in app installer (winget) is available. We need it to install the tools below.">
+              <span class="cv-ln">22</span><span class="cv-code"><span class="cmd">Get-Command</span> winget -ErrorAction SilentlyContinue</span><span class="cv-hint-icon">?</span>
+              <div class="cv-explain"></div>
+            </div>
+            <div class="cv-section">Install Git</div>
+            <div class="cv-line" data-tip="Installs Git — a free tool for downloading project files from the internet. Used by millions of developers. Skipped if already installed.">
+              <span class="cv-ln">38</span><span class="cv-code"><span class="cmd">winget install</span> --id Git.Git</span><span class="cv-hint-icon">?</span>
+              <div class="cv-explain"></div>
+            </div>
+            <div class="cv-section">Install Docker Desktop</div>
+            <div class="cv-line" data-tip="Installs Docker Desktop — creates isolated spaces where your AI coding tools run. This is the largest download (~500 MB). Skipped if already installed. You may need to restart your computer after this.">
+              <span class="cv-ln">51</span><span class="cv-code"><span class="cmd">winget install</span> --id Docker.DockerDesktop</span><span class="cv-hint-icon">?</span>
+              <div class="cv-explain"></div>
+            </div>
+            <div class="cv-section">Create SSH key</div>
+            <div class="cv-line" data-tip="Creates a secure key pair — like a digital ID card for your computer. Only the 'public' half gets shared with GitHub. Skipped if one already exists.">
+              <span class="cv-ln">68</span><span class="cv-code"><span class="cmd">ssh-keygen</span> -t ed25519 -N <span class="str">'&quot;&quot;'</span> -q</span><span class="cv-hint-icon">?</span>
+              <div class="cv-explain"></div>
+            </div>
+            <div class="cv-section">Projects folder + agent-sandbox</div>
+            <div class="cv-line" data-tip="Creates C:\\Projects — a regular folder where your website files will live. Skipped if it already exists.">
+              <span class="cv-ln">78</span><span class="cv-code"><span class="cmd">New-Item</span> -ItemType Directory -Path <span class="str">&quot;C:\Projects&quot;</span></span><span class="cv-hint-icon">?</span>
+              <div class="cv-explain"></div>
+            </div>
+            <div class="cv-line" data-tip="Downloads agent-sandbox — the tool that sets up your AI coding environment inside Docker. It has ready-made templates so you don't configure anything manually.">
+              <span class="cv-ln">88</span><span class="cv-code"><span class="cmd">git clone</span> <span class="str">https://github.com/jdeworks/agent-sandbox.git</span></span><span class="cv-hint-icon">?</span>
+              <div class="cv-explain"></div>
+            </div>
+          </div>
         </div>
       </details>
     </section>
 
-    <!-- Windows Quick (Direct) explanation -->
+    <!-- ==================== WINDOWS QUICK ==================== -->
     <section id="explain-win-quick" class="step explanation-section hidden">
       <h2>Windows — Quick install</h2>
-      <p>This script installs the AI coding tools directly on your computer.</p>
 
-      <div class="explain-step">
-        <h3>Step 1: Check for winget</h3>
-        <div class="explain-what">Same as the safe install — checks if Windows' built-in program installer is available.</div>
-        <div class="explain-why"><strong>Why:</strong> We use it to install the programs below.</div>
-      </div>
-
-      <div class="explain-step">
-        <h3>Step 2: Install Git</h3>
-        <div class="explain-what">Checks for Git, installs it if missing.</div>
-        <div class="explain-why"><strong>Why:</strong> Git downloads project files from the internet. Free, safe, used by millions.</div>
-        <div class="explain-skip">Skipped if already installed.</div>
-      </div>
-
-      <div class="explain-step">
-        <h3>Step 3: Install Node.js</h3>
-        <div class="explain-what">Checks for Node.js, installs the latest stable version if missing.</div>
-        <div class="explain-why"><strong>Why:</strong> Node.js is the engine that runs website code on your computer during development. It's what makes it possible to preview your website locally. Used by Netflix, Uber, NASA, and millions of developers.</div>
-        <div class="explain-skip">Skipped if already installed.</div>
-      </div>
-
-      <div class="explain-step">
-        <h3>Step 4: Install OpenCode</h3>
-        <div class="explain-what">Checks for OpenCode, installs it using Node.js's package manager (npm) if missing.</div>
-        <div class="explain-why"><strong>Why:</strong> OpenCode is the free AI coding assistant that builds your website. You describe what you want in plain words, and it writes the code for you.</div>
-        <div class="explain-skip">Skipped if already installed.</div>
-      </div>
-
-      <div class="explain-step">
-        <h3>Step 4: Create an SSH key</h3>
-        <div class="explain-what">Creates a secure key pair so your computer can talk to GitHub.</div>
-        <div class="explain-why"><strong>Why:</strong> Like a digital ID card — lets your computer prove who it is without typing a password every time. The key stays on your computer.</div>
-        <div class="explain-skip">Skipped if a key already exists.</div>
-      </div>
-
-      <div class="explain-step">
-        <h3>Step 5: Create a Projects folder</h3>
-        <div class="explain-what">Creates <code>C:\Projects</code>.</div>
-        <div class="explain-why"><strong>Why:</strong> Where your website files will live. Just a regular folder.</div>
-        <div class="explain-skip">Skipped if it already exists.</div>
-      </div>
-
-      <div class="explain-step result">
-        <h3>Done!</h3>
-        <div class="explain-what">The script shows "All done!" and prints your SSH key.</div>
-        <div class="explain-why"><strong>What you have now:</strong> Git, Node.js, OpenCode, and an SSH key — everything needed to start building.</div>
-      </div>
+      <details class="script-source">
+        <summary>Plain-language explanation</summary>
+        <div class="explain-steps-list">
+          <div class="explain-step"><h3>1. Check for winget</h3><p>Checks if Windows' built-in app installer is available.</p></div>
+          <div class="explain-step"><h3>2. Install Git</h3><p>Downloads project files from the internet. Free, safe.</p><p class="explain-skip">Skipped if already installed.</p></div>
+          <div class="explain-step"><h3>3. Install Node.js</h3><p>The engine that runs website code on your computer. Used by Netflix, Uber, NASA.</p><p class="explain-skip">Skipped if already installed.</p></div>
+          <div class="explain-step"><h3>4. Install OpenCode</h3><p>The free AI coding assistant. You describe what you want, it writes the code.</p><p class="explain-skip">Skipped if already installed.</p></div>
+          <div class="explain-step"><h3>5. Create SSH key</h3><p>Digital ID card for your computer. Stays on your machine.</p><p class="explain-skip">Skipped if one exists.</p></div>
+          <div class="explain-step"><h3>6. Create Projects folder</h3><p>Where your websites will live. Just a regular folder.</p><p class="explain-skip">Skipped if it exists.</p></div>
+          <div class="explain-step result"><h3>Done!</h3><p>Shows "All done!" and prints your SSH key.</p></div>
+        </div>
+      </details>
 
       <details class="script-source" open>
-        <summary>See the actual script — line by line</summary>
-        <p>This is the real script. Open it in Notepad to verify.</p>
+        <summary>See the actual script — click any line to see what it does</summary>
+        <p>This is the real script. Open setup-windows-direct.ps1 in Notepad to verify.</p>
         <div class="code-viewer">
-          <div class="code-viewer-header"><span class="file-icon">&#x1F4C4;</span> setup-windows-direct.ps1</div>
-          <table>
-            <tr class="section-header"><td colspan="3">Step 1: Git</td></tr>
-            <tr>
-              <td class="ln">38</td>
-              <td class="code-col"><span class="cmd">winget install</span> --id Git.Git</td>
-              <td class="explain-col"><span class="plain">Installs Git — downloads project files from the internet.</span><br><span class="skip-note">Skipped if already installed</span></td>
-            </tr>
-            <tr class="section-header"><td colspan="3">Step 2: Node.js</td></tr>
-            <tr>
-              <td class="ln">51</td>
-              <td class="code-col"><span class="cmd">winget install</span> --id OpenJS.NodeJS.LTS</td>
-              <td class="explain-col"><span class="plain">Installs Node.js — the engine that runs website code. Used by Netflix, Uber, NASA.</span><br><span class="skip-note">Skipped if already installed</span></td>
-            </tr>
-            <tr class="section-header"><td colspan="3">Step 3: OpenCode</td></tr>
-            <tr>
-              <td class="ln">67</td>
-              <td class="code-col"><span class="cmd">npm install</span> -g opencode-ai</td>
-              <td class="explain-col"><span class="plain">Installs OpenCode — the free AI that writes website code for you.</span><br><span class="skip-note">Skipped if already installed</span></td>
-            </tr>
-            <tr class="section-header"><td colspan="3">Step 4: SSH key</td></tr>
-            <tr>
-              <td class="ln">77</td>
-              <td class="code-col"><span class="cmd">ssh-keygen</span> -t ed25519</td>
-              <td class="explain-col"><span class="plain">Creates a digital ID card for your computer.</span><br><span class="skip-note">Skipped if one exists</span></td>
-            </tr>
-            <tr class="section-header"><td colspan="3">Step 5: Projects folder</td></tr>
-            <tr>
-              <td class="ln">85</td>
-              <td class="code-col"><span class="cmd">New-Item</span> -Path <span class="string">"C:\Projects"</span></td>
-              <td class="explain-col"><span class="plain">Creates the folder where your websites will live.</span><br><span class="skip-note">Skipped if it exists</span></td>
-            </tr>
-          </table>
+          <div class="code-viewer-header">setup-windows-direct.ps1</div>
+          <div class="code-viewer-body">
+            <div class="cv-section">Install Git</div>
+            <div class="cv-line" data-tip="Installs Git — downloads project files from the internet. Free, safe. Skipped if already installed.">
+              <span class="cv-ln">38</span><span class="cv-code"><span class="cmd">winget install</span> --id Git.Git</span><span class="cv-hint-icon">?</span>
+              <div class="cv-explain"></div>
+            </div>
+            <div class="cv-section">Install Node.js</div>
+            <div class="cv-line" data-tip="Installs Node.js — the engine that runs website code on your computer. Used by millions of developers worldwide. Skipped if already installed.">
+              <span class="cv-ln">51</span><span class="cv-code"><span class="cmd">winget install</span> --id OpenJS.NodeJS.LTS</span><span class="cv-hint-icon">?</span>
+              <div class="cv-explain"></div>
+            </div>
+            <div class="cv-section">Install OpenCode</div>
+            <div class="cv-line" data-tip="Installs OpenCode — the free AI that writes website code for you. You describe what you want in plain words. Skipped if already installed.">
+              <span class="cv-ln">67</span><span class="cv-code"><span class="cmd">npm install</span> -g opencode-ai</span><span class="cv-hint-icon">?</span>
+              <div class="cv-explain"></div>
+            </div>
+            <div class="cv-section">SSH key + Projects folder</div>
+            <div class="cv-line" data-tip="Creates a digital ID card for your computer to talk to GitHub securely. Skipped if one already exists.">
+              <span class="cv-ln">77</span><span class="cv-code"><span class="cmd">ssh-keygen</span> -t ed25519</span><span class="cv-hint-icon">?</span>
+              <div class="cv-explain"></div>
+            </div>
+            <div class="cv-line" data-tip="Creates C:\\Projects — where your website files will live. Skipped if it exists.">
+              <span class="cv-ln">85</span><span class="cv-code"><span class="cmd">New-Item</span> -Path <span class="str">&quot;C:\Projects&quot;</span></span><span class="cv-hint-icon">?</span>
+              <div class="cv-explain"></div>
+            </div>
+          </div>
         </div>
       </details>
     </section>
 
-    <!-- Mac explanation -->
+    <!-- ==================== MAC ==================== -->
     <section id="explain-mac" class="step explanation-section hidden">
-      <h2>Mac setup</h2>
-      <p>This script installs the tools you need to build websites with AI on your Mac.</p>
+      <h2>Mac — Quick install</h2>
 
-      <div class="explain-step">
-        <h3>Step 1: Install developer tools (includes Git)</h3>
-        <div class="explain-what">The script checks if Apple's "Command Line Tools" are installed. If not, a popup will appear asking you to install them.</div>
-        <div class="explain-why"><strong>Why:</strong> These tools include Git (for downloading project files) and other essentials that many programs need. They come directly from Apple and are completely safe.</div>
-        <div class="explain-skip">Skipped if already installed. The popup comes from Apple, not from our script.</div>
-      </div>
-
-      <div class="explain-step">
-        <h3>Step 2: Install Node.js</h3>
-        <div class="explain-what">Checks for Node.js. If missing, installs it using Homebrew (a popular Mac tool installer). If Homebrew isn't installed either, it installs that first.</div>
-        <div class="explain-why"><strong>Why:</strong> Node.js is the engine that runs website code on your computer. Homebrew is the standard way to install developer tools on a Mac — it's free, open source, and trusted by millions of Mac users.</div>
-        <div class="explain-skip">Skipped if already installed. Homebrew installation may ask for your password — that's your Mac login password, needed because it installs into a system folder.</div>
-      </div>
-
-      <div class="explain-step">
-        <h3>Step 3: Install OpenCode</h3>
-        <div class="explain-what">Checks for OpenCode, installs it via Homebrew or a direct download if missing.</div>
-        <div class="explain-why"><strong>Why:</strong> OpenCode is the free AI coding assistant. You describe what you want, it writes the code.</div>
-        <div class="explain-skip">Skipped if already installed.</div>
-      </div>
-
-      <div class="explain-step">
-        <h3>Step 4: Create an SSH key</h3>
-        <div class="explain-what">Creates a secure key pair in a hidden <code>.ssh</code> folder on your Mac.</div>
-        <div class="explain-why"><strong>Why:</strong> Like a digital ID card — lets your computer prove who it is to GitHub without typing a password every time. Only the "public" half gets shared.</div>
-        <div class="explain-skip">Skipped if a key already exists.</div>
-      </div>
-
-      <div class="explain-step">
-        <h3>Step 5: Create a Projects folder</h3>
-        <div class="explain-what">Creates a <code>Projects</code> folder in your home directory (<code>~/Projects</code>).</div>
-        <div class="explain-why"><strong>Why:</strong> Where your website files will live. You can find it in Finder under your home folder.</div>
-        <div class="explain-skip">Skipped if it already exists.</div>
-      </div>
-
-      <div class="explain-step result">
-        <h3>Done!</h3>
-        <div class="explain-what">The script shows "All done!" and prints your SSH key.</div>
-        <div class="explain-why"><strong>What you have now:</strong> Developer tools, Node.js, OpenCode, and an SSH key — everything needed to start building.</div>
-      </div>
+      <details class="script-source">
+        <summary>Plain-language explanation</summary>
+        <div class="explain-steps-list">
+          <div class="explain-step"><h3>1. Developer tools (includes Git)</h3><p>Installs Apple's command line tools. Includes Git for downloading project files. A popup from Apple may appear — completely safe.</p><p class="explain-skip">Skipped if already installed.</p></div>
+          <div class="explain-step"><h3>2. Install Node.js</h3><p>The engine that runs website code. Installed via Homebrew (Mac's app manager). If Homebrew isn't installed, it installs that first. May ask for your password.</p><p class="explain-skip">Skipped if already installed.</p></div>
+          <div class="explain-step"><h3>3. Install OpenCode</h3><p>The free AI coding assistant. You describe what you want, it writes the code.</p><p class="explain-skip">Skipped if already installed.</p></div>
+          <div class="explain-step"><h3>4. Create SSH key</h3><p>Digital ID card for your computer. Only the public half is shared.</p><p class="explain-skip">Skipped if one exists.</p></div>
+          <div class="explain-step"><h3>5. Create Projects folder</h3><p>~/Projects — where your websites will live.</p><p class="explain-skip">Skipped if it exists.</p></div>
+          <div class="explain-step result"><h3>Done!</h3><p>Shows "All done!" and prints your SSH key.</p></div>
+        </div>
+      </details>
 
       <details class="script-source" open>
-        <summary>See the actual script — line by line</summary>
-        <p>This is the real script. Every line shown here is in the file you downloaded. Open it in TextEdit to verify.</p>
+        <summary>See the actual script — click any line to see what it does</summary>
+        <p>This is the real script. Open setup-mac.command in TextEdit to verify.</p>
         <div class="code-viewer">
-          <div class="code-viewer-header"><span class="file-icon">&#x1F4C4;</span> setup-mac.command</div>
-          <table>
-            <tr class="section-header"><td colspan="3">Step 1: Developer tools</td></tr>
-            <tr>
-              <td class="ln">33</td>
-              <td class="code-col"><span class="keyword">if</span> xcode-select -p; <span class="keyword">then</span></td>
-              <td class="explain-col"><span class="plain">Checks if Apple's developer tools are already installed</span></td>
-            </tr>
-            <tr>
-              <td class="ln">38</td>
-              <td class="code-col">    <span class="cmd">xcode-select --install</span></td>
-              <td class="explain-col"><span class="plain">If not installed, triggers Apple's installer popup. This is from Apple, completely safe.</span></td>
-            </tr>
-            <tr class="section-header"><td colspan="3">Step 2: Node.js</td></tr>
-            <tr>
-              <td class="ln">51</td>
-              <td class="code-col"><span class="keyword">if</span> command -v node; <span class="keyword">then</span></td>
-              <td class="explain-col"><span class="plain">Checks if Node.js is already installed</span><br><span class="skip-note">If yes, skips to the next step</span></td>
-            </tr>
-            <tr>
-              <td class="ln">57</td>
-              <td class="code-col">    <span class="cmd">brew install</span> node</td>
-              <td class="explain-col"><span class="plain">Installs Node.js using Homebrew (Mac's app manager). Node.js is the engine that runs website code.</span></td>
-            </tr>
-            <tr>
-              <td class="ln">60</td>
-              <td class="code-col">    <span class="cmd">curl -fsSL</span> <span class="string">https://...Homebrew/install/...</span> | bash</td>
-              <td class="explain-col"><span class="plain">If Homebrew isn't installed, downloads and installs it first. May ask for your password.</span></td>
-            </tr>
-            <tr class="section-header"><td colspan="3">Step 3: OpenCode</td></tr>
-            <tr>
-              <td class="ln">75</td>
-              <td class="code-col"><span class="keyword">if</span> command -v opencode; <span class="keyword">then</span></td>
-              <td class="explain-col"><span class="plain">Checks if OpenCode is already installed</span><br><span class="skip-note">If yes, skips</span></td>
-            </tr>
-            <tr>
-              <td class="ln">80</td>
-              <td class="code-col">    <span class="cmd">brew install</span> opencode-ai/tap/opencode</td>
-              <td class="explain-col"><span class="plain">Installs OpenCode — the free AI that writes website code for you</span></td>
-            </tr>
-            <tr class="section-header"><td colspan="3">Step 4: SSH key</td></tr>
-            <tr>
-              <td class="ln">90</td>
-              <td class="code-col"><span class="keyword">if</span> [ -f <span class="string">"$HOME/.ssh/id_ed25519"</span> ]; <span class="keyword">then</span></td>
-              <td class="explain-col"><span class="plain">Checks if an SSH key already exists</span><br><span class="skip-note">If yes, skips</span></td>
-            </tr>
-            <tr>
-              <td class="ln">96</td>
-              <td class="code-col">    <span class="cmd">ssh-keygen</span> -t ed25519 -N <span class="string">""</span> -q</td>
-              <td class="explain-col"><span class="plain">Creates a secure key pair. Like a digital ID card for your computer. Stays on your machine — only the public half is shared.</span></td>
-            </tr>
-            <tr class="section-header"><td colspan="3">Step 5: Projects folder</td></tr>
-            <tr>
-              <td class="ln">106</td>
-              <td class="code-col">    <span class="cmd">mkdir -p</span> <span class="string">"$HOME/Projects"</span></td>
-              <td class="explain-col"><span class="plain">Creates a "Projects" folder in your home directory. This is where your websites will live.</span><br><span class="skip-note">Skipped if it already exists</span></td>
-            </tr>
-          </table>
+          <div class="code-viewer-header">setup-mac.command</div>
+          <div class="code-viewer-body">
+            <div class="cv-section">Developer tools</div>
+            <div class="cv-line" data-tip="Checks if Apple's developer tools are already installed. These include Git (for downloading files) and other essentials.">
+              <span class="cv-ln">33</span><span class="cv-code"><span class="kw">if</span> xcode-select -p &amp;&gt;/dev/null; <span class="kw">then</span></span><span class="cv-hint-icon">?</span>
+              <div class="cv-explain"></div>
+            </div>
+            <div class="cv-line" data-tip="If not installed, triggers Apple's own installer popup. This is from Apple, completely safe. The script waits for it to finish.">
+              <span class="cv-ln">38</span><span class="cv-code">    <span class="cmd">xcode-select --install</span></span><span class="cv-hint-icon">?</span>
+              <div class="cv-explain"></div>
+            </div>
+            <div class="cv-section">Node.js</div>
+            <div class="cv-line" data-tip="Checks if Node.js is already on your Mac. If yes, skips this step entirely.">
+              <span class="cv-ln">51</span><span class="cv-code"><span class="kw">if</span> command -v node &amp;&gt;/dev/null; <span class="kw">then</span></span><span class="cv-hint-icon">?</span>
+              <div class="cv-explain"></div>
+            </div>
+            <div class="cv-line" data-tip="Installs Node.js using Homebrew (Mac's standard app manager). Node.js is the engine that runs website code on your computer.">
+              <span class="cv-ln">57</span><span class="cv-code">    <span class="cmd">brew install</span> node</span><span class="cv-hint-icon">?</span>
+              <div class="cv-explain"></div>
+            </div>
+            <div class="cv-line" data-tip="If Homebrew isn't installed, downloads and installs it first. Homebrew is free, open source, and trusted by millions of Mac users. May ask for your password.">
+              <span class="cv-ln">60</span><span class="cv-code">    curl -fsSL <span class="str">https://...Homebrew/install/...</span> | bash</span><span class="cv-hint-icon">?</span>
+              <div class="cv-explain"></div>
+            </div>
+            <div class="cv-section">OpenCode</div>
+            <div class="cv-line" data-tip="Checks if OpenCode is already installed. If yes, skips.">
+              <span class="cv-ln">75</span><span class="cv-code"><span class="kw">if</span> command -v opencode &amp;&gt;/dev/null; <span class="kw">then</span></span><span class="cv-hint-icon">?</span>
+              <div class="cv-explain"></div>
+            </div>
+            <div class="cv-line" data-tip="Installs OpenCode — the free AI coding assistant. You describe what you want in plain words, it writes the code for you.">
+              <span class="cv-ln">80</span><span class="cv-code">    <span class="cmd">brew install</span> opencode-ai/tap/opencode</span><span class="cv-hint-icon">?</span>
+              <div class="cv-explain"></div>
+            </div>
+            <div class="cv-section">SSH key</div>
+            <div class="cv-line" data-tip="Creates a secure key pair — like a digital ID card for your computer. Only the 'public' half is shared with GitHub. Skipped if one already exists.">
+              <span class="cv-ln">96</span><span class="cv-code">    <span class="cmd">ssh-keygen</span> -t ed25519 -N <span class="str">""</span> -q</span><span class="cv-hint-icon">?</span>
+              <div class="cv-explain"></div>
+            </div>
+            <div class="cv-section">Projects folder</div>
+            <div class="cv-line" data-tip="Creates a 'Projects' folder in your home directory. This is where your websites will live. You can find it in Finder. Skipped if it already exists.">
+              <span class="cv-ln">106</span><span class="cv-code">    <span class="cmd">mkdir -p</span> <span class="str">"$HOME/Projects"</span></span><span class="cv-hint-icon">?</span>
+              <div class="cv-explain"></div>
+            </div>
+          </div>
         </div>
       </details>
     </section>
 
-    <!-- Linux explanation -->
+    <!-- ==================== LINUX ==================== -->
     <section id="explain-linux" class="step explanation-section hidden">
-      <h2>Linux setup</h2>
-      <p>This script installs the tools you need to build websites with AI on Linux.</p>
+      <h2>Linux — Quick install</h2>
 
-      <div class="explain-step">
-        <h3>Step 1: Install Git</h3>
-        <div class="explain-what">Checks for Git, installs it with your system's package manager (apt, dnf, or pacman) if missing.</div>
-        <div class="explain-why"><strong>Why:</strong> Git downloads project files from the internet. It may ask for your password because installing system packages requires admin permission.</div>
-        <div class="explain-skip">Skipped if already installed.</div>
-      </div>
-
-      <div class="explain-step">
-        <h3>Step 2: Install Node.js</h3>
-        <div class="explain-what">Checks for Node.js. If missing, installs "nvm" (Node Version Manager) first, then uses nvm to install Node.js.</div>
-        <div class="explain-why"><strong>Why:</strong> Node.js runs website code on your computer. nvm is the recommended way to install it on Linux because it doesn't require admin permission and lets you manage versions easily.</div>
-        <div class="explain-skip">Skipped if already installed.</div>
-      </div>
-
-      <div class="explain-step">
-        <h3>Step 3: Install OpenCode</h3>
-        <div class="explain-what">Checks for OpenCode, downloads and installs it if missing.</div>
-        <div class="explain-why"><strong>Why:</strong> The free AI coding assistant that builds your website.</div>
-        <div class="explain-skip">Skipped if already installed.</div>
-      </div>
-
-      <div class="explain-step">
-        <h3>Step 4: Create an SSH key</h3>
-        <div class="explain-what">Creates a secure key pair so your computer can talk to GitHub.</div>
-        <div class="explain-why"><strong>Why:</strong> Like a digital ID card for your computer. Only the "public" half gets shared with GitHub.</div>
-        <div class="explain-skip">Skipped if a key already exists.</div>
-      </div>
-
-      <div class="explain-step">
-        <h3>Step 5: Create a Projects folder</h3>
-        <div class="explain-what">Creates <code>~/Projects</code>.</div>
-        <div class="explain-why"><strong>Why:</strong> Where your website files will live.</div>
-        <div class="explain-skip">Skipped if it already exists.</div>
-      </div>
-
-      <div class="explain-step result">
-        <h3>Done!</h3>
-        <div class="explain-what">The script shows "All done!" and prints your SSH key.</div>
-        <div class="explain-why"><strong>What you have now:</strong> Git, Node.js, OpenCode, and an SSH key — everything needed to start building.</div>
-      </div>
+      <details class="script-source">
+        <summary>Plain-language explanation</summary>
+        <div class="explain-steps-list">
+          <div class="explain-step"><h3>1. Install Git</h3><p>Downloads project files. Uses your system's package manager (apt, dnf, or pacman). May ask for your password.</p><p class="explain-skip">Skipped if already installed.</p></div>
+          <div class="explain-step"><h3>2. Install Node.js</h3><p>The engine that runs website code. Installed via nvm (doesn't need admin access).</p><p class="explain-skip">Skipped if already installed.</p></div>
+          <div class="explain-step"><h3>3. Install OpenCode</h3><p>The free AI coding assistant.</p><p class="explain-skip">Skipped if already installed.</p></div>
+          <div class="explain-step"><h3>4. Create SSH key</h3><p>Digital ID card for your computer.</p><p class="explain-skip">Skipped if one exists.</p></div>
+          <div class="explain-step"><h3>5. Create Projects folder</h3><p>~/Projects — where your websites live.</p><p class="explain-skip">Skipped if it exists.</p></div>
+          <div class="explain-step result"><h3>Done!</h3><p>Shows "All done!" and prints your SSH key.</p></div>
+        </div>
+      </details>
 
       <details class="script-source" open>
-        <summary>See the actual script — line by line</summary>
-        <p>This is the real script. Open it in any text editor to verify.</p>
+        <summary>See the actual script — click any line to see what it does</summary>
+        <p>This is the real script. Open setup-linux.sh in any text editor to verify.</p>
         <div class="code-viewer">
-          <div class="code-viewer-header"><span class="file-icon">&#x1F4C4;</span> setup-linux.sh</div>
-          <table>
-            <tr class="section-header"><td colspan="3">Step 1: Git</td></tr>
-            <tr>
-              <td class="ln">52</td>
-              <td class="code-col"><span class="cmd">sudo apt install</span> -y git</td>
-              <td class="explain-col"><span class="plain">Installs Git using your system's package manager. May ask for your password.</span><br><span class="skip-note">Skipped if already installed</span></td>
-            </tr>
-            <tr class="section-header"><td colspan="3">Step 2: Node.js</td></tr>
-            <tr>
-              <td class="ln">63</td>
-              <td class="code-col"><span class="cmd">curl -o-</span> <span class="string">https://...nvm/.../install.sh</span> | bash</td>
-              <td class="explain-col"><span class="plain">Downloads nvm (Node Version Manager) — a safe way to install Node.js without admin access.</span></td>
-            </tr>
-            <tr>
-              <td class="ln">65</td>
-              <td class="code-col"><span class="cmd">nvm install</span> --lts</td>
-              <td class="explain-col"><span class="plain">Installs the latest stable Node.js — the engine that runs website code.</span><br><span class="skip-note">Skipped if already installed</span></td>
-            </tr>
-            <tr class="section-header"><td colspan="3">Step 3: OpenCode</td></tr>
-            <tr>
-              <td class="ln">75</td>
-              <td class="code-col"><span class="cmd">curl -fsSL</span> <span class="string">https://...opencode/.../install</span> | bash</td>
-              <td class="explain-col"><span class="plain">Downloads and installs OpenCode — the free AI that writes code for you.</span><br><span class="skip-note">Skipped if already installed</span></td>
-            </tr>
-            <tr class="section-header"><td colspan="3">Step 4: SSH key</td></tr>
-            <tr>
-              <td class="ln">85</td>
-              <td class="code-col"><span class="cmd">ssh-keygen</span> -t ed25519 -N <span class="string">""</span> -q</td>
-              <td class="explain-col"><span class="plain">Creates a digital ID card for your computer.</span><br><span class="skip-note">Skipped if one exists</span></td>
-            </tr>
-            <tr class="section-header"><td colspan="3">Step 5: Projects folder</td></tr>
-            <tr>
-              <td class="ln">95</td>
-              <td class="code-col"><span class="cmd">mkdir -p</span> <span class="string">"$HOME/Projects"</span></td>
-              <td class="explain-col"><span class="plain">Creates a "Projects" folder where your websites will live.</span><br><span class="skip-note">Skipped if it exists</span></td>
-            </tr>
-          </table>
+          <div class="code-viewer-header">setup-linux.sh</div>
+          <div class="code-viewer-body">
+            <div class="cv-section">Install Git</div>
+            <div class="cv-line" data-tip="Installs Git using your system's package manager (apt, dnf, or pacman). May ask for your password. Skipped if already installed.">
+              <span class="cv-ln">52</span><span class="cv-code"><span class="cmd">sudo apt install</span> -y git</span><span class="cv-hint-icon">?</span>
+              <div class="cv-explain"></div>
+            </div>
+            <div class="cv-section">Install Node.js</div>
+            <div class="cv-line" data-tip="Downloads nvm (Node Version Manager) — a safe way to install Node.js without needing admin access.">
+              <span class="cv-ln">63</span><span class="cv-code">curl -o- <span class="str">https://...nvm/v0.40.1/install.sh</span> | bash</span><span class="cv-hint-icon">?</span>
+              <div class="cv-explain"></div>
+            </div>
+            <div class="cv-line" data-tip="Installs the latest stable version of Node.js — the engine that runs website code on your computer. Skipped if already installed.">
+              <span class="cv-ln">65</span><span class="cv-code"><span class="cmd">nvm install</span> --lts</span><span class="cv-hint-icon">?</span>
+              <div class="cv-explain"></div>
+            </div>
+            <div class="cv-section">Install OpenCode</div>
+            <div class="cv-line" data-tip="Downloads and installs OpenCode — the free AI that writes website code for you. Skipped if already installed.">
+              <span class="cv-ln">75</span><span class="cv-code">curl -fsSL <span class="str">https://...opencode/.../install</span> | bash</span><span class="cv-hint-icon">?</span>
+              <div class="cv-explain"></div>
+            </div>
+            <div class="cv-section">SSH key + Projects folder</div>
+            <div class="cv-line" data-tip="Creates a secure key pair — digital ID card for your computer. Skipped if one already exists.">
+              <span class="cv-ln">85</span><span class="cv-code"><span class="cmd">ssh-keygen</span> -t ed25519 -N <span class="str">""</span> -q</span><span class="cv-hint-icon">?</span>
+              <div class="cv-explain"></div>
+            </div>
+            <div class="cv-line" data-tip="Creates ~/Projects — where your website files will live. Skipped if it already exists.">
+              <span class="cv-ln">95</span><span class="cv-code"><span class="cmd">mkdir -p</span> <span class="str">"$HOME/Projects"</span></span><span class="cv-hint-icon">?</span>
+              <div class="cv-explain"></div>
+            </div>
+          </div>
         </div>
       </details>
     </section>
@@ -444,18 +280,36 @@
         el.classList.remove('hidden');
         el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
-      // Update button states
-      document.querySelectorAll('.os-btn').forEach(btn => btn.classList.remove('selected'));
     }
 
-    // Auto-open from URL hash (e.g. explained.html#mac)
+    // Code viewer: click line to show/hide explanation
     document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.cv-line').forEach(function(line) {
+        var tip = line.getAttribute('data-tip');
+        var explainEl = line.querySelector('.cv-explain');
+        if (tip && explainEl) {
+          explainEl.textContent = tip;
+        }
+        line.addEventListener('click', function(e) {
+          // Close others
+          document.querySelectorAll('.cv-line.open').forEach(function(l) {
+            if (l !== line) l.classList.remove('open');
+          });
+          line.classList.toggle('open');
+          e.stopPropagation();
+        });
+      });
+
+      // Close on click outside
+      document.addEventListener('click', function() {
+        document.querySelectorAll('.cv-line.open').forEach(function(l) {
+          l.classList.remove('open');
+        });
+      });
+
+      // Auto-open from URL hash
       var hash = window.location.hash.replace('#', '');
-      if (hash) {
-        // Map hash names to section IDs
-        var map = { 'win-safe': 'win-safe', 'win-quick': 'win-quick', 'mac': 'mac', 'linux': 'linux' };
-        if (map[hash]) showExplain(map[hash]);
-      }
+      if (hash) showExplain(hash);
     });
   </script>
 </body>
