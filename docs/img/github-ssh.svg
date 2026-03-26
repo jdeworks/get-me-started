@@ -16,5 +16,5 @@
   <!-- Arrow pointing to key field -->
   <text x="400" y="148" font-family="-apple-system, sans-serif" font-size="11" fill="#1a7f37" font-weight="600">paste here &#x2193;</text>
   <!-- Add SSH key button -->
-  <rect x="16" y="200" width="120" height="0" rx="6" fill="#1a7f37"/>
+  <rect x="16" y="198" width="120" height="16" rx="6" fill="#1a7f37"/>
 </svg>

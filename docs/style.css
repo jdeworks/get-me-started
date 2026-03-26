@@ -131,6 +131,18 @@ header h1 {
   color: #888;
 }
 
+.explain-link {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  color: #4361ee;
+  text-decoration: none;
+}
+
+.explain-link:hover {
+  text-decoration: underline;
+}
+
 /* === Visual steps === */
 .visual-steps {
   margin-top: 0.5rem;
@@ -399,6 +411,56 @@ footer a:hover {
   margin-left: 4px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+}
+
+/* === Script source (details/summary) === */
+.script-source {
+  margin-top: 1.25rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.script-source summary {
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  background: #f8f9fa;
+  color: #333;
+  list-style: none;
+}
+
+.script-source summary::-webkit-details-marker { display: none; }
+.script-source summary::before {
+  content: "\\25B6  ";
+  font-size: 0.7rem;
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+.script-source[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.script-source pre {
+  margin: 0;
+  padding: 1rem;
+  background: #1a1a2e;
+  overflow-x: auto;
+}
+
+.script-source code {
+  font-family: "SF Mono", "Cascadia Code", "Fira Code", Consolas, monospace;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: #ccc;
+  white-space: pre;
+}
+
+.script-source p {
+  padding: 0.5rem 1rem 0;
+  font-size: 0.9rem;
+  color: #666;
 }
 
 /* === Safety callout === */

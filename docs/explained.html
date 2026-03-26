@@ -82,6 +82,39 @@
         <div class="explain-what">The script shows "All done!" and waits for you to press Enter.</div>
         <div class="explain-why"><strong>What you have now:</strong> Git, Docker Desktop, and the agent-sandbox files — everything needed for your AI coding assistant to run in a safe, isolated space.</div>
       </div>
+
+      <details class="script-source">
+        <summary>See the actual script code with annotations</summary>
+        <p>You can also open the downloaded file in any text editor (like Notepad) to read it yourself.</p>
+        <pre><code># Allow this script to run in the current session
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+
+# Check if "winget" exists — it's Windows' built-in app installer
+# If missing, your Windows may need an update
+$hasWinget = Get-Command winget -ErrorAction SilentlyContinue
+
+# Install Git (a tool for downloading project files)
+# Skipped if already installed
+winget install --id Git.Git
+
+# Install Docker Desktop (creates isolated containers)
+# This is the largest download (~500 MB)
+# Skipped if already installed
+winget install --id Docker.DockerDesktop
+
+# Create an SSH key (a digital ID for your computer)
+# Skipped if one already exists
+ssh-keygen -t ed25519 -f $sshKeyPath -N '""' -q
+
+# Create C:\Projects folder (where your websites live)
+# Skipped if it already exists
+New-Item -ItemType Directory -Path "C:\Projects"
+
+# Download agent-sandbox (the AI coding environment setup)
+git clone https://github.com/jdeworks/agent-sandbox.git C:\Projects\agent-sandbox
+
+# Print your SSH key so you can copy it to GitHub</code></pre>
+      </details>
     </section>
 
     <!-- Windows Quick (Direct) explanation -->
@@ -135,6 +168,29 @@
         <div class="explain-what">The script shows "All done!" and prints your SSH key.</div>
         <div class="explain-why"><strong>What you have now:</strong> Git, Node.js, OpenCode, and an SSH key — everything needed to start building.</div>
       </div>
+
+      <details class="script-source">
+        <summary>See the actual script code with annotations</summary>
+        <pre><code># Install Git (downloads project files from the internet)
+# Skipped if already installed
+winget install --id Git.Git
+
+# Install Node.js (the engine that runs website code)
+# Skipped if already installed
+winget install --id OpenJS.NodeJS.LTS
+
+# Install OpenCode (the AI that writes code for you)
+# Uses Node.js's package manager to install it
+# Skipped if already installed
+npm install -g opencode-ai
+
+# Create an SSH key (digital ID for your computer)
+# Skipped if one already exists
+ssh-keygen -t ed25519
+
+# Create C:\Projects folder
+# Skipped if it already exists</code></pre>
+      </details>
     </section>
 
     <!-- Mac explanation -->
@@ -182,6 +238,31 @@
         <div class="explain-what">The script shows "All done!" and prints your SSH key.</div>
         <div class="explain-why"><strong>What you have now:</strong> Developer tools, Node.js, OpenCode, and an SSH key — everything needed to start building.</div>
       </div>
+
+      <details class="script-source">
+        <summary>See the actual script code with annotations</summary>
+        <pre><code># Install Apple's developer tools (includes Git)
+# A popup from Apple may appear — click "Install"
+# Skipped if already installed
+xcode-select --install
+
+# Install Node.js via Homebrew (Mac's app manager)
+# If Homebrew isn't installed, it installs that first
+# May ask for your password — that's your Mac login password
+# Skipped if already installed
+brew install node
+
+# Install OpenCode (the AI that writes code for you)
+# Skipped if already installed
+brew install opencode-ai/tap/opencode
+
+# Create an SSH key (digital ID for your computer)
+# Skipped if one already exists
+ssh-keygen -t ed25519
+
+# Create ~/Projects folder
+# Skipped if it already exists</code></pre>
+      </details>
     </section>
 
     <!-- Linux explanation -->
@@ -229,6 +310,32 @@
         <div class="explain-what">The script shows "All done!" and prints your SSH key.</div>
         <div class="explain-why"><strong>What you have now:</strong> Git, Node.js, OpenCode, and an SSH key — everything needed to start building.</div>
       </div>
+
+      <details class="script-source">
+        <summary>See the actual script code with annotations</summary>
+        <pre><code># Install Git (downloads project files)
+# Uses your system's package manager (apt, dnf, or pacman)
+# May ask for your password
+# Skipped if already installed
+sudo apt install -y git
+
+# Install Node.js via nvm (Node Version Manager)
+# nvm doesn't need admin permissions
+# Skipped if already installed
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+nvm install --lts
+
+# Install OpenCode (the AI that writes code for you)
+# Skipped if already installed
+curl -fsSL https://raw.githubusercontent.com/opencode-ai/opencode/.../install | bash
+
+# Create an SSH key (digital ID for your computer)
+# Skipped if one already exists
+ssh-keygen -t ed25519
+
+# Create ~/Projects folder
+# Skipped if it already exists</code></pre>
+      </details>
     </section>
 
     <section class="step">
@@ -243,9 +350,24 @@
   <script>
     function showExplain(id) {
       document.querySelectorAll('.explanation-section').forEach(el => el.classList.add('hidden'));
-      document.getElementById('explain-' + id).classList.remove('hidden');
-      document.getElementById('explain-' + id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+      var el = document.getElementById('explain-' + id);
+      if (el) {
+        el.classList.remove('hidden');
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      // Update button states
+      document.querySelectorAll('.os-btn').forEach(btn => btn.classList.remove('selected'));
     }
+
+    // Auto-open from URL hash (e.g. explained.html#mac)
+    document.addEventListener('DOMContentLoaded', function() {
+      var hash = window.location.hash.replace('#', '');
+      if (hash) {
+        // Map hash names to section IDs
+        var map = { 'win-safe': 'win-safe', 'win-quick': 'win-quick', 'mac': 'mac', 'linux': 'linux' };
+        if (map[hash]) showExplain(map[hash]);
+      }
+    });
   </script>
 </body>
 </html>
