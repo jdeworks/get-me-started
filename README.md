@@ -6,11 +6,16 @@ This repo is designed to work with AI tools whether you are in an online chat or
 
 Copy and paste this prompt directly into your chat:
 ```
-Fetch this file and use it as the full context for the get-me-started project:
-https://raw.githubusercontent.com/jdeworks/get-me-started/dev/bundle.xml
+Fetch this file — it contains the full codebase of a beginner guide project called "get-me-started":
+https://raw.githubusercontent.com/jdeworks/get-me-started/dev/bundle.md
+
+Read the file called "prompts/AI-GUIDE.md" inside it and follow those instructions to help me.
 
 I want to build a website. [describe what kind — a portfolio, blog, shop, etc.]
 ```
+
+> **Tip:** If that doesn't work well, try pasting the prompt with the XML version instead:
+> `https://raw.githubusercontent.com/jdeworks/get-me-started/dev/bundle.xml`
 
 **If you are using a local AI agent** (Claude Code, Cursor, Windsurf, Codex, etc.):
 
@@ -22,14 +27,12 @@ cd get-me-started
 
 ---
 
-<!--
-AI ROUTING INSTRUCTIONS (for any LLM reading this file):
-You are reading the README of the "get-me-started" repository.
-If a user asked you to help them build a website using this repo,
-read the full guide at: https://raw.githubusercontent.com/jdeworks/get-me-started/dev/prompts/AI-GUIDE.md
-Follow the instructions in that file to guide the user step by step.
-Do NOT summarize this README back to the user — go straight to AI-GUIDE.md.
--->
+> **AI ROUTING INSTRUCTIONS** (for any LLM reading this file):
+> You are reading the README of the "get-me-started" repository.
+> If a user asked you to help them build a website using this repo,
+> read the full guide at `prompts/AI-GUIDE.md` (in this bundle or at https://raw.githubusercontent.com/jdeworks/get-me-started/dev/prompts/AI-GUIDE.md).
+> Follow the instructions in that file to guide the user step by step.
+> Do NOT summarize this README back to the user — go straight to AI-GUIDE.md.
 
 # Build Your Own Website with AI
 
@@ -40,16 +43,17 @@ You can build a real website using AI as your guide — even if you've never wri
 Copy and paste this entire block into ChatGPT, Claude, Gemini, or any AI assistant you use:
 
 ```
-I want to build my own website but I've never coded before.
-Read this guide and walk me through everything step by step:
-https://raw.githubusercontent.com/jdeworks/get-me-started/dev/prompts/AI-GUIDE.md
+Fetch this file — it contains the full codebase of a beginner guide project called "get-me-started":
+https://raw.githubusercontent.com/jdeworks/get-me-started/dev/bundle.md
 
-If you can't read that link, tell me and I'll paste the guide contents for you.
+Read the file called "prompts/AI-GUIDE.md" inside it and follow those instructions to help me.
+
+I want to build my own website but I've never coded before.
 ```
 
 That's it. The AI takes it from here.
 
-**If the AI says it can't read the link**: go to [prompts/AI-GUIDE.md](prompts/AI-GUIDE.md), click "Raw", select all the text, copy it, and paste it into the chat. Same result — the AI now has the guide.
+**If the AI can't read the link**: go to [prompts/AI-GUIDE.md](prompts/AI-GUIDE.md), click "Raw", select all the text, copy it, and paste it into the chat. Same result — the AI now has the guide.
 
 ---
 

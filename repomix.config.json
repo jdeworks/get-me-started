@@ -8,7 +8,8 @@
     "compress": false,
     "showLineNumbers": false,
     "topFilesLength": 5,
-    "includeEmptyDirectories": false
+    "includeEmptyDirectories": false,
+    "instructionFilePath": "prompts/BUNDLE-HEADER.md"
   },
   "include": [],
   "ignore": {
@@ -17,8 +18,10 @@
     "customPatterns": [
       ".claude/",
       "bundle.xml",
+      "bundle.md",
       "repomix.config.json",
-      ".repomixignore"
+      ".repomixignore",
+      "prompts/BUNDLE-HEADER.md"
     ]
   },
   "security": {
