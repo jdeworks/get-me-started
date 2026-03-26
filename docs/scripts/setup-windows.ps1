@@ -75,8 +75,23 @@ if (Test-Path $projectsPath) {
 }
 Write-Host ""
 
+# --- Generate SSH key for GitHub ---
+Write-Host "[4/5] Setting up a secure key for GitHub..." -ForegroundColor White
+$sshKeyPath = "$env:USERPROFILE\.ssh\id_ed25519"
+if (Test-Path $sshKeyPath) {
+    Write-Host "  SSH key already exists." -ForegroundColor Green
+} else {
+    Write-Host "  Creating a secure key so your computer can talk to GitHub..."
+    Write-Host "  (This is like a digital ID card for your computer.)"
+    $sshDir = "$env:USERPROFILE\.ssh"
+    if (-not (Test-Path $sshDir)) { New-Item -ItemType Directory -Path $sshDir -Force | Out-Null }
+    ssh-keygen -t ed25519 -f $sshKeyPath -N '""' -q
+    Write-Host "  Key created." -ForegroundColor Green
+}
+Write-Host ""
+
 # --- Clone agent-sandbox ---
-Write-Host "[4/4] Downloading agent-sandbox..." -ForegroundColor White
+Write-Host "[5/5] Downloading agent-sandbox..." -ForegroundColor White
 $sandboxPath = "$projectsPath\agent-sandbox"
 if (Test-Path $sandboxPath) {
     Write-Host "  agent-sandbox already exists at $sandboxPath." -ForegroundColor Green
@@ -93,18 +108,29 @@ Write-Host "========================================" -ForegroundColor Cyan
 Write-Host "  All done!" -ForegroundColor Green
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
-Write-Host "Everything is installed. Go back to your AI chat and tell it:"
-Write-Host ""
-Write-Host '  "The setup is done. What do I do next?"' -ForegroundColor White
+Write-Host "Everything is installed!" -ForegroundColor Green
 Write-Host ""
 
 # Check if restart is needed
 $hasDockerNow = Get-Command docker -ErrorAction SilentlyContinue
 if (-not $hasDockerNow) {
     Write-Host "NOTE: You may need to RESTART your computer before Docker works." -ForegroundColor Yellow
-    Write-Host "After restarting, come back to your AI chat and continue." -ForegroundColor Yellow
+    Write-Host "After restarting, come back and continue." -ForegroundColor Yellow
     Write-Host ""
 }
 
+Write-Host "--- NEXT STEP: Connect to GitHub ---" -ForegroundColor Cyan
+Write-Host ""
+Write-Host "Your computer's key (copy everything below this line):" -ForegroundColor White
+Write-Host "----------------------------------------" -ForegroundColor Yellow
+Get-Content "$env:USERPROFILE\.ssh\id_ed25519.pub"
+Write-Host "----------------------------------------" -ForegroundColor Yellow
+Write-Host ""
+Write-Host "Now go to this page to set up GitHub and add your key:"
+Write-Host "  https://jdeworks.github.io/get-me-started/github.html" -ForegroundColor White
+Write-Host ""
+Write-Host "Or go back to your AI chat and tell it:"
+Write-Host '  "The setup is done. What do I do next?"' -ForegroundColor White
+Write-Host ""
 Write-Host "Press Enter to close..."
 Read-Host

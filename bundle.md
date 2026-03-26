@@ -1966,10 +1966,15 @@ There is a **setup page** that makes this easy. Tell the user:
 - **Mac/Linux**: It installs two small programs — one that runs website code, and one that's your AI coding assistant. Both are free.
 - **Windows**: It offers two options — a quick install (programs directly on your computer) or a safe install (everything runs in a protected space). The page explains both.
 
-**If they need a GitHub account:** Later in the process, they'll want a GitHub account to save their project and put their website online. If they don't have one, help them create one:
-- Go to https://github.com/signup
-- Pick a username, enter email, create a password
-- That's it — it's free. They can do this now or later when the AI coding tool asks for it.
+**If they need a GitHub account:** The setup script creates an SSH key automatically. After the script finishes, guide them to the GitHub setup page which walks them through creating an account and adding their key:
+
+> "The setup also created a secure key for your computer. Now let's connect it to GitHub — there's a page that walks you through it step by step:
+>
+> **https://jdeworks.github.io/get-me-started/github.html**"
+
+This page covers: creating a free GitHub account, finding the SSH key (the script printed it), and pasting it into GitHub's settings. If they can't access the page, walk them through it:
+- Create account: https://github.com/signup — username, email, password, that's it
+- Add SSH key: https://github.com/settings/ssh/new — paste the key from the script output
 
 **After they finish the setup page**, go to [Phase 4: Hand Off](#phase-4-hand-off-to-make-a-website).
 

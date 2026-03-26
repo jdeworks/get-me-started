@@ -77,8 +77,23 @@ if ($hasOpenCode) {
 }
 Write-Host ""
 
+# --- Generate SSH key for GitHub ---
+Write-Host "[4/5] Setting up a secure key for GitHub..." -ForegroundColor White
+$sshKeyPath = "$env:USERPROFILE\.ssh\id_ed25519"
+if (Test-Path $sshKeyPath) {
+    Write-Host "  SSH key already exists." -ForegroundColor Green
+} else {
+    Write-Host "  Creating a secure key so your computer can talk to GitHub..."
+    Write-Host "  (This is like a digital ID card for your computer.)"
+    $sshDir = "$env:USERPROFILE\.ssh"
+    if (-not (Test-Path $sshDir)) { New-Item -ItemType Directory -Path $sshDir -Force | Out-Null }
+    ssh-keygen -t ed25519 -f $sshKeyPath -N '""' -q
+    Write-Host "  Key created." -ForegroundColor Green
+}
+Write-Host ""
+
 # --- Create Projects folder ---
-Write-Host "[4/4] Creating your Projects folder..." -ForegroundColor White
+Write-Host "[5/5] Creating your Projects folder..." -ForegroundColor White
 $projectsPath = "C:\Projects"
 if (Test-Path $projectsPath) {
     Write-Host "  C:\Projects already exists." -ForegroundColor Green
@@ -93,8 +108,19 @@ Write-Host "========================================" -ForegroundColor Cyan
 Write-Host "  All done!" -ForegroundColor Green
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
-Write-Host "Everything is installed. Go back to your AI chat and tell it:"
+Write-Host "Everything is installed!" -ForegroundColor Green
 Write-Host ""
+Write-Host "--- NEXT STEP: Connect to GitHub ---" -ForegroundColor Cyan
+Write-Host ""
+Write-Host "Your computer's key (copy everything below this line):" -ForegroundColor White
+Write-Host "----------------------------------------" -ForegroundColor Yellow
+Get-Content "$env:USERPROFILE\.ssh\id_ed25519.pub"
+Write-Host "----------------------------------------" -ForegroundColor Yellow
+Write-Host ""
+Write-Host "Now go to this page to set up GitHub and add your key:"
+Write-Host "  https://jdeworks.github.io/get-me-started/github.html" -ForegroundColor White
+Write-Host ""
+Write-Host "Or go back to your AI chat and tell it:"
 Write-Host '  "The setup is done. What do I do next?"' -ForegroundColor White
 Write-Host ""
 Write-Host "Press Enter to close..."

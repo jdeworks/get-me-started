@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 220">
+  <!-- GitHub-style form -->
+  <rect width="480" height="220" rx="8" fill="#fff" stroke="#d0d7de" stroke-width="1"/>
+  <!-- Title label -->
+  <text x="16" y="28" font-family="-apple-system, Segoe UI, sans-serif" font-size="13" fill="#1f2328" font-weight="600">Title</text>
+  <rect x="16" y="36" width="448" height="32" rx="6" fill="#fff" stroke="#d0d7de" stroke-width="1"/>
+  <text x="24" y="56" font-family="-apple-system, Segoe UI, sans-serif" font-size="13" fill="#1f2328">My Laptop</text>
+  <!-- Key type dropdown -->
+  <text x="16" y="88" font-family="-apple-system, Segoe UI, sans-serif" font-size="13" fill="#1f2328" font-weight="600">Key type</text>
+  <rect x="16" y="96" width="160" height="32" rx="6" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+  <text x="24" y="116" font-family="-apple-system, Segoe UI, sans-serif" font-size="13" fill="#1f2328">Authentication Key</text>
+  <!-- Key textarea -->
+  <text x="16" y="148" font-family="-apple-system, Segoe UI, sans-serif" font-size="13" fill="#1f2328" font-weight="600">Key</text>
+  <rect x="16" y="156" width="448" height="36" rx="6" fill="#fff" stroke="#d0d7de" stroke-width="1"/>
+  <text x="24" y="178" font-family="SF Mono, Consolas, monospace" font-size="10.5" fill="#57606a">ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI...</text>
+  <!-- Arrow pointing to key field -->
+  <text x="400" y="148" font-family="-apple-system, sans-serif" font-size="11" fill="#1a7f37" font-weight="600">paste here &#x2193;</text>
+  <!-- Add SSH key button -->
+  <rect x="16" y="200" width="120" height="0" rx="6" fill="#1a7f37"/>
+</svg>

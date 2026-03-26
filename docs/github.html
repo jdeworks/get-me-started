@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Set up GitHub — Get Me Started</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <p><a href="index.html">&larr; Back to setup</a></p>
+    <h1>Set up GitHub</h1>
+    <p class="subtitle">Save your work and put your website online — for free</p>
+  </header>
+
+  <main>
+    <section class="step">
+      <p><strong>What is GitHub?</strong> It's a free website where your project files are stored safely online. It's like a backup that also lets you publish your website for the world to see. Millions of people use it — it's the standard.</p>
+      <p>You'll need a GitHub account to save your work and to put your website online later. This takes about 5 minutes.</p>
+    </section>
+
+    <!-- Step 1: Create account -->
+    <section class="step">
+      <h2>Step 1 — Create a free account</h2>
+      <div class="visual-steps">
+        <div class="visual-step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <p>Go to <a href="https://github.com/signup" target="_blank"><strong>github.com/signup</strong></a></p>
+          </div>
+        </div>
+        <div class="visual-step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <p>Enter your <strong>email address</strong></p>
+            <p class="explanation">Use any email you have. You can change it later.</p>
+          </div>
+        </div>
+        <div class="visual-step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <p>Create a <strong>password</strong></p>
+          </div>
+        </div>
+        <div class="visual-step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <p>Choose a <strong>username</strong></p>
+            <p class="explanation">This will be part of your website's free address (like yourname.github.io). Pick something short and simple.</p>
+          </div>
+        </div>
+        <div class="visual-step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <p>Complete the verification puzzle and click <strong>"Create account"</strong></p>
+          </div>
+        </div>
+        <div class="visual-step">
+          <div class="step-number">6</div>
+          <div class="step-content">
+            <p>Check your email for a <strong>verification code</strong> and enter it</p>
+          </div>
+        </div>
+      </div>
+      <p>That's it — you have a GitHub account!</p>
+    </section>
+
+    <!-- Step 2: Add your SSH key -->
+    <section class="step">
+      <h2>Step 2 — Connect your computer to GitHub</h2>
+
+      <p>When the setup script ran, it created a special "key" on your computer. This key lets your computer talk to GitHub securely — like a digital ID card. Now we need to tell GitHub about it.</p>
+
+      <div class="info-note">
+        <strong>Your key should have been printed at the end of the setup script.</strong> It looks like a long line starting with <code>ssh-ed25519</code> followed by random letters and numbers. If you closed that window, don't worry — follow the instructions below to find it again.
+      </div>
+
+      <h3>Find your key</h3>
+
+      <div class="os-buttons" style="margin-bottom: 1rem;">
+        <button class="os-btn" onclick="showKeyHelp('key-win')">Windows</button>
+        <button class="os-btn" onclick="showKeyHelp('key-mac')">Mac</button>
+        <button class="os-btn" onclick="showKeyHelp('key-linux')">Linux</button>
+      </div>
+
+      <div id="key-win" class="key-help hidden">
+        <p>Open PowerShell (press the Windows key, type "PowerShell", click it) and paste this:</p>
+        <div class="code-block">
+          <code>type $env:USERPROFILE\.ssh\id_ed25519.pub</code>
+          <button class="copy-btn" data-copy="type $env:USERPROFILE\.ssh\id_ed25519.pub">Copy</button>
+        </div>
+        <p>Select the entire output (starting with <code>ssh-ed25519</code>) and copy it.</p>
+      </div>
+
+      <div id="key-mac" class="key-help hidden">
+        <p>Open Terminal and paste this:</p>
+        <div class="code-block">
+          <code>cat ~/.ssh/id_ed25519.pub | pbcopy</code>
+          <button class="copy-btn" data-copy="cat ~/.ssh/id_ed25519.pub | pbcopy">Copy</button>
+        </div>
+        <p>This copies the key to your clipboard automatically. You can just paste it in the next step.</p>
+      </div>
+
+      <div id="key-linux" class="key-help hidden">
+        <p>Open a terminal and paste this:</p>
+        <div class="code-block">
+          <code>cat ~/.ssh/id_ed25519.pub</code>
+          <button class="copy-btn" data-copy="cat ~/.ssh/id_ed25519.pub">Copy</button>
+        </div>
+        <p>Select the entire output (starting with <code>ssh-ed25519</code>) and copy it.</p>
+      </div>
+
+      <h3>Add it to GitHub</h3>
+
+      <div class="visual-steps">
+        <div class="visual-step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <p>Go to <a href="https://github.com/settings/ssh/new" target="_blank"><strong>github.com/settings/ssh/new</strong></a></p>
+            <p class="explanation">This is GitHub's "SSH keys" settings page. You may need to log in first.</p>
+          </div>
+        </div>
+        <div class="visual-step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <p>In the <strong>"Title"</strong> field, type a name for your computer (e.g., "My Laptop" or "Home PC")</p>
+            <p class="explanation">This is just a label so you can remember which computer this key belongs to.</p>
+          </div>
+        </div>
+        <div class="visual-step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <p>In the <strong>"Key"</strong> field, <strong>paste</strong> the key you copied above</p>
+            <p class="explanation">It should start with <code>ssh-ed25519</code> followed by a long string of letters and numbers.</p>
+            <div class="screenshot-box">
+              <img src="img/github-ssh.svg" alt="GitHub SSH key form with Title and Key fields" width="480">
+            </div>
+          </div>
+        </div>
+        <div class="visual-step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <p>Click the green <strong>"Add SSH key"</strong> button</p>
+          </div>
+        </div>
+        <div class="visual-step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <p>GitHub may ask you to confirm your password — enter it and confirm.</p>
+          </div>
+        </div>
+      </div>
+
+      <p>Done! Your computer is now connected to GitHub. The AI coding tool will be able to save your work and publish your website automatically.</p>
+    </section>
+
+    <section class="step">
+      <h2>All set!</h2>
+      <p>Go back to your AI chat and tell it:</p>
+      <div class="code-block">
+        <code>I set up GitHub and added my SSH key. What's next?</code>
+        <button class="copy-btn" data-copy="I set up GitHub and added my SSH key. What's next?">Copy</button>
+      </div>
+      <p><a href="index.html">&larr; Back to setup</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Part of the <a href="https://github.com/jdeworks/get-me-started">get-me-started</a> project — free, open source, yours to keep.</p>
+  </footer>
+
+  <script>
+    function showKeyHelp(id) {
+      document.querySelectorAll('.key-help').forEach(el => el.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+    }
+
+    // Copy button handlers
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          navigator.clipboard.writeText(btn.dataset.copy).then(() => {
+            btn.textContent = 'Copied!';
+            btn.classList.add('copied');
+            setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

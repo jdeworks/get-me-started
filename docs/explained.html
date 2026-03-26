@@ -57,14 +57,21 @@
       </div>
 
       <div class="explain-step">
-        <h3>Step 4: Create a Projects folder</h3>
+        <h3>Step 4: Create an SSH key</h3>
+        <div class="explain-what">The script checks if you already have an SSH key. If not, it creates one — a pair of files in a hidden <code>.ssh</code> folder on your computer.</div>
+        <div class="explain-why"><strong>Why:</strong> An SSH key is like a digital ID card. It lets your computer prove who it is to GitHub without typing a password every time. The key stays on your computer and is never sent anywhere — only the "public" half gets shared with GitHub (you'll do that in the next step).</div>
+        <div class="explain-skip">Skipped if a key already exists. The key is NOT a password — it's a randomly generated pair of files that only your computer has.</div>
+      </div>
+
+      <div class="explain-step">
+        <h3>Step 5: Create a Projects folder</h3>
         <div class="explain-what">The script creates a folder at <code>C:\Projects</code>.</div>
         <div class="explain-why"><strong>Why:</strong> This is where your website files will live. It's just a regular folder — you can open it in File Explorer like any other folder.</div>
         <div class="explain-skip">If the folder already exists, this step is skipped.</div>
       </div>
 
       <div class="explain-step">
-        <h3>Step 5: Download agent-sandbox</h3>
+        <h3>Step 6: Download agent-sandbox</h3>
         <div class="explain-what">The script uses Git to download the "agent-sandbox" project files into <code>C:\Projects\agent-sandbox</code>.</div>
         <div class="explain-why"><strong>Why:</strong> Agent-sandbox is the tool that sets up your AI coding environment inside Docker. It comes with ready-made configurations so you don't have to set anything up manually.</div>
         <div class="explain-skip">If the folder already exists, this step is skipped.</div>
@@ -110,6 +117,13 @@
       </div>
 
       <div class="explain-step">
+        <h3>Step 4: Create an SSH key</h3>
+        <div class="explain-what">Creates a secure key pair so your computer can talk to GitHub.</div>
+        <div class="explain-why"><strong>Why:</strong> Like a digital ID card — lets your computer prove who it is without typing a password every time. The key stays on your computer.</div>
+        <div class="explain-skip">Skipped if a key already exists.</div>
+      </div>
+
+      <div class="explain-step">
         <h3>Step 5: Create a Projects folder</h3>
         <div class="explain-what">Creates <code>C:\Projects</code>.</div>
         <div class="explain-why"><strong>Why:</strong> Where your website files will live. Just a regular folder.</div>
@@ -118,8 +132,8 @@
 
       <div class="explain-step result">
         <h3>Done!</h3>
-        <div class="explain-what">The script shows "All done!" and waits for you to press Enter.</div>
-        <div class="explain-why"><strong>What you have now:</strong> Git, Node.js, and OpenCode — everything needed to start building websites with AI.</div>
+        <div class="explain-what">The script shows "All done!" and prints your SSH key.</div>
+        <div class="explain-why"><strong>What you have now:</strong> Git, Node.js, OpenCode, and an SSH key — everything needed to start building.</div>
       </div>
     </section>
 
@@ -150,7 +164,14 @@
       </div>
 
       <div class="explain-step">
-        <h3>Step 4: Create a Projects folder</h3>
+        <h3>Step 4: Create an SSH key</h3>
+        <div class="explain-what">Creates a secure key pair in a hidden <code>.ssh</code> folder on your Mac.</div>
+        <div class="explain-why"><strong>Why:</strong> Like a digital ID card — lets your computer prove who it is to GitHub without typing a password every time. Only the "public" half gets shared.</div>
+        <div class="explain-skip">Skipped if a key already exists.</div>
+      </div>
+
+      <div class="explain-step">
+        <h3>Step 5: Create a Projects folder</h3>
         <div class="explain-what">Creates a <code>Projects</code> folder in your home directory (<code>~/Projects</code>).</div>
         <div class="explain-why"><strong>Why:</strong> Where your website files will live. You can find it in Finder under your home folder.</div>
         <div class="explain-skip">Skipped if it already exists.</div>
@@ -158,8 +179,8 @@
 
       <div class="explain-step result">
         <h3>Done!</h3>
-        <div class="explain-what">The script shows "All done!" and waits for you to press Enter.</div>
-        <div class="explain-why"><strong>What you have now:</strong> Developer tools, Node.js, and OpenCode — everything needed to start building websites with AI.</div>
+        <div class="explain-what">The script shows "All done!" and prints your SSH key.</div>
+        <div class="explain-why"><strong>What you have now:</strong> Developer tools, Node.js, OpenCode, and an SSH key — everything needed to start building.</div>
       </div>
     </section>
 
@@ -190,7 +211,14 @@
       </div>
 
       <div class="explain-step">
-        <h3>Step 4: Create a Projects folder</h3>
+        <h3>Step 4: Create an SSH key</h3>
+        <div class="explain-what">Creates a secure key pair so your computer can talk to GitHub.</div>
+        <div class="explain-why"><strong>Why:</strong> Like a digital ID card for your computer. Only the "public" half gets shared with GitHub.</div>
+        <div class="explain-skip">Skipped if a key already exists.</div>
+      </div>
+
+      <div class="explain-step">
+        <h3>Step 5: Create a Projects folder</h3>
         <div class="explain-what">Creates <code>~/Projects</code>.</div>
         <div class="explain-why"><strong>Why:</strong> Where your website files will live.</div>
         <div class="explain-skip">Skipped if it already exists.</div>
@@ -198,8 +226,8 @@
 
       <div class="explain-step result">
         <h3>Done!</h3>
-        <div class="explain-what">The script shows "All done!"</div>
-        <div class="explain-why"><strong>What you have now:</strong> Git, Node.js, and OpenCode — everything needed to start building.</div>
+        <div class="explain-what">The script shows "All done!" and prints your SSH key.</div>
+        <div class="explain-why"><strong>What you have now:</strong> Git, Node.js, OpenCode, and an SSH key — everything needed to start building.</div>
       </div>
     </section>
 

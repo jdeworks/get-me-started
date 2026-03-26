@@ -82,8 +82,21 @@ else
 fi
 echo ""
 
+# --- Generate SSH key for GitHub ---
+echo -e "${BOLD}[4/5] Setting up a secure key for GitHub...${NC}"
+if [ -f "$HOME/.ssh/id_ed25519" ]; then
+    echo -e "${GREEN}  SSH key already exists.${NC}"
+else
+    echo "  Creating a secure key so your computer can talk to GitHub..."
+    echo "  (This is like a digital ID card for your computer.)"
+    mkdir -p "$HOME/.ssh"
+    ssh-keygen -t ed25519 -f "$HOME/.ssh/id_ed25519" -N "" -q
+    echo -e "${GREEN}  Key created.${NC}"
+fi
+echo ""
+
 # --- Create Projects folder ---
-echo -e "${BOLD}[4/4] Creating your Projects folder...${NC}"
+echo -e "${BOLD}[5/5] Creating your Projects folder...${NC}"
 if [ -d "$HOME/Projects" ]; then
     echo -e "${GREEN}  ~/Projects already exists.${NC}"
 else
@@ -97,10 +110,19 @@ echo -e "${BOLD}========================================${NC}"
 echo -e "${GREEN}${BOLD}  All done!${NC}"
 echo -e "${BOLD}========================================${NC}"
 echo ""
-echo "Everything is installed. Go back to your AI chat and tell it:"
+echo "Everything is installed!"
 echo ""
+echo -e "${BOLD}--- NEXT STEP: Connect to GitHub ---${NC}"
+echo ""
+echo "Your computer's key (copy everything below this line):"
+echo -e "${YELLOW}────────────────────────────────────────${NC}"
+cat "$HOME/.ssh/id_ed25519.pub"
+echo -e "${YELLOW}────────────────────────────────────────${NC}"
+echo ""
+echo "Now go to this page to set up GitHub and add your key:"
+echo -e "  ${BOLD}https://jdeworks.github.io/get-me-started/github.html${NC}"
+echo ""
+echo "Or go back to your AI chat and tell it:"
 echo -e "  ${BOLD}The setup is done. What do I do next?${NC}"
-echo ""
-echo "You can close this window now."
 echo ""
 read -p "Press Enter to close..."
