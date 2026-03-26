@@ -58,7 +58,7 @@
     <section id="download-section" class="step hidden">
       <h2>Step 2 — Download the setup helper</h2>
 
-      <div class="safety-callout">
+      <div class="safety-callout for-guided">
         Not sure what the script does? That's okay. <a href="explained.html">See exactly what it does and why &rarr;</a><br>
         <small>Every step explained in plain language. No surprises.</small>
       </div>
@@ -73,7 +73,7 @@
         </div>
 
         <div id="win-safe" class="option-content">
-          <p data-level="all">This installs everything inside a <span class="term">protected space<span class="tip">A separate area on your computer where programs run without affecting anything else. Think of it like a guest room — the guest has everything they need, but they don't rearrange your furniture. In tech, this is called a "container."</span></span> on your computer. Nothing touches the rest of your system, and you can delete the whole thing cleanly anytime.</p>
+          <p>This installs everything inside a <span class="term">protected space<span class="tip">A separate area on your computer where programs run without affecting anything else. Think of it like a guest room — the guest has everything they need, but they don't rearrange your furniture. In tech, this is called a "container."</span></span> on your computer. Nothing touches the rest of your system, and you can delete the whole thing cleanly anytime.</p>
 
           <div class="download-box">
             <a href="scripts/setup-windows.ps1" download class="download-btn">
@@ -98,43 +98,60 @@
           </div>
         </div>
 
-        <h3>How to run it:</h3>
-        <div class="visual-steps">
-          <div class="visual-step">
-            <div class="step-number">1</div>
-            <div class="step-content">
-              <p>Find the downloaded file (usually in your <strong>Downloads</strong> folder)</p>
-              <div class="screenshot-box">
-                <img src="img/windows-downloads.svg" alt="Windows Downloads folder showing the setup file" width="480">
+        <!-- Guided: full screenshots and explanations -->
+        <div class="for-guided">
+          <h3>How to run it:</h3>
+          <div class="visual-steps">
+            <div class="visual-step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <p>Find the downloaded file (usually in your <strong>Downloads</strong> folder)</p>
+                <div class="screenshot-box">
+                  <img src="img/windows-downloads.svg" alt="Windows Downloads folder showing the setup file" width="480">
+                </div>
               </div>
             </div>
-          </div>
-          <div class="visual-step">
-            <div class="step-number">2</div>
-            <div class="step-content">
-              <p><strong>Right-click</strong> the file and choose <strong>"Run with PowerShell"</strong></p>
-              <div class="screenshot-box">
-                <img src="img/windows-rightclick.svg" alt="Right-click menu showing Run with PowerShell option" width="360">
+            <div class="visual-step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <p><strong>Right-click</strong> the file and choose <strong>"Run with PowerShell"</strong></p>
+                <div class="screenshot-box">
+                  <img src="img/windows-rightclick.svg" alt="Right-click menu showing Run with PowerShell option" width="360">
+                </div>
               </div>
             </div>
-          </div>
-          <div class="visual-step">
-            <div class="step-number">3</div>
-            <div class="step-content">
-              <p>If Windows asks <em>"Do you want to allow this app to make changes?"</em> — click <strong>Yes</strong>.</p>
-              <p class="explanation">Why? The script needs permission to install programs on your computer. This is how Windows makes sure you're okay with it. It's the same popup you see when installing any app.</p>
+            <div class="visual-step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <p>If Windows asks <em>"Do you want to allow this app to make changes?"</em> — click <strong>Yes</strong>.</p>
+                <p class="explanation">Why? The script needs permission to install programs on your computer. This is how Windows makes sure you're okay with it. It's the same popup you see when installing any app.</p>
+              </div>
             </div>
-          </div>
-          <div class="visual-step">
-            <div class="step-number">4</div>
-            <div class="step-content">
-              <p>Wait for it to finish. You'll see a message saying <strong>"All done!"</strong></p>
-              <div class="screenshot-box">
-                <img src="img/windows-done.svg" alt="Terminal showing setup complete message" width="520">
+            <div class="visual-step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <p>Wait for it to finish. You'll see a message saying <strong>"All done!"</strong></p>
+                <div class="screenshot-box">
+                  <img src="img/windows-done.svg" alt="Terminal showing setup complete message" width="520">
+                </div>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- Standard: steps without screenshots -->
+        <div class="for-standard">
+          <h3>How to run it:</h3>
+          <ol>
+            <li>Find the file in your <strong>Downloads</strong> folder</li>
+            <li><strong>Right-click</strong> it &rarr; <strong>"Run with PowerShell"</strong></li>
+            <li>Click <strong>Yes</strong> if asked to allow changes</li>
+            <li>Wait for <strong>"All done!"</strong></li>
+          </ol>
+        </div>
+
+        <!-- Express: one-liner -->
+        <p class="for-express">Right-click the <code>.ps1</code> file &rarr; <strong>Run with PowerShell</strong>. Accept UAC prompt. Wait for completion.</p>
       </div>
 
       <!-- Mac instructions -->
@@ -148,51 +165,68 @@
           <span class="file-info">setup-mac.command — about 3 KB</span>
         </div>
 
-        <h3>How to run it:</h3>
-        <div class="visual-steps">
-          <div class="visual-step">
-            <div class="step-number">1</div>
-            <div class="step-content">
-              <p>Find the downloaded file in your <strong>Downloads</strong> folder</p>
-            </div>
-          </div>
-          <div class="visual-step">
-            <div class="step-number">2</div>
-            <div class="step-content">
-              <p><strong>Double-click</strong> the file. A Terminal window will open.</p>
-              <div class="screenshot-box">
-                <img src="img/mac-terminal.svg" alt="Mac Terminal window running the setup script" width="520">
+        <!-- Guided -->
+        <div class="for-guided">
+          <h3>How to run it:</h3>
+          <div class="visual-steps">
+            <div class="visual-step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <p>Find the downloaded file in your <strong>Downloads</strong> folder</p>
               </div>
             </div>
-          </div>
-          <div class="visual-step">
-            <div class="step-number">3</div>
-            <div class="step-content">
-              <p>If macOS says <em>"can't be opened because it's from an unidentified developer"</em>:</p>
-              <ul>
-                <li><strong>Right-click</strong> (or Control-click) the file</li>
-                <li>Choose <strong>"Open"</strong> from the menu</li>
-                <li>Click <strong>"Open"</strong> again in the dialog</li>
-              </ul>
-              <div class="screenshot-box">
-                <img src="img/mac-gatekeeper.svg" alt="macOS Gatekeeper dialog with Open button highlighted" width="400">
+            <div class="visual-step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <p><strong>Double-click</strong> the file. A Terminal window will open.</p>
+                <div class="screenshot-box">
+                  <img src="img/mac-terminal.svg" alt="Mac Terminal window running the setup script" width="520">
+                </div>
               </div>
             </div>
-          </div>
-          <div class="visual-step">
-            <div class="step-number">4</div>
-            <div class="step-content">
-              <p>It may ask for your <strong>password</strong> — this is your computer's login password. Type it and press Enter.</p>
-              <p class="explanation">Why? Installing programs on a Mac requires your permission, just like when you install an app from the internet. You won't see the characters as you type — that's normal, it's a security feature.</p>
+            <div class="visual-step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <p>If macOS says <em>"can't be opened because it's from an unidentified developer"</em>:</p>
+                <ul>
+                  <li><strong>Right-click</strong> (or Control-click) the file</li>
+                  <li>Choose <strong>"Open"</strong> from the menu</li>
+                  <li>Click <strong>"Open"</strong> again in the dialog</li>
+                </ul>
+                <div class="screenshot-box">
+                  <img src="img/mac-gatekeeper.svg" alt="macOS Gatekeeper dialog with Open button highlighted" width="400">
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="visual-step">
-            <div class="step-number">5</div>
-            <div class="step-content">
-              <p>Wait for it to finish. You'll see <strong>"All done!"</strong></p>
+            <div class="visual-step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <p>It may ask for your <strong>password</strong> — this is your computer's login password. Type it and press Enter.</p>
+                <p class="explanation">Why? Installing programs on a Mac requires your permission, just like when you install an app from the internet. You won't see the characters as you type — that's normal, it's a security feature.</p>
+              </div>
+            </div>
+            <div class="visual-step">
+              <div class="step-number">5</div>
+              <div class="step-content">
+                <p>Wait for it to finish. You'll see <strong>"All done!"</strong></p>
+              </div>
             </div>
           </div>
         </div>
+
+        <!-- Standard -->
+        <div class="for-standard">
+          <h3>How to run it:</h3>
+          <ol>
+            <li>Find the file in <strong>Downloads</strong> and <strong>double-click</strong> it</li>
+            <li>If blocked by Gatekeeper: right-click &rarr; <strong>Open</strong> &rarr; <strong>Open</strong> again</li>
+            <li>Enter your password if prompted</li>
+            <li>Wait for <strong>"All done!"</strong></li>
+          </ol>
+        </div>
+
+        <!-- Express -->
+        <p class="for-express">Double-click the <code>.command</code> file. Bypass Gatekeeper if needed (right-click &rarr; Open). Enter password when prompted.</p>
       </div>
 
       <!-- Linux instructions -->
@@ -206,40 +240,62 @@
           <span class="file-info">setup-linux.sh — about 3 KB</span>
         </div>
 
-        <h3>How to run it:</h3>
-        <div class="visual-steps">
-          <div class="visual-step">
-            <div class="step-number">1</div>
-            <div class="step-content">
-              <p>Open a terminal (press <strong>Ctrl + Alt + T</strong> on most systems)</p>
-            </div>
-          </div>
-          <div class="visual-step">
-            <div class="step-number">2</div>
-            <div class="step-content">
-              <p>Type these two lines and press Enter after each:</p>
-              <div class="code-block">
-                <code>chmod +x ~/Downloads/setup-linux.sh</code>
-                <button class="copy-btn" data-copy="chmod +x ~/Downloads/setup-linux.sh">Copy</button>
-              </div>
-              <div class="code-block">
-                <code>~/Downloads/setup-linux.sh</code>
-                <button class="copy-btn" data-copy="~/Downloads/setup-linux.sh">Copy</button>
+        <!-- Guided -->
+        <div class="for-guided">
+          <h3>How to run it:</h3>
+          <div class="visual-steps">
+            <div class="visual-step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <p>Open a <span class="term">terminal<span class="tip">A text window where you can type commands for your computer. Press Ctrl + Alt + T on most Linux systems to open one.</span></span> (press <strong>Ctrl + Alt + T</strong> on most systems)</p>
               </div>
             </div>
-          </div>
-          <div class="visual-step">
-            <div class="step-number">3</div>
-            <div class="step-content">
-              <p>It may ask for your <strong>password</strong>. Type it and press Enter.</p>
-              <p class="explanation">Why? Installing programs on Linux requires your permission. You won't see the characters as you type — that's normal, it's a security feature.</p>
+            <div class="visual-step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <p>Type these two lines and press Enter after each:</p>
+                <div class="code-block">
+                  <code>chmod +x ~/Downloads/setup-linux.sh</code>
+                  <button class="copy-btn" data-copy="chmod +x ~/Downloads/setup-linux.sh">Copy</button>
+                </div>
+                <div class="code-block">
+                  <code>~/Downloads/setup-linux.sh</code>
+                  <button class="copy-btn" data-copy="~/Downloads/setup-linux.sh">Copy</button>
+                </div>
+              </div>
+            </div>
+            <div class="visual-step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <p>It may ask for your <strong>password</strong>. Type it and press Enter.</p>
+                <p class="explanation">Why? Installing programs on Linux requires your permission. You won't see the characters as you type — that's normal, it's a security feature.</p>
+              </div>
+            </div>
+            <div class="visual-step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <p>Wait for it to finish. You'll see <strong>"All done!"</strong></p>
+              </div>
             </div>
           </div>
-          <div class="visual-step">
-            <div class="step-number">4</div>
-            <div class="step-content">
-              <p>Wait for it to finish. You'll see <strong>"All done!"</strong></p>
-            </div>
+        </div>
+
+        <!-- Standard -->
+        <div class="for-standard">
+          <h3>How to run it:</h3>
+          <ol>
+            <li>Open a terminal (<strong>Ctrl + Alt + T</strong>)</li>
+            <li>Run: <code>chmod +x ~/Downloads/setup-linux.sh && ~/Downloads/setup-linux.sh</code></li>
+            <li>Enter password if prompted</li>
+            <li>Wait for <strong>"All done!"</strong></li>
+          </ol>
+        </div>
+
+        <!-- Express -->
+        <div class="for-express">
+          <div class="code-block">
+            <code>chmod +x ~/Downloads/setup-linux.sh && ~/Downloads/setup-linux.sh</code>
+            <button class="copy-btn" data-copy="chmod +x ~/Downloads/setup-linux.sh && ~/Downloads/setup-linux.sh">Copy</button>
           </div>
         </div>
       </div>
