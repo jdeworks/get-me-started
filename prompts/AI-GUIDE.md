@@ -142,21 +142,23 @@ There is a **setup page** that makes this easy. Tell the user:
 
 **If the user can't access the page** (or prefers you to guide them manually), fall back to the manual setup instructions below in [Phase 3: Manual Setup](#phase-3-setup).
 
-**If they ask what the setup installs**, explain in simple terms:
-- **Mac/Linux**: It installs two small programs — one that runs website code, and one that's your AI coding assistant. Both are free.
-- **Windows**: It offers two options — a quick install (programs directly on your computer) or a safe install (everything runs in a protected space). The page explains both.
+**What the setup page offers:** For all three systems (Windows, Mac, Linux) the page offers two options:
+- **Quick install** (recommended for Mac/Linux): installs two small free programs directly — one that runs website code, and one that's the AI coding assistant.
+- **Safe install** (recommended for Windows): installs everything inside a protected space on their computer — nothing touches the rest of their system. They can delete the whole thing cleanly anytime.
 
-**If they need a GitHub account:** The setup script creates an SSH key automatically. After the script finishes, guide them to the GitHub setup page which walks them through creating an account and adding their key:
+The page also has a "What does this script do?" link for each download that explains every step in plain language. Users who are nervous can read exactly what will happen before running anything. They can also open the script file in any text editor (like Notepad or TextEdit) to verify themselves.
 
-> "The setup also created a secure key for your computer. Now let's connect it to GitHub — there's a page that walks you through it step by step:
+**GitHub (optional but recommended):** The setup script also creates an SSH key automatically. After the script finishes, mention GitHub but don't make it a blocker:
+
+> "The setup also created a secure key for your computer. If you want, we can connect it to GitHub — that gives you free backup and lets you publish your website later. There's a page that walks you through it:
 >
-> **https://jdeworks.github.io/get-me-started/github.html**"
+> **https://jdeworks.github.io/get-me-started/github.html**
+>
+> But this is optional — you can skip it for now and set it up later when you're ready. Want to do it now, or should we move on to building?"
 
-This page covers: creating a free GitHub account, finding the SSH key (the script printed it), and pasting it into GitHub's settings. If they can't access the page, walk them through it:
-- Create account: https://github.com/signup — username, email, password, that's it
-- Add SSH key: https://github.com/settings/ssh/new — paste the key from the script output
+If they want to skip, that's fine — move to Phase 4. They can always come back to it.
 
-**After they finish the setup page**, go to [Phase 4: Hand Off](#phase-4-hand-off-to-make-a-website).
+**After they finish the setup page** (and optionally GitHub), go to [Phase 4: Hand Off](#phase-4-hand-off-to-make-a-website).
 
 ### Coming Soon: Zero Install
 
@@ -475,14 +477,24 @@ Explain: "make-a-website is a knowledge base — a collection of guides that tea
 Key things they can control once make-a-website takes over:
 - **Framework**: Start with plain HTML/CSS/JavaScript (simplest), or upgrade to React later if they want
 - **Design**: The AI will use [make-it-look-good](https://github.com/jdeworks/make-it-look-good) for design guidance — 44 topics with real examples. They can browse the live preview at https://jdeworks.github.io/make-it-look-good/
-- **Hosting**: Free hosting on GitHub Pages for simple sites, or Railway for sites that need a server
+- **Hosting**: Free hosting on GitHub Pages for simple sites (pages that show the same content to everyone). Sites that need login systems, payments, or databases need a different kind of hosting — the AI will help them with affordable options when they get there.
 - **Everything is theirs**: The code belongs to them. They can read it, change it, move it, share it. Nothing is locked in.
+
+### After building: the next steps
+
+Once the website is built, the user's journey continues:
+
+1. **Make it look good** — tell OpenCode: "Read https://raw.githubusercontent.com/jdeworks/make-it-look-good/dev/CONSULT.md and help me improve the design of my website." This gives the AI design expertise with 44 topics, presets, and before/after examples.
+2. **Put it online** — make-a-website includes deployment guidance. For simple sites, GitHub Pages is free. The AI will walk them through it.
+3. **Keep improving** — they can always come back to OpenCode and say "I want to change..." or "Add a new page for..." — the AI remembers the project.
 
 ---
 
 ## Phase 5 (Alternative): Stay in This Chat
 
-Some users may prefer to keep working with you rather than installing tools. Others may land here because they're on Windows and the direct install didn't work. Either way, this path works — it's slower because you (the chat AI) can't run things on their computer, but the user still gets a working website with your help. If they want to stay:
+Some users may prefer to keep working with you rather than installing tools. Others may land here because installation didn't work on their system. This is the ONE exception to the "no code blocks" rule — in this mode, you ARE the coding tool, so you need to provide code for the user to save into files. Make this clear:
+
+> "Since we're building directly in our chat instead of using a coding tool, I'll need to give you the website files to save. I'll tell you exactly what to name each file and where to save it. You won't need to understand the code — just copy and save."
 
 1. Fetch the make-a-website knowledge base yourself (if you have URL/browsing capability):
    - Start with: `https://raw.githubusercontent.com/jdeworks/make-a-website/dev/AGENTS.md`
@@ -494,10 +506,9 @@ Some users may prefer to keep working with you rather than installing tools. Oth
    - Copy its contents and paste them to you
 
 3. Follow the make-a-website workflow, adapting it for the paste-back pattern:
-   - Give them one command or code block at a time
-   - Tell them which file to create or edit
-   - Have them paste back terminal output so you can verify
-   - This is slower than OpenCode, but it works
+   - Give them one file at a time with clear instructions ("save this as index.html in your project folder")
+   - Tell them how to preview it (double-click the file to open in a browser)
+   - This is slower than OpenCode but it works
 
 For design guidance, the same approach works with:
 - `https://raw.githubusercontent.com/jdeworks/make-it-look-good/dev/CONSULT.md`
