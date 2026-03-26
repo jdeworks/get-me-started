@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What the setup scripts do — Get Me Started</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <p><a href="index.html">&larr; Back to setup</a></p>
+    <h1>What the setup scripts do</h1>
+    <p class="subtitle">Every step, explained in plain language</p>
+  </header>
+
+  <main>
+    <section class="step">
+      <p>We want you to feel safe running these scripts. Below is a plain-language explanation of every single thing each script does, and why. No surprises.</p>
+      <p>You can also read the scripts yourself — they're plain text files. Right-click the downloaded file and open it with any text editor (Notepad, TextEdit, etc.) to see exactly what's inside.</p>
+    </section>
+
+    <!-- Script selector -->
+    <section class="step">
+      <h2>Which script did you download?</h2>
+      <div class="os-buttons">
+        <button class="os-btn" onclick="showExplain('win-safe')">Windows<br><small>Safe install</small></button>
+        <button class="os-btn" onclick="showExplain('win-quick')">Windows<br><small>Quick install</small></button>
+        <button class="os-btn" onclick="showExplain('mac')">Mac</button>
+        <button class="os-btn" onclick="showExplain('linux')">Linux</button>
+      </div>
+    </section>
+
+    <!-- Windows Safe (Docker) explanation -->
+    <section id="explain-win-safe" class="step explanation-section hidden">
+      <h2>Windows — Safe install (Docker)</h2>
+      <p>This script sets up everything inside a protected space on your computer.</p>
+
+      <div class="explain-step">
+        <h3>Step 1: Check for winget</h3>
+        <div class="explain-what">The script checks if your computer has "winget" — a built-in tool that Windows uses to install programs (like an app store, but from the command line).</div>
+        <div class="explain-why"><strong>Why:</strong> All the programs we need can be installed through winget. If it's missing, your Windows may need an update.</div>
+      </div>
+
+      <div class="explain-step">
+        <h3>Step 2: Install Git</h3>
+        <div class="explain-what">The script checks if Git is already on your computer. If not, it installs it using winget.</div>
+        <div class="explain-why"><strong>Why:</strong> Git is a tool that downloads project files from the internet. We need it to get the AI coding setup files. It's free, used by millions of developers, and completely safe.</div>
+        <div class="explain-skip">If Git is already installed, this step is skipped entirely.</div>
+      </div>
+
+      <div class="explain-step">
+        <h3>Step 3: Install Docker Desktop</h3>
+        <div class="explain-what">The script checks if Docker is already installed. If not, it installs Docker Desktop using winget. This is the largest download (~500 MB).</div>
+        <div class="explain-why"><strong>Why:</strong> Docker creates isolated spaces (called "containers") on your computer. Your AI coding tool will run inside one of these containers. This means nothing gets mixed into your regular system — it's the "safe" part of the safe install.</div>
+        <div class="explain-skip">If Docker is already installed, this step is skipped. After installing, you may need to restart your computer once for Docker to fully activate.</div>
+      </div>
+
+      <div class="explain-step">
+        <h3>Step 4: Create a Projects folder</h3>
+        <div class="explain-what">The script creates a folder at <code>C:\Projects</code>.</div>
+        <div class="explain-why"><strong>Why:</strong> This is where your website files will live. It's just a regular folder — you can open it in File Explorer like any other folder.</div>
+        <div class="explain-skip">If the folder already exists, this step is skipped.</div>
+      </div>
+
+      <div class="explain-step">
+        <h3>Step 5: Download agent-sandbox</h3>
+        <div class="explain-what">The script uses Git to download the "agent-sandbox" project files into <code>C:\Projects\agent-sandbox</code>.</div>
+        <div class="explain-why"><strong>Why:</strong> Agent-sandbox is the tool that sets up your AI coding environment inside Docker. It comes with ready-made configurations so you don't have to set anything up manually.</div>
+        <div class="explain-skip">If the folder already exists, this step is skipped.</div>
+      </div>
+
+      <div class="explain-step result">
+        <h3>Done!</h3>
+        <div class="explain-what">The script shows "All done!" and waits for you to press Enter.</div>
+        <div class="explain-why"><strong>What you have now:</strong> Git, Docker Desktop, and the agent-sandbox files — everything needed for your AI coding assistant to run in a safe, isolated space.</div>
+      </div>
+    </section>
+
+    <!-- Windows Quick (Direct) explanation -->
+    <section id="explain-win-quick" class="step explanation-section hidden">
+      <h2>Windows — Quick install</h2>
+      <p>This script installs the AI coding tools directly on your computer.</p>
+
+      <div class="explain-step">
+        <h3>Step 1: Check for winget</h3>
+        <div class="explain-what">Same as the safe install — checks if Windows' built-in program installer is available.</div>
+        <div class="explain-why"><strong>Why:</strong> We use it to install the programs below.</div>
+      </div>
+
+      <div class="explain-step">
+        <h3>Step 2: Install Git</h3>
+        <div class="explain-what">Checks for Git, installs it if missing.</div>
+        <div class="explain-why"><strong>Why:</strong> Git downloads project files from the internet. Free, safe, used by millions.</div>
+        <div class="explain-skip">Skipped if already installed.</div>
+      </div>
+
+      <div class="explain-step">
+        <h3>Step 3: Install Node.js</h3>
+        <div class="explain-what">Checks for Node.js, installs the latest stable version if missing.</div>
+        <div class="explain-why"><strong>Why:</strong> Node.js is the engine that runs website code on your computer during development. It's what makes it possible to preview your website locally. Used by Netflix, Uber, NASA, and millions of developers.</div>
+        <div class="explain-skip">Skipped if already installed.</div>
+      </div>
+
+      <div class="explain-step">
+        <h3>Step 4: Install OpenCode</h3>
+        <div class="explain-what">Checks for OpenCode, installs it using Node.js's package manager (npm) if missing.</div>
+        <div class="explain-why"><strong>Why:</strong> OpenCode is the free AI coding assistant that builds your website. You describe what you want in plain words, and it writes the code for you.</div>
+        <div class="explain-skip">Skipped if already installed.</div>
+      </div>
+
+      <div class="explain-step">
+        <h3>Step 5: Create a Projects folder</h3>
+        <div class="explain-what">Creates <code>C:\Projects</code>.</div>
+        <div class="explain-why"><strong>Why:</strong> Where your website files will live. Just a regular folder.</div>
+        <div class="explain-skip">Skipped if it already exists.</div>
+      </div>
+
+      <div class="explain-step result">
+        <h3>Done!</h3>
+        <div class="explain-what">The script shows "All done!" and waits for you to press Enter.</div>
+        <div class="explain-why"><strong>What you have now:</strong> Git, Node.js, and OpenCode — everything needed to start building websites with AI.</div>
+      </div>
+    </section>
+
+    <!-- Mac explanation -->
+    <section id="explain-mac" class="step explanation-section hidden">
+      <h2>Mac setup</h2>
+      <p>This script installs the tools you need to build websites with AI on your Mac.</p>
+
+      <div class="explain-step">
+        <h3>Step 1: Install developer tools (includes Git)</h3>
+        <div class="explain-what">The script checks if Apple's "Command Line Tools" are installed. If not, a popup will appear asking you to install them.</div>
+        <div class="explain-why"><strong>Why:</strong> These tools include Git (for downloading project files) and other essentials that many programs need. They come directly from Apple and are completely safe.</div>
+        <div class="explain-skip">Skipped if already installed. The popup comes from Apple, not from our script.</div>
+      </div>
+
+      <div class="explain-step">
+        <h3>Step 2: Install Node.js</h3>
+        <div class="explain-what">Checks for Node.js. If missing, installs it using Homebrew (a popular Mac tool installer). If Homebrew isn't installed either, it installs that first.</div>
+        <div class="explain-why"><strong>Why:</strong> Node.js is the engine that runs website code on your computer. Homebrew is the standard way to install developer tools on a Mac — it's free, open source, and trusted by millions of Mac users.</div>
+        <div class="explain-skip">Skipped if already installed. Homebrew installation may ask for your password — that's your Mac login password, needed because it installs into a system folder.</div>
+      </div>
+
+      <div class="explain-step">
+        <h3>Step 3: Install OpenCode</h3>
+        <div class="explain-what">Checks for OpenCode, installs it via Homebrew or a direct download if missing.</div>
+        <div class="explain-why"><strong>Why:</strong> OpenCode is the free AI coding assistant. You describe what you want, it writes the code.</div>
+        <div class="explain-skip">Skipped if already installed.</div>
+      </div>
+
+      <div class="explain-step">
+        <h3>Step 4: Create a Projects folder</h3>
+        <div class="explain-what">Creates a <code>Projects</code> folder in your home directory (<code>~/Projects</code>).</div>
+        <div class="explain-why"><strong>Why:</strong> Where your website files will live. You can find it in Finder under your home folder.</div>
+        <div class="explain-skip">Skipped if it already exists.</div>
+      </div>
+
+      <div class="explain-step result">
+        <h3>Done!</h3>
+        <div class="explain-what">The script shows "All done!" and waits for you to press Enter.</div>
+        <div class="explain-why"><strong>What you have now:</strong> Developer tools, Node.js, and OpenCode — everything needed to start building websites with AI.</div>
+      </div>
+    </section>
+
+    <!-- Linux explanation -->
+    <section id="explain-linux" class="step explanation-section hidden">
+      <h2>Linux setup</h2>
+      <p>This script installs the tools you need to build websites with AI on Linux.</p>
+
+      <div class="explain-step">
+        <h3>Step 1: Install Git</h3>
+        <div class="explain-what">Checks for Git, installs it with your system's package manager (apt, dnf, or pacman) if missing.</div>
+        <div class="explain-why"><strong>Why:</strong> Git downloads project files from the internet. It may ask for your password because installing system packages requires admin permission.</div>
+        <div class="explain-skip">Skipped if already installed.</div>
+      </div>
+
+      <div class="explain-step">
+        <h3>Step 2: Install Node.js</h3>
+        <div class="explain-what">Checks for Node.js. If missing, installs "nvm" (Node Version Manager) first, then uses nvm to install Node.js.</div>
+        <div class="explain-why"><strong>Why:</strong> Node.js runs website code on your computer. nvm is the recommended way to install it on Linux because it doesn't require admin permission and lets you manage versions easily.</div>
+        <div class="explain-skip">Skipped if already installed.</div>
+      </div>
+
+      <div class="explain-step">
+        <h3>Step 3: Install OpenCode</h3>
+        <div class="explain-what">Checks for OpenCode, downloads and installs it if missing.</div>
+        <div class="explain-why"><strong>Why:</strong> The free AI coding assistant that builds your website.</div>
+        <div class="explain-skip">Skipped if already installed.</div>
+      </div>
+
+      <div class="explain-step">
+        <h3>Step 4: Create a Projects folder</h3>
+        <div class="explain-what">Creates <code>~/Projects</code>.</div>
+        <div class="explain-why"><strong>Why:</strong> Where your website files will live.</div>
+        <div class="explain-skip">Skipped if it already exists.</div>
+      </div>
+
+      <div class="explain-step result">
+        <h3>Done!</h3>
+        <div class="explain-what">The script shows "All done!"</div>
+        <div class="explain-why"><strong>What you have now:</strong> Git, Node.js, and OpenCode — everything needed to start building.</div>
+      </div>
+    </section>
+
+    <section class="step">
+      <p><a href="index.html">&larr; Back to setup</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Part of the <a href="https://github.com/jdeworks/get-me-started">get-me-started</a> project — free, open source, yours to keep.</p>
+  </footer>
+
+  <script>
+    function showExplain(id) {
+      document.querySelectorAll('.explanation-section').forEach(el => el.classList.add('hidden'));
+      document.getElementById('explain-' + id).classList.remove('hidden');
+      document.getElementById('explain-' + id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  </script>
+</body>
+</html>

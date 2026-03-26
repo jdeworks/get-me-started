@@ -1,29 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 260">
-  <!-- Background -->
-  <rect width="360" height="260" rx="4" fill="#f0f0f0"/>
-  <!-- Context menu -->
-  <rect x="40" y="10" width="280" height="240" rx="8" fill="#fff" stroke="#d0d0d0" stroke-width="1" filter="url(#shadow)"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 280">
+  <!-- Windows 11 context menu - rounded, acrylic style -->
   <defs>
-    <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
-      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.15"/>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.12"/>
     </filter>
   </defs>
-  <!-- Menu items -->
-  <text x="60" y="42" font-family="Segoe UI, sans-serif" font-size="13" fill="#333">Open</text>
-  <line x1="48" y1="52" x2="312" y2="52" stroke="#e8e8e8" stroke-width="1"/>
-  <text x="60" y="74" font-family="Segoe UI, sans-serif" font-size="13" fill="#333">Edit</text>
-  <line x1="48" y1="84" x2="312" y2="84" stroke="#e8e8e8" stroke-width="1"/>
-  <!-- Highlighted item -->
-  <rect x="48" y="90" width="264" height="30" rx="4" fill="#e8edff"/>
-  <text x="60" y="110" font-family="Segoe UI, sans-serif" font-size="13" fill="#4361ee" font-weight="600">Run with PowerShell</text>
-  <!-- Arrow pointing to it -->
-  <text x="320" y="110" font-family="Segoe UI, sans-serif" font-size="16" fill="#4361ee">&#x2190;</text>
-  <line x1="48" y1="124" x2="312" y2="124" stroke="#e8e8e8" stroke-width="1"/>
-  <text x="60" y="146" font-family="Segoe UI, sans-serif" font-size="13" fill="#333">Copy</text>
-  <line x1="48" y1="156" x2="312" y2="156" stroke="#e8e8e8" stroke-width="1"/>
-  <text x="60" y="178" font-family="Segoe UI, sans-serif" font-size="13" fill="#333">Cut</text>
-  <line x1="48" y1="188" x2="312" y2="188" stroke="#e8e8e8" stroke-width="1"/>
-  <text x="60" y="210" font-family="Segoe UI, sans-serif" font-size="13" fill="#333">Delete</text>
-  <line x1="48" y1="220" x2="312" y2="220" stroke="#e8e8e8" stroke-width="1"/>
-  <text x="60" y="242" font-family="Segoe UI, sans-serif" font-size="13" fill="#333">Properties</text>
+  <!-- Semi-transparent background -->
+  <rect x="16" y="8" width="268" height="264" rx="12" fill="#fbfbfb" stroke="#e0e0e0" stroke-width="0.5" filter="url(#shadow)"/>
+  <!-- Menu items - Windows 11 spacing -->
+  <!-- Top row icons (Cut, Copy, Rename, Delete, Share) -->
+  <g transform="translate(40, 24)">
+    <rect x="0" y="0" width="36" height="36" rx="6" fill="#f0f0f0"/>
+    <text x="18" y="24" text-anchor="middle" font-size="16">&#x2702;</text>
+    <rect x="46" y="0" width="36" height="36" rx="6" fill="#f0f0f0"/>
+    <text x="64" y="24" text-anchor="middle" font-size="16">&#x1F4CB;</text>
+    <rect x="92" y="0" width="36" height="36" rx="6" fill="#f0f0f0"/>
+    <text x="110" y="24" text-anchor="middle" font-size="16">&#x270F;</text>
+    <rect x="138" y="0" width="36" height="36" rx="6" fill="#f0f0f0"/>
+    <text x="156" y="24" text-anchor="middle" font-size="16">&#x1F5D1;</text>
+  </g>
+  <!-- Divider -->
+  <line x1="32" y1="72" x2="268" y2="72" stroke="#e8e8e8" stroke-width="1"/>
+  <!-- Open -->
+  <text x="44" y="96" font-family="Segoe UI, sans-serif" font-size="13" fill="#1a1a1a">Open</text>
+  <!-- Run with PowerShell - HIGHLIGHTED -->
+  <rect x="24" y="104" width="252" height="32" rx="6" fill="#e8f0fe"/>
+  <text x="44" y="124" font-family="Segoe UI, sans-serif" font-size="13" fill="#005fb8" font-weight="600">Run with PowerShell</text>
+  <!-- Divider -->
+  <line x1="32" y1="144" x2="268" y2="144" stroke="#e8e8e8" stroke-width="1"/>
+  <!-- Other items -->
+  <text x="44" y="168" font-family="Segoe UI, sans-serif" font-size="13" fill="#1a1a1a">Open with...</text>
+  <text x="44" y="196" font-family="Segoe UI, sans-serif" font-size="13" fill="#1a1a1a">Share</text>
+  <!-- Divider -->
+  <line x1="32" y1="210" x2="268" y2="210" stroke="#e8e8e8" stroke-width="1"/>
+  <text x="44" y="234" font-family="Segoe UI, sans-serif" font-size="13" fill="#1a1a1a">Properties</text>
+  <!-- Arrow callout pointing to highlighted item -->
+  <text x="248" y="124" font-family="Segoe UI, sans-serif" font-size="12" fill="#005fb8" font-weight="600">&#x2190;</text>
 </svg>

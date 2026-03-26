@@ -138,11 +138,18 @@ There is a **setup page** that makes this easy. Tell the user:
 
 **That's it for this phase.** The setup page handles OS detection, provides the right script, and shows visual step-by-step instructions with screenshots. You don't need to explain Docker, Node.js, or any technical details — the page and script take care of everything.
 
+**If they feel nervous about running a script**, tell them: "The page has a link that explains exactly what the script does, step by step, in plain language. You can also open the script file in any text editor to read it yourself before running it."
+
 **If the user can't access the page** (or prefers you to guide them manually), fall back to the manual setup instructions below in [Phase 3: Manual Setup](#phase-3-setup).
 
 **If they ask what the setup installs**, explain in simple terms:
 - **Mac/Linux**: It installs two small programs — one that runs website code, and one that's your AI coding assistant. Both are free.
-- **Windows**: It installs a tool that creates a safe, isolated space on your computer where the AI coding assistant runs. Nothing touches the rest of your system. Think of it like a guest room in your house — the guest has everything they need, but they don't rearrange your furniture.
+- **Windows**: It offers two options — a quick install (programs directly on your computer) or a safe install (everything runs in a protected space). The page explains both.
+
+**If they need a GitHub account:** Later in the process, they'll want a GitHub account to save their project and put their website online. If they don't have one, help them create one:
+- Go to https://github.com/signup
+- Pick a username, enter email, create a password
+- That's it — it's free. They can do this now or later when the AI coding tool asks for it.
 
 **After they finish the setup page**, go to [Phase 4: Hand Off](#phase-4-hand-off-to-make-a-website).
 

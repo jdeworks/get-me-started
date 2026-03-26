@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Get Me Started — Set Up Your Website Builder</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -36,6 +37,11 @@
     <!-- Step 2: Download script (shown after OS chosen) -->
     <section id="download-section" class="step hidden">
       <h2>Step 2 — Download the setup helper</h2>
+
+      <div class="safety-callout">
+        Not sure what the script does? That's okay. <a href="explained.html">See exactly what it does and why &rarr;</a><br>
+        <small>Every step explained in plain language. No surprises.</small>
+      </div>
 
       <!-- Windows instructions -->
       <div id="instructions-windows" class="instructions hidden">
@@ -227,17 +233,48 @@
         <code>The setup is done. What do I do next?</code>
         <button class="copy-btn" data-copy="The setup is done. What do I do next?">Copy</button>
       </div>
-      <p>The AI will guide you from here to build your website.</p>
+      <p>The AI will guide you from here.</p>
+    </section>
 
-      <h3>What happens after that?</h3>
-      <p>The AI will help you with each of these steps, one at a time:</p>
-      <ul>
-        <li><strong>Build your website</strong> — you describe what you want, the AI creates it</li>
-        <li><strong>See it on your computer</strong> — preview your site in your browser while you work on it</li>
-        <li><strong>Make it look good</strong> — the AI knows about design and will help you style it</li>
-        <li><strong>Put it online</strong> — when you're ready, the AI will walk you through making it visible to the world (free options available)</li>
-      </ul>
-      <p>You don't need to think about any of these steps now. The AI handles the details when you get there.</p>
+    <!-- Your journey -->
+    <section class="step">
+      <h2>Your journey from here</h2>
+      <p>You don't need to think about all of this now — the AI handles each step when you get there. But here's what the full path looks like:</p>
+
+      <div class="journey">
+        <div class="journey-step current">
+          <div class="journey-marker">&#x2705;</div>
+          <div class="journey-content">
+            <strong>Set up your tools</strong>
+            <span>You're doing this right now!</span>
+          </div>
+        </div>
+        <div class="journey-step">
+          <div class="journey-marker">&#x1F3D7;</div>
+          <div class="journey-content">
+            <strong>Build your website</strong>
+            <span>Describe what you want in plain words. The AI creates it.</span>
+            <span class="journey-tool">Powered by <a href="https://github.com/jdeworks/make-a-website">make-a-website</a></span>
+          </div>
+        </div>
+        <div class="journey-step">
+          <div class="journey-marker">&#x1F3A8;</div>
+          <div class="journey-content">
+            <strong>Make it look good</strong>
+            <span>Colors, fonts, layout — the AI helps you design it.</span>
+            <span class="journey-tool">Powered by <a href="https://github.com/jdeworks/make-it-look-good">make-it-look-good</a></span>
+          </div>
+        </div>
+        <div class="journey-step">
+          <div class="journey-marker">&#x1F310;</div>
+          <div class="journey-content">
+            <strong>Put it online</strong>
+            <span>The AI walks you through publishing it for the world to see. Free options available.</span>
+          </div>
+        </div>
+      </div>
+
+      <p>All of these tools are free, open source, and yours to keep. You own everything you build.</p>
     </section>
 
     <!-- Troubleshooting -->
