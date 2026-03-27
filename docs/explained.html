@@ -202,25 +202,26 @@
             <div class="cv-explain"></div>
           </div>
 
-          <div class="cv-section">Step 2: Install OpenCode (lines 53-65)</div>
+          <div class="cv-section">Step 2: Install OpenCode (lines 53-69)</div>
           <div class="cv-line" data-tip="Checks if OpenCode is already installed. If it is, skips this step.">
             <div class="cv-line-row"><span class="cv-ln">55</span><span class="cv-code">$hasOpenCode = <span class="cmd">Get-Command</span> opencode -ErrorAction SilentlyContinue</span><span class="cv-hint-icon">?</span></div>
             <div class="cv-explain"></div>
           </div>
-          <div class="cv-line" data-tip="Installs OpenCode using npm (Node.js's package manager, which was just installed). '-g' means 'install it so it works from anywhere on the computer.' OpenCode is the free AI coding assistant. You describe what you want in plain words, it writes the code.">
-            <div class="cv-line-row"><span class="cv-ln">62</span><span class="cv-code">    <span class="cmd">npm install</span> -g opencode-ai</span><span class="cv-hint-icon">?</span></div>
+          <div class="cv-line" data-tip="Downloads the OpenCode desktop app installer from opencode.ai and runs it silently. OpenCode is the free AI coding assistant. You describe what you want in plain words, it writes the code. The '/S' flag means 'install quietly without extra popups.'">
+            <div class="cv-line-row"><span class="cv-ln">59-63</span><span class="cv-code">    <span class="cmd">Invoke-WebRequest</span> -Uri $installerUrl -OutFile $installerPath
+    <span class="cmd">Start-Process</span> -FilePath $installerPath -ArgumentList <span class="str">"/S"</span> -Wait</span><span class="cv-hint-icon">?</span></div>
             <div class="cv-explain"></div>
           </div>
 
-          <div class="cv-section">Step 3: Create Projects folder (lines 67-76)</div>
+          <div class="cv-section">Step 3: Create Projects folder (lines 72-81)</div>
           <div class="cv-line" data-tip="Creates C:\\Projects, a regular folder where your website files will live. You can see it in File Explorer. Skipped if it already exists.">
-            <div class="cv-line-row"><span class="cv-ln">73</span><span class="cv-code">    <span class="cmd">New-Item</span> -ItemType Directory -Path $projectsPath | Out-Null</span><span class="cv-hint-icon">?</span></div>
+            <div class="cv-line-row"><span class="cv-ln">78</span><span class="cv-code">    <span class="cmd">New-Item</span> -ItemType Directory -Path $projectsPath | Out-Null</span><span class="cv-hint-icon">?</span></div>
             <div class="cv-explain"></div>
           </div>
 
-          <div class="cv-section">Done (lines 78-91)</div>
+          <div class="cv-section">Done (lines 83-96)</div>
           <div class="cv-line" data-tip="Shows 'All done!' and tells you to go back to your AI chat. Read-Host waits for you to press Enter before closing the window so you can read the message.">
-            <div class="cv-line-row"><span class="cv-ln">78-90</span><span class="cv-code"><span class="cmd">Write-Host</span> <span class="str">"  All done!"</span> -ForegroundColor Green
+            <div class="cv-line-row"><span class="cv-ln">83-95</span><span class="cv-code"><span class="cmd">Write-Host</span> <span class="str">"  All done!"</span> -ForegroundColor Green
 <span class="cmd">Write-Host</span> <span class="str">"Go back to your AI chat and tell it:"</span>
 <span class="cmd">Write-Host</span> <span class="str">'  "The setup is done. What do I do next?"'</span>
 <span class="cmd">Read-Host</span></span><span class="cv-hint-icon">?</span></div>
@@ -316,12 +317,12 @@ NC=<span class="str">'\033[0m'</span> <span class="cmt"># No Color</span></span>
             <div class="cv-line-row"><span class="cv-ln">75</span><span class="cv-code"><span class="kw">if</span> command -v opencode &amp;&gt;/dev/null; <span class="kw">then</span></span><span class="cv-hint-icon">?</span></div>
             <div class="cv-explain"></div>
           </div>
-          <div class="cv-line" data-tip="Installs OpenCode using Homebrew. OpenCode is the free AI coding assistant. You describe what you want in plain words, and it writes the code for you. 'opencode-ai/tap/opencode' tells Homebrew where to find it (a 'tap' is like a custom app catalog).">
-            <div class="cv-line-row"><span class="cv-ln">80</span><span class="cv-code">        <span class="cmd">brew install</span> opencode-ai/tap/opencode</span><span class="cv-hint-icon">?</span></div>
+          <div class="cv-line" data-tip="Installs the OpenCode desktop app using Homebrew. '--cask' means it installs a regular desktop application (with a window and icon) rather than a command-line tool. OpenCode is the free AI coding assistant. You describe what you want in plain words, and it writes the code for you.">
+            <div class="cv-line-row"><span class="cv-ln">80</span><span class="cv-code">        <span class="cmd">brew install</span> --cask opencode-desktop</span><span class="cv-hint-icon">?</span></div>
             <div class="cv-explain"></div>
           </div>
           <div class="cv-line" data-tip="If Homebrew isn't available, downloads and installs OpenCode directly using curl instead. Same result, different method.">
-            <div class="cv-line-row"><span class="cv-ln">82</span><span class="cv-code">        <span class="cmd">curl -fsSL</span> <span class="str">https://raw.githubusercontent.com/opencode-ai/opencode/refs/heads/main/install</span> | bash</span><span class="cv-hint-icon">?</span></div>
+            <div class="cv-line-row"><span class="cv-ln">82</span><span class="cv-code">        <span class="cmd">curl -fsSL</span> <span class="str">https://opencode.ai/install</span> | bash</span><span class="cv-hint-icon">?</span></div>
             <div class="cv-explain"></div>
           </div>
 
@@ -416,7 +417,7 @@ RED=<span class="str">'\033[0;31m'</span>  NC=<span class="str">'\033[0m'</span>
             <div class="cv-explain"></div>
           </div>
           <div class="cv-line" data-tip="Downloads and installs OpenCode. 'curl -fsSL' downloads the installer silently (-s = silent, -f = fail on errors, -L = follow redirects). '| bash' runs the downloaded script. OpenCode is the free AI that writes code for you.">
-            <div class="cv-line-row"><span class="cv-ln">72</span><span class="cv-code">    <span class="cmd">curl -fsSL</span> <span class="str">https://raw.githubusercontent.com/opencode-ai/opencode/refs/heads/main/install</span> | bash</span><span class="cv-hint-icon">?</span></div>
+            <div class="cv-line-row"><span class="cv-ln">72</span><span class="cv-code">    <span class="cmd">curl -fsSL</span> <span class="str">https://opencode.ai/install</span> | bash</span><span class="cv-hint-icon">?</span></div>
             <div class="cv-explain"></div>
           </div>
 

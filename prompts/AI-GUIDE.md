@@ -366,18 +366,15 @@ Explain: "OpenCode is a free AI coding assistant that runs in your terminal. It 
 
 **Mac/Linux:**
 ```
-curl -fsSL https://raw.githubusercontent.com/opencode-ai/opencode/refs/heads/main/install | bash
+curl -fsSL https://opencode.ai/install | bash
 ```
 
 **Mac (with Homebrew):**
 ```
-brew install opencode-ai/tap/opencode
+brew install --cask opencode-desktop
 ```
 
-**Windows:** OpenCode doesn't have a native Windows installer. On Windows, recommend one of these alternatives:
-- **Best option**: Use the **sandbox path** instead. OpenCode runs inside the Docker container, no Windows install needed.
-- **If they don't want Docker**: Install [Claude Code](https://docs.anthropic.com/en/docs/claude-code) (`npm install -g @anthropic-ai/claude-code`). Note: this requires an Anthropic account and API key, which has a cost.
-- **Free alternative on Windows**: They can stay in this chat (Phase 5) and you guide them through building the website step by step using the paste-back pattern. This is slower but works without installing a coding AI on Windows.
+**Windows:** Download the desktop app from [opencode.ai/download](https://opencode.ai/download) and run the installer.
 
 Verify:
 

@@ -77,9 +77,9 @@ if command -v opencode &>/dev/null; then
 else
     echo "  Installing OpenCode..."
     if command -v brew &>/dev/null; then
-        brew install opencode-ai/tap/opencode
+        brew install --cask opencode-desktop
     else
-        curl -fsSL https://raw.githubusercontent.com/opencode-ai/opencode/refs/heads/main/install | bash
+        curl -fsSL https://opencode.ai/install | bash
     fi
     echo -e "${GREEN}  OpenCode installed.${NC}"
 fi

@@ -69,7 +69,7 @@ if command -v opencode &>/dev/null; then
     echo -e "${GREEN}  OpenCode is already installed.${NC}"
 else
     echo "  Installing OpenCode..."
-    curl -fsSL https://raw.githubusercontent.com/opencode-ai/opencode/refs/heads/main/install | bash
+    curl -fsSL https://opencode.ai/install | bash
     echo -e "${GREEN}  OpenCode installed.${NC}"
 fi
 echo ""

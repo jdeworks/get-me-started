@@ -56,10 +56,15 @@ $hasOpenCode = Get-Command opencode -ErrorAction SilentlyContinue
 if ($hasOpenCode) {
     Write-Host "  OpenCode is already installed." -ForegroundColor Green
 } else {
-    Write-Host "  Installing OpenCode..." -ForegroundColor Yellow
-    # Refresh PATH again in case node was just installed
+    Write-Host "  Downloading OpenCode installer..." -ForegroundColor Yellow
+    $installerUrl = "https://opencode.ai/download/stable/windows-x64-nsis"
+    $installerPath = "$env:TEMP\opencode-setup.exe"
+    Invoke-WebRequest -Uri $installerUrl -OutFile $installerPath
+    Write-Host "  Running OpenCode installer..." -ForegroundColor Yellow
+    Start-Process -FilePath $installerPath -ArgumentList "/S" -Wait
+    Remove-Item $installerPath -ErrorAction SilentlyContinue
+    # Refresh PATH to pick up OpenCode
     $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-    npm install -g opencode-ai
     Write-Host "  OpenCode installed." -ForegroundColor Green
 }
 Write-Host ""

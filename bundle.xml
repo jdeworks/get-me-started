@@ -1286,8 +1286,7 @@ This path installs coding tools directly on your computer. It's the fastest way 
 
 | Tool | What it is | Why you need it |
 |------|-----------|----------------|
-| **Node.js** | A runtime that lets you run website code on your computer | Powers your website during development. Also used to install other tools. |
-| **npm** | A package manager (comes with Node.js) | Lets you install libraries and tools with a single command |
+| **Node.js** | A runtime that lets you run website code on your computer | Powers your website during development. Comes with npm for installing libraries. |
 | **OpenCode** | A free, open-source AI coding assistant | The AI that helps you write code — you describe what you want in plain English |
 
 **Trade-off vs. the sandbox path**: This is faster to set up, but these tools are installed directly on your system. If you'd rather keep things isolated, see [Setup Sandbox](./setup-sandbox.md) instead.
@@ -1342,18 +1341,16 @@ OpenCode is a free AI coding assistant that works in the terminal. You type what
 
 **Mac/Linux (install script):**
 ```
-curl -fsSL https://raw.githubusercontent.com/opencode-ai/opencode/refs/heads/main/install | bash
+curl -fsSL https://opencode.ai/install | bash
 ```
 
 **Mac (with Homebrew):**
 ```
-brew install opencode-ai/tap/opencode
+brew install --cask opencode-desktop
 ```
 
-**Windows:** OpenCode doesn't have a native Windows installer. On Windows, your best options are:
-- **Recommended**: Use the [sandbox path](./setup-sandbox.md) instead — OpenCode runs inside Docker, no Windows install needed
-- **Alternative**: Install [Claude Code](https://docs.anthropic.com/en/docs/claude-code) (`npm install -g @anthropic-ai/claude-code`) — requires an Anthropic account and API key (has a cost)
-- **No-install option**: Stay in your AI chat and have it guide you through building step by step using the paste-back pattern (you run commands and paste output back). Slower but works without a local coding AI
+**Windows (desktop app):**
+Download the installer from [opencode.ai/download](https://opencode.ai/download) and run it. This is the easiest way to get started on Windows.
 
 Verify:
 
@@ -1434,7 +1431,8 @@ If you ever want to remove these tools:
 - **Linux**: `sudo apt remove nodejs` or `sudo dnf remove nodejs`
 
 **OpenCode:**
-- **Mac (Homebrew):** `brew uninstall opencode`
+- **Windows**: Settings > Apps > search for "OpenCode" > Uninstall
+- **Mac (Homebrew):** `brew uninstall --cask opencode-desktop`
 - **Other:** Remove the `opencode` binary from your PATH (check `which opencode` to find its location)
 
 Your project files are just regular files in your Projects folder — they don't depend on these tools being installed.
@@ -2559,18 +2557,15 @@ Explain: "OpenCode is a free AI coding assistant that runs in your terminal. It 
 
 **Mac/Linux:**
 ```
-curl -fsSL https://raw.githubusercontent.com/opencode-ai/opencode/refs/heads/main/install | bash
+curl -fsSL https://opencode.ai/install | bash
 ```
 
 **Mac (with Homebrew):**
 ```
-brew install opencode-ai/tap/opencode
+brew install --cask opencode-desktop
 ```
 
-**Windows:** OpenCode doesn't have a native Windows installer. On Windows, recommend one of these alternatives:
-- **Best option**: Use the **sandbox path** instead. OpenCode runs inside the Docker container, no Windows install needed.
-- **If they don't want Docker**: Install [Claude Code](https://docs.anthropic.com/en/docs/claude-code) (`npm install -g @anthropic-ai/claude-code`). Note: this requires an Anthropic account and API key, which has a cost.
-- **Free alternative on Windows**: They can stay in this chat (Phase 5) and you guide them through building the website step by step using the paste-back pattern. This is slower but works without installing a coding AI on Windows.
+**Windows:** Download the desktop app from [opencode.ai/download](https://opencode.ai/download) and run the installer.
 
 Verify:
 
