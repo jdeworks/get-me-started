@@ -112,7 +112,7 @@ That's it. ONE message. Don't explain what the page does. The page explains itse
 **If the user can't access the page** (or prefers you to guide them manually), fall back to the manual setup instructions below in [Phase 3: Manual Setup](#phase-3-setup).
 
 **What the setup page offers:** For all three systems (Windows, Mac, Linux) the page offers two options:
-- **Quick install** (recommended for Mac/Linux): installs two small free programs directly (one that runs website code, and one that's the AI coding assistant).
+- **Quick install** (recommended for Mac/Linux): on Windows, installs the OpenCode desktop app (a free AI coding assistant). On Mac/Linux, it also installs Node.js (the engine that runs website code).
 - **Safe install** (recommended for Windows): installs everything inside a protected space on their computer. Nothing touches the rest of their system. They can delete the whole thing cleanly anytime.
 
 The page also has a "What does this script do?" link for each download that explains every step in plain language. Users who are nervous can read exactly what will happen before running anything. They can also open the script file in any text editor (like Notepad or TextEdit) to verify themselves.

@@ -159,12 +159,12 @@
     <section id="explain-win-quick" class="step explanation-section hidden">
       <h2>setup-windows-direct.ps1: Quick install</h2>
       <div class="code-viewer">
-        <div class="code-viewer-header">setup-windows-direct.ps1, 91 lines</div>
+        <div class="code-viewer-header">setup-windows-direct.ps1, 68 lines</div>
         <div class="code-viewer-body">
           <div class="cv-section">Header + allow script to run (lines 1-11)</div>
-          <div class="cv-line" data-tip="Comments (lines starting with #) are notes for humans. Your computer ignores them. They explain this is the quick install that puts Node.js and OpenCode directly on your computer.">
+          <div class="cv-line" data-tip="Comments (lines starting with #) are notes for humans. Your computer ignores them. They explain this is the quick install that puts OpenCode directly on your computer.">
             <div class="cv-line-row"><span class="cv-ln">1-8</span><span class="cv-code"><span class="cmt"># get-me-started: Windows direct setup helper (Quick install)
-# This script installs Node.js and OpenCode directly on your computer.
+# This script installs OpenCode directly on your computer.
 # HOW TO RUN: Right-click this file > "Run with PowerShell"</span></span><span class="cv-hint-icon">?</span></div>
             <div class="cv-explain"></div>
           </div>
@@ -176,52 +176,31 @@
           <div class="cv-section">Welcome message (lines 13-24)</div>
           <div class="cv-line" data-tip="Write-Host prints text on your screen. These lines show the title banner and explain that Windows may ask permission. -ForegroundColor sets the text color. Nothing is installed yet. This is just information.">
             <div class="cv-line-row"><span class="cv-ln">13-24</span><span class="cv-code"><span class="cmd">Write-Host</span> <span class="str">"  Get Me Started - Windows Quick Setup"</span> -ForegroundColor Cyan
-<span class="cmd">Write-Host</span> <span class="str">"This will install Node.js and OpenCode..."</span>
+<span class="cmd">Write-Host</span> <span class="str">"This will install OpenCode on your computer."</span>
 <span class="cmd">Write-Host</span> <span class="str">"Note: Windows may ask 'Do you want to allow...'"</span> -ForegroundColor Yellow</span><span class="cv-hint-icon">?</span></div>
             <div class="cv-explain"></div>
           </div>
 
-          <div class="cv-section">Check for winget (lines 26-36)</div>
-          <div class="cv-line" data-tip="Checks if winget (Windows' built-in app installer) exists. If not, shows an error and stops. Without winget, we can't install anything.">
-            <div class="cv-line-row"><span class="cv-ln">27-36</span><span class="cv-code">$hasWinget = <span class="cmd">Get-Command</span> winget -ErrorAction SilentlyContinue
-<span class="kw">if</span> (-not $hasWinget) { ... <span class="kw">exit</span> 1 }</span><span class="cv-hint-icon">?</span></div>
-            <div class="cv-explain"></div>
-          </div>
-
-          <div class="cv-section">Step 1: Install Node.js (lines 38-51)</div>
-          <div class="cv-line" data-tip="Checks if Node.js is already installed. If it is, shows the version and skips to the next step.">
-            <div class="cv-line-row"><span class="cv-ln">40</span><span class="cv-code">$hasNode = <span class="cmd">Get-Command</span> node -ErrorAction SilentlyContinue</span><span class="cv-hint-icon">?</span></div>
-            <div class="cv-explain"></div>
-          </div>
-          <div class="cv-line" data-tip="Installs Node.js LTS (Long Term Support = the stable version) using winget. Node.js is the engine that runs website code on your computer. It's free, used by millions of developers (Netflix, Uber, NASA).">
-            <div class="cv-line-row"><span class="cv-ln">46</span><span class="cv-code">    <span class="cmd">winget install</span> --id OpenJS.NodeJS.LTS --accept-source-agreements --accept-package-agreements</span><span class="cv-hint-icon">?</span></div>
-            <div class="cv-explain"></div>
-          </div>
-          <div class="cv-line" data-tip="After installing Node.js, this refreshes the list of available commands. Without this, PowerShell might not find 'node' or 'npm' until you close and reopen the window. This saves you that step.">
-            <div class="cv-line-row"><span class="cv-ln">48</span><span class="cv-code">    $env:Path = [System.Environment]::GetEnvironmentVariable(<span class="str">"Path"</span>,<span class="str">"Machine"</span>) + <span class="str">";"</span> + [System.Environment]::GetEnvironmentVariable(<span class="str">"Path"</span>,<span class="str">"User"</span>)</span><span class="cv-hint-icon">?</span></div>
-            <div class="cv-explain"></div>
-          </div>
-
-          <div class="cv-section">Step 2: Install OpenCode (lines 53-69)</div>
+          <div class="cv-section">Step 1: Install OpenCode (lines 26-42)</div>
           <div class="cv-line" data-tip="Checks if OpenCode is already installed. If it is, skips this step.">
-            <div class="cv-line-row"><span class="cv-ln">55</span><span class="cv-code">$hasOpenCode = <span class="cmd">Get-Command</span> opencode -ErrorAction SilentlyContinue</span><span class="cv-hint-icon">?</span></div>
+            <div class="cv-line-row"><span class="cv-ln">28</span><span class="cv-code">$hasOpenCode = <span class="cmd">Get-Command</span> opencode -ErrorAction SilentlyContinue</span><span class="cv-hint-icon">?</span></div>
             <div class="cv-explain"></div>
           </div>
           <div class="cv-line" data-tip="Downloads the OpenCode desktop app installer from opencode.ai and runs it silently. OpenCode is the free AI coding assistant. You describe what you want in plain words, it writes the code. The '/S' flag means 'install quietly without extra popups.'">
-            <div class="cv-line-row"><span class="cv-ln">59-63</span><span class="cv-code">    <span class="cmd">Invoke-WebRequest</span> -Uri $installerUrl -OutFile $installerPath
+            <div class="cv-line-row"><span class="cv-ln">32-37</span><span class="cv-code">    <span class="cmd">Invoke-WebRequest</span> -Uri $installerUrl -OutFile $installerPath
     <span class="cmd">Start-Process</span> -FilePath $installerPath -ArgumentList <span class="str">"/S"</span> -Wait</span><span class="cv-hint-icon">?</span></div>
             <div class="cv-explain"></div>
           </div>
 
-          <div class="cv-section">Step 3: Create Projects folder (lines 72-81)</div>
+          <div class="cv-section">Step 2: Create Projects folder (lines 44-53)</div>
           <div class="cv-line" data-tip="Creates C:\\Projects, a regular folder where your website files will live. You can see it in File Explorer. Skipped if it already exists.">
-            <div class="cv-line-row"><span class="cv-ln">78</span><span class="cv-code">    <span class="cmd">New-Item</span> -ItemType Directory -Path $projectsPath | Out-Null</span><span class="cv-hint-icon">?</span></div>
+            <div class="cv-line-row"><span class="cv-ln">50</span><span class="cv-code">    <span class="cmd">New-Item</span> -ItemType Directory -Path $projectsPath | Out-Null</span><span class="cv-hint-icon">?</span></div>
             <div class="cv-explain"></div>
           </div>
 
-          <div class="cv-section">Done (lines 83-96)</div>
+          <div class="cv-section">Done (lines 55-68)</div>
           <div class="cv-line" data-tip="Shows 'All done!' and tells you to go back to your AI chat. Read-Host waits for you to press Enter before closing the window so you can read the message.">
-            <div class="cv-line-row"><span class="cv-ln">83-95</span><span class="cv-code"><span class="cmd">Write-Host</span> <span class="str">"  All done!"</span> -ForegroundColor Green
+            <div class="cv-line-row"><span class="cv-ln">55-67</span><span class="cv-code"><span class="cmd">Write-Host</span> <span class="str">"  All done!"</span> -ForegroundColor Green
 <span class="cmd">Write-Host</span> <span class="str">"Go back to your AI chat and tell it:"</span>
 <span class="cmd">Write-Host</span> <span class="str">'  "The setup is done. What do I do next?"'</span>
 <span class="cmd">Read-Host</span></span><span class="cv-hint-icon">?</span></div>
