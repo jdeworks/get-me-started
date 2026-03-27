@@ -238,7 +238,7 @@ Run these before any release:
 
 ### Scripts
 - [ ] Windows safe: installs Docker + downloads .exe + creates folder
-- [ ] Windows quick: installs Node.js + OpenCode + creates folder
+- [ ] Windows quick: installs OpenCode desktop app + creates folder
 - [ ] Mac quick: installs CLT + Node.js + OpenCode + creates folder
 - [ ] Mac Docker: installs CLT + guides Docker install + clones sandbox
 - [ ] Linux quick: installs Node.js (nvm) + OpenCode + creates folder

@@ -320,11 +320,13 @@ This starts OpenCode inside an isolated container. They should see the OpenCode 
 
 Same as Sandbox Path Step 1 above.
 
-#### Step 2: Install Node.js
+#### Step 2: Install Node.js (Mac/Linux only)
+
+On Windows, skip to Step 3 — the OpenCode desktop app handles everything you need to get started.
 
 Explain: "Node.js is what makes website code run on your computer. It's free and used by millions of developers."
 
-**Windows / Mac:**
+**Mac:**
 - Go to https://nodejs.org
 - Click the big green button that says "LTS" (Long Term Support, the stable version)
 - Run the downloaded installer and accept all defaults

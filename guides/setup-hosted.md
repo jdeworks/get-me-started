@@ -26,7 +26,7 @@ You have two great options available right now:
 
 1. **[Sandbox path](./setup-sandbox.md)** (recommended) — Install Docker Desktop and use agent-sandbox. Your computer stays clean, everything is isolated. Takes about 15 minutes to set up.
 
-2. **[Direct install path](./setup-direct.md)** — Install Node.js and OpenCode directly. Fastest to get going, about 5 minutes.
+2. **[Direct install path](./setup-direct.md)** — Install OpenCode directly (Mac/Linux also installs Node.js). Fastest to get going, about 5 minutes.
 
 Both paths get you to the same place: a working coding environment with an AI assistant that helps you build your website.
 

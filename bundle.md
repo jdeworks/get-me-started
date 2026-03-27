@@ -1311,7 +1311,7 @@ You have two great options available right now:
 
 1. **[Sandbox path](./setup-sandbox.md)** (recommended) — Install Docker Desktop and use agent-sandbox. Your computer stays clean, everything is isolated. Takes about 15 minutes to set up.
 
-2. **[Direct install path](./setup-direct.md)** — Install Node.js and OpenCode directly. Fastest to get going, about 5 minutes.
+2. **[Direct install path](./setup-direct.md)** — Install OpenCode directly (Mac/Linux also installs Node.js). Fastest to get going, about 5 minutes.
 
 Both paths get you to the same place: a working coding environment with an AI assistant that helps you build your website.
 
@@ -1663,8 +1663,10 @@ This path installs coding tools directly on your computer. It's the fastest way 
 
 | Tool | What it is | Why you need it |
 |------|-----------|----------------|
-| **Node.js** | A runtime that lets you run website code on your computer | Powers your website during development. Comes with npm for installing libraries. |
 | **OpenCode** | A free, open-source AI coding assistant | The AI that helps you write code — you describe what you want in plain English |
+| **Node.js** (Mac/Linux) | A runtime that lets you run website code on your computer | Powers your website during development. Comes with npm for installing libraries. |
+
+On Windows, the OpenCode desktop app is all you need to get started. On Mac/Linux, Node.js is also installed because it powers your website during development.
 
 **Trade-off vs. the sandbox path**: This is faster to set up, but these tools are installed directly on your system. If you'd rather keep things isolated, see [Setup Sandbox](./setup-sandbox.md) instead.
 
@@ -1676,11 +1678,11 @@ This path installs coding tools directly on your computer. It's the fastest way 
 
 If you've never used one, see [What Is a Terminal](./open-terminal.md).
 
-### 2. Install Node.js
+### 2. Install Node.js (Mac/Linux only)
 
-Node.js is the engine that makes modern websites work during development. It's free, open-source, and used by millions of developers and companies worldwide.
+Node.js is the engine that makes modern websites work during development. It's free, open-source, and used by millions of developers and companies worldwide. On Windows, skip to Step 3 — the OpenCode desktop app handles everything you need to get started.
 
-**Windows / Mac:**
+**Mac:**
 1. Go to https://nodejs.org
 2. Click the big green button labeled **LTS** (Long Term Support — the stable version)
 3. Run the downloaded installer — accept all the default options
@@ -1802,8 +1804,7 @@ If you decide you'd rather keep your tools isolated, you can set up the sandbox 
 
 If you ever want to remove these tools:
 
-**Node.js:**
-- **Windows**: Settings > Apps > search for "Node.js" > Uninstall
+**Node.js (Mac/Linux only):**
 - **Mac**: `sudo rm -rf /usr/local/lib/node_modules /usr/local/bin/node /usr/local/bin/npm`
 - **Linux**: `sudo apt remove nodejs` or `sudo dnf remove nodejs`
 
@@ -2057,7 +2058,7 @@ Run these before any release:
 
 ### Scripts
 - [ ] Windows safe: installs Docker + downloads .exe + creates folder
-- [ ] Windows quick: installs Node.js + OpenCode + creates folder
+- [ ] Windows quick: installs OpenCode desktop app + creates folder
 - [ ] Mac quick: installs CLT + Node.js + OpenCode + creates folder
 - [ ] Mac Docker: installs CLT + guides Docker install + clones sandbox
 - [ ] Linux quick: installs Node.js (nvm) + OpenCode + creates folder
@@ -2525,11 +2526,13 @@ This starts OpenCode inside an isolated container. They should see the OpenCode 
 
 Same as Sandbox Path Step 1 above.
 
-#### Step 2: Install Node.js
+#### Step 2: Install Node.js (Mac/Linux only)
+
+On Windows, skip to Step 3 — the OpenCode desktop app handles everything you need to get started.
 
 Explain: "Node.js is what makes website code run on your computer. It's free and used by millions of developers."
 
-**Windows / Mac:**
+**Mac:**
 - Go to https://nodejs.org
 - Click the big green button that says "LTS" (Long Term Support, the stable version)
 - Run the downloaded installer and accept all defaults
