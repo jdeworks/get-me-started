@@ -87,7 +87,7 @@ As websites get more complex, people use **frameworks** — pre-built tools that
 
 For example, **React** (by Meta) makes it easier to build interactive user interfaces. **Tailwind CSS** makes it easier to style things consistently. **Vite** makes your development experience faster.
 
-The [make-a-website](https://github.com/jdeworks/make-a-website) knowledge base starts you with plain HTML, CSS, and JavaScript (the simplest approach) and offers a path to upgrade to React later if your project needs it. You don't have to decide now.
+The [project-starter-kit](https://github.com/jdeworks/project-starter-kit) knowledge base starts you with plain HTML, CSS, and JavaScript (the simplest approach) and offers a path to upgrade to React later if your project needs it. You don't have to decide now.
 
 ## Do You Need to Understand All This?
 

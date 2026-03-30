@@ -109,7 +109,7 @@ You should see the OpenCode interface. You're ready to build.
 Now tell OpenCode what you want to build:
 
 ```
-I want to build a website. Use https://github.com/jdeworks/make-a-website to get us started.
+I want to build a website. Use https://github.com/jdeworks/project-starter-kit to get us started.
 ```
 
 ---
@@ -124,7 +124,7 @@ OpenCode is the default because it's free. But you have options:
 - **[Cursor](https://cursor.com)** — a code editor with built-in AI. Download from their website. Has a free tier.
 - **[GitHub Copilot](https://github.com/features/copilot)** — works inside VS Code. Requires a GitHub subscription.
 
-The [make-a-website](https://github.com/jdeworks/make-a-website) knowledge base works with all of them — it has entry points for each tool.
+The [project-starter-kit](https://github.com/jdeworks/project-starter-kit) knowledge base works with all of them — it has entry points for each tool.
 
 ### Install Git (you'll need this later)
 

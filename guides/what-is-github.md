@@ -89,7 +89,7 @@ Your AI assistant can walk you through this when the time comes. It involves gen
 2. Pushing your code to it
 3. Setting up GitHub Pages (free hosting) or another hosting option
 
-The [make-a-website](https://github.com/jdeworks/make-a-website) knowledge base includes complete guides for hosting — your AI assistant will use these when the time comes.
+The [project-starter-kit](https://github.com/jdeworks/project-starter-kit) knowledge base includes complete guides for hosting — your AI assistant will use these when the time comes.
 
 ---
 

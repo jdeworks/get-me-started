@@ -71,7 +71,7 @@ This project is part of a set of free, open-source tools that work together:
 | Tool | What it does |
 |------|-------------|
 | **get-me-started** (this project) | Guides beginners from zero to a working setup |
-| [make-a-website](https://github.com/jdeworks/make-a-website) | Teaches AI how to help you build a website |
+| [project-starter-kit](https://github.com/jdeworks/project-starter-kit) | Structured foundation for AI-assisted projects |
 | [make-it-look-good](https://github.com/jdeworks/make-it-look-good) | Design guidance with real examples and presets |
 | [agent-sandbox](https://github.com/jdeworks/agent-sandbox) | Isolated coding environments that keep your computer clean |
 | [think-tank](https://jdeworks.github.io/think-tank) | AI-guided project planner that turns your idea into a plan |

@@ -20,7 +20,7 @@ That is your COMPLETE first message. Do not add anything else. Do not list steps
 1. Ask what they want to build (your first message above)
 2. After they answer: send them to **https://jdeworks.github.io/get-me-started/** to set up the tools
 3. After setup: help them start OpenCode and paste a prompt into it
-4. That's it. OpenCode and the make-a-website knowledge base take over
+4. That's it. OpenCode and the project-starter-kit knowledge base take over
 
 **Do NOT** mention all 4 steps at once. Only reveal the NEXT step when the CURRENT step is done.
 
@@ -30,7 +30,7 @@ That is your COMPLETE first message. Do not add anything else. Do not list steps
 
 A complete beginner wants to build a website. They may have never opened a terminal, never installed a programming tool, and never written a line of code. That's perfectly fine.
 
-**The user will NOT write any code.** An AI coding assistant called OpenCode will do that for them. Your job is to guide them from "I have an idea" to a working setup with OpenCode running, then hand off to the [make-a-website](https://github.com/jdeworks/make-a-website) knowledge base for the actual building. The user describes what they want in plain language, and OpenCode turns that into a real website.
+**The user will NOT write any code.** An AI coding assistant called OpenCode will do that for them. Your job is to guide them from "I have an idea" to a working setup with OpenCode running, then hand off to the [project-starter-kit](https://github.com/jdeworks/project-starter-kit) knowledge base for the actual building. The user describes what they want in plain language, and OpenCode turns that into a real website.
 
 **You must follow the phases in this guide in order.** Do not skip ahead. Do not invent your own steps. Do not tell the user to install a code editor or write code.
 
@@ -62,7 +62,7 @@ This guide is part of a set of free, open-source tools that work together. You d
 |------|-------------|-------------------|
 | **get-me-started** (this guide) | Routes beginners to the right setup path | You're using it now |
 | **[agent-sandbox](https://github.com/jdeworks/agent-sandbox)** | Runs AI coding tools inside isolated Docker containers, nothing installed on the user's system | During setup (sandbox path) |
-| **[make-a-website](https://github.com/jdeworks/make-a-website)** | Knowledge base with 12 prompt files that teach any AI how to help build a website. Covers everything from project setup to deployment | After setup is done (this is the hand-off target) |
+| **[project-starter-kit](https://github.com/jdeworks/project-starter-kit)** | Knowledge base with 12 prompt files that teach any AI how to help build a website. Covers everything from project setup to deployment | After setup is done (this is the hand-off target) |
 | **[make-it-look-good](https://github.com/jdeworks/make-it-look-good)** | Evidence-based design guidance with 44 topics, presets, and before/after examples | When the user starts caring about how their site looks |
 | **[think-tank](https://jdeworks.github.io/think-tank)** | Browser-based AI project planner that turns a vague idea into a structured plan | If the user has a complex project and wants to plan before building |
 
@@ -127,7 +127,7 @@ The page also has a "What does this script do?" link for each download that expl
 
 If they want to skip, that's fine. Move to Phase 4. They can always come back to it.
 
-**After they finish the setup page** (and optionally GitHub), go to [Phase 4: Hand Off](#phase-4-hand-off-to-make-a-website).
+**After they finish the setup page** (and optionally GitHub), go to [Phase 4: Hand Off](#phase-4-hand-off-to-project-starter-kit).
 
 ### Coming Soon: Zero Install
 
@@ -310,7 +310,7 @@ This starts OpenCode inside an isolated container. They should see the OpenCode 
 
 **If they want to know what just happened:** The `sandbox-me` command detected their project folder, spun up a Docker container using their profile, mounted their project files into it, and started OpenCode. Their code lives on their computer. The container just provides the tools. If they close the terminal and run `sandbox-me` again, everything picks up right where they left off.
 
-**Now go to [Phase 4: Hand Off](#phase-4-hand-off-to-make-a-website).**
+**Now go to [Phase 4: Hand Off](#phase-4-hand-off-to-project-starter-kit).**
 
 ---
 
@@ -411,11 +411,11 @@ opencode
 
 They should see the OpenCode interface. They're ready.
 
-**Now go to [Phase 4: Hand Off](#phase-4-hand-off-to-make-a-website).**
+**Now go to [Phase 4: Hand Off](#phase-4-hand-off-to-project-starter-kit).**
 
 ---
 
-## Phase 4: Hand Off to make-a-website
+## Phase 4: Hand Off to project-starter-kit
 
 The user now has a working environment with an AI coding assistant (OpenCode). Time to hand off to the knowledge base that knows how to build websites.
 
@@ -426,7 +426,7 @@ Tell the user:
 Compose the handoff message for them. Include their idea from Phase 1:
 
 ```
-I want to build a website. Read https://raw.githubusercontent.com/jdeworks/make-a-website/dev/AGENTS.md and guide me through it.
+I want to build a website. Read https://raw.githubusercontent.com/jdeworks/project-starter-kit/dev/AGENTS.md and guide me through it.
 
 Here's what I'm thinking: [their idea from Phase 1]
 ```
@@ -435,14 +435,14 @@ Here's what I'm thinking: [their idea from Phase 1]
 
 **If the AI coding assistant is Claude Code** (which can browse repos natively), this simpler prompt also works:
 ```
-I want to build a website. Use https://github.com/jdeworks/make-a-website to get us started.
+I want to build a website. Use https://github.com/jdeworks/project-starter-kit to get us started.
 ```
 
-### If they want to understand what make-a-website does:
+### If they want to understand what project-starter-kit does:
 
-Explain: "make-a-website is a knowledge base, a collection of guides that teach the AI coding assistant how to help you build a website step by step. It covers everything: setting up your project, choosing the right tools, writing code, making it look good, testing it, securing it, and putting it online for the world to see. You don't need to read any of it yourself. The AI reads it. But if you're curious, you can browse it at https://github.com/jdeworks/make-a-website."
+Explain: "project-starter-kit is a knowledge base, a collection of guides that teach the AI coding assistant how to help you build a website step by step. It covers everything: setting up your project, choosing the right tools, writing code, making it look good, testing it, securing it, and putting it online for the world to see. You don't need to read any of it yourself. The AI reads it. But if you're curious, you can browse it at https://github.com/jdeworks/project-starter-kit."
 
-Key things they can control once make-a-website takes over:
+Key things they can control once project-starter-kit takes over:
 - **Framework**: Start with plain HTML/CSS/JavaScript (simplest), or upgrade to React later if they want
 - **Design**: The AI will use [make-it-look-good](https://github.com/jdeworks/make-it-look-good) for design guidance, covering 44 topics with real examples. They can browse the live preview at https://jdeworks.github.io/make-it-look-good/
 - **Hosting**: Free hosting on GitHub Pages for simple sites (pages that show the same content to everyone). Sites that need login systems, payments, or databases need a different kind of hosting. The AI will help them with affordable options when they get there.
@@ -453,7 +453,7 @@ Key things they can control once make-a-website takes over:
 Once the website is built, the user's journey continues:
 
 1. **Make it look good.** Tell OpenCode: "Read https://raw.githubusercontent.com/jdeworks/make-it-look-good/dev/CONSULT.md and help me improve the design of my website." This gives the AI design expertise with 44 topics, presets, and before/after examples.
-2. **Put it online.** make-a-website includes deployment guidance. For simple sites, GitHub Pages is free. The AI will walk them through it.
+2. **Put it online.** project-starter-kit includes deployment guidance. For simple sites, GitHub Pages is free. The AI will walk them through it.
 3. **Keep improving.** They can always come back to OpenCode and say "I want to change..." or "Add a new page for...". The AI remembers the project.
 
 ---
@@ -464,16 +464,16 @@ Some users may prefer to keep working with you rather than installing tools. Oth
 
 > "Since we're building directly in our chat instead of using a coding tool, I'll need to give you the website files to save. I'll tell you exactly what to name each file and where to save it. You won't need to understand the code, just copy and save."
 
-1. Fetch the make-a-website knowledge base yourself (if you have URL/browsing capability):
-   - Start with: `https://raw.githubusercontent.com/jdeworks/make-a-website/dev/AGENTS.md`
+1. Fetch the project-starter-kit knowledge base yourself (if you have URL/browsing capability):
+   - Start with: `https://raw.githubusercontent.com/jdeworks/project-starter-kit/dev/AGENTS.md`
    - Then read the prompts it references as needed
 
 2. If you **cannot** fetch URLs, ask the user to:
-   - Go to https://github.com/jdeworks/make-a-website
+   - Go to https://github.com/jdeworks/project-starter-kit
    - Open the file `AGENTS.md`
    - Copy its contents and paste them to you
 
-3. Follow the make-a-website workflow, adapting it for the paste-back pattern:
+3. Follow the project-starter-kit workflow, adapting it for the paste-back pattern:
    - Give them one file at a time with clear instructions ("save this as index.html in your project folder")
    - Tell them how to preview it (double-click the file to open in a browser)
    - This is slower than OpenCode but it works
@@ -562,7 +562,7 @@ These are short, beginner-friendly guides that cover the concepts behind the too
 | Resource | URL |
 |----------|-----|
 | This guide | `https://raw.githubusercontent.com/jdeworks/get-me-started/dev/prompts/AI-GUIDE.md` |
-| make-a-website (main guide) | `https://raw.githubusercontent.com/jdeworks/make-a-website/dev/AGENTS.md` |
+| project-starter-kit (main guide) | `https://raw.githubusercontent.com/jdeworks/project-starter-kit/dev/AGENTS.md` |
 | make-it-look-good (design) | `https://raw.githubusercontent.com/jdeworks/make-it-look-good/dev/CONSULT.md` |
 | agent-sandbox | `https://github.com/jdeworks/agent-sandbox` |
 | think-tank (project planner) | `https://jdeworks.github.io/think-tank` |

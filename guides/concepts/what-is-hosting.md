@@ -24,7 +24,7 @@ Your website files are uploaded as-is and served directly. No code runs on the s
 **Cost**: often free
 **Examples**: GitHub Pages, Netlify, Cloudflare Pages, Vercel
 
-**GitHub Pages** is straightforward — if your code is already on GitHub, you flip a switch and your site is live. The [make-a-website](https://github.com/jdeworks/make-a-website) knowledge base walks you through this.
+**GitHub Pages** is straightforward — if your code is already on GitHub, you flip a switch and your site is live. The [project-starter-kit](https://github.com/jdeworks/project-starter-kit) knowledge base walks you through this.
 
 ### Server Hosting (for dynamic sites)
 

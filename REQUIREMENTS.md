@@ -32,10 +32,10 @@ The AI-GUIDE.md is the instruction set for AI chatbots. When a user pastes the p
 **Test:** Reply with "I want a page for my pizza shop." The chatbot should respond with the setup page URL and nothing else significant.
 
 ### 2.3 Third response (after user says "setup is done")
-- **MUST** tell the user how to start OpenCode and paste the make-a-website prompt
+- **MUST** tell the user how to start OpenCode and paste the project-starter-kit prompt
 - **MUST** include the user's idea from their first message
 
-**Test:** Reply with "The setup is done." The chatbot should give a short instruction to launch OpenCode with the make-a-website URL.
+**Test:** Reply with "The setup is done." The chatbot should give a short instruction to launch OpenCode with the project-starter-kit URL.
 
 ### 2.4 General rules (all responses)
 - ONE question per message, never more
@@ -198,7 +198,7 @@ The AI-GUIDE.md is the instruction set for AI chatbots. When a user pastes the p
 - **MUST** reference the GitHub page URL as optional
 - **MUST** have Phase 3 (manual setup) as fallback only
 - **MUST** have Phase 5 (stay in chat) as alternative for users who can't install tools
-- **MUST** include the make-a-website handoff prompt
+- **MUST** include the project-starter-kit handoff prompt
 - **MUST** include next steps after building (make-it-look-good, hosting)
 
 ---

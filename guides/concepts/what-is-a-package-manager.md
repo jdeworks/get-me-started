@@ -44,7 +44,7 @@ Every Node.js project has a `package.json` file — think of it as a recipe card
 - All the dependencies (libraries) the project needs
 - Scripts (commands) you can run, like `npm run dev`
 
-When someone shares a project with you, you run `npm install` and it reads `package.json` to install everything needed. This is how the [make-a-website](https://github.com/jdeworks/make-a-website) starter template works — one command and all dependencies are ready.
+When someone shares a project with you, you run `npm install` and it reads `package.json` to install everything needed. This is how the [project-starter-kit](https://github.com/jdeworks/project-starter-kit) starter template works — one command and all dependencies are ready.
 
 ## The node_modules Folder
 
